@@ -1,0 +1,33 @@
+name: Check File Sizes
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-file-size:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # This ensures we get the full history
+
+    - name: Check file sizes
+      run: |
+        MAX_SIZE_BYTES=$((10 * 1024 * 1024))  # 10MB in bytes
+        
+        # Get list of files changed in this PR
+        FILES_CHANGED=$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+        
+        # Check each file
+        for file in $FILES_CHANGED; do
+          if [ -f "$file" ]; then
+            size=$(stat -c%s "$file")
+            if [ $size -gt $MAX_SIZE_BYTES ]; then
+              echo "Error: $file is larger than 10MB (size: $size bytes)"
+              exit 1
+            fi
+          fi
+        done
+        
+        echo "All files are within the size limit."
