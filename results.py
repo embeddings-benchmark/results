@@ -26,7 +26,7 @@ VERSION = datasets.Version("1.0.1")
 EVAL_LANGS = ['af', 'afr-eng', 'am', "amh", 'amh-eng', 'ang-eng', 'ar', 'ar-ar', 'ara-eng', 'arq-eng', 'arz-eng', 'ast-eng', 'awa-eng', 'az', 'aze-eng', 'bel-eng', 'ben-eng', 'ber-eng', 'bn', 'bos-eng', 'bre-eng', 'bul-eng', 'cat-eng', 'cbk-eng', 'ceb-eng', 'ces-eng', 'cha-eng', 'cmn-eng', 'cor-eng', 'csb-eng', 'cy', 'cym-eng', 'da', 'dan-eng', 'de', 'de-fr', 'de-pl', 'deu-eng', 'dsb-eng', 'dtp-eng', 'el', 'ell-eng', 'en', 'en-ar', 'en-de', 'en-en', 'en-tr', 'eng', 'epo-eng', 'es', 'es-en', 'es-es', 'es-it', 'est-eng', 'eus-eng', 'fa', 'fao-eng', 'fi', 'fin-eng', 'fr', 'fr-en', 'fr-pl', 'fra', 'fra-eng', 'fry-eng', 'gla-eng', 'gle-eng', 'glg-eng', 'gsw-eng', 'hau', 'he', 'heb-eng', 'hi', 'hin-eng', 'hrv-eng', 'hsb-eng', 'hu', 'hun-eng', 'hy', 'hye-eng', 'ibo', 'id', 'ido-eng', 'ile-eng', 'ina-eng', 'ind-eng', 'is', 'isl-eng', 'it', 'it-en', 'ita-eng', 'ja', 'jav-eng', 'jpn-eng', 'jv', 'ka', 'kab-eng', 'kat-eng', 'kaz-eng', 'khm-eng', 'km', 'kn', 'ko', 'ko-ko', 'kor-eng', 'kur-eng', 'kzj-eng', 'lat-eng', 'lfn-eng', 'lit-eng', 'lin', 'lug', 'lv', 'lvs-eng', 'mal-eng', 'mar-eng', 'max-eng', 'mhr-eng', 'mkd-eng', 'ml', 'mn', 'mon-eng', 'ms', 'my', 'nb', 'nds-eng', 'nl', 'nl-ende-en', 'nld-eng', 'nno-eng', 'nob-eng', 'nov-eng', 'oci-eng', 'orm', 'orv-eng', 'pam-eng', 'pcm', 'pes-eng', 'pl', 'pl-en', 'pms-eng', 'pol-eng', 'por-eng', 'pt', 'ro', 'ron-eng', 'ru', 'run', 'rus-eng', 'sl', 'slk-eng', 'slv-eng', 'spa-eng', 'sna', 'som', 'sq', 'sqi-eng', 'srp-eng', 'sv', 'sw', 'swa', 'swe-eng', 'swg-eng', 'swh-eng', 'ta', 'tam-eng', 'tat-eng', 'te', 'tel-eng', 'tgl-eng', 'th', 'tha-eng', 'tir', 'tl', 'tr', 'tuk-eng', 'tur-eng', 'tzl-eng', 'uig-eng', 'ukr-eng', 'ur', 'urd-eng', 'uzb-eng', 'vi', 'vie-eng', 'war-eng', 'wuu-eng', 'xho', 'xho-eng', 'yid-eng', 'yor', 'yue-eng', 'zh', 'zh-CN', 'zh-TW', 'zh-en', 'zsm-eng']
 
 # v_measures key is somehow present in voyage-2-law results and is a list
-SKIP_KEYS = ["std", "evaluation_time", "main_score", "threshold", "v_measures"]
+SKIP_KEYS = ["std", "evaluation_time", "main_score", "threshold", "v_measures", "scores_per_experiment"]
 
 # Use "train" split instead
 TRAIN_SPLIT = ["DanishPoliticalCommentsClassification"]
@@ -36,6 +36,8 @@ VALIDATION_SPLIT = ["AFQMC", "Cmnli", "IFlyTek", "LEMBSummScreenFDRetrieval", "M
 DEV_SPLIT = ["CmedqaRetrieval", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "MedicalRetrieval", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "MSMARCO-PL", "T2Reranking", "T2Retrieval", "VideoRetrieval"]
 # Use "test.full" split
 TESTFULL_SPLIT = ["OpusparcusPC"]
+# Use "standard" split
+STANDARD_SPLIT = ["BrightRetrieval"]
 
 TEST_AVG_SPLIT = {
     "LEMBNeedleRetrieval": ["test_256", "test_512", "test_1024", "test_2048", "test_4096", "test_8192", "test_16384", "test_32768"],
@@ -61,6 +63,7 @@ MODELS = [
     "LLM2Vec-Sheared-Llama-unsupervised",
     "LaBSE",
     "OpenSearch-text-hybrid",
+    "SFR-Embedding-Mistral",
     "all-MiniLM-L12-v2",
     "all-MiniLM-L6-v2",
     "all-mpnet-base-v2",
@@ -124,12 +127,14 @@ MODELS = [
     "google-gecko.text-embedding-preview-0409",
     "gottbert-base",
     "gte-Qwen1.5-7B-instruct",
+    "gte-Qwen2-7B-instruct",
     "gtr-t5-base",
     "gtr-t5-large",
     "gtr-t5-xl",
     "gtr-t5-xxl",
     "herbert-base-retrieval-v2",
     "instructor-base",
+    "instructor-large",
     "instructor-xl",
     "jina-embeddings-v2-base-en",
     "komninos",
@@ -228,8 +233,8 @@ def get_paths():
             if not os.path.isdir(os.path.join(results_model_dir, revision_folder)):
                 continue
             for res_file in os.listdir(os.path.join(results_model_dir, revision_folder)):
-                if (res_file.endswith(".json")) and not(res_file.endswith("overall_results.json")):
-                    results_model_file = os.path.join(results_model_dir, res_file)
+                if (res_file.endswith(".json")) and not(res_file.endswith(("overall_results.json", "model_meta.json"))):
+                    results_model_file = os.path.join(results_model_dir, revision_folder, res_file)
                     files[model_dir].append(results_model_file)
     with open("paths.json", "w") as f:
         json.dump(files, f, indent=2)
@@ -265,9 +270,10 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
+        # Local debugging:
+        #with open("/Users/muennighoff/Desktop/results/paths.json") as f:
         with open(path_file) as f:
             files = json.load(f)
-
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [
             datasets.SplitGenerator(
@@ -298,6 +304,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     split = "dev"
                 elif (ds_name in TESTFULL_SPLIT) and ("test.full" in res_dict):
                     split = "test.full"
+                elif (ds_name in STANDARD_SPLIT) and ("standard" in res_dict):
+                    split = "standard"
                 elif (ds_name in TEST_AVG_SPLIT):
                     # Average splits
                     res_dict["test_avg"] = {}
@@ -329,17 +337,40 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 ### New MTEB format ###
                 if isinstance(res_dict, list):
                     for res in res_dict:
-                        lang = res.get("languages", [""])
-                        assert len(lang) == 1, "Only single-languages supported for now"
-                        lang = lang[0].replace("eng-Latn", "")
+                        lang = res.pop("languages", [""])
+                        subset = res.pop("hf_subset", "")
+                        if len(lang) == 1:
+                            lang = lang[0].replace("eng-Latn", "")
+                        else:
+                            lang = "_".join(lang)
+                        if not lang:
+                            lang = subset
                         for metric, score in res.items():
                             if metric in SKIP_KEYS: continue
-                            out.append({
-                                "mteb_dataset_name": ds_name,
-                                "eval_language": lang,
-                                "metric": metric,
-                                "score": score * 100,
-                            })
+                            if isinstance(score, dict):
+                                # Legacy format with e.g. {cosine: {spearman: ...}}
+                                # Now it is {cosine_spearman: ...}
+                                for k, v in score.items():
+                                    if not isinstance(v, float): 
+                                        print(f'WARNING: Expected float, got {v} for {ds_name} {lang} {metric} {k}')
+                                        continue
+                                    if metric in SKIP_KEYS: continue
+                                    out.append({
+                                        "mteb_dataset_name": ds_name,
+                                        "eval_language": lang,
+                                        "metric": metric + "_" + k,
+                                        "score": v * 100,
+                                    })
+                            else:
+                                if not isinstance(score, float): 
+                                    print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric} {k}')
+                                    continue
+                                out.append({
+                                    "mteb_dataset_name": ds_name,
+                                    "eval_language": lang,
+                                    "metric": metric,
+                                    "score": score * 100,
+                                })
 
                 ### Old MTEB format ###
                 else:
