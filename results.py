@@ -88,6 +88,7 @@ MODELS = [
     "bge-small-zh",
     "bge-small-zh-v1.5",
     "bm25",
+    "bm25s",
     "camembert-base",
     "camembert-large",
     "contriever-base-msmarco",
