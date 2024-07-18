@@ -67,7 +67,6 @@ MODELS = [
     "OpenSearch-text-hybrid",
     "SFR-Embedding-Mistral",
     "all-MiniLM-L12-v2",
-    "all-MiniLM-L12-v2-instruct",
     "all-MiniLM-L6-v2",
     "all-MiniLM-L6-v2-instruct",
     "all-mpnet-base-v2",
