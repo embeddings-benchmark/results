@@ -101,6 +101,8 @@ MODELS = [
     "distilbert-base-fr-cased",
     "distilbert-base-uncased",
     "distiluse-base-multilingual-cased-v2",
+    "dragon-plus",
+    "dragon-plus-instruct",
     "e5-base",
     "e5-base-4k",
     "e5-base-v2",
