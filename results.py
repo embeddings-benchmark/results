@@ -38,6 +38,8 @@ DEV_SPLIT = ["CmedqaRetrieval", "CovidRetrieval", "DuRetrieval", "EcomRetrieval"
 TESTFULL_SPLIT = ["OpusparcusPC"]
 # Use "standard" split
 STANDARD_SPLIT = ["BrightRetrieval"]
+# Use "devtest" split
+DEVTEST_SPLIT = ["FloresBitextMining"]
 
 TEST_AVG_SPLIT = {
     "LEMBNeedleRetrieval": ["test_256", "test_512", "test_1024", "test_2048", "test_4096", "test_8192", "test_16384", "test_32768"],
@@ -333,6 +335,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     split = "test.full"
                 elif (ds_name in STANDARD_SPLIT) and ("standard" in res_dict):
                     split = "standard"
+                elif (ds_name in DEVTEST_SPLIT) and ("standard" in res_dict):
+                    split = "devtest"
                 elif (ds_name in TEST_AVG_SPLIT):
                     # Average splits
                     res_dict["test_avg"] = {}
