@@ -33,7 +33,7 @@ TRAIN_SPLIT = ["DanishPoliticalCommentsClassification"]
 # Use "validation" split instead
 VALIDATION_SPLIT = ["AFQMC", "Cmnli", "IFlyTek", "LEMBSummScreenFDRetrieval", "MSMARCO", "MSMARCO-PL", "MultilingualSentiment", "Ocnli", "TNews"]
 # Use "dev" split instead
-DEV_SPLIT = ["CmedqaRetrieval", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "MedicalRetrieval", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "MSMARCO-PL", "T2Reranking", "T2Retrieval", "VideoRetrieval"]
+DEV_SPLIT = ["CmedqaRetrieval", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "MedicalRetrieval", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "MSMARCO-PL", "T2Reranking", "T2Retrieval", "VideoRetrieval", "TERRa",]
 # Use "test.full" split
 TESTFULL_SPLIT = ["OpusparcusPC"]
 # Use "standard" split
@@ -235,6 +235,15 @@ MODELS = [
     "voyage-multilingual-2",
     "xlm-roberta-base",
     "xlm-roberta-large",
+    "deberta-v1-base",
+    "USER-bge-m3",
+    "USER-base",
+    "rubert-tiny-turbo",
+    "LaBSE-ru-turbo",
+    "distilrubert-small-cased-conversational",
+    "rubert-base-cased",
+    "rubert-base-cased-sentence",
+    "LaBSE-en-ru",
 ]
 
 
