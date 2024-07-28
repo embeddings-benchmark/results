@@ -301,7 +301,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
         path_file = dl_manager.download_and_extract(URL)
         # Local debugging:
         #with open("/Users/muennighoff/Desktop/results/paths.json") as f:
-        with open(path_file) as f:
+        with open("/home/samoed/Desktop/mteb/mteb-results/paths.json") as f:
+        # with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [
@@ -335,7 +336,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     split = "test.full"
                 elif (ds_name in STANDARD_SPLIT) and ("standard" in res_dict):
                     split = "standard"
-                elif (ds_name in DEVTEST_SPLIT) and ("standard" in res_dict):
+                elif (ds_name in DEVTEST_SPLIT) and ("devtest" in res_dict):
                     split = "devtest"
                 elif (ds_name in TEST_AVG_SPLIT):
                     # Average splits
