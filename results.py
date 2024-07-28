@@ -390,7 +390,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                     })
                             else:
                                 if not isinstance(score, float): 
-                                    print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric} {k}')
+                                    print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric}')
                                     continue
                                 out.append({
                                     "mteb_dataset_name": ds_name,
