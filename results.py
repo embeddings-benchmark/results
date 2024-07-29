@@ -301,8 +301,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
         path_file = dl_manager.download_and_extract(URL)
         # Local debugging:
         #with open("/Users/muennighoff/Desktop/results/paths.json") as f:
-        with open("/home/samoed/Desktop/mteb/mteb-results/paths.json") as f:
-        # with open(path_file) as f:
+        with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [
