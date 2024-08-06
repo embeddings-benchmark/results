@@ -33,11 +33,13 @@ TRAIN_SPLIT = ["DanishPoliticalCommentsClassification"]
 # Use "validation" split instead
 VALIDATION_SPLIT = ["AFQMC", "Cmnli", "IFlyTek", "LEMBSummScreenFDRetrieval", "MSMARCO", "MSMARCO-PL", "MultilingualSentiment", "Ocnli", "TNews"]
 # Use "dev" split instead
-DEV_SPLIT = ["CmedqaRetrieval", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "MedicalRetrieval", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "MSMARCO-PL", "T2Reranking", "T2Retrieval", "VideoRetrieval"]
+DEV_SPLIT = ["CmedqaRetrieval", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "MedicalRetrieval", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "MSMARCO-PL", "T2Reranking", "T2Retrieval", "VideoRetrieval", "TERRa",]
 # Use "test.full" split
 TESTFULL_SPLIT = ["OpusparcusPC"]
 # Use "standard" split
 STANDARD_SPLIT = ["BrightRetrieval"]
+# Use "devtest" split
+DEVTEST_SPLIT = ["FloresBitextMining"]
 
 TEST_AVG_SPLIT = {
     "LEMBNeedleRetrieval": ["test_256", "test_512", "test_1024", "test_2048", "test_4096", "test_8192", "test_16384", "test_32768"],
@@ -235,6 +237,15 @@ MODELS = [
     "voyage-multilingual-2",
     "xlm-roberta-base",
     "xlm-roberta-large",
+    "deberta-v1-base",
+    "USER-bge-m3",
+    "USER-base",
+    "rubert-tiny-turbo",
+    "LaBSE-ru-turbo",
+    "distilrubert-small-cased-conversational",
+    "rubert-base-cased",
+    "rubert-base-cased-sentence",
+    "LaBSE-en-ru",
 ]
 
 
@@ -324,6 +335,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     split = "test.full"
                 elif (ds_name in STANDARD_SPLIT) and ("standard" in res_dict):
                     split = "standard"
+                elif (ds_name in DEVTEST_SPLIT) and ("devtest" in res_dict):
+                    split = "devtest"
                 elif (ds_name in TEST_AVG_SPLIT):
                     # Average splits
                     res_dict["test_avg"] = {}
@@ -381,7 +394,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                     })
                             else:
                                 if not isinstance(score, float): 
-                                    print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric} {k}')
+                                    print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric}')
                                     continue
                                 out.append({
                                     "mteb_dataset_name": ds_name,
