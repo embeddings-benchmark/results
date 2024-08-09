@@ -6,7 +6,7 @@ import mteb
 
 def test_load_results():
     """Ensures that files can be loaded using MTEB"""
-    tests_path = Path(__file__).parent.parent / "results"
+    tests_path = Path(__file__).parent / "mock_cache_dir"
 
     os.environ["MTEB_CACHE"] = str(tests_path)
 
