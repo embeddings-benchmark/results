@@ -3,7 +3,8 @@ name: Check File Sizes
 on:
   pull_request:
     branches: [ main ]
-
+  push:
+      branches: [main]
 jobs:
   check-file-size:
     runs-on: ubuntu-latest
