@@ -44,7 +44,7 @@ def resolve_conflict_result(current_path: Path, expected_path: Path) -> None:
         # check version and keep the newest
         c_version = c_res.mteb_version
         e_version = e_res.mteb_version
-
+        
         if Version(c_version) > Version(e_version):
             logger.info("Newer version of result file, moving")
             expected_path.parent.mkdir(parents=True, exist_ok=True)
