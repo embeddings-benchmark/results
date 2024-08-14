@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 
 def resolve_conflict_meta(current_path: Path, expected_path: Path) -> None:
     """Resolve conflict between two meta files."""
-    with open(current_path, "r") as f:
+    with current_path.open("r") as f:
         current_meta = json.load(f)
 
-    with open(expected_path / "model_meta.json", "r") as f:
+    with expected_path.open("r") as f:
         expected_meta = json.load(f)
 
     if current_meta == expected_meta:
@@ -26,29 +26,38 @@ def resolve_conflict_meta(current_path: Path, expected_path: Path) -> None:
         logger.info("Meta file is different, please resolve manually.")
 
 
-def resolve_conflict_result(currenet_path: Path, expected_path: Path) -> None:
+def resolve_conflict_result(current_path: Path, expected_path: Path) -> None:
     """Resolve conflict between two result files."""
-    old_res = mteb.MTEBResults.from_disk(currenet_path)
-    new_res = mteb.MTEBResults.from_disk(expected_path)
-    if old_res == new_res:
+    c_res = mteb.MTEBResults.from_disk(current_path)
+    e_res = mteb.MTEBResults.from_disk(expected_path)
+    c_dict_repr = c_res.model_dump()
+    e_dict_repr = e_res.model_dump()
+
+    for d in [c_dict_repr, e_dict_repr]:
+        d.pop("kg_co2_emissions")
+        d.pop("evaluation_time")
+
+    if c_dict_repr == e_dict_repr:
         logger.info("Result file is the same, removing")
-        currenet_path.unlink()
+        current_path.unlink()
     else:
         # check version and keep the newest
-        old_version = old_res.mteb_version
-        new_version = new_res.mteb_version
-        if Version(old_version) > Version(new_version):
-            logger.info("Older version of result file, removing")
-            currenet_path.unlink()
-        elif Version(old_version) == Version(new_version):
+        c_version = c_res.mteb_version
+        e_version = e_res.mteb_version
+        if Version(c_version) > Version(e_version):
+            logger.info("Newer version of result file, moving")
+            expected_path.parent.mkdir(parents=True, exist_ok=True)
+            current_path.rename(expected_path)
+        elif Version(c_version) == Version(e_version):
             logger.info(
                 "Same version of result file, removing, but scores are different. Please resolve manually."
             )
-            logger.info(f"Old scores: {old_res.scores}")
-            logger.info(f"New scores: {new_res.scores}")
+            logger.info(f"Old scores: {c_res.scores}")
+            logger.info(f"New scores: {e_res.scores}")
         else:
-            logger.info("Newer version of result file, moving")
-            currenet_path.rename(expected_path / currenet_path.name)
+            logger.info("Older version of result file, removing")
+            # make sure the folder exists
+            current_path.unlink()
 
 
 def resolve_conflict(current_path: Path, expected_path: Path) -> None:
@@ -59,7 +68,7 @@ def resolve_conflict(current_path: Path, expected_path: Path) -> None:
         resolve_conflict_result(current_path, expected_path)
 
 
-def main(attempt_to_resolve_conflict: bool = False) -> None:
+def main(attempt_to_resolve_conflict: bool) -> None:
     """Main function."""
     results_folder = Path(__file__).parent.parent / "results"
     meta_files = results_folder.glob("**/model_meta.json")
@@ -85,7 +94,6 @@ def main(attempt_to_resolve_conflict: bool = False) -> None:
             files_in_folder = meta_file.parent.glob("*.json")
 
             for file in files_in_folder:
-                # check if file already exists
                 if (expected_path / file.name).exists():
                     conflict_encountered = True
                     logger.info(f"File {file} already exists in {expected_path}")
@@ -101,4 +109,8 @@ def main(attempt_to_resolve_conflict: bool = False) -> None:
 
 
 if __name__ == "__main__":
-    main()
+    logging.basicConfig(
+        level=logging.INFO,
+    )
+
+    main(attempt_to_resolve_conflict=True)
