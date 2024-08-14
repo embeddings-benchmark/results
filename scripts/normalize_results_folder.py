@@ -68,6 +68,17 @@ def resolve_conflict(current_path: Path, expected_path: Path) -> None:
         resolve_conflict_result(current_path, expected_path)
 
 
+def remove_folders_with_only_meta_files(results_folder: Path) -> None:
+    """Remove folders that only contain a meta file."""
+    for folder in results_folder.glob("*/*"):
+        if len(list(folder.glob("*.json"))) == 1:
+            meta_file = list(folder.glob("*.json"))[0]
+            if meta_file.name == "model_meta.json":
+                logger.info(f"Removing folder {folder}")
+                meta_file.unlink()
+                folder.rmdir()
+
+
 def main(attempt_to_resolve_conflict: bool) -> None:
     """Main function."""
     results_folder = Path(__file__).parent.parent / "results"
@@ -106,6 +117,8 @@ def main(attempt_to_resolve_conflict: bool) -> None:
 
     if conflict_encountered and not attempt_to_resolve_conflict:
         raise Exception("Conflicts encountered.")
+
+    remove_folders_with_only_meta_files(results_folder)
 
 
 if __name__ == "__main__":
