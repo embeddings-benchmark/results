@@ -6,6 +6,7 @@ REPLACE_MAP = {
     "MAP": 'map',
     "MRR": 'mrr',
     "RECALL": 'recall',
+    "Recall": 'recall',
     "P": 'precision',
 }
 
@@ -25,30 +26,42 @@ MODEL_TO_MODEL = {
     "sf": "SFR-Embedding-Mistral",
     "voyage": "voyage-large-2-instruct",
 }
-folders = os.listdir('bright_scores')
-print(folders)
-models = set([x.split("_")[-3] for x in folders if os.path.isdir('bright_scores/' + x)])
+folders = os.listdir('bright_scores/main') + os.listdir('bright_scores/long_context')
+models = set([x.split("_")[-3] for x in folders if (os.path.isdir('bright_scores/main/' + x) or os.path.isdir('bright_scores/long_context/' + x))])
+print(models)
 for model in models:
     print(f"Converting {model}")
     result_template = {
         "dataset_revision": "a75a0eb",
         "mteb_version": "1.12.79",
         "scores": {
-            "standard": []
+            "standard": [],
+            "long": []
         },
         "task_name": "BrightRetrieval",
     }
-    for folder in [x for x in folders if (os.path.isdir('bright_scores/' + x)) and (x.split("_")[-3] == model)]:
-        results_path = 'bright_scores/' + folder + '/results.json'
-        if len(folder.split("_")) == 4:
-            split = folder.split("_")[0]
-        elif len(folder.split("_")) == 5:
-            split = folder.split("_")[0] + "_" + folder.split("_")[1]
+    for folder in [
+        x for x in folders if (os.path.isdir('bright_scores/main/' + x) or os.path.isdir('bright_scores/long_context/' + x)) and (x.split("_")[-3] == model)
+    ]:
+        if os.path.isdir('bright_scores/main/' + folder):
+            results_path = os.path.join('bright_scores/main', folder, 'results.json')
+            split = "standard"
+        else:
+            results_path = os.path.join('bright_scores/long_context', folder, 'results.json')
+            assert "long_True" in folder, folder
+            split = "long"
+
         with open(results_path) as f:
             results = json.load(f)
-        result_template['scores']['standard'].append(
+
+        if len(folder.split("_")) == 4:
+            subset = folder.split("_")[0]
+        elif len(folder.split("_")) == 5:
+            subset = folder.split("_")[0] + "_" + folder.split("_")[1]
+
+        result_template['scores'][split].append(
             {
-                "hf_subset": split,
+                "hf_subset": subset,
                 "languages": ["eng-Latn"],
                 "main_score": results["NDCG@10"],
                 **{"_at_".join([REPLACE_MAP.get(x, x) for x in k.split("@")]): v for k,v in results.items()}

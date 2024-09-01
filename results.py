@@ -68,7 +68,6 @@ MODELS = [
     "LaBSE",
     "OpenSearch-text-hybrid",
     "SFR-Embedding-Mistral",
-    "all-MiniLM-L12-v2",
     "all-MiniLM-L6-v2",
     "all-MiniLM-L6-v2-instruct",
     "all-mpnet-base-v2",
@@ -194,6 +193,12 @@ MODELS = [
     "sentence-t5-large",
     "sentence-t5-xl",
     "sentence-t5-xxl",
+    "sentence-transformers__LaBSE",
+    "sentence-transformers__all-MiniLM-L12-v2",
+    "sentence-transformers__all-MiniLM-L6-v2",
+    "sentence-transformers__all-mpnet-base-v2",
+    "sentence-transformers__paraphrase-multilingual-MiniLM-L12-v2",
+    "sentence-transformers__paraphrase-multilingual-mpnet-base-v2",
     "sgpt-bloom-1b7-nli",
     "sgpt-bloom-7b1-msmarco",
     "silver-retriever-base-v1",
@@ -291,6 +296,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     "eval_language": datasets.Value("string"),
                     "metric": datasets.Value("string"),
                     "score": datasets.Value("float"),
+                    "split": datasets.Value("string"),
                 }
             ),
             supervised_keys=None,
@@ -300,8 +306,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
         # Local debugging:
-        #with open("/Users/muennighoff/Desktop/results/paths.json") as f:
-        with open(path_file) as f:
+        with open("/Users/muennighoff/Desktop/leaderboard/results/paths.json") as f:
+        #with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [
@@ -333,8 +339,12 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     split = "dev"
                 elif (ds_name in TESTFULL_SPLIT) and ("test.full" in res_dict):
                     split = "test.full"
-                elif (ds_name in STANDARD_SPLIT) and ("standard" in res_dict):
-                    split = "standard"
+                elif (ds_name in STANDARD_SPLIT):
+                    split = []
+                    if "standard" in res_dict:
+                        split += ["standard"]
+                    if "long" in res_dict:
+                        split += ["long"]
                 elif (ds_name in DEVTEST_SPLIT) and ("devtest" in res_dict):
                     split = "devtest"
                 elif (ds_name in TEST_AVG_SPLIT):
@@ -363,65 +373,71 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 elif "test" not in res_dict:
                     print(f"Skipping {ds_name} as split {split} not present.")
                     continue
-                res_dict = res_dict.get(split)
 
-                ### New MTEB format ###
-                if isinstance(res_dict, list):
-                    for res in res_dict:
-                        lang = res.pop("languages", [""])
-                        subset = res.pop("hf_subset", "")
-                        if len(lang) == 1:
-                            lang = lang[0].replace("eng-Latn", "")
-                        else:
-                            lang = "_".join(lang)
-                        if not lang:
-                            lang = subset
-                        for metric, score in res.items():
-                            if metric in SKIP_KEYS: continue
-                            if isinstance(score, dict):
-                                # Legacy format with e.g. {cosine: {spearman: ...}}
-                                # Now it is {cosine_spearman: ...}
-                                for k, v in score.items():
-                                    if not isinstance(v, float): 
-                                        print(f'WARNING: Expected float, got {v} for {ds_name} {lang} {metric} {k}')
+                splits = [split] if not isinstance(split, list) else split
+                full_res_dict = res_dict
+                for split in splits:
+                    res_dict = full_res_dict.get(split)
+
+                    ### New MTEB format ###
+                    if isinstance(res_dict, list):
+                        for res in res_dict:
+                            lang = res.pop("languages", [""])
+                            subset = res.pop("hf_subset", "")
+                            if len(lang) == 1:
+                                lang = lang[0].replace("eng-Latn", "")
+                            else:
+                                lang = "_".join(lang)
+                            if not lang:
+                                lang = subset
+                            for metric, score in res.items():
+                                if metric in SKIP_KEYS: continue
+                                if isinstance(score, dict):
+                                    # Legacy format with e.g. {cosine: {spearman: ...}}
+                                    # Now it is {cosine_spearman: ...}
+                                    for k, v in score.items():
+                                        if not isinstance(v, float): 
+                                            print(f'WARNING: Expected float, got {v} for {ds_name} {lang} {metric} {k}')
+                                            continue
+                                        if metric in SKIP_KEYS: continue
+                                        out.append({
+                                            "mteb_dataset_name": ds_name,
+                                            "eval_language": lang,
+                                            "metric": metric + "_" + k,
+                                            "score": v * 100,
+                                        })
+                                else:
+                                    if not isinstance(score, float): 
+                                        print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric}')
                                         continue
-                                    if metric in SKIP_KEYS: continue
                                     out.append({
                                         "mteb_dataset_name": ds_name,
                                         "eval_language": lang,
-                                        "metric": metric + "_" + k,
-                                        "score": v * 100,
+                                        "metric": metric,
+                                        "score": score * 100,
+                                        "split": split,
                                     })
-                            else:
-                                if not isinstance(score, float): 
-                                    print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric}')
-                                    continue
-                                out.append({
-                                    "mteb_dataset_name": ds_name,
-                                    "eval_language": lang,
-                                    "metric": metric,
-                                    "score": score * 100,
-                                })
 
-                ### Old MTEB format ###
-                else:
-                    is_multilingual = any(x in res_dict for x in EVAL_LANGS)
-                    langs = res_dict.keys() if is_multilingual else ["en"]
-                    for lang in langs:
-                        if lang in SKIP_KEYS: continue
-                        test_result_lang = res_dict.get(lang) if is_multilingual else res_dict
-                        for metric, score in test_result_lang.items():
-                            if not isinstance(score, dict):
-                                score = {metric: score}
-                            for sub_metric, sub_score in score.items():
-                                if any(x in sub_metric for x in SKIP_KEYS): continue
-                                if isinstance(sub_score, dict): continue
-                                out.append({
-                                    "mteb_dataset_name": ds_name,
-                                    "eval_language": lang if is_multilingual else "",
-                                    "metric": f"{metric}_{sub_metric}" if metric != sub_metric else metric,
-                                    "score": sub_score * 100,
-                                })
+                    ### Old MTEB format ###
+                    else:
+                        is_multilingual = any(x in res_dict for x in EVAL_LANGS)
+                        langs = res_dict.keys() if is_multilingual else ["en"]
+                        for lang in langs:
+                            if lang in SKIP_KEYS: continue
+                            test_result_lang = res_dict.get(lang) if is_multilingual else res_dict
+                            for metric, score in test_result_lang.items():
+                                if not isinstance(score, dict):
+                                    score = {metric: score}
+                                for sub_metric, sub_score in score.items():
+                                    if any(x in sub_metric for x in SKIP_KEYS): continue
+                                    if isinstance(sub_score, dict): continue
+                                    out.append({
+                                        "mteb_dataset_name": ds_name,
+                                        "eval_language": lang if is_multilingual else "",
+                                        "metric": f"{metric}_{sub_metric}" if metric != sub_metric else metric,
+                                        "score": sub_score * 100,
+                                        "split": split,
+                                    })
         for idx, row in enumerate(sorted(out, key=lambda x: x["mteb_dataset_name"])):
             yield idx, row
 
