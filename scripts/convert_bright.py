@@ -32,8 +32,10 @@ print(models)
 for model in models:
     print(f"Converting {model}")
     result_template = {
-        "dataset_revision": "a75a0eb",
-        "mteb_version": "1.12.79",
+        "dataset_revision": "a75a0eb483f6a5233a6efc2d63d71540a4443dfb",
+        "evaluation_time": 0,
+        "kg_co2_emissions": None,
+        "mteb_version": "1.12.79",    
         "scores": {
             "standard": [],
             "long": []
