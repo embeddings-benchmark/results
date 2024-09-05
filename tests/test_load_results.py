@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+import pytest
+from datasets import load_dataset
+from results import MODELS
 import mteb
 
 
@@ -24,3 +27,9 @@ def test_load_results():
     known_revision = "bf3bf13ab40c3157080a7ab344c831b9ad18b5eb"
     assert known_model in results
     assert known_revision in results[known_model]
+
+
+@pytest.mark.parametrize("model", MODELS)
+def test_load_results(model):
+    path = os.path.join(os.path.dirname(__file__), "..", "results.py")
+    ds = load_dataset(path, model, trust_remote_code=True)
