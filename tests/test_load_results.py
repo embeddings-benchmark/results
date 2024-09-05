@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 from datasets import load_dataset
 from results import MODELS
+
 import mteb
 
 
@@ -31,5 +32,5 @@ def test_load_results():
 
 @pytest.mark.parametrize("model", MODELS)
 def test_load_results(model):
-    path = os.path.join(os.path.dirname(__file__), "..", "results.py")
-    ds = load_dataset(path, model, trust_remote_code=True)
+    path = Path(__file__).parent.parent / "results.py"
+    ds = load_dataset(str(path.absolute()), model, trust_remote_code=True)
