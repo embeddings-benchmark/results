@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 from datasets import load_dataset
+# for CI this should be `results.results`, for local just `results`
 from results.results import MODELS
 
 import mteb
@@ -31,6 +32,7 @@ def test_load_results():
 
 
 @pytest.mark.parametrize("model", MODELS)
-def test_load_results(model):
+def test_load_results_from_datasets(model):
+    """Ensures that all models can be imported from dataset"""
     path = Path(__file__).parent.parent / "results.py"
     ds = load_dataset(str(path.absolute()), model, trust_remote_code=True)
