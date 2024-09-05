@@ -128,6 +128,7 @@ MODELS = [
     "elser-v2",
     "embedder-100p",
     "facebook-dpr-ctx_encoder-multiset-base",
+    "facebookdragon-plus-context-encoder",
     "flan-t5-base",
     "flan-t5-large",
     "flaubert_base_cased",
@@ -201,6 +202,8 @@ MODELS = [
     "SGPT-5.8B-weightedmean-msmarco-specb-bitfit",
     "SGPT-5.8B-weightedmean-nli-bitfit",
     "SGPT-2.7B-weightedmean-msmarco-specb-bitfit",
+    "SGPT-125M-weightedmean-msmarco-specb-bitfit-que",
+    "SGPT-125M-weightedmean-msmarco-specb-bitfit-doc",
     "text-embedding-preview-0409-768",
     "SGPT-125M-weightedmean-msmarco-specb-bitfit",
     "silver-retriever-base-v1",
@@ -274,7 +277,7 @@ def get_paths():
             continue
         model_name = get_model_for_current_dir(model_dir)
         if model_name is None:
-            print(f"Skipping {model_dir}")
+            print(f"Skipping {model_dir} model dir")
             continue
         for revision_folder in os.listdir(results_model_dir):
             if not os.path.isdir(os.path.join(results_model_dir, revision_folder)):
