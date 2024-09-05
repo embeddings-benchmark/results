@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 from datasets import load_dataset
-from results import MODELS
+from results.results import MODELS
 
 import mteb
 
