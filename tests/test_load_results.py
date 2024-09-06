@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 from datasets import load_dataset
 # for CI this should be `results.results`, for local just `results`
-from results.results import MODELS
+from results import MODELS
 
 import mteb
 
