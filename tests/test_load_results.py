@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pytest
 from datasets import load_dataset
-# for CI this should be `results.results`, for local just `results`
 from results import MODELS
 
 import mteb
