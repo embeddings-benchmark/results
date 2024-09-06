@@ -1,28 +1,30 @@
 {
   "dataset_revision": "de9d86b3b84231dc21f76c7b7af1f28e2f57f6e3",
-  "evaluation_time": 15.269661903381348,
-  "kg_co2_emissions": null,
-  "mteb_version": "1.12.25",
+  "evaluation_time": 7.500065088272095,
+  "kg_co2_emissions": 0.0012269146988574794,
+  "mteb_version": "1.14.12",
   "scores": {
     "test": [
       {
-        "cos_sim": {
-          "pearson": 0.32801558362670724,
-          "spearman": 0.568169227758792
-        },
-        "euclidean": {
-          "pearson": 0.42118576462370577,
-          "spearman": 0.568169227758792
-        },
+        "cosine_pearson": 0.328015600313815,
+        "cosine_spearman": 0.568169227758792,
+        "euclidean_pearson": 0.4211857863562637,
+        "euclidean_spearman": 0.568169227758792,
         "hf_subset": "ru",
         "languages": [
           "rus-Cyrl"
         ],
         "main_score": 0.568169227758792,
-        "manhattan": {
-          "pearson": 0.423347132585459,
-          "spearman": 0.5698056491833908
-        }
+        "manhattan_pearson": 0.4233471575776382,
+        "manhattan_spearman": 0.5698056491833908,
+        "pearson": [
+          0.3280155869163157,
+          3.2284688435457376e-08
+        ],
+        "spearman": [
+          0.5682246078725619,
+          1.4237673027023537e-24
+        ]
       }
     ]
   },
