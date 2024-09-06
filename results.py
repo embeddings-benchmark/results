@@ -321,7 +321,6 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
-        # Change path for local development
         with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
