@@ -203,7 +203,6 @@ MODELS = [
     "SGPT-2.7B-weightedmean-msmarco-specb-bitfit",
     "SGPT-125M-weightedmean-msmarco-specb-bitfit-que",
     "SGPT-125M-weightedmean-msmarco-specb-bitfit-doc",
-    "text-embedding-preview-0409-768",
     "SGPT-125M-weightedmean-msmarco-specb-bitfit",
     "silver-retriever-base-v1",
     "st-polish-paraphrase-from-distilroberta",
