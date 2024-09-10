@@ -55,7 +55,6 @@ MODELS = [
     "DanskBERT",
     "FollowIR-7B",
     "GritLM-7B",
-    "GritLM-7B-noinstruct",
     "LASER2",
     "LLM2Vec-Llama-2-supervised",
     "LLM2Vec-Llama-2-unsupervised",
@@ -106,7 +105,6 @@ MODELS = [
     "contriever-base-msmarco",
     "cross-en-de-roberta-sentence-transformer",
     "dfm-encoder-large-v1",
-    "dfm-sentence-encoder-large-1",
     "distilbert-base-25lang-cased",
     "distilbert-base-en-fr-cased",
     "distilbert-base-en-fr-es-pt-it-cased",
@@ -129,6 +127,7 @@ MODELS = [
     "elser-v2",
     "embedder-100p",
     "facebook-dpr-ctx_encoder-multiset-base",
+    "facebookdragon-plus-context-encoder",
     "flan-t5-base",
     "flan-t5-large",
     "flaubert_base_cased",
@@ -193,14 +192,18 @@ MODELS = [
     "sentence-t5-large",
     "sentence-t5-xl",
     "sentence-t5-xxl",
-    "sentence-transformers__LaBSE",
-    "sentence-transformers__all-MiniLM-L12-v2",
-    "sentence-transformers__all-MiniLM-L6-v2",
-    "sentence-transformers__all-mpnet-base-v2",
-    "sentence-transformers__paraphrase-multilingual-MiniLM-L12-v2",
-    "sentence-transformers__paraphrase-multilingual-mpnet-base-v2",
+    "all-MiniLM-L12-v2",
     "sgpt-bloom-1b7-nli",
     "sgpt-bloom-7b1-msmarco",
+    "SGPT-125M-weightedmean-nli-bitfit",
+    "SGPT-1.3B-weightedmean-msmarco-specb-bitfit",
+    "SGPT-5.8B-weightedmean-msmarco-specb-bitfit-que",
+    "SGPT-5.8B-weightedmean-msmarco-specb-bitfit",
+    "SGPT-5.8B-weightedmean-nli-bitfit",
+    "SGPT-2.7B-weightedmean-msmarco-specb-bitfit",
+    "SGPT-125M-weightedmean-msmarco-specb-bitfit-que",
+    "SGPT-125M-weightedmean-msmarco-specb-bitfit-doc",
+    "SGPT-125M-weightedmean-msmarco-specb-bitfit",
     "silver-retriever-base-v1",
     "st-polish-paraphrase-from-distilroberta",
     "st-polish-paraphrase-from-mpnet",
@@ -254,6 +257,13 @@ MODELS = [
 ]
 
 
+def get_model_for_current_dir(dir_name: str) -> str | None:
+    for model in MODELS:
+        if model == dir_name or ("__" in dir_name and dir_name.split("__")[1] == model):
+            return model
+    return None
+
+
 # Needs to be run whenever new files are added
 def get_paths():
     import collections, json, os
@@ -263,13 +273,17 @@ def get_paths():
         if not os.path.isdir(results_model_dir):
             print(f"Skipping {results_model_dir}")
             continue
+        model_name = get_model_for_current_dir(model_dir)
+        if model_name is None:
+            print(f"Skipping {model_dir} model dir")
+            continue
         for revision_folder in os.listdir(results_model_dir):
             if not os.path.isdir(os.path.join(results_model_dir, revision_folder)):
                 continue
             for res_file in os.listdir(os.path.join(results_model_dir, revision_folder)):
                 if (res_file.endswith(".json")) and not(res_file.endswith(("overall_results.json", "model_meta.json"))):
                     results_model_file = os.path.join(results_model_dir, revision_folder, res_file)
-                    files[model_dir].append(results_model_file)
+                    files[model_name].append(results_model_file)
     with open("paths.json", "w") as f:
         json.dump(files, f, indent=2)
     return files
@@ -305,7 +319,6 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
-        # Local debugging:
         with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
