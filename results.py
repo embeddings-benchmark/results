@@ -15,7 +15,7 @@ _CITATION = """@article{muennighoff2022mteb,
   author = {Muennighoff, Niklas and Tazi, Nouamane and Magne, Lo{\"\i}c and Reimers, Nils},
   title = {MTEB: Massive Text Embedding Benchmark},
   publisher = {arXiv},
-  journal={arXiv preprint arXiv:2210.07316},  
+  journal={arXiv preprint arXiv:2210.07316},
   year = {2022}
 }
 """
@@ -55,8 +55,8 @@ MODELS = [
     "Cohere-embed-multilingual-v3.0",
     "DanskBERT",
     "FollowIR-7B",
-    "GritLM__GritLM-7B",
-    "GritLM__GritLM-7B-noinstruct",
+    "GritLM-7B",
+    "GritLM-7B-noinstruct",
     "LASER2",
     "LLM2Vec-Llama-2-supervised",
     "LLM2Vec-Llama-2-unsupervised",
@@ -313,6 +313,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     "metric": datasets.Value("string"),
                     "score": datasets.Value("float"),
                     "split": datasets.Value("string"),
+                    "hf_subset": datasets.Value("string"),
                 }
             ),
             supervised_keys=None,
@@ -365,27 +366,33 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     split = "devtest"
                 elif (ds_name in TEST_AVG_SPLIT):
                     # Average splits
-                    res_dict["test_avg"] = {}
+                    res_dict = {}
                     for split in TEST_AVG_SPLIT[ds_name]:
                         # Old MTEB format
                         if isinstance(res_dict.get(split), dict):
                             for k, v in res_dict.get(split, {}).items():
+                                if key in ["hf_subset", "languages"]:
+                                    res_dict[k] = v
+
                                 v /= len(TEST_AVG_SPLIT[ds_name])
-                                if k not in res_dict["test_avg"]:
-                                    res_dict["test_avg"][k] = v
+                                if k not in res_dict:
+                                    res_dict[k] = v
                                 else:
-                                    res_dict["test_avg"][k] += v
+                                    res_dict[k] += v
                         # New MTEB format
                         elif isinstance(res_dict.get(split), list):
                             assert len(res_dict[split]) == 1, "Only single-lists supported for now"
                             for k, v in res_dict[split][0].items():
+                                if key in ["hf_subset", "languages"]:
+                                    res_dict[k] = v
                                 if not isinstance(v, float): continue
                                 v /= len(TEST_AVG_SPLIT[ds_name])
-                                if k not in res_dict["test_avg"]:
-                                    res_dict["test_avg"][k] = v
+                                if k not in res_dict:
+                                    res_dict[k] = v
                                 else:
-                                    res_dict["test_avg"][k] += v
+                                    res_dict[k] += v
                     split = "test_avg"
+                    res_dict = {split: [res_dict]}
                 elif "test" not in res_dict:
                     print(f"Skipping {ds_name} as split {split} not present.")
                     continue
@@ -412,7 +419,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                     # Legacy format with e.g. {cosine: {spearman: ...}}
                                     # Now it is {cosine_spearman: ...}
                                     for k, v in score.items():
-                                        if not isinstance(v, float): 
+                                        if not isinstance(v, float):
                                             print(f'WARNING: Expected float, got {v} for {ds_name} {lang} {metric} {k}')
                                             continue
                                         if metric in SKIP_KEYS: continue
@@ -421,9 +428,10 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                             "eval_language": lang,
                                             "metric": metric + "_" + k,
                                             "score": v * 100,
+                                            "hf_subset": subset,
                                         })
                                 else:
-                                    if not isinstance(score, float): 
+                                    if not isinstance(score, float):
                                         print(f'WARNING: Expected float, got {score} for {ds_name} {lang} {metric}')
                                         continue
                                     out.append({
@@ -432,6 +440,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                         "metric": metric,
                                         "score": score * 100,
                                         "split": split,
+                                        "hf_subset": subset,
                                     })
 
                     ### Old MTEB format ###
@@ -441,6 +450,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                         for lang in langs:
                             if lang in SKIP_KEYS: continue
                             test_result_lang = res_dict.get(lang) if is_multilingual else res_dict
+                            subset = test_result_lang.pop("hf_subset", "")
                             for metric, score in test_result_lang.items():
                                 if not isinstance(score, dict):
                                     score = {metric: score}
@@ -453,6 +463,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                         "metric": f"{metric}_{sub_metric}" if metric != sub_metric else metric,
                                         "score": sub_score * 100,
                                         "split": split,
+                                        "hf_subset": subset,
                                     })
         for idx, row in enumerate(sorted(out, key=lambda x: x["mteb_dataset_name"])):
             yield idx, row
