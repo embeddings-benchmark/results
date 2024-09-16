@@ -371,7 +371,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                         # Old MTEB format
                         if isinstance(res_dict.get(split), dict):
                             for k, v in res_dict.get(split, {}).items():
-                                if key in ["hf_subset", "languages"]:
+                                if k in ["hf_subset", "languages"]:
                                     res_dict[k] = v
 
                                 v /= len(TEST_AVG_SPLIT[ds_name])
@@ -383,7 +383,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                         elif isinstance(res_dict.get(split), list):
                             assert len(res_dict[split]) == 1, "Only single-lists supported for now"
                             for k, v in res_dict[split][0].items():
-                                if key in ["hf_subset", "languages"]:
+                                if k in ["hf_subset", "languages"]:
                                     res_dict[k] = v
                                 if not isinstance(v, float): continue
                                 v /= len(TEST_AVG_SPLIT[ds_name])
@@ -451,6 +451,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                             if lang in SKIP_KEYS: continue
                             test_result_lang = res_dict.get(lang) if is_multilingual else res_dict
                             subset = test_result_lang.pop("hf_subset", "")
+                            if subset == "" and is_multilingual:
+                                subset = lang
                             for metric, score in test_result_lang.items():
                                 if not isinstance(score, dict):
                                     score = {metric: score}
