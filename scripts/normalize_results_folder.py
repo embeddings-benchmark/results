@@ -44,15 +44,13 @@ def resolve_conflict_result(current_path: Path, expected_path: Path) -> None:
         # check version and keep the newest
         c_version = c_res.mteb_version
         e_version = e_res.mteb_version
-        
+
         if Version(c_version) > Version(e_version):
             logger.info("Newer version of result file, moving")
             expected_path.parent.mkdir(parents=True, exist_ok=True)
             current_path.rename(expected_path)
         elif Version(c_version) == Version(e_version):
-            logger.info(
-                "Same version of result file, removing, but scores are different. Please resolve manually."
-            )
+            logger.info("Same version of result file, removing, but scores are different. Please resolve manually.")
             logger.info(f"Old scores: {c_res.scores}")
             logger.info(f"New scores: {e_res.scores}")
         else:

@@ -2,12 +2,12 @@ import json
 import os
 
 REPLACE_MAP = {
-    "NDCG": 'ndcg',
-    "MAP": 'map',
-    "MRR": 'mrr',
-    "RECALL": 'recall',
-    "Recall": 'recall',
-    "P": 'precision',
+    "NDCG": "ndcg",
+    "MAP": "map",
+    "MRR": "mrr",
+    "RECALL": "recall",
+    "Recall": "recall",
+    "P": "precision",
 }
 
 MODEL_TO_MODEL = {
@@ -26,8 +26,14 @@ MODEL_TO_MODEL = {
     "sf": "SFR-Embedding-Mistral",
     "voyage": "voyage-large-2-instruct",
 }
-folders = os.listdir('bright_scores/main') + os.listdir('bright_scores/long_context')
-models = set([x.split("_")[-3] for x in folders if (os.path.isdir('bright_scores/main/' + x) or os.path.isdir('bright_scores/long_context/' + x))])
+folders = os.listdir("bright_scores/main") + os.listdir("bright_scores/long_context")
+models = set(
+    [
+        x.split("_")[-3]
+        for x in folders
+        if (os.path.isdir("bright_scores/main/" + x) or os.path.isdir("bright_scores/long_context/" + x))
+    ]
+)
 print(models)
 for model in models:
     print(f"Converting {model}")
@@ -35,21 +41,21 @@ for model in models:
         "dataset_revision": "a75a0eb483f6a5233a6efc2d63d71540a4443dfb",
         "evaluation_time": 0,
         "kg_co2_emissions": None,
-        "mteb_version": "1.12.79",    
-        "scores": {
-            "standard": [],
-            "long": []
-        },
+        "mteb_version": "1.12.79",
+        "scores": {"standard": [], "long": []},
         "task_name": "BrightRetrieval",
     }
     for folder in [
-        x for x in folders if (os.path.isdir('bright_scores/main/' + x) or os.path.isdir('bright_scores/long_context/' + x)) and (x.split("_")[-3] == model)
+        x
+        for x in folders
+        if (os.path.isdir("bright_scores/main/" + x) or os.path.isdir("bright_scores/long_context/" + x))
+        and (x.split("_")[-3] == model)
     ]:
-        if os.path.isdir('bright_scores/main/' + folder):
-            results_path = os.path.join('bright_scores/main', folder, 'results.json')
+        if os.path.isdir("bright_scores/main/" + folder):
+            results_path = os.path.join("bright_scores/main", folder, "results.json")
             split = "standard"
         else:
-            results_path = os.path.join('bright_scores/long_context', folder, 'results.json')
+            results_path = os.path.join("bright_scores/long_context", folder, "results.json")
             assert "long_True" in folder, folder
             split = "long"
 
@@ -61,19 +67,17 @@ for model in models:
         elif len(folder.split("_")) == 5:
             subset = folder.split("_")[0] + "_" + folder.split("_")[1]
 
-        result_template['scores'][split].append(
+        result_template["scores"][split].append(
             {
                 "hf_subset": subset,
                 "languages": ["eng-Latn"],
                 "main_score": results["NDCG@10"],
-                **{"_at_".join([REPLACE_MAP.get(x, x) for x in k.split("@")]): v for k,v in results.items()}
+                **{"_at_".join([REPLACE_MAP.get(x, x) for x in k.split("@")]): v for k, v in results.items()},
             }
         )
-    
+
     model_folder = MODEL_TO_MODEL[model]
     os.makedirs(f"results/{model_folder}/no_revision_available", exist_ok=True)
     print(f"Writing to: results/{model_folder}/no_revision_available/BrightRetrieval.json")
     with open(f"results/{model_folder}/no_revision_available/BrightRetrieval.json", "w") as f:
         json.dump(result_template, f, indent=4)
-
-
