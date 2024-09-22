@@ -12,7 +12,6 @@ for file in tqdm.tqdm(glob.glob("results/*/*.json")):
         data = json.load(fin)
         if "individual" in data["test"]:
             del data["test"]["individual"]
-        
+
     with open(file, "w") as fout:
         json.dump(data, fout, indent=2)
-
