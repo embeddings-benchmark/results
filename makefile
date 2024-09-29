@@ -6,3 +6,7 @@ install-for-tests:
 test:
 	@echo "--- Running tests ---"
 	pytest
+
+pre-push:
+	@echo "--- Running pre-push commands ---"
+	python reduce_large_json_files.py
