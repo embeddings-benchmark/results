@@ -141,7 +141,11 @@ folders_without_meta = [  # please do not add to this list it is only intended f
     ("FacebookAI__xlm-roberta-base", "no_revision_available"),
     ("BAAI__bge-large-zh-v1.5", "no_revision_available"),
     ("orionweller__tart-dual-contriever-msmarco", "no_revision_available"),
+<<<<<<< HEAD
     ("openai__text-embedding-004-768", "no_revision_available"),
+=======
+    ("openai__text-embedding-preview-004-768", "no_revision_available"),
+>>>>>>> main
     ("vesteinn__DanskBERT", "no_revision_available"),
     ("deepset__gbert-large", "no_revision_available"),
     ("openai__text-similarity-davinci-001", "no_revision_available"),
@@ -232,7 +236,11 @@ folders_without_meta = [  # please do not add to this list it is only intended f
     ("chcaa__dfm-encoder-large-v1", "no_revision_available"),
     ("GritLM__GritLM-7B-noinstruct", "13f00a0e36500c80ce12870ea513846a066004af-temp"),
     ("sentence-transformers__gtr-t5-xxl", "no_revision_available"),
+<<<<<<< HEAD
     ("google-gecko__text-embedding-004-256", "no_revision_available"),
+=======
+    ("google-gecko__text-embedding-preview-004-256", "no_revision_available"),
+>>>>>>> main
     ("intfloat__-e5-base", "no_revision_available"),
     ("intfloat__multilingual-e5-base", "d13f1b27baf31030b7fd00460d60d909913633f"),
     ("intfloat__multilingual-e5-base", "no_revision_available"),
