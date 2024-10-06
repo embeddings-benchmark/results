@@ -497,6 +497,8 @@ MODELS = [
     "voyageai__voyage-lite-01-instruct",
     "voyageai__voyage-lite-02-instruct",
     "voyageai__voyage-multilingual-2",
+    "voyageai__voyage-3",
+    "voyageai__voyage-3-lite",
     "vprelovac__universal-sentence-encoder-multilingual-3",
     "vprelovac__universal-sentence-encoder-multilingual-large-3",
 ]
