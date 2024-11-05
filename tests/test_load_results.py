@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 import mteb
+from mteb.load_results.task_results import TaskResult
 
 
 def test_load_results():
@@ -12,15 +13,13 @@ def test_load_results():
 
     results = mteb.load_results(download_latest=False)
 
-    assert isinstance(results, dict)
-    for model in results:
-        assert isinstance(results[model], dict)
-        for revision in results[model]:
-            assert isinstance(results[model][revision], list)
-            for result in results[model][revision]:
-                assert isinstance(result, mteb.MTEBResults)
+    assert isinstance(results, mteb.BenchmarkResults)
+    for model_results in results.model_results:
+        for model_result in model_results:
+            assert isinstance(model_result, TaskResult)
 
-    known_model = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-    known_revision = "bf3bf13ab40c3157080a7ab344c831b9ad18b5eb"
-    assert known_model in results
-    assert known_revision in results[known_model]
+    test_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    model_results = mteb.load_results(models=[test_model_name])
+    model_result = model_results[0]
+    assert model_result.model_name == test_model_name
+    assert model_result.model_revision == "bf3bf13ab40c3157080a7ab344c831b9ad18b5eb"
