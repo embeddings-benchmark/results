@@ -4,6 +4,7 @@ import json
 import logging
 import re
 from pathlib import Path
+from typing import Any
 
 from huggingface_hub import HfApi, get_hf_file_metadata, hf_hub_download, hf_hub_url
 from huggingface_hub.errors import NotASafetensorsRepoError
@@ -12,7 +13,6 @@ from huggingface_hub.repocard import metadata_load
 from mteb import ModelMeta, get_task
 
 API = HfApi()
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -82,7 +82,7 @@ def get_dim_seq_size(model: ModelInfo) -> tuple[str | None, str | None, int, flo
     return dim, seq, parameters, memory
 
 
-def create_model_meta(model_info: ModelInfo) -> None:
+def create_model_meta(model_info: ModelInfo) -> ModelMeta | None:
     readme_path = hf_hub_download(model_info.id, filename="README.md", etag_timeout=30)
     meta = metadata_load(readme_path)
     dim, seq, parameters, memory = None, None, None, None
@@ -101,7 +101,7 @@ def create_model_meta(model_info: ModelInfo) -> None:
         if languages[i] is False:
             languages[i] = "no"
 
-    model_dict = ModelMeta(
+    model_meta = ModelMeta(
         name=model_info.id,
         revision=model_info.sha,
         release_date=release_date,
@@ -113,13 +113,10 @@ def create_model_meta(model_info: ModelInfo) -> None:
         n_parameters=parameters,
         languages=languages,
     )
-    model_dir = get_model_dir(model_info.id)
-    model_meta_path = model_dir / "model_meta.json"
-    with model_meta_path.open("w") as f:
-        json.dump(model_dict.model_dump(), f, indent=4)
+    return model_meta
 
 
-def parse_readme(model_info: ModelInfo) -> None:
+def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
     model_id = model_info.id
     try:
         readme_path = hf_hub_download(model_info.id, filename="README.md", etag_timeout=30)
@@ -131,33 +128,42 @@ def parse_readme(model_info: ModelInfo) -> None:
         logger.info(f"Could not find model-index in {model_id}")
         return
     model_index = meta["model-index"][0]
-    model_name_from_readme = model_index["model_name"]
-    if not model_info.id.endswith(model_name_from_readme):
+    model_name_from_readme = model_index.get("name", None)
+    orgs = ["Alibaba-NLP", "HIT-TMG", "McGill-NLP", "Snowflake", "facebook", "jinaai", "nomic-ai"]
+    is_org = any([model_id.startswith(org) for org in orgs])
+    # There a lot of reuploads with tunes, quantization, etc. We only want the original model
+    # to prevent this most of the time we can check if the model name from the readme is the same as the model id
+    # but some orgs have a different naming in their readme
+    if model_name_from_readme and not model_info.id.endswith(model_name_from_readme) and not is_org:
         logger.warning(f"Model name mismatch: {model_info.id} vs {model_name_from_readme}")
         return
     results = model_index.get("results", [])
     model_results = {}
     for result in results:
-        output_dict = {}
         dataset = result["dataset"]
-        dataset_type = dataset.get("type", "")
+        dataset_type = dataset["type"]  # type is repo of the dataset
         if dataset_type not in model_results:
-            output_dict["dataset_revision"] = dataset.get("revision", "")
-            output_dict["task_name"] = simplify_dataset_name(dataset.get("name", ""))
-            output_dict["evaluation_time"] = -1
-            output_dict["mteb_version"] = "0.0.0"
-            output_dict["scores"] = {}
+            output_dict = {
+                "dataset_revision": dataset.get("revision", ""),
+                "task_name": simplify_dataset_name(dataset["name"]),
+                "evaluation_time": -1,
+                "mteb_version": "0.0.0",
+                "scores": {},
+            }
         else:
             output_dict = model_results[dataset_type]
+
         try:
             mteb_task = get_task(output_dict["task_name"])
-            mteb_task_metadata = mteb_task.metadata
-            mteb_task_eval_languages = mteb_task_metadata.eval_langs
         except Exception:
             logger.warning(f"Error getting task for {model_id} {output_dict['task_name']}")
             continue
+
+        mteb_task_metadata = mteb_task.metadata
+        mteb_task_eval_languages = mteb_task_metadata.eval_langs
+
         scores_dict = output_dict["scores"]
-        current_split = dataset.get("split", "")
+        current_split = dataset["split"]
         current_config = dataset.get("config", "")
         cur_split_metrics = {
             "hf_subset": current_config,
@@ -168,48 +174,64 @@ def parse_readme(model_info: ModelInfo) -> None:
 
         main_score_str = "main_score"
         if main_score_str not in cur_split_metrics:
-            # sts old have cos_sim_pearson, but in model_meta cosine_spearman is main_score, sum_eval
+            # old sts and sum_eval have cos_sim_pearson, but in model_meta cosine_spearman is main_score
             for old_metric, new_metric in zip(["cos_sim_pearson", "cos_sim_spearman"], ["cosine_pearson", "cosine_spearman"]):
                 if old_metric in cur_split_metrics:
-                    cur_split_metrics[main_score_str] = cur_split_metrics[old_metric]
-            if cur_split_metrics.get(main_score_str, None) is None and mteb_task.metadata.main_score not in cur_split_metrics:
-                logger.warning(f"Could not find main score for {model_id} {output_dict['task_name']}")
+                    cur_split_metrics[new_metric] = cur_split_metrics[old_metric]
+
+            if mteb_task.metadata.main_score not in cur_split_metrics:
+                logger.warning(f"Could not find main score for {model_id} {output_dict['task_name']}, mteb task {mteb_task.metadata.name}. Main score: {mteb_task.metadata.main_score}. Metrics: {cur_split_metrics}, result {result['metrics']}")
                 continue
 
-            cur_split_metrics[main_score_str] = cur_split_metrics[mteb_task.metadata.main_score]
+            cur_split_metrics[main_score_str] = cur_split_metrics.get(mteb_task.metadata.main_score, None)
         split_metrics = scores_dict.get(current_split, [])
         split_metrics.append(cur_split_metrics)
         scores_dict[current_split] = split_metrics
         model_results[dataset_type] = output_dict
-    for model_result in model_results:
-        model_dir = get_model_dir(model_id)
-        task_name = model_results[model_result]["task_name"]
-        result_file = model_dir / f"{task_name}.json"
-        with result_file.open("w") as f:
-            json.dump(model_results[model_result], f, indent=4)
+    return model_results
 
 
 def get_mteb_data() -> None:
     models = sorted(list(API.list_models(filter="mteb", full=True)), key=lambda x: x.id)
     # models = [model for model in models if model.id == "intfloat/multilingual-e5-large"]
-    for i, model in enumerate(models, start=1):
-        logger.info(f"[{i}/{len(models)}] Processing {model.id}")
-        model_path = get_model_dir(model.id)
-        if (model_path / "model_meta.json").exists():
-            logger.info(f"Model meta already exists for {model.id}")
+    for i, model_info in enumerate(models, start=1):
+        logger.info(f"[{i}/{len(models)}] Processing {model_info.id}")
+        model_path = get_model_dir(model_info.id)
+        if (model_path / "model_meta.json").exists() and len(list(model_path.glob("*.json"))) > 1:
+            logger.info(f"Model meta already exists for {model_info.id}")
             continue
-        if model.id.lower().endswith("gguf"):
-            logger.info(f"Skipping {model.id} GGUF model")
+        if model_info.id.lower().endswith("gguf"):
+            logger.info(f"Skipping {model_info.id} GGUF model")
             continue
-        if model.id.startswith("ILKT"):
-            logger.info(f"Skipping {model.id} ILKT model")
+
+        spam_users = ["ILKT", "fine-tuned", "mlx-community"]
+        is_spam = False
+        for spam_user in spam_users:
+            if model_info.id.startswith(spam_user):
+                logger.info(f"Skipping {model_info.id}")
+                is_spam = True
+                continue
+        if is_spam:
             continue
-        if model.id.startswith("fine-tuned"):
-            logger.info(f"Skipping {model.id} fine-tuned model")
+        model_meta = create_model_meta(model_info)
+        model_results = parse_readme(model_info)
+
+        if not model_meta or not model_results:
+            logger.warning(f"Could not get model meta or results for {model_info.id}")
             continue
-        create_model_meta(model)
-        parse_readme(model)
+
+        model_dir = get_model_dir(model_info.id)
+        model_meta_path = model_dir / "model_meta.json"
+        with model_meta_path.open("w") as f:
+            json.dump(model_meta.model_dump(), f, indent=4)
+
+        for model_result in model_results:
+            task_name = model_results[model_result]["task_name"]
+            result_file = model_dir / f"{task_name}.json"
+            with result_file.open("w") as f:
+                json.dump(model_results[model_result], f, indent=4)
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     get_mteb_data()
