@@ -350,7 +350,6 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
         # Local debugging help
-        cur_dir = os.path.dirname(os.path.realpath(__file__))
         # with open("/path/to/local/paths.json") as f:
         with open(path_file) as f:
             files = json.load(f)
