@@ -23,8 +23,6 @@ library_mapping = {
 
 def get_model_dir(model_id: str) -> Path:
     external_result_dir = Path("results") / model_id.replace("/", "__") / "external"
-    if not external_result_dir.exists():
-        external_result_dir.mkdir(parents=True, exist_ok=True)
     return external_result_dir
 
 
@@ -220,14 +218,16 @@ def get_mteb_data() -> None:
             logger.warning(f"Could not get model meta or results for {model_info.id}")
             continue
 
-        model_dir = get_model_dir(model_info.id)
-        model_meta_path = model_dir / "model_meta.json"
+        if not model_path.exists():
+            model_path.mkdir(parents=True, exist_ok=True)
+
+        model_meta_path = model_path / "model_meta.json"
         with model_meta_path.open("w") as f:
             json.dump(model_meta.model_dump(), f, indent=4)
 
         for model_result in model_results:
             task_name = model_results[model_result]["task_name"]
-            result_file = model_dir / f"{task_name}.json"
+            result_file = model_path / f"{task_name}.json"
             with result_file.open("w") as f:
                 json.dump(model_results[model_result], f, indent=4)
 
