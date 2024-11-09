@@ -197,7 +197,7 @@ def get_mteb_data() -> None:
         model_path = get_model_dir(model_info.id)
         if (model_path / "model_meta.json").exists() and len(list(model_path.glob("*.json"))) > 1:
             logger.info(f"Model meta already exists for {model_info.id}")
-            # continue
+            continue
         if model_info.id.lower().endswith("gguf"):
             logger.info(f"Skipping {model_info.id} GGUF model")
             continue

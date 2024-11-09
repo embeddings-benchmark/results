@@ -351,9 +351,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
         path_file = dl_manager.download_and_extract(URL)
         # Local debugging help
         cur_dir = os.path.dirname(os.path.realpath(__file__))
-        print(cur_dir)
-        with open("/home/samoed/Desktop/mteb/mteb-results/paths.json") as f:
-        # with open(path_file) as f:
+        # with open("/path/to/local/paths.json") as f:
+        with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepath": downloaded_files})]
