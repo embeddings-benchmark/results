@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+from pathlib import Path
 
 import datasets
 
@@ -291,8 +292,7 @@ TEST_AVG_SPLIT = {
     ],
 }
 
-MODELS = list(os.listdir("results"))
-
+MODELS = sorted(list(set([str(file).split('/')[-1] for file in (Path(__file__).parent / "results").glob("*") if file.is_dir()])))
 
 # Needs to be run whenever new files are added
 def get_paths():
@@ -350,8 +350,10 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
         # Local debugging help
-        # with open("/path/to/local/paths.json") as f:
-        with open(path_file) as f:
+        cur_dir = os.path.dirname(os.path.realpath(__file__))
+        print(cur_dir)
+        with open("/home/samoed/Desktop/mteb/mteb-results/paths.json") as f:
+        # with open(path_file) as f:
             files = json.load(f)
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepath": downloaded_files})]
