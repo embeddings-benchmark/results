@@ -307,6 +307,8 @@ def get_paths():
         for revision_folder in os.listdir(results_model_dir):
             if not os.path.isdir(os.path.join(results_model_dir, revision_folder)):
                 continue
+            if revision_folder == "external":
+                continue
             for res_file in os.listdir(os.path.join(results_model_dir, revision_folder)):
                 if (res_file.endswith(".json")) and not (
                     res_file.endswith(("overall_results.json", "model_meta.json"))

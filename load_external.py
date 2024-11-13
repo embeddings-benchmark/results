@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import re
 from pathlib import Path
 from typing import Any
@@ -144,7 +145,7 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
             output_dict = {
                 "dataset_revision": dataset.get("revision", ""),
                 "task_name": simplify_dataset_name(dataset["name"]),
-                "evaluation_time": -1,
+                "evaluation_time": math.nan,
                 "mteb_version": "0.0.0",
                 "scores": {},
             }
