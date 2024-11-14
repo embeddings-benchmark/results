@@ -145,8 +145,8 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
             output_dict = {
                 "dataset_revision": dataset.get("revision", ""),
                 "task_name": simplify_dataset_name(dataset["name"]),
-                "evaluation_time": math.nan,
-                "mteb_version": "0.0.0",
+                "evaluation_time": None,
+                "mteb_version": None,
                 "scores": {},
             }
         else:
