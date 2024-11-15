@@ -169,7 +169,10 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
             "languages": mteb_task_eval_languages if isinstance(mteb_task_eval_languages, list) else mteb_task_eval_languages.get(current_config, ["None"]),
         }
         for metric in result["metrics"]:
-            cur_split_metrics[metric["type"]] = metric["value"]
+            if isinstance(metric["value"], (float, int)):
+                cur_split_metrics[metric["type"]] = metric["value"] / 100
+            else:
+                cur_split_metrics[metric["type"]] = metric["value"]
 
         main_score_str = "main_score"
         if main_score_str not in cur_split_metrics:
@@ -198,7 +201,7 @@ def get_mteb_data() -> None:
         model_path = get_model_dir(model_info.id)
         if (model_path / "model_meta.json").exists() and len(list(model_path.glob("*.json"))) > 1:
             logger.info(f"Model meta already exists for {model_info.id}")
-            continue
+            # continue
         if model_info.id.lower().endswith("gguf"):
             logger.info(f"Skipping {model_info.id} GGUF model")
             continue
