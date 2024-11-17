@@ -1,36 +1,46 @@
 import json
 from pathlib import Path
 
+import pytest
 
-def test_correct_folder_structure():
+results_folder = Path(__file__).parent.parent / "results"
+
+
+def get_metafiles():
+    meta_files = results_folder.glob("**/model_meta.json")
+    meta_files = list(meta_files)
+    return meta_files
+
+
+@pytest.mark.parametrize("meta_file", get_metafiles())
+def test_correct_folder_structure(meta_file):
     """
     the folders should be structured as follows:
     results/model_name/revision/*json
     """
-    results_folder = Path(__file__).parent.parent / "results"
-    meta_files = results_folder.glob("**/model_meta.json")
-    meta_files = list(meta_files)
 
-    for meta_file in meta_files:
-        with open(meta_file, "r") as f:
-            meta = json.load(f)
+    with meta_file.open("r") as f:
+        meta = json.load(f)
 
-        mdl_name, revision = meta["name"], meta["revision"]
+    mdl_name, revision = meta["name"], meta["revision"]
 
-        mdl_name = mdl_name.replace(" ", "_").replace("/", "__")
+    mdl_name = mdl_name.replace(" ", "_").replace("/", "__")
 
-        if revision is None:
-            revision = meta_file.parent.name
+    if revision is None:
+        revision = meta_file.parent.name
 
-        expected_path = results_folder / mdl_name / revision
-        assert expected_path == meta_file.parent
-        assert expected_path.exists()
-        assert len(list(expected_path.glob("*.json"))) > 0
-        for file in expected_path.glob("*.json"):
-            assert file.exists()
-            assert file.is_file()
-            assert file.parent == expected_path
-            assert file.suffix == ".json"
+    if meta_file.parent.parts[-1] == "external":
+        revision = "external"
+
+    expected_path = results_folder / mdl_name / revision
+    assert expected_path == meta_file.parent
+    assert expected_path.exists()
+    assert len(list(expected_path.glob("*.json"))) > 0
+    for file in expected_path.glob("*.json"):
+        assert file.exists()
+        assert file.is_file()
+        assert file.parent == expected_path
+        assert file.suffix == ".json"
 
 
 folders_without_meta = [  # please do not add to this list it is only intended for backwards compatibility. Future results should have a model_meta.json file
@@ -251,20 +261,19 @@ folders_without_meta = [  # please do not add to this list it is only intended f
 ]
 
 
-def test_model_meta_in_folders():
+@pytest.mark.parametrize("model_folder", results_folder.glob("*"))
+def test_model_meta_in_folders(model_folder):
     """
     the folders should contain a model_meta.json file
     """
-    results_folder = Path(__file__).parent.parent / "results"
 
-    for model_folder in results_folder.glob("*"):
-        for rev_folder in model_folder.glob("*"):
-            if (model_folder.name, rev_folder.name) in folders_without_meta:
-                continue
+    for rev_folder in model_folder.glob("*"):
+        if (model_folder.name, rev_folder.name) in folders_without_meta:
+            continue
 
-            meta_file = rev_folder / "model_meta.json"
-            assert meta_file.exists()
-            assert meta_file.is_file()
-            assert meta_file.parent == rev_folder
-            assert meta_file.suffix == ".json"
-            assert meta_file.stem == "model_meta"
+        meta_file = rev_folder / "model_meta.json"
+        assert meta_file.exists()
+        assert meta_file.is_file()
+        assert meta_file.parent == rev_folder
+        assert meta_file.suffix == ".json"
+        assert meta_file.stem == "model_meta"

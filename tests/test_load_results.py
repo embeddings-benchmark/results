@@ -18,6 +18,8 @@ def test_load_results():
         for model_result in model_results:
             assert isinstance(model_result, TaskResult)
 
+
+def test_load_results_mteb():
     test_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     model_results = mteb.load_results(models=[test_model_name])
     model_result = model_results[0]
