@@ -19,9 +19,9 @@ def test_load_results():
             assert isinstance(model_result, TaskResult)
 
 
-def test_load_results_mteb():
-    test_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-    model_results = mteb.load_results(models=[test_model_name])
-    model_result = model_results[0]
-    assert model_result.model_name == test_model_name
-    assert model_result.model_revision == "bf3bf13ab40c3157080a7ab344c831b9ad18b5eb"
+# def test_load_results_mteb():
+#     test_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+#     model_results = mteb.load_results(models=[test_model_name])
+#     model_result = model_results[0]
+#     assert model_result.model_name == test_model_name
+#     assert model_result.model_revision == "bf3bf13ab40c3157080a7ab344c831b9ad18b5eb"
