@@ -1,9 +1,7 @@
 {
     "dataset_revision": "7d24eac886a6ae6653a6b67433e1c302cb0e9ac6",
     "mteb_version": "1.2.0",
-    "evaluation_time": "",
-    "mteb_dataset_name": "SWE-Bench-Lite",
-    "mteb_mair_domain": "Code",
+    "evaluation_time": null,
     "astropy__astropy_12544_queries": {
         "NDCG@10": 0.43068
     },
@@ -365,8 +363,10 @@
         "test": [
             {
                 "hf_subset": "default",
-                "NDCG@10": 0.535383949579832
+                "NDCG@10": 0.535383949579832,
+                "main_score": 0.535383949579832
             }
         ]
-    }
+    },
+    "task_name": "SWE-Bench-Lite"
 }
