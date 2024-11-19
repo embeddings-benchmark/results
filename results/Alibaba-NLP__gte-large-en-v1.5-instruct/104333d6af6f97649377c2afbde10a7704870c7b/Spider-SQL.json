@@ -1,6 +1,7 @@
 {
     "dataset_revision": "7d24eac886a6ae6653a6b67433e1c302cb0e9ac6",
     "mteb_version": "1.2.0",
+    "evaluation_time": 120,
     "chinook_1_queries": {
         "NDCG@10": 0.09779
     },
@@ -10,13 +11,18 @@
     "store_1_queries": {
         "NDCG@10": 0.05556
     },
-    "task_name": "Spider-SQL",
-    "mteb_dataset_name": "Spider-SQL",
-    "evaluation_time": 120,
-    "test": {
-        "hf_subset": "default",
-        "NDCG@10": 0.060599622641509435,
-        "main_score": 0.060599622641509435,
-        "evaluation_time": 120
-    }
+    "scores": {
+        "test": [
+            {
+                "hf_subset": "default",
+                "NDCG@10": 0.060599622641509435,
+                "main_score": 0.060599622641509435,
+                "evaluation_time": 120,
+                "languages": [
+                    "eng-Latn"
+                ]
+            }
+        ]
+    },
+    "task_name": "Spider-SQL"
 }

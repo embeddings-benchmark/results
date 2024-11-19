@@ -1,6 +1,7 @@
 {
     "dataset_revision": "7d24eac886a6ae6653a6b67433e1c302cb0e9ac6",
     "mteb_version": "1.2.0",
+    "evaluation_time": 120,
     "detectable_format__number_bullet_lists_2078_queries": {
         "NDCG@10": 0.06943
     },
@@ -529,13 +530,18 @@
     "detectable_format__title_2807_queries": {
         "NDCG@10": 0.0
     },
-    "task_name": "IFEval",
-    "mteb_dataset_name": "IFEval",
-    "evaluation_time": 120,
-    "test": {
-        "hf_subset": "default",
-        "NDCG@10": 0.4123145454545455,
-        "main_score": 0.4123145454545455,
-        "evaluation_time": 120
-    }
+    "scores": {
+        "test": [
+            {
+                "hf_subset": "default",
+                "NDCG@10": 0.4123145454545455,
+                "main_score": 0.4123145454545455,
+                "evaluation_time": 120,
+                "languages": [
+                    "eng-Latn"
+                ]
+            }
+        ]
+    },
+    "task_name": "IFEval"
 }
