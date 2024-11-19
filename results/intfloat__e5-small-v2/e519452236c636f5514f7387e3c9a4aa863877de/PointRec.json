@@ -1,16 +1,13 @@
 {
     "dataset_revision": "7d24eac886a6ae6653a6b67433e1c302cb0e9ac6",
     "mteb_version": "1.2.0",
-    "scores": {
-        "test": [
-            {
-                "hf_subset": "default",
-                "NDCG@10": 0.45107,
-                "main_score": 0.45107,
-                "evaluation_time": null
-            }
-        ]
-    },
     "task_name": "PointRec",
-    "mteb_dataset_name": "PointRec"
+    "mteb_dataset_name": "PointRec",
+    "evaluation_time": 120,
+    "test": {
+        "hf_subset": "default",
+        "NDCG@10": 0.45107,
+        "main_score": 0.45107,
+        "evaluation_time": 120
+    }
 }

@@ -1,16 +1,13 @@
 {
     "dataset_revision": "7d24eac886a6ae6653a6b67433e1c302cb0e9ac6",
     "mteb_version": "1.2.0",
-    "scores": {
-        "test": [
-            {
-                "hf_subset": "default",
-                "NDCG@10": 0.54445,
-                "main_score": 0.54445,
-                "evaluation_time": null
-            }
-        ]
-    },
     "task_name": "CodeEditSearch",
-    "mteb_dataset_name": "CodeEditSearch"
+    "mteb_dataset_name": "CodeEditSearch",
+    "evaluation_time": 120,
+    "test": {
+        "hf_subset": "default",
+        "NDCG@10": 0.54445,
+        "main_score": 0.54445,
+        "evaluation_time": 120
+    }
 }

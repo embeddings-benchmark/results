@@ -10,16 +10,13 @@
     "store_1_queries": {
         "NDCG@10": 0.77199
     },
-    "scores": {
-        "test": [
-            {
-                "hf_subset": "default",
-                "NDCG@10": 0.5788403773584905,
-                "main_score": 0.5788403773584905,
-                "evaluation_time": null
-            }
-        ]
-    },
     "task_name": "Spider",
-    "mteb_dataset_name": "Spider"
+    "mteb_dataset_name": "Spider",
+    "evaluation_time": 120,
+    "test": {
+        "hf_subset": "default",
+        "NDCG@10": 0.5788403773584905,
+        "main_score": 0.5788403773584905,
+        "evaluation_time": 120
+    }
 }

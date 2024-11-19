@@ -358,16 +358,13 @@
     "sphinx_doc__sphinx_11312_queries": {
         "NDCG@10": 0.0
     },
-    "scores": {
-        "test": [
-            {
-                "hf_subset": "default",
-                "NDCG@10": 0.35595134453781513,
-                "main_score": 0.35595134453781513,
-                "evaluation_time": null
-            }
-        ]
-    },
     "task_name": "SWE-Bench-Lite",
-    "mteb_dataset_name": "SWE-Bench-Lite"
+    "mteb_dataset_name": "SWE-Bench-Lite",
+    "evaluation_time": 120,
+    "test": {
+        "hf_subset": "default",
+        "NDCG@10": 0.35595134453781513,
+        "main_score": 0.35595134453781513,
+        "evaluation_time": 120
+    }
 }

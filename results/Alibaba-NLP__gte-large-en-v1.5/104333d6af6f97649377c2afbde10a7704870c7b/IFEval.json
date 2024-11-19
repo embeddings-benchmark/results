@@ -529,16 +529,13 @@
     "detectable_format__title_2807_queries": {
         "NDCG@10": 0.0
     },
-    "scores": {
-        "test": [
-            {
-                "hf_subset": "default",
-                "NDCG@10": 0.2530406818181817,
-                "main_score": 0.2530406818181817,
-                "evaluation_time": null
-            }
-        ]
-    },
     "task_name": "IFEval",
-    "mteb_dataset_name": "IFEval"
+    "mteb_dataset_name": "IFEval",
+    "evaluation_time": 120,
+    "test": {
+        "hf_subset": "default",
+        "NDCG@10": 0.2530406818181817,
+        "main_score": 0.2530406818181817,
+        "evaluation_time": 120
+    }
 }

@@ -37,16 +37,13 @@
     "CQADupStack_Wordpress_queries": {
         "NDCG@10": 0.17197
     },
-    "scores": {
-        "test": [
-            {
-                "hf_subset": "default",
-                "NDCG@10": 0.3095633333333333,
-                "main_score": 0.3095633333333333,
-                "evaluation_time": null
-            }
-        ]
-    },
     "task_name": "CQADupStack",
-    "mteb_dataset_name": "CQADupStack"
+    "mteb_dataset_name": "CQADupStack",
+    "evaluation_time": 120,
+    "test": {
+        "hf_subset": "default",
+        "NDCG@10": 0.3095633333333333,
+        "main_score": 0.3095633333333333,
+        "evaluation_time": 120
+    }
 }
