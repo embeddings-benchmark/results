@@ -317,6 +317,7 @@ def get_paths():
                     files[model_dir].append(results_model_file)
     with open("paths.json", "w") as f:
         json.dump(files, f, indent=2)
+
     return files
 
 
