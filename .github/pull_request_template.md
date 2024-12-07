@@ -1,4 +1,4 @@
-<!-- If you are submitting a dataset or a model for the model registry please use the corresponding checklists below otherwise feel free to remove them. -->
+<!-- If you are submitting a dataset or a model for the model registry, please use the corresponding checklists below. Otherwise, feel free to remove them. -->
 
 <!-- add additional description, question etc. related to the new dataset -->
 
