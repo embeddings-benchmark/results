@@ -24,4 +24,4 @@ def test_load_results_mteb():
     model_results = mteb.load_results(models=[test_model_name])
     model_result = model_results[0]
     assert model_result.model_name == test_model_name
-    assert model_result.model_revision == "bf3bf13ab40c3157080a7ab344c831b9ad18b5eb"
+    assert model_result.model_revision == "8d6b950845285729817bf8e1af1861502c2fed0c"
