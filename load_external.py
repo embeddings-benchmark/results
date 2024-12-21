@@ -140,7 +140,8 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
     model_results = {}
     for result in results:
         dataset = result["dataset"]
-        dataset_type = dataset["type"]  # type is repo of the dataset
+        dataset_type = simplify_dataset_name(dataset["name"])
+
         if dataset_type not in model_results:
             output_dict = {
                 "dataset_revision": dataset.get("revision", ""),
@@ -195,7 +196,7 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
 
 def get_mteb_data() -> None:
     models = sorted(list(API.list_models(filter="mteb", full=True)), key=lambda x: x.id)
-    # models = [model for model in models if model.id == "intfloat/multilingual-e5-large"]
+    models = [model for model in models if model.id == "ai-forever/ru-en-RoSBERTa"]
     for i, model_info in enumerate(models, start=1):
         logger.info(f"[{i}/{len(models)}] Processing {model_info.id}")
         model_path = get_model_dir(model_info.id)
