@@ -33,6 +33,7 @@ renamed_tasks = {
     "CMedQAv1": "CMedQAv1-reranking",
     "8TagsClustering": "EightTagsClustering",
     "PPC": "PpcPC",
+    "PawsX": "PawsXParaphraseIdentification",
 }
 
 
