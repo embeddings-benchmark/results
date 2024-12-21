@@ -27,8 +27,18 @@ def get_model_dir(model_id: str) -> Path:
     return external_result_dir
 
 
+renamed_tasks = {
+    "NorwegianParliament": "NorwegianParliamentClassification",
+    "CMedQAv2": "CMedQAv2-reranking",
+    "CMedQAv1": "CMedQAv1-reranking",
+    "8TagsClustering": "EightTagsClustering",
+    "PPC": "PpcPC",
+}
+
+
 def simplify_dataset_name(name: str) -> str:
-    return name.replace("MTEB ", "").split()[0]
+    task_name = name.replace("MTEB ", "").split()[0]
+    return renamed_tasks.get(task_name, task_name)
 
 
 def get_model_parameters_memory(model_info: ModelInfo) -> tuple[int| None, float|None]:
