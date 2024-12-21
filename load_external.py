@@ -196,7 +196,7 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
 
 def get_mteb_data() -> None:
     models = sorted(list(API.list_models(filter="mteb", full=True)), key=lambda x: x.id)
-    models = [model for model in models if model.id == "ai-forever/ru-en-RoSBERTa"]
+    # models = [model for model in models if model.id == "ai-forever/ru-en-RoSBERTa"]
     for i, model_info in enumerate(models, start=1):
         logger.info(f"[{i}/{len(models)}] Processing {model_info.id}")
         model_path = get_model_dir(model_info.id)
