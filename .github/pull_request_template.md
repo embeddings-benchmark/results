@@ -14,6 +14,5 @@
 When adding a model to the model registry
 see also https://github.com/embeddings-benchmark/mteb/blob/main/docs/reproducible_workflow.md
 -->
-Ref # <!-- Add mteb PR number here -->
 
-- I have added model implementation to `mteb/models/` [directory](https://github.com/embeddings-benchmark/mteb/tree/main/mteb/models). Instruction to add a model can be found [here](https://github.com/embeddings-benchmark/mteb/blob/main/docs/reproducible_workflow.md)
+- [ ] I have added model implementation to `mteb/models/` [directory](https://github.com/embeddings-benchmark/mteb/tree/main/mteb/models). Instruction to add a model can be found [here](https://github.com/embeddings-benchmark/mteb/blob/main/docs/reproducible_workflow.md) in the following PR ____
