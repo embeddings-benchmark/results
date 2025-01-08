@@ -8,7 +8,7 @@ submission_name: MTEB
 > Previously it was possible to submit models results to MTEB by adding the results to the model metadata. This is no longer an option as we want to ensure high quality metadata.
 
 
-This repository contain the results of the embedding benchmark evaluated using the package `mteb`.
+This repository contains the results of the embedding benchmark evaluated using the package `mteb`.
 
 
 | Reference           |                                                                                          |
