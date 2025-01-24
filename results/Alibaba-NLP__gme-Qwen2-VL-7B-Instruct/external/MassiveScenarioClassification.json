@@ -1,22 +1,28 @@
 {
-  "dataset_revision": "7d571f92784cd94a019292a1f45445077d0ef634",
-  "mteb_dataset_name": "MassiveScenarioClassification",
-  "mteb_version": "1.2.0",
-  "test": {
-    "en": {
-      "accuracy": 0.8723268325487558,
-      "accuracy_stderr": 0.011505413916497668,
-      "f1": 0.8636737921996751,
-      "f1_stderr": 0.011207950036774236,
-      "main_score": 0.8723268325487558
-    },
-    "zh-CN": {
-      "accuracy": 0.8450571620712845,
-      "accuracy_stderr": 0.009314479996331285,
-      "f1": 0.8341287682629439,
-      "f1_stderr": 0.007885998856493062,
-      "main_score": 0.8450571620712845
-    },
-    "evaluation_time": 21.67
-  }
+    "dataset_revision": "7d571f92784cd94a019292a1f45445077d0ef634",
+    "task_name": "MassiveScenarioClassification",
+    "evaluation_time": null,
+    "mteb_version": null,
+    "scores": {
+        "test": [
+            {
+                "hf_subset": "en",
+                "languages": [
+                    "eng-Latn"
+                ],
+                "accuracy": 0.8723268325487559,
+                "f1": 0.8636737921996752,
+                "main_score": 0.8723268325487559
+            },
+            {
+                "hf_subset": "zh-CN",
+                "languages": [
+                    "cmo-Hans"
+                ],
+                "accuracy": 0.8450571620712845,
+                "f1": 0.8341287682629439,
+                "main_score": 0.8450571620712845
+            }
+        ]
+    }
 }
