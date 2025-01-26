@@ -37,7 +37,21 @@ revision_exceptions = [
     ("Snowflake__snowflake-arctic-embed-m-v1.5", "no_revision_available"),
     ("sentence-transformers__all-MiniLM-L12-v2", "no_revision_available"),
     ("nthakur__mcontriever-base-msmarco", "no_revision_available"),
-    ('voyageai__voyage-3-lite', 'no_revision_available')
+    ('voyageai__voyage-3-lite', 'no_revision_available'),
+    ("google-bert__bert-base-uncased", "no_revision_available"),
+    ("google-bert__bert-large-uncased", "no_revision_available"),
+    ("google-gecko__text-embedding-004", "no_revision_available"),
+    ("hkunlp__instructor-large", "no_revision_available"),
+    ("hkunlp__instructor-base", "no_revision_available"),
+    ("flaubert__flaubert_base_cased", "no_revision_available"),
+    ("google-bert__bert-base-multilingual-cased", "no_revision_available"),
+    ("google-bert__bert-base-multilingual-uncased", "no_revision_available"),
+    ("hkunlp__instructor-xl", "no_revision_available"),
+    ("google-gecko__text-embedding-004-256", "no_revision_available"),
+    ("google__flan-t5-large", "no_revision_available"),
+    ("flaubert__flaubert_large_cased", "no_revision_available"),
+    ("flaubert__flaubert_base_uncased", "no_revision_available"),
+    ("google__flan-t5-base", "no_revision_available"),
 ]
 
 

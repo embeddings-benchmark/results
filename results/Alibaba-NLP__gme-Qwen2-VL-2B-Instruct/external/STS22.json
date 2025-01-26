@@ -1,22 +1,40 @@
 {
-  "dataset_revision": "eea2b4fe26a775864c896887d910b76a8098ad3f",
-  "mteb_dataset_name": "STS22",
-  "mteb_version": "1.2.0",
-  "test": {
-    "evaluation_time": 4.42,
-    "zh": {
-      "cos_sim": {
-        "pearson": 0.6741628669863584,
-        "spearman": 0.6787238206703478
-      },
-      "euclidean": {
-        "pearson": 0.6767834985311778,
-        "spearman": 0.6787238206703478
-      },
-      "manhattan": {
-        "pearson": 0.6823423896742974,
-        "spearman": 0.6827069260687092
-      }
+    "dataset_revision": "eea2b4fe26a775864c896887d910b76a8098ad3f",
+    "task_name": "STS22",
+    "evaluation_time": null,
+    "mteb_version": null,
+    "scores": {
+        "test": [
+            {
+                "hf_subset": "en",
+                "languages": [
+                    "eng-Latn"
+                ],
+                "cos_sim_pearson": 0.6849024974161408,
+                "cos_sim_spearman": 0.6919917146180619,
+                "euclidean_pearson": 0.7048882819806336,
+                "euclidean_spearman": 0.6919917146180619,
+                "manhattan_pearson": 0.7086827961779931,
+                "manhattan_spearman": 0.6938456983992612,
+                "cosine_pearson": 0.6849024974161408,
+                "cosine_spearman": 0.6919917146180619,
+                "main_score": 0.6919917146180619
+            },
+            {
+                "hf_subset": "zh",
+                "languages": [
+                    "cmn-Hans"
+                ],
+                "cos_sim_pearson": 0.6741628669863584,
+                "cos_sim_spearman": 0.6787238206703478,
+                "euclidean_pearson": 0.6767834985311778,
+                "euclidean_spearman": 0.6787238206703478,
+                "manhattan_pearson": 0.6823423896742973,
+                "manhattan_spearman": 0.6827069260687092,
+                "cosine_pearson": 0.6741628669863584,
+                "cosine_spearman": 0.6787238206703478,
+                "main_score": 0.6787238206703478
+            }
+        ]
     }
-  }
 }
