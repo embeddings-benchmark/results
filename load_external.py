@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import logging
-import math
 import re
 from pathlib import Path
 from typing import Any
@@ -68,14 +67,17 @@ def get_model_parameters_memory(model_info: ModelInfo) -> tuple[int| None, float
     return None, None
 
 
-def get_dim_seq_size(model: ModelInfo) -> tuple[str | None, str | None, int, float]:
+def get_dim_seq_size(model: ModelInfo) -> tuple[str | None, str | None, int, float, str | None]:
     siblings = model.siblings or []
     filenames = [sib.rfilename for sib in siblings]
     dim, seq = None, None
+    similarity_fn_name = None
     for filename in filenames:
         if re.match(r"\d+_Pooling/config.json", filename):
             st_config_path = hf_hub_download(model.id, filename=filename)
-            dim = json.load(open(st_config_path)).get("word_embedding_dimension", None)
+            with open(st_config_path) as f:
+                pooling_config = json.load(f)
+            dim = pooling_config.get("word_embedding_dimension", None)
             break
     for filename in filenames:
         if re.match(r"\d+_Dense/config.json", filename):
@@ -87,17 +89,21 @@ def get_dim_seq_size(model: ModelInfo) -> tuple[str | None, str | None, int, flo
         if not dim:
             dim = config.get("hidden_dim", config.get("hidden_size", config.get("d_model", None)))
         seq = config.get("n_positions", config.get("max_position_embeddings", config.get("n_ctx", config.get("seq_length", None))))
-
+    if "config_sentence_transformers.json" in filenames:
+        st_config_path = hf_hub_download(model.id, filename="config_sentence_transformers.json")
+        with open(st_config_path) as f:
+            st_config = json.load(f)
+        similarity_fn_name = st_config.get("similarity_fn_name", None)
     parameters, memory = get_model_parameters_memory(model)
-    return dim, seq, parameters, memory
+    return dim, seq, parameters, memory, similarity_fn_name
 
 
 def create_model_meta(model_info: ModelInfo) -> ModelMeta | None:
     readme_path = hf_hub_download(model_info.id, filename="README.md", etag_timeout=30)
     meta = metadata_load(readme_path)
-    dim, seq, parameters, memory = None, None, None, None
+    dim, seq, parameters, memory, similarity_fn_name = None, None, None, None, None
     try:
-        dim, seq, parameters, memory = get_dim_seq_size(model_info)
+        dim, seq, parameters, memory, similarity_fn_name = get_dim_seq_size(model_info)
     except Exception as e:
         logger.error(f"Error getting model parameters for {model_info.id}, {e}")
 
@@ -110,7 +116,12 @@ def create_model_meta(model_info: ModelInfo) -> ModelMeta | None:
     for i in range(len(languages)):
         if languages[i] is False:
             languages[i] = "no"
-
+    datasets = meta.get("datasets", None)
+    if datasets is not None:
+        datasets = {
+            d: []
+            for d in datasets
+        }
     model_meta = ModelMeta(
         name=model_info.id,
         revision=model_info.sha,
@@ -122,6 +133,11 @@ def create_model_meta(model_info: ModelInfo) -> ModelMeta | None:
         max_tokens=seq,
         n_parameters=parameters,
         languages=languages,
+        public_training_code=None,
+        public_training_data=None,
+        similarity_fn_name=similarity_fn_name,
+        use_instructions=None,
+        training_datasets=datasets,
     )
     return model_meta
 
@@ -139,14 +155,7 @@ def parse_readme(model_info: ModelInfo) -> dict[str, dict[str, Any]] | None:
         return
     model_index = meta["model-index"][0]
     model_name_from_readme = model_index.get("name", None)
-    orgs = ["Alibaba-NLP", "HIT-TMG", "McGill-NLP", "Snowflake", "facebook", "jinaai", "nomic-ai"]
-    is_org = any([model_id.startswith(org) for org in orgs])
-    # There a lot of reuploads with tunes, quantization, etc. We only want the original model
-    # to prevent this most of the time we can check if the model name from the readme is the same as the model id
-    # but some orgs have a different naming in their readme
-    if model_name_from_readme and not model_info.id.endswith(model_name_from_readme) and not is_org:
-        logger.warning(f"Model name mismatch: {model_info.id} vs {model_name_from_readme}")
-        return
+
     results = model_index.get("results", [])
     model_results = {}
     for result in results:
