@@ -630,6 +630,10 @@ revision_exceptions = [
 ]
 
 
+def is_sha1(value):
+    return len(value) == 40 and all(c in "0123456789abcdef" for c in value)
+
+
 @pytest.mark.parametrize("model_rev_pair", model_rev_pairs)
 def test_revision_is_specified_for_new_additions(model_rev_pair):
     """
@@ -641,11 +645,14 @@ def test_revision_is_specified_for_new_additions(model_rev_pair):
     meta_file = rev_folder / "model_meta.json"
     with meta_file.open("r") as f:
         meta = json.load(f)
-    assert meta["revision"].lower() not in [
+    rev = meta["revision"]
+    assert rev.lower() not in [
         "no_revision_available",
         "external",
     ]
-    assert len(meta["revision"]) == 40  # sha1 hash
+    assert (
+        is_sha1(rev) or len(rev) == 1  # e.g. "1", "2", "3" etc. used for API versions
+    )
 
 
 @pytest.mark.parametrize("model_rev_pair", model_rev_pairs)
