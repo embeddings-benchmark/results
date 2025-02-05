@@ -1,20 +1,25 @@
 {
-  "dataset_revision": "a0d554a64d88156834ff5ae9920b964011b16384",
-  "mteb_dataset_name": "STS12",
-  "mteb_version": "1.2.0",
-  "test": {
-    "cos_sim": {
-      "pearson": 0.8506920163624118,
-      "spearman": 0.772454988790552
-    },
-    "euclidean": {
-      "pearson": 0.8558740280635266,
-      "spearman": 0.7724652170306866
-    },
-    "evaluation_time": 5.7,
-    "manhattan": {
-      "pearson": 0.8577917470895854,
-      "spearman": 0.7754426264008778
+    "dataset_revision": "a0d554a64d88156834ff5ae9920b964011b16384",
+    "task_name": "STS12",
+    "evaluation_time": null,
+    "mteb_version": null,
+    "scores": {
+        "test": [
+            {
+                "hf_subset": "default",
+                "languages": [
+                    "eng-Latn"
+                ],
+                "cos_sim_pearson": 0.8506920163624118,
+                "cos_sim_spearman": 0.7724549887905519,
+                "euclidean_pearson": 0.8558740280635265,
+                "euclidean_spearman": 0.7724652170306867,
+                "manhattan_pearson": 0.8577917470895854,
+                "manhattan_spearman": 0.7754426264008778,
+                "cosine_pearson": 0.8506920163624118,
+                "cosine_spearman": 0.7724549887905519,
+                "main_score": 0.7724549887905519
+            }
+        ]
     }
-  }
 }
