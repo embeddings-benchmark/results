@@ -14,7 +14,7 @@ voyage_models = [
     "voyageai/voyage-3-m-exp",
     "voyageai/voyage-multilingual-2",
     "voyageai/voyage-2",
-    "voyage-large-2",
+    "voyageai/voyage-large-2",
     "voyageai/voyage-code-3",
     "voyageai/voyage-code-2",
     "voyageai/voyage-law-2",
