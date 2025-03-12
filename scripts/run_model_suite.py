@@ -44,4 +44,5 @@ for model_name in baseline_models:
             # output_folder= ..., # should point to the results repo to not rerun results
             overwrite_results=False,
             co2_tracker=model_name not in apis,  # only tracks co2 for non-api models
+            raise_on_error=False,
         )
