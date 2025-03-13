@@ -37,12 +37,15 @@ benchmarks = mteb.get_benchmarks()
 for model_name in baseline_models:
     for bench in benchmarks:
 
-        runner = mteb.MTEB(tasks=bench)
-        model = mteb.get_model(model_name)
-        runner.run(
-            model,
-            # output_folder= ..., # should point to the results repo to not rerun results
-            overwrite_results=False,
-            co2_tracker=model_name not in apis,  # only tracks co2 for non-api models
-            raise_on_error=False,
-        )
+        try:
+            runner = mteb.MTEB(tasks=bench)
+            model = mteb.get_model(model_name)
+            runner.run(
+                model,
+                # output_folder= ..., # should point to the results repo to not rerun results
+                overwrite_results=False,
+                co2_tracker=model_name not in apis,  # only tracks co2 for non-api models
+                raise_on_error=False,
+            )
+        except:
+            pass
