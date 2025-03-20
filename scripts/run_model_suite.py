@@ -27,10 +27,10 @@ apis = [] # would require some sort of CI setup (to having to share APIs keys)
 # a set of small and efficient models that we can reasonably maintain
 baseline_models = [
     "sentence-transformers/static-similarity-mrl-multilingual-v1",
-#    "intfloat/multilingual-e5-small",
-#    "intfloat/multilingual-e5-base",
-#    "intfloat/multilingual-e5-large",
-#    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "intfloat/multilingual-e5-small",
+    "intfloat/multilingual-e5-base",
+    "intfloat/multilingual-e5-large",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
 ] + apis
 
 benchmarks = mteb.get_benchmarks()
@@ -45,7 +45,7 @@ for bench in benchmarks:
                 model,
                 # output_folder= ..., # should point to the results repo to not rerun results
                 overwrite_results=False,
-                co2_tracker=model_name not in apis,  # only tracks co2 for non-api models
+                co2_tracker=False, # model_name not in apis,  # only tracks co2 for non-api models
                 raise_on_error=False,
             )
         except:
