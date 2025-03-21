@@ -50,3 +50,8 @@ for bench in benchmarks:
             )
         except:
             pass
+
+
+# ERRORS
+# ERROR:mteb.evaluation.MTEB:Error while evaluating PubChemSMILESPC: PubChemSMILESPC.load_data() got an unexpected keyword argument 'raise_on_error'
+# 
