@@ -27,20 +27,24 @@ apis = [] # would require some sort of CI setup (to having to share APIs keys)
 # a set of small and efficient models that we can reasonably maintain
 baseline_models = [
     "sentence-transformers/static-similarity-mrl-multilingual-v1",
-    "intfloat/multilingual-e5-small",
-    "intfloat/multilingual-e5-base",
-    "intfloat/multilingual-e5-large",
     "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "intfloat/multilingual-e5-small",
+    #"intfloat/multilingual-e5-base",
+    #"intfloat/multilingual-e5-large",
 ] + apis
 
 benchmarks = mteb.get_benchmarks()
 for bench in benchmarks:
-    print(bench.name)
-    for model_name in baseline_models:
+    print("Running", bench.name)
 
+    if bench.name == "CodeRAG":
+        continue
+
+
+    for model_name in baseline_models:
         try:
-            runner = mteb.MTEB(tasks=bench)
             model = mteb.get_model(model_name)
+            runner = mteb.MTEB(tasks=bench)
             runner.run(
                 model,
                 # output_folder= ..., # should point to the results repo to not rerun results
