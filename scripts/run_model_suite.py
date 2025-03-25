@@ -49,13 +49,8 @@ for bench in benchmarks:
                 model,
                 # output_folder= ..., # should point to the results repo to not rerun results
                 overwrite_results=False,
-                co2_tracker=False, # model_name not in apis,  # only tracks co2 for non-api models
+                co2_tracker=False,
                 raise_on_error=False,
             )
         except:
             pass
-
-
-# ERRORS
-# ERROR:mteb.evaluation.MTEB:Error while evaluating PubChemSMILESPC: PubChemSMILESPC.load_data() got an unexpected keyword argument 'raise_on_error'
-# 
