@@ -1,18 +1,11 @@
-<!-- If you are submitting a dataset or a model for the model registry, please use the corresponding checklists below. Otherwise, feel free to remove them. -->
+<!-- Description of the PR goes here -->
 
-<!-- add additional description, question etc. related to the new dataset -->
+### Checklist
 
+- [ ] My model has a model sheet, report or similar
+- [ ] My model has a reference implementation in [`mteb/models/`](https://github.com/embeddings-benchmark/mteb/tree/main/mteb/models) this can be as an API. Instruction on how to add a model can be found [here](https://github.com/embeddings-benchmark/mteb/blob/main/docs/reproducible_workflow.md) 
+  - [ ] No, but there is an existing PR ___
+- [ ] The results submitted is obtained using the reference implementation
+- [ ] My model is available, either as a publicly accessible API or publicly on e.g., Huggingface
+- [ ] I *solemnly swear* that for all results submitted I have not training on the dataset including the training set. If I have I have disclosed it clearly.
 
-## Checklist
-<!-- Please do not delete this -->
-
-- [ ] Run tests locally to make sure nothing is broken using `make test`. 
-- [ ] Run the results files checker `make pre-push`.
-
-### Adding a model checklist
-<!-- 
-When adding a model to the model registry
-see also https://github.com/embeddings-benchmark/mteb/blob/main/docs/reproducible_workflow.md
--->
-
-- [ ] I have added model implementation to `mteb/models/` [directory](https://github.com/embeddings-benchmark/mteb/tree/main/mteb/models). Instruction to add a model can be found [here](https://github.com/embeddings-benchmark/mteb/blob/main/docs/reproducible_workflow.md) in the following PR ____
