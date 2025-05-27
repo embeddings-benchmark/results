@@ -7,5 +7,5 @@
   - [ ] No, but there is an existing PR ___
 - [ ] The results submitted is obtained using the reference implementation
 - [ ] My model is available, either as a publicly accessible API or publicly on e.g., Huggingface
-- [ ] I *solemnly swear* that for all results submitted I have not training on the dataset including the training set. If I have I have disclosed it clearly.
+- [ ] I *solemnly swear* that for all results submitted I have not on the evaluation dataset including training splits. If I have I have disclosed it clearly.
 
