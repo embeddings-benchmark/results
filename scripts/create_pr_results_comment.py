@@ -54,7 +54,7 @@ def get_diff_from_main() -> list[str]:
         text=True,
     ).stdout.splitlines()
 
-    if current_rev == origin_rev:
+    if current_rev != origin_rev:
         raise ValueError(
             "Your main branch is not up-to-date, please run `git fetch origin main`"
         )
