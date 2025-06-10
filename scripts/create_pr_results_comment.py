@@ -4,6 +4,7 @@ Script to generate a Markdown comparison table for new model results in a pull r
 Usage:
     gh pr checkout {pr-number}
     scripts/create_pr_results_comment.py [--models MODEL1 MODEL2 ...]
+    python scripts/create_pr_results_comment.py [--models MODEL1 MODEL2 ...] [--output OUTPUT_FILE]
 
 Description:
     - Compares new model results (added in the current PR) against reference models.
@@ -17,6 +18,7 @@ Arguments:
 
 Example:
     scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
+    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
 """
 
 from __future__ import annotations
