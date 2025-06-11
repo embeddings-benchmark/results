@@ -52,7 +52,7 @@ jobs:
     - name: Generate model comparison
       if: steps.changed-files.outputs.has_changes == 'true'
       run: |
-        python scripts/create_pr_results_comment.py \
+        python scripts/pr_results_comment.py \
           ${{ steps.changed-files.outputs.files_list }} \
           --output model-comparison.md
 
