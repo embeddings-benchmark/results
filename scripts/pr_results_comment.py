@@ -106,7 +106,7 @@ def group_files_by_model(file_paths: list[str]) -> dict[str, list[str]]:
 def create_comparison_table(model: str, tasks: list[str]) -> pd.DataFrame:
     """Create comparison table for given models and tasks."""
     try:
-        print(f"Loading results for models: {models}")
+        print(f"Loading results for model: {model}")
         print(f"Tasks: {tasks}")
 
         try:
