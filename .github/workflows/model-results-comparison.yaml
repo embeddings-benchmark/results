@@ -1,0 +1,70 @@
+name: Model Results Comparison
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited]
+    paths:
+      - 'results/**/*.json'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  compare-results:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install mteb
+
+    - name: Get changed result files
+      id: changed-files
+      run: |
+        # Get list of changed JSON files in results directory
+        git fetch origin main
+        changed_files=$(git diff --name-only origin/main...HEAD | grep -E '^results/.*\.json$' | grep -v model_meta.json || true)
+
+        if [ -z "$changed_files" ]; then
+          echo "No result files changed"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changed files:"
+          echo "$changed_files"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+
+          # Convert to space-separated list for script
+          files_list=$(echo "$changed_files" | tr '\n' ' ')
+          echo "files_list=$files_list" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Generate model comparison
+      if: steps.changed-files.outputs.has_changes == 'true'
+      run: |
+        python scripts/create_pr_results_comment.py \
+          ${{ steps.changed-files.outputs.files_list }} \
+          --output model-comparison.md
+
+    - name: Post PR comment
+      if: steps.changed-files.outputs.has_changes == 'true'
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: gh pr comment ${{ github.event.number }} --body-file model-comparison.md --create-if-none --edit-last
+
+    - name: Upload comparison report
+      if: steps.changed-files.outputs.has_changes == 'true'
+      uses: actions/upload-artifact@v3
+      with:
+        name: model-comparison
+        path: model-comparison.md
