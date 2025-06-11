@@ -6,7 +6,7 @@ The script takes a list of result files and extracts:
 - Task name from the filename (without .json extension)
 
 Usage:
-    python scripts/create_pr_results_comment.py file1.json file2.json --output results.md
+    python scripts/pr_results_comment.py file1.json file2.json --output results.md
 
 Arguments:
     files: List of result files to process
