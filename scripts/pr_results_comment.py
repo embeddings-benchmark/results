@@ -113,7 +113,7 @@ def create_comparison_table(model: str, tasks: list[str]) -> pd.DataFrame:
             results = mteb.load_results(models=[model]+REFERENCE_MODELS, tasks=tasks, download_latest=False)
         except Exception as e:
             # if model in reference don't have results on task
-            results = mteb.load_results(models=[model]+REFERENCE_MODELS, tasks=tasks, download_latest=False)
+            results = mteb.load_results(models=[model], tasks=tasks, download_latest=False)
         results = results.join_revisions()
         df = results.to_dataframe()
 
