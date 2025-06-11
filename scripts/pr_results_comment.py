@@ -103,17 +103,17 @@ def group_files_by_model(file_paths: list[str]) -> dict[str, list[str]]:
     return dict(model_tasks)
 
 
-def create_comparison_table(models: str, tasks: list[str]) -> pd.DataFrame:
+def create_comparison_table(model: str, tasks: list[str]) -> pd.DataFrame:
     """Create comparison table for given models and tasks."""
     try:
         print(f"Loading results for models: {models}")
         print(f"Tasks: {tasks}")
 
         try:
-            results = mteb.load_results(models=[models]+REFERENCE_MODELS, tasks=tasks, download_latest=False)
+            results = mteb.load_results(models=[model]+REFERENCE_MODELS, tasks=tasks, download_latest=False)
         except Exception as e:
             # if model in reference don't have results on task
-            results = mteb.load_results(models=[models]+REFERENCE_MODELS, tasks=tasks, download_latest=False)
+            results = mteb.load_results(models=[model]+REFERENCE_MODELS, tasks=tasks, download_latest=False)
         results = results.join_revisions()
         df = results.to_dataframe()
 
@@ -206,7 +206,7 @@ def generate_markdown_content(model_tasks: dict[str, list[str]]) -> str:
 
         try:
             # Compare this model against reference models
-            df = create_comparison_table(model=model_name, tasks=model_tasks_list)
+            df = create_comparison_table(model_name, tasks=model_tasks_list)
             bold_df = highlight_max_bold(df)
             markdown_table = bold_df.to_markdown(index=False)
             markdown_parts.append(markdown_table)
