@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install mteb tabulate
+        pip install git+https://github.com/embeddings-benchmark/mteb.git tabulate
 
     - name: Get changed result files
       id: changed-files
