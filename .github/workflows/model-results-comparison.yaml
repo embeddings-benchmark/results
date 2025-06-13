@@ -31,6 +31,9 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Fetch origin main
+      run: git fetch origin main
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
