@@ -5,6 +5,17 @@ on:
     types: [opened, synchronize, edited]
     paths:
       - 'results/**/*.json'
+  workflow_dispatch:
+    inputs:
+      reference_models:
+        description: 'Space-separated list of reference models for comparison'
+        required: true
+        type: string
+        default: 'intfloat/multilingual-e5-large google/gemini-embedding-001'
+      pull_request_number:
+        description: 'The pull request number to comment on (required if triggered manually)'
+        required: false # Make it not strictly required if you want to run it without a PR context for other reasons
+        type: string
 
 permissions:
   contents: read
@@ -29,41 +40,31 @@ jobs:
       run: |
         pip install git+https://github.com/embeddings-benchmark/mteb.git tabulate
 
-    - name: Get changed result files
-      id: changed-files
+    - name: Generate model comparison
+      env:
+        REFERENCE_MODELS: ${{ github.event.inputs.reference_models || 'intfloat/multilingual-e5-large google/gemini-embedding-001' }}
       run: |
-        # Get list of changed JSON files in results directory
-        git fetch origin main
-        changed_files=$(git diff --name-only origin/main...HEAD | grep -E '^results/.*\.json$' | grep -v model_meta.json || true)
+        python scripts/create_pr_results_comment.py --reference-models "$REFERENCE_MODELS" --output model-comparison.md
 
-        if [ -z "$changed_files" ]; then
-          echo "No result files changed"
-          echo "has_changes=false" >> $GITHUB_OUTPUT
+    - name: Determine PR Number
+      id: pr_info
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "pr_number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+        elif [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.pull_request_number }}" ]; then
+          echo "pr_number=${{ github.event.inputs.pull_request_number }}" >> $GITHUB_OUTPUT
         else
-          echo "Changed files:"
-          echo "$changed_files"
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-
-          # Convert to space-separated list for script
-          files_list=$(echo "$changed_files" | tr '\n' ' ')
-          echo "files_list=$files_list" >> $GITHUB_OUTPUT
+          echo "pr_number=" >> $GITHUB_OUTPUT
         fi
 
-    - name: Generate model comparison
-      if: steps.changed-files.outputs.has_changes == 'true'
-      run: |
-        python scripts/pr_results_comment.py \
-          ${{ steps.changed-files.outputs.files_list }} \
-          --output model-comparison.md
-
     - name: Post PR comment
-      if: steps.changed-files.outputs.has_changes == 'true'
+      # This step will run if a PR number is available either from the PR event or workflow_dispatch input
+      if: steps.pr_info.outputs.pr_number != ''
       env:
         GITHUB_TOKEN: ${{ github.token }}
-      run: gh pr comment ${{ github.event.number }} --body-file model-comparison.md --create-if-none --edit-last
+      run: gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
 
     - name: Upload comparison report
-      if: steps.changed-files.outputs.has_changes == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: model-comparison
