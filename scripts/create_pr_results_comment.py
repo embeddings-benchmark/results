@@ -51,6 +51,13 @@ os.environ["MTEB_CACHE"] = str(repo_path.parent)
 
 
 def get_diff_from_main() -> list[str]:
+    subprocess.run(
+        ["git", "fetch", "origin", "main"],
+        cwd=repo_path,
+        check=True,
+        text=True,
+    )
+
     current_rev, origin_rev = subprocess.run(
         ["git", "rev-parse", "main", "origin/main"],
         cwd=repo_path,
