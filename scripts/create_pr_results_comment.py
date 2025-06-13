@@ -51,26 +51,6 @@ os.environ["MTEB_CACHE"] = str(repo_path.parent)
 
 
 def get_diff_from_main() -> list[str]:
-    subprocess.run(
-        ["git", "fetch", "origin", "main"],
-        cwd=repo_path,
-        check=True,
-        text=True,
-    )
-
-    current_rev, origin_rev = subprocess.run(
-        ["git", "rev-parse", "main", "origin/main"],
-        cwd=repo_path,
-        capture_output=True,
-        check=True,
-        text=True,
-    ).stdout.splitlines()
-
-    if current_rev != origin_rev:
-        raise ValueError(
-            f"Your main branch is not up-to-date ({current_rev} != {origin_rev}), please run `git fetch origin main`"
-        )
-
     differences = subprocess.run(
         ["git", "diff", "--name-only", "origin/main...HEAD"],
         cwd=repo_path,
