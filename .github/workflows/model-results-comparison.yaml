@@ -47,7 +47,7 @@ jobs:
       env:
         REFERENCE_MODELS: ${{ github.event.inputs.reference_models || 'intfloat/multilingual-e5-large google/gemini-embedding-001' }}
       run: |
-        python scripts/create_pr_results_comment.py --reference-models "$REFERENCE_MODELS" --output model-comparison.md
+        python scripts/create_pr_results_comment.py --reference-models $REFERENCE_MODELS --output model-comparison.md
 
     - name: Determine PR Number
       id: pr_info
