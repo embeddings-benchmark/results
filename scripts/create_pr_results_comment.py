@@ -16,7 +16,7 @@ Arguments:
     --output: Output markdown file path (default: model-comparison.md)
 
 Example:
-    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-modelm
+    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
 """
 
 from __future__ import annotations
