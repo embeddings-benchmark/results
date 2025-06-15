@@ -1,0 +1,74 @@
+name: Model Results Comparison
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited]
+    paths:
+      - 'results/**/*.json'
+  workflow_dispatch:
+    inputs:
+      reference_models:
+        description: 'Space-separated list of reference models for comparison'
+        required: true
+        type: string
+        default: 'intfloat/multilingual-e5-large google/gemini-embedding-001'
+      pull_request_number:
+        description: 'The pull request number to comment on (required if triggered manually)'
+        required: false # Make it not strictly required if you want to run it without a PR context for other reasons
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  compare-results:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Fetch origin main
+      run: git fetch origin main
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install git+https://github.com/embeddings-benchmark/mteb.git tabulate
+
+    - name: Generate model comparison
+      env:
+        REFERENCE_MODELS: ${{ github.event.inputs.reference_models || 'intfloat/multilingual-e5-large google/gemini-embedding-001' }}
+      run: |
+        python scripts/create_pr_results_comment.py --reference-models $REFERENCE_MODELS --output model-comparison.md
+
+    - name: Determine PR Number
+      id: pr_info
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          echo "pr_number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+        elif [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.pull_request_number }}" ]; then
+          echo "pr_number=${{ github.event.inputs.pull_request_number }}" >> $GITHUB_OUTPUT
+        else
+          echo "pr_number=" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Post PR comment
+      # This step will run if a PR number is available either from the PR event or workflow_dispatch input
+      if: steps.pr_info.outputs.pr_number != ''
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
+
+    - name: Upload comparison report
+      uses: actions/upload-artifact@v4
+      with:
+        name: model-comparison
+        path: model-comparison.md
