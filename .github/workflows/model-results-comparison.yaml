@@ -1,7 +1,7 @@
 name: Model Results Comparison
 
 on:
-  pull_request:
+  pull_request_target:  # Changed from pull_request
     types: [opened, synchronize, edited]
     paths:
       - 'results/**/*.json'
@@ -14,7 +14,7 @@ on:
         default: 'intfloat/multilingual-e5-large google/gemini-embedding-001'
       pull_request_number:
         description: 'The pull request number to comment on (required if triggered manually)'
-        required: false # Make it not strictly required if you want to run it without a PR context for other reasons
+        required: false
         type: string
 
 permissions:
@@ -29,6 +29,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
+        # IMPORTANT: For pull_request_target, check out the PR branch explicitly
+        ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
 
     - name: Fetch origin main
@@ -49,10 +51,16 @@ jobs:
       run: |
         python scripts/create_pr_results_comment.py --reference-models $REFERENCE_MODELS --output model-comparison.md
 
+    - name: Upload comparison report
+      uses: actions/upload-artifact@v4
+      with:
+        name: model-comparison
+        path: model-comparison.md
+
     - name: Determine PR Number
       id: pr_info
       run: |
-        if [ "${{ github.event_name }}" == "pull_request" ]; then
+        if [ "${{ github.event_name }}" == "pull_request_target" ]; then
           echo "pr_number=${{ github.event.number }}" >> $GITHUB_OUTPUT
         elif [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.pull_request_number }}" ]; then
           echo "pr_number=${{ github.event.inputs.pull_request_number }}" >> $GITHUB_OUTPUT
@@ -61,14 +69,7 @@ jobs:
         fi
 
     - name: Post PR comment
-      # This step will run if a PR number is available either from the PR event or workflow_dispatch input
       if: steps.pr_info.outputs.pr_number != ''
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
-
-    - name: Upload comparison report
-      uses: actions/upload-artifact@v4
-      with:
-        name: model-comparison
-        path: model-comparison.md
