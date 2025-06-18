@@ -1,7 +1,7 @@
 name: Model Results Comparison
 
 on:
-  pull_request_target:  # Changed from pull_request
+  pull_request_target:
     types: [opened, synchronize, edited]
     paths:
       - 'results/**/*.json'
