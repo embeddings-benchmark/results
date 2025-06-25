@@ -3,7 +3,7 @@ Script to generate a Markdown comparison table for new model results in a pull r
 
 Usage:
     gh pr checkout {pr-number}
-    python scripts/create_pr_results_comment.py [--models MODEL1 MODEL2 ...] [--output OUTPUT_FILE]
+    scripts/create_pr_results_comment.py [--models MODEL1 MODEL2 ...]
 
 Description:
     - Compares new model results (added in the current PR) against reference models.
@@ -16,7 +16,7 @@ Arguments:
     --output: Output markdown file path (default: model-comparison.md)
 
 Example:
-    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
+    scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
 """
 
 from __future__ import annotations
@@ -51,6 +51,19 @@ os.environ["MTEB_CACHE"] = str(repo_path.parent)
 
 
 def get_diff_from_main() -> list[str]:
+    current_rev, origin_rev = subprocess.run(
+        ["git", "rev-parse", "main", "origin/main"],
+        cwd=repo_path,
+        capture_output=True,
+        check=True,
+        text=True,
+    ).stdout.splitlines()
+
+    if current_rev != origin_rev:
+        raise ValueError(
+            f"Your main branch is not up-to-date ({current_rev} != {origin_rev}), please run `git fetch origin main`"
+        )
+
     differences = subprocess.run(
         ["git", "diff", "--name-only", "origin/main...HEAD"],
         cwd=repo_path,
