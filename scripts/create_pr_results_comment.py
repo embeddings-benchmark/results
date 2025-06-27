@@ -105,15 +105,18 @@ def create_comparison_table(
     )
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
-            df.loc[df[task_col_name] == task_name, max_col_name] = (
-                row["score"] / 100
-            )  # scores are in percentage
+            print(df.loc[df[task_col_name] == task_name, max_col_name])
+            print(row["score"], row["score"] / 100)
+            df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
 
     averages: dict[str, float | None] = {}
     for col in models + [max_col_name]:
-        numeric = pd.to_numeric(df[col], errors="coerce")
-        avg = numeric.mean()
-        averages[col] = avg if not pd.isna(avg) else None
+        if col in df.columns:
+            numeric = pd.to_numeric(df[col], errors="coerce")
+            avg = numeric.mean()
+            averages[col] = avg if not pd.isna(avg) else None
+        else:
+            averages[col] = None
 
     avg_row = pd.DataFrame(
         {
