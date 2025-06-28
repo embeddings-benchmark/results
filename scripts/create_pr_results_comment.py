@@ -100,17 +100,19 @@ def create_comparison_table(
     df[max_col_name] = None
     task_results = mteb.load_results(tasks=tasks, download_latest=False)
     task_results = task_results.join_revisions()
-    max_dataframe = (
-        task_results.to_dataframe(format="long").groupby(task_col_name).max()
-    )
+
+    task_results_df = task_results.to_dataframe(format="long")
+    # some scores are in percentage, convert them to decimal
+    task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
+    max_dataframe = task_results_df.groupby(task_col_name).max()
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
-            df.loc[df[task_col_name] == task_name, max_col_name] = (
-                row["score"] / 100
-            )  # scores are in percentage
+            df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
 
     averages: dict[str, float | None] = {}
     for col in models + [max_col_name]:
+        if col not in df.columns:
+            continue
         numeric = pd.to_numeric(df[col], errors="coerce")
         avg = numeric.mean()
         averages[col] = avg if not pd.isna(avg) else None
