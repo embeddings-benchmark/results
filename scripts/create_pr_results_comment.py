@@ -84,7 +84,10 @@ def extract_new_models_and_tasks(
 
 
 def create_comparison_table(
-    model: str, tasks: list[str], reference_models: list[str]
+    model: ModelName,
+    tasks: list[TaskName],
+    reference_models: list[ModelName],
+    models_in_pr: list[ModelName],
 ) -> pd.DataFrame:
     models = [model] + reference_models
     max_col_name = "Max result"
@@ -104,7 +107,8 @@ def create_comparison_table(
     task_results_df = task_results.to_dataframe(format="long")
     # some scores are in percentage, convert them to decimal
     task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
-    task_results_df = task_results_df[task_results_df["model_name"] != model]
+    # remove results of models in this pr from max score calculation
+    task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
     max_dataframe = task_results_df.groupby(task_col_name).max()
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
@@ -152,7 +156,7 @@ def highlight_max_bold(
 
 
 def generate_markdown_content(
-    model_tasks: dict[str, list[str]], reference_models: list[str]
+    model_tasks: dict[ModelName, list[TaskName]], reference_models: list[str]
 ) -> str:
     if not model_tasks:
         return "# Model Results Comparison\n\nNo new model results found in this PR."
@@ -172,7 +176,9 @@ def generate_markdown_content(
     for model_name, tasks in model_tasks.items():
         parts.append(f"## Results for `{model_name}`")
 
-        df = create_comparison_table(model_name, tasks, reference_models)
+        df = create_comparison_table(
+            model_name, tasks, reference_models, list(model_tasks.keys())
+        )
         bold_df = highlight_max_bold(df)
         parts.append(bold_df.to_markdown(index=False))
 
