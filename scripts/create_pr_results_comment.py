@@ -104,6 +104,7 @@ def create_comparison_table(
     task_results_df = task_results.to_dataframe(format="long")
     # some scores are in percentage, convert them to decimal
     task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
+    task_results_df = task_results_df[task_results_df["model_name"] != model]
     max_dataframe = task_results_df.groupby(task_col_name).max()
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
@@ -133,7 +134,7 @@ def highlight_max_bold(
     for col in result_df.columns:
         if col not in exclude_cols:
             result_df[col] = result_df[col].apply(
-                lambda x: f"{x:.2f}"
+                lambda x: f"{x:.4f}"
                 if isinstance(x, (int, float)) and pd.notna(x)
                 else x
             )
