@@ -23,16 +23,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import subprocess
-import logging
 from collections import defaultdict
 from pathlib import Path
 
 import mteb
 import pandas as pd
+from mteb.abstasks.AbsTask import AbsTask
 
-TaskName, ModelName = str, str
+ModelName = str
 
 # Default reference models to compare against
 REFERENCE_MODELS: list[str] = [
@@ -63,14 +64,14 @@ def get_diff_from_main() -> list[str]:
 
 def extract_new_models_and_tasks(
     differences: list[str],
-) -> dict[ModelName, list[TaskName]]:
+) -> dict[ModelName, list[AbsTask]]:
     diffs = [repo_path / diff for diff in differences]
     result_diffs = filter(
         lambda p: p.exists() and p.suffix == ".json" and p.name != "model_meta.json",
         diffs,
     )
 
-    models = defaultdict(list)
+    models_tasks = defaultdict(list)
     for diff in result_diffs:
         model_meta = diff.parent / "model_meta.json"
         task_name = diff.stem
@@ -78,13 +79,27 @@ def extract_new_models_and_tasks(
         with model_meta.open("r") as f:
             model_name = json.load(f)["name"]
 
-        models[model_name].append(task_name)
+        with diff.open("r") as f:
+            task_result = json.load(f)
 
-    return models
+        splits = set()
+        subsets = set()
+        for split_name, split_results in task_result.get("scores", {}).items():
+            splits.add(split_name)
+            for subset_result in split_results:
+                subsets.add(subset_result["hf_subset"])
+
+        task = mteb.get_task(task_name, eval_splits=list(splits), hf_subsets=list(subsets))
+        models_tasks[model_name].append(task)
+
+    return models_tasks
 
 
 def create_comparison_table(
-    model: str, tasks: list[str], reference_models: list[str]
+    model: ModelName,
+    tasks: list[AbsTask],
+    reference_models: list[ModelName],
+    models_in_pr: list[ModelName],
 ) -> pd.DataFrame:
     models = [model] + reference_models
     max_col_name = "Max result"
@@ -104,6 +119,8 @@ def create_comparison_table(
     task_results_df = task_results.to_dataframe(format="long")
     # some scores are in percentage, convert them to decimal
     task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
+    # remove results of models in this pr from max score calculation
+    task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
     max_dataframe = task_results_df.groupby(task_col_name).max()
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
@@ -133,7 +150,7 @@ def highlight_max_bold(
     for col in result_df.columns:
         if col not in exclude_cols:
             result_df[col] = result_df[col].apply(
-                lambda x: f"{x:.2f}"
+                lambda x: f"{x:.4f}"
                 if isinstance(x, (int, float)) and pd.notna(x)
                 else x
             )
@@ -151,12 +168,14 @@ def highlight_max_bold(
 
 
 def generate_markdown_content(
-    model_tasks: dict[str, list[str]], reference_models: list[str]
+    model_tasks: dict[ModelName, list[AbsTask]], reference_models: list[str]
 ) -> str:
     if not model_tasks:
         return "# Model Results Comparison\n\nNo new model results found in this PR."
 
-    all_tasks = sorted({t for tasks in model_tasks.values() for t in tasks})
+    all_tasks = sorted(
+        {t.metadata.name for tasks in model_tasks.values() for t in tasks}
+    )
     new_models = list(model_tasks.keys())
 
     parts: list[str] = [
@@ -171,7 +190,9 @@ def generate_markdown_content(
     for model_name, tasks in model_tasks.items():
         parts.append(f"## Results for `{model_name}`")
 
-        df = create_comparison_table(model_name, tasks, reference_models)
+        df = create_comparison_table(
+            model_name, tasks, reference_models, list(model_tasks.keys())
+        )
         bold_df = highlight_max_bold(df)
         parts.append(bold_df.to_markdown(index=False))
 
