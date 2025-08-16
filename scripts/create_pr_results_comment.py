@@ -23,16 +23,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import os
 import subprocess
-import logging
 from collections import defaultdict
 from pathlib import Path
 
 import mteb
 import pandas as pd
+from mteb.abstasks.AbsTask import AbsTask
 
-TaskName, ModelName = str, str
+ModelName = str
 
 # Default reference models to compare against
 REFERENCE_MODELS: list[str] = [
@@ -63,14 +64,14 @@ def get_diff_from_main() -> list[str]:
 
 def extract_new_models_and_tasks(
     differences: list[str],
-) -> dict[ModelName, list[TaskName]]:
+) -> dict[ModelName, list[AbsTask]]:
     diffs = [repo_path / diff for diff in differences]
     result_diffs = filter(
         lambda p: p.exists() and p.suffix == ".json" and p.name != "model_meta.json",
         diffs,
     )
 
-    models = defaultdict(list)
+    models_tasks = defaultdict(list)
     for diff in result_diffs:
         model_meta = diff.parent / "model_meta.json"
         task_name = diff.stem
@@ -78,14 +79,25 @@ def extract_new_models_and_tasks(
         with model_meta.open("r") as f:
             model_name = json.load(f)["name"]
 
-        models[model_name].append(task_name)
+        with diff.open("r") as f:
+            task_result = json.load(f)
 
-    return models
+        splits = set()
+        subsets = set()
+        for split_name, split_results in task_result.get("scores", {}).items():
+            splits.add(split_name)
+            for subset_result in split_results:
+                subsets.add(subset_result["hf_subset"])
+
+        task = mteb.get_task(task_name, eval_splits=list(splits), hf_subsets=list(subsets))
+        models_tasks[model_name].append(task)
+
+    return models_tasks
 
 
 def create_comparison_table(
     model: ModelName,
-    tasks: list[TaskName],
+    tasks: list[AbsTask],
     reference_models: list[ModelName],
     models_in_pr: list[ModelName],
 ) -> pd.DataFrame:
@@ -156,12 +168,14 @@ def highlight_max_bold(
 
 
 def generate_markdown_content(
-    model_tasks: dict[ModelName, list[TaskName]], reference_models: list[str]
+    model_tasks: dict[ModelName, list[AbsTask]], reference_models: list[str]
 ) -> str:
     if not model_tasks:
         return "# Model Results Comparison\n\nNo new model results found in this PR."
 
-    all_tasks = sorted({t for tasks in model_tasks.values() for t in tasks})
+    all_tasks = sorted(
+        {t.metadata.name for tasks in model_tasks.values() for t in tasks}
+    )
     new_models = list(model_tasks.keys())
 
     parts: list[str] = [
