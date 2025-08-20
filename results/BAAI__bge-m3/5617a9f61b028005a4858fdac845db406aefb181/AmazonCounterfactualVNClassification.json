@@ -1,41 +1,95 @@
 {
-    "dataset_revision": "b48bc27d383cfca5b6a47135a52390fa5f66b253",
-    "mteb_dataset_name": "AmazonCounterfactualVNClassification",
-    "mteb_version": null,
-    "task_name": "AmazonCounterfactualVNClassification",
-    "scores": {
-        "test": [
-            {
-                "accuracy": 0.6939914163090128,
-                "accuracy_stderr": 0.041480192674943316,
-                "ap": 0.29852090888328175,
-                "ap_stderr": 0.03375436478536209,
-                "evaluation_time": 7.25,
-                "f1": 0.6240817243112581,
-                "f1_stderr": 0.03661257142493928,
-                "main_score": 0.6939914163090128,
-                "hf_subset": "default",
-                "languages": [
-                    "vie-Latn"
-                ]
-            }
+  "dataset_revision": "b48bc27d383cfca5b6a47135a52390fa5f66b253",
+  "task_name": "AmazonCounterfactualVNClassification",
+  "mteb_version": "1.38.41",
+  "scores": {
+    "test": [
+      {
+        "accuracy": 0.587768,
+        "f1": 0.53698,
+        "f1_weighted": 0.632811,
+        "ap": 0.243489,
+        "ap_weighted": 0.243489,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.542918,
+            "f1": 0.517479,
+            "f1_weighted": 0.587854,
+            "ap": 0.254562,
+            "ap_weighted": 0.254562
+          },
+          {
+            "accuracy": 0.678112,
+            "f1": 0.620175,
+            "f1_weighted": 0.714402,
+            "ap": 0.304012,
+            "ap_weighted": 0.304012
+          },
+          {
+            "accuracy": 0.624464,
+            "f1": 0.564432,
+            "f1_weighted": 0.667145,
+            "ap": 0.252683,
+            "ap_weighted": 0.252683
+          },
+          {
+            "accuracy": 0.504292,
+            "f1": 0.474475,
+            "f1_weighted": 0.553987,
+            "ap": 0.216851,
+            "ap_weighted": 0.216851
+          },
+          {
+            "accuracy": 0.594421,
+            "f1": 0.532999,
+            "f1_weighted": 0.640577,
+            "ap": 0.228344,
+            "ap_weighted": 0.228344
+          },
+          {
+            "accuracy": 0.564378,
+            "f1": 0.513272,
+            "f1_weighted": 0.613453,
+            "ap": 0.222641,
+            "ap_weighted": 0.222641
+          },
+          {
+            "accuracy": 0.658798,
+            "f1": 0.596585,
+            "f1_weighted": 0.697214,
+            "ap": 0.277758,
+            "ap_weighted": 0.277758
+          },
+          {
+            "accuracy": 0.566524,
+            "f1": 0.524855,
+            "f1_weighted": 0.614232,
+            "ap": 0.239367,
+            "ap_weighted": 0.239367
+          },
+          {
+            "accuracy": 0.564378,
+            "f1": 0.521834,
+            "f1_weighted": 0.612431,
+            "ap": 0.23623,
+            "ap_weighted": 0.23623
+          },
+          {
+            "accuracy": 0.579399,
+            "f1": 0.503695,
+            "f1_weighted": 0.626818,
+            "ap": 0.202437,
+            "ap_weighted": 0.202437
+          }
         ],
-        "validation": [
-            {
-                "accuracy": 0.6885714285714285,
-                "accuracy_stderr": 0.04234091425058247,
-                "ap": 0.24364868202013562,
-                "ap_stderr": 0.027512975962739647,
-                "evaluation_time": 6.31,
-                "f1": 0.5949913347379348,
-                "f1_stderr": 0.034596769313913596,
-                "main_score": 0.6885714285714285,
-                "hf_subset": "default",
-                "languages": [
-                    "vie-Latn"
-                ]
-            }
+        "main_score": 0.587768,
+        "hf_subset": "default",
+        "languages": [
+          "vie-Latn"
         ]
-    },
-    "evaluation_time": null
+      }
+    ]
+  },
+  "evaluation_time": 1.7666997909545898,
+  "kg_co2_emissions": null
 }

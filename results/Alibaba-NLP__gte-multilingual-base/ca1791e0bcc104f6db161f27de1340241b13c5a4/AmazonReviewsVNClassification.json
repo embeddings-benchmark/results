@@ -1,37 +1,73 @@
 {
-    "dataset_revision": "27da94deb6d4f44af789a3d70750fa506b79f189",
-    "mteb_dataset_name": "AmazonReviewsVNClassification",
-    "mteb_version": null,
-    "task_name": "AmazonReviewsVNClassification",
-    "scores": {
-        "test": [
-            {
-                "accuracy": 0.42359813084112147,
-                "accuracy_stderr": 0.01394499710871082,
-                "evaluation_time": 7.93,
-                "f1": 0.4109752229646775,
-                "f1_stderr": 0.01314343254166445,
-                "main_score": 0.42359813084112147,
-                "hf_subset": "default",
-                "languages": [
-                    "vie-Latn"
-                ]
-            }
+  "dataset_revision": "27da94deb6d4f44af789a3d70750fa506b79f189",
+  "task_name": "AmazonReviewsVNClassification",
+  "mteb_version": "1.38.42",
+  "scores": {
+    "test": [
+      {
+        "accuracy": 0.423598,
+        "f1": 0.410975,
+        "f1_weighted": 0.416225,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.424357,
+            "f1": 0.415564,
+            "f1_weighted": 0.421182
+          },
+          {
+            "accuracy": 0.438084,
+            "f1": 0.425909,
+            "f1_weighted": 0.431803
+          },
+          {
+            "accuracy": 0.418808,
+            "f1": 0.406363,
+            "f1_weighted": 0.411662
+          },
+          {
+            "accuracy": 0.41618,
+            "f1": 0.409936,
+            "f1_weighted": 0.414548
+          },
+          {
+            "accuracy": 0.450935,
+            "f1": 0.421011,
+            "f1_weighted": 0.427817
+          },
+          {
+            "accuracy": 0.415304,
+            "f1": 0.398633,
+            "f1_weighted": 0.403938
+          },
+          {
+            "accuracy": 0.396904,
+            "f1": 0.39291,
+            "f1_weighted": 0.39568
+          },
+          {
+            "accuracy": 0.429322,
+            "f1": 0.426931,
+            "f1_weighted": 0.430514
+          },
+          {
+            "accuracy": 0.429907,
+            "f1": 0.423312,
+            "f1_weighted": 0.428383
+          },
+          {
+            "accuracy": 0.41618,
+            "f1": 0.389183,
+            "f1_weighted": 0.396723
+          }
         ],
-        "validation": [
-            {
-                "accuracy": 0.42286056253740273,
-                "accuracy_stderr": 0.01704452270354629,
-                "evaluation_time": 8.42,
-                "f1": 0.41088826365058234,
-                "f1_stderr": 0.01393654891090818,
-                "main_score": 0.42286056253740273,
-                "hf_subset": "default",
-                "languages": [
-                    "vie-Latn"
-                ]
-            }
+        "main_score": 0.423598,
+        "hf_subset": "default",
+        "languages": [
+          "vie-Latn"
         ]
-    },
-    "evaluation_time": null
+      }
+    ]
+  },
+  "evaluation_time": 7.571862697601318,
+  "kg_co2_emissions": null
 }

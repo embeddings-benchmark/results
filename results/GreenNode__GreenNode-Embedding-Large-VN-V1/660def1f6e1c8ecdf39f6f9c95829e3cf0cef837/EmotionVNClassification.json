@@ -1,37 +1,137 @@
 {
-    "dataset_revision": "797a93c0dd755ebf5818fbf54d0e0a024df9216d",
-    "mteb_dataset_name": "EmotionVNClassification",
-    "mteb_version": null,
-    "task_name": "EmotionVNClassification",
-    "scores": {
-        "test": [
-            {
-                "accuracy": 0.4771317829457364,
-                "accuracy_stderr": 0.031841975811691285,
-                "evaluation_time": 6.42,
-                "f1": 0.40308561426338885,
-                "f1_stderr": 0.023173967391261267,
-                "main_score": 0.4771317829457364,
-                "hf_subset": "default",
-                "languages": [
-                    "vie-Latn"
-                ]
-            }
+  "dataset_revision": "797a93c0dd755ebf5818fbf54d0e0a024df9216d",
+  "task_name": "EmotionVNClassification",
+  "mteb_version": "1.38.41",
+  "scores": {
+    "validation": [
+      {
+        "accuracy": 0.430469,
+        "f1": 0.366656,
+        "f1_weighted": 0.449757,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.476562,
+            "f1": 0.390978,
+            "f1_weighted": 0.494404
+          },
+          {
+            "accuracy": 0.427344,
+            "f1": 0.34304,
+            "f1_weighted": 0.44688
+          },
+          {
+            "accuracy": 0.464062,
+            "f1": 0.371415,
+            "f1_weighted": 0.484289
+          },
+          {
+            "accuracy": 0.425,
+            "f1": 0.365742,
+            "f1_weighted": 0.445435
+          },
+          {
+            "accuracy": 0.451562,
+            "f1": 0.391362,
+            "f1_weighted": 0.471772
+          },
+          {
+            "accuracy": 0.361719,
+            "f1": 0.352209,
+            "f1_weighted": 0.374278
+          },
+          {
+            "accuracy": 0.489844,
+            "f1": 0.377098,
+            "f1_weighted": 0.493021
+          },
+          {
+            "accuracy": 0.364063,
+            "f1": 0.338337,
+            "f1_weighted": 0.391706
+          },
+          {
+            "accuracy": 0.43125,
+            "f1": 0.381929,
+            "f1_weighted": 0.461002
+          },
+          {
+            "accuracy": 0.413281,
+            "f1": 0.354448,
+            "f1_weighted": 0.434784
+          }
         ],
-        "validation": [
-            {
-                "accuracy": 0.475703125,
-                "accuracy_stderr": 0.035288726095640315,
-                "evaluation_time": 6.61,
-                "f1": 0.41558416787583435,
-                "f1_stderr": 0.03128186532310289,
-                "main_score": 0.475703125,
-                "hf_subset": "default",
-                "languages": [
-                    "vie-Latn"
-                ]
-            }
+        "main_score": 0.430469,
+        "hf_subset": "default",
+        "languages": [
+          "vie-Latn"
         ]
-    },
-    "evaluation_time": null
+      }
+    ],
+    "test": [
+      {
+        "accuracy": 0.442016,
+        "f1": 0.363619,
+        "f1_weighted": 0.460835,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.489147,
+            "f1": 0.38406,
+            "f1_weighted": 0.506956
+          },
+          {
+            "accuracy": 0.431783,
+            "f1": 0.33922,
+            "f1_weighted": 0.446264
+          },
+          {
+            "accuracy": 0.49845,
+            "f1": 0.387319,
+            "f1_weighted": 0.511649
+          },
+          {
+            "accuracy": 0.424031,
+            "f1": 0.34706,
+            "f1_weighted": 0.446814
+          },
+          {
+            "accuracy": 0.455814,
+            "f1": 0.384787,
+            "f1_weighted": 0.478165
+          },
+          {
+            "accuracy": 0.362791,
+            "f1": 0.343511,
+            "f1_weighted": 0.37576
+          },
+          {
+            "accuracy": 0.504651,
+            "f1": 0.387497,
+            "f1_weighted": 0.505584
+          },
+          {
+            "accuracy": 0.393023,
+            "f1": 0.352883,
+            "f1_weighted": 0.426538
+          },
+          {
+            "accuracy": 0.435659,
+            "f1": 0.359742,
+            "f1_weighted": 0.460161
+          },
+          {
+            "accuracy": 0.424806,
+            "f1": 0.350117,
+            "f1_weighted": 0.450458
+          }
+        ],
+        "main_score": 0.442016,
+        "hf_subset": "default",
+        "languages": [
+          "vie-Latn"
+        ]
+      }
+    ]
+  },
+  "evaluation_time": 16.92598271369934,
+  "kg_co2_emissions": null
 }

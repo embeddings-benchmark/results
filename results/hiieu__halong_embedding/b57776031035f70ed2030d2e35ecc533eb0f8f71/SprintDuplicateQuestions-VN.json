@@ -1,93 +1,107 @@
 {
-  "dataset_revision": null,
-  "mteb_dataset_name": "SprintDuplicateQuestions-VN",
-  "mteb_version": "1.7.52",
-  "test": {
-    "cos_sim": {
-      "accuracy": 0.9978391850640813,
-      "accuracy_threshold": 0.701164960861206,
-      "ap": 0.9522973446056062,
-      "f1": 0.8908045977011494,
-      "f1_threshold": 0.6895322799682617,
-      "precision": 0.9064327485380117,
-      "recall": 0.8757062146892656
-    },
-    "dot": {
-      "accuracy": 0.9978391850640813,
-      "accuracy_threshold": 0.7011648416519165,
-      "ap": 0.9522973446056062,
-      "f1": 0.8908045977011494,
-      "f1_threshold": 0.6895322799682617,
-      "precision": 0.9064327485380117,
-      "recall": 0.8757062146892656
-    },
-    "euclidean": {
-      "accuracy": 0.9978391850640813,
-      "accuracy_threshold": 0.7730908393859863,
-      "ap": 0.952297344605606,
-      "f1": 0.8908045977011494,
-      "f1_threshold": 0.7879946231842041,
-      "precision": 0.9064327485380117,
-      "recall": 0.8757062146892656
-    },
-    "evaluation_time": 4.56,
-    "manhattan": {
-      "accuracy": 0.9978163192975636,
-      "accuracy_threshold": 17.176424026489258,
-      "ap": 0.9504187610412475,
-      "f1": 0.8904188181296614,
-      "f1_threshold": 17.316734313964844,
-      "precision": 0.9044289044289044,
-      "recall": 0.8768361581920904
-    },
-    "max": {
-      "accuracy": 0.9978391850640813,
-      "ap": 0.9522973446056062,
-      "f1": 0.8908045977011494
-    }
+  "dataset_revision": "2552beae0e4fe7fe05d088814f78a4c309ad2219",
+  "task_name": "SprintDuplicateQuestions-VN",
+  "mteb_version": "1.38.41",
+  "scores": {
+    "validation": [
+      {
+        "similarity_accuracy": 0.997928,
+        "similarity_accuracy_threshold": 0.683145,
+        "similarity_f1": 0.893407,
+        "similarity_f1_threshold": 0.648455,
+        "similarity_precision": 0.876078,
+        "similarity_recall": 0.911435,
+        "similarity_ap": 0.963133,
+        "cosine_accuracy": 0.997928,
+        "cosine_accuracy_threshold": 0.683145,
+        "cosine_f1": 0.893407,
+        "cosine_f1_threshold": 0.648455,
+        "cosine_precision": 0.876078,
+        "cosine_recall": 0.911435,
+        "cosine_ap": 0.963133,
+        "manhattan_accuracy": 0.997838,
+        "manhattan_accuracy_threshold": 17.433537,
+        "manhattan_f1": 0.892497,
+        "manhattan_f1_threshold": 18.13722,
+        "manhattan_precision": 0.891499,
+        "manhattan_recall": 0.893498,
+        "manhattan_ap": 0.961974,
+        "euclidean_accuracy": 0.997928,
+        "euclidean_accuracy_threshold": 0.796059,
+        "euclidean_f1": 0.893407,
+        "euclidean_f1_threshold": 0.838505,
+        "euclidean_precision": 0.876078,
+        "euclidean_recall": 0.911435,
+        "euclidean_ap": 0.963133,
+        "dot_accuracy": 0.997928,
+        "dot_accuracy_threshold": 0.683145,
+        "dot_f1": 0.893407,
+        "dot_f1_threshold": 0.648455,
+        "dot_precision": 0.876078,
+        "dot_recall": 0.911435,
+        "dot_ap": 0.963133,
+        "max_accuracy": 0.997928,
+        "max_f1": 0.893407,
+        "max_precision": 0.891499,
+        "max_recall": 0.911435,
+        "max_ap": 0.963133,
+        "main_score": 0.963133,
+        "hf_subset": "default",
+        "languages": [
+          "vie-Latn"
+        ]
+      }
+    ],
+    "test": [
+      {
+        "similarity_accuracy": 0.997839,
+        "similarity_accuracy_threshold": 0.701165,
+        "similarity_f1": 0.890805,
+        "similarity_f1_threshold": 0.689532,
+        "similarity_precision": 0.906433,
+        "similarity_recall": 0.875706,
+        "similarity_ap": 0.952297,
+        "cosine_accuracy": 0.997839,
+        "cosine_accuracy_threshold": 0.701165,
+        "cosine_f1": 0.890805,
+        "cosine_f1_threshold": 0.689532,
+        "cosine_precision": 0.906433,
+        "cosine_recall": 0.875706,
+        "cosine_ap": 0.952297,
+        "manhattan_accuracy": 0.997816,
+        "manhattan_accuracy_threshold": 17.176418,
+        "manhattan_f1": 0.890419,
+        "manhattan_f1_threshold": 17.316734,
+        "manhattan_precision": 0.904429,
+        "manhattan_recall": 0.876836,
+        "manhattan_ap": 0.950419,
+        "euclidean_accuracy": 0.997839,
+        "euclidean_accuracy_threshold": 0.773091,
+        "euclidean_f1": 0.890805,
+        "euclidean_f1_threshold": 0.787994,
+        "euclidean_precision": 0.906433,
+        "euclidean_recall": 0.875706,
+        "euclidean_ap": 0.952297,
+        "dot_accuracy": 0.997839,
+        "dot_accuracy_threshold": 0.701165,
+        "dot_f1": 0.890805,
+        "dot_f1_threshold": 0.689532,
+        "dot_precision": 0.906433,
+        "dot_recall": 0.875706,
+        "dot_ap": 0.952297,
+        "max_accuracy": 0.997839,
+        "max_f1": 0.890805,
+        "max_precision": 0.906433,
+        "max_recall": 0.876836,
+        "max_ap": 0.952297,
+        "main_score": 0.952297,
+        "hf_subset": "default",
+        "languages": [
+          "vie-Latn"
+        ]
+      }
+    ]
   },
-  "validation": {
-    "cos_sim": {
-      "accuracy": 0.9979279745951668,
-      "accuracy_threshold": 0.6831448078155518,
-      "ap": 0.9631327083596963,
-      "f1": 0.8934065934065935,
-      "f1_threshold": 0.6484550833702087,
-      "precision": 0.8760775862068966,
-      "recall": 0.9114349775784754
-    },
-    "dot": {
-      "accuracy": 0.9979279745951668,
-      "accuracy_threshold": 0.6831449270248413,
-      "ap": 0.9631327083596963,
-      "f1": 0.8934065934065935,
-      "f1_threshold": 0.6484550833702087,
-      "precision": 0.8760775862068966,
-      "recall": 0.9114349775784754
-    },
-    "euclidean": {
-      "accuracy": 0.9979279745951668,
-      "accuracy_threshold": 0.796059250831604,
-      "ap": 0.9631327083596966,
-      "f1": 0.8934065934065935,
-      "f1_threshold": 0.8385045528411865,
-      "precision": 0.8760775862068966,
-      "recall": 0.9114349775784754
-    },
-    "evaluation_time": 6.8,
-    "manhattan": {
-      "accuracy": 0.9978378865340871,
-      "accuracy_threshold": 17.433528900146484,
-      "ap": 0.961973500588178,
-      "f1": 0.8924972004479282,
-      "f1_threshold": 18.13722038269043,
-      "precision": 0.8914988814317674,
-      "recall": 0.8934977578475336
-    },
-    "max": {
-      "accuracy": 0.9979279745951668,
-      "ap": 0.9631327083596966,
-      "f1": 0.8934065934065935
-    }
-  }
+  "evaluation_time": 26.030659914016724,
+  "kg_co2_emissions": null
 }
