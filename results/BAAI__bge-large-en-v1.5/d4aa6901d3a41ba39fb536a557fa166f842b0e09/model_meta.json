@@ -1,1 +1,52 @@
-{"name": "BAAI/bge-large-en-v1.5", "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09", "release_date": "2023-09-12", "languages": ["eng_Latn"], "n_parameters": 335000000, "memory_usage_mb": 1242.0, "max_tokens": 512.0, "embed_dim": 1024, "license": "mit", "open_weights": true, "public_training_code": null, "public_training_data": "https://data.baai.ac.cn/details/BAAI-MTP", "framework": ["Sentence Transformers", "PyTorch"], "reference": "https://huggingface.co/BAAI/bge-large-en-v1.5", "similarity_fn_name": "cosine", "use_instructions": true, "training_datasets": {"NQ": ["test"], "NQ-NL": ["test"], "NQHardNegatives": ["test"], "AmazonReviewsClassification": ["validation", "test"], "MLQARetrieval": ["validation", "test"]}, "adapted_from": null, "superseded_by": null, "modalities": ["text"], "loader": "sentence_transformers_loader"}
+{
+    "name": "BAAI/bge-large-en-v1.5",
+    "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+    "release_date": "2023-09-12",
+    "languages": [
+        "eng-Latn"
+    ],
+    "loader": "functools.partial(<function sentence_transformers_loader at 0x0000015A64915BC0>, model_name='BAAI/bge-large-en-v1.5', revision='d4aa6901d3a41ba39fb536a557fa166f842b0e09', model_prompts={'query': 'Represent this sentence for searching relevant passages: '})",
+    "n_parameters": 335000000,
+    "memory_usage_mb": 1242.0,
+    "max_tokens": 512.0,
+    "embed_dim": 1024,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://data.baai.ac.cn/details/BAAI-MTP",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch"
+    ],
+    "reference": "https://huggingface.co/BAAI/bge-large-en-v1.5",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": {
+        "NQ": [
+            "test"
+        ],
+        "NQ-NL": [
+            "test"
+        ],
+        "NQHardNegatives": [
+            "test"
+        ],
+        "AmazonReviewsClassification": [
+            "validation",
+            "test"
+        ],
+        "MLQARetrieval": [
+            "validation",
+            "test"
+        ],
+        "DuRetrieval": [
+            "train"
+        ]
+    },
+    "adapted_from": null,
+    "superseded_by": null,
+    "is_cross_encoder": null,
+    "modalities": [
+        "text"
+    ]
+}
