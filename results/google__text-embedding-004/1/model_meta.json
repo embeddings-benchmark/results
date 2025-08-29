@@ -1,1 +1,43 @@
-{"name": "google/text-embedding-004", "revision": "1", "release_date": "2024-05-14", "languages": ["eng-Latn"], "n_parameters": null, "max_tokens": 2048.0, "embed_dim": 768, "license": null, "open_weights": false, "public_training_code": null, "framework": ["API"], "reference": null, "similarity_fn_name": "cosine", "use_instructions": true, "training_datasets": null, "adapted_from": null, "superseded_by": null, "loader": "GoogleTextEmbeddingModel"}
+{
+    "name": "google/text-embedding-004",
+    "revision": "1",
+    "release_date": "2024-05-14",
+    "languages": [
+        "eng-Latn"
+    ],
+    "loader": "functools.partial(<class 'mteb.models.google_models.GoogleTextEmbeddingModel'>, model_name='text-embedding-004', model_prompts={'Classification': 'CLASSIFICATION', 'MultilabelClassification': 'CLASSIFICATION', 'Clustering': 'CLUSTERING', 'STS': 'SEMANTIC_SIMILARITY', 'query': 'RETRIEVAL_QUERY', 'document': 'RETRIEVAL_DOCUMENT'})",
+    "n_parameters": null,
+    "memory_usage_mb": null,
+    "max_tokens": 2048.0,
+    "embed_dim": 768,
+    "license": null,
+    "open_weights": false,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "API"
+    ],
+    "reference": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": {
+        "NQHardNegatives": [
+            "train"
+        ],
+        "FEVERHardNegatives": [
+            "train"
+        ],
+        "HotpotQAHardNegatives": [
+            "train"
+        ],
+        "MIRACLRetrievalHardNegatives": [
+            "train"
+        ]
+    },
+    "adapted_from": null,
+    "superseded_by": null,
+    "is_cross_encoder": null,
+    "modalities": [
+        "text"
+    ]
+}
