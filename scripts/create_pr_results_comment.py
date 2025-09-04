@@ -89,7 +89,9 @@ def extract_new_models_and_tasks(
             for subset_result in split_results:
                 subsets.add(subset_result["hf_subset"])
 
-        task = mteb.get_task(task_name, eval_splits=list(splits), hf_subsets=list(subsets))
+        task = mteb.get_task(
+            task_name, eval_splits=list(splits), hf_subsets=list(subsets)
+        )
         models_tasks[model_name].append(task)
 
     return models_tasks
@@ -100,7 +102,7 @@ def create_comparison_table(
     tasks: list[AbsTask],
     reference_models: list[ModelName],
     models_in_pr: list[ModelName],
-) -> pd.DataFrame:
+) -> tuple[pd.DataFrame, list[str]]:
     models = [model] + reference_models
     max_col_name = "Max result"
     task_col_name = "task_name"
@@ -122,9 +124,14 @@ def create_comparison_table(
     # remove results of models in this pr from max score calculation
     task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
     max_dataframe = task_results_df.groupby(task_col_name).max()
+    high_model_performance_tasks = []
+
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
             df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
+            model_score = df.loc[df[task_col_name] == task_name, model].values[0]
+            if model_score > row["score"]:
+                high_model_performance_tasks.append(task_name)
 
     averages: dict[str, float | None] = {}
     for col in models + [max_col_name]:
@@ -140,7 +147,7 @@ def create_comparison_table(
             **{col: [val] for col, val in averages.items()},
         }
     )
-    return pd.concat([df, avg_row], ignore_index=True)
+    return pd.concat([df, avg_row], ignore_index=True), high_model_performance_tasks
 
 
 def highlight_max_bold(
@@ -190,11 +197,21 @@ def generate_markdown_content(
     for model_name, tasks in model_tasks.items():
         parts.append(f"## Results for `{model_name}`")
 
-        df = create_comparison_table(
+        df, high_model_performance_tasks = create_comparison_table(
             model_name, tasks, reference_models, list(model_tasks.keys())
         )
         bold_df = highlight_max_bold(df)
         parts.append(bold_df.to_markdown(index=False))
+
+        if len(high_model_performance_tasks) > 0:
+            parts.extend(
+                [
+                    "",
+                    "Model have high performance on these tasks: "
+                    + ",".join([f"`{task}`" for task in high_model_performance_tasks]),
+                    "",
+                ]
+            )
 
         parts.extend(["", "---", ""])
 
