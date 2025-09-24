@@ -1,7 +1,7 @@
 install-for-tests:
 	@echo "--- Installing dependencies for tests ---"
 	pip install pip --upgrade
-	pip install .
+	pip install . --group dev
 
 test:
 	@echo "--- Running tests ---"
