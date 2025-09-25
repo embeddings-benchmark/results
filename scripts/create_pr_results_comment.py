@@ -203,6 +203,31 @@ def highlight_max_bold(
         if pd.notna(row[max_col]):
             result_df.at[idx, max_col] = f"**{result_df.at[idx, max_col]}**"
 
+    # add revisions row if at least one column has revision
+    revisions = []
+    new_df_columns = []
+    at_least_one_revision = False
+    for col in result_df.columns:
+        if "__" in col:
+            model_name, revision = col.split("__")
+            revisions.append(revision)
+            new_df_columns.append(model_name)
+        elif col == "task_name":
+            revisions.append("**Revisions**")
+            new_df_columns.append(col)
+        else:
+            at_least_one_revision = True
+            revisions.append("")
+            new_df_columns.append(col)
+
+    if at_least_one_revision:
+        # add row with revisions after the header
+        revisions_row = pd.DataFrame(
+            {col: [rev] for col, rev in zip(result_df.columns, revisions)}
+        )
+        result_df = pd.concat([revisions_row, result_df], ignore_index=True).reset_index(drop=True)
+        result_df.columns = new_df_columns
+
     return result_df
 
 
