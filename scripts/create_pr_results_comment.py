@@ -140,24 +140,24 @@ def create_comparison_table(
         raise ValueError(f"No results found for models {models} on tasks {tasks}")
 
     df[max_col_name] = None
-    # task_results = mteb.load_results(tasks=tasks, download_latest=False)
-    # task_results = task_results.join_revisions()
-    #
-    # task_results_df = task_results.to_dataframe(format="long")
-    # # some scores are in percentage, convert them to decimal
-    # task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
-    # # remove results of models in this pr from max score calculation
-    # task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
-    # max_dataframe = task_results_df.groupby(task_col_name).max()
-    # high_model_performance_tasks = []
-    #
-    # model_select_colum = model if model in df.columns else f"{model}__{new_model_revision}"
-    # if not max_dataframe.empty:
-    #     for task_name, row in max_dataframe.iterrows():
-    #         df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
-    #         model_score = df.loc[df[task_col_name] == task_name, model_select_colum].values[0]
-    #         if model_score > row["score"]:
-    #             high_model_performance_tasks.append(task_name)
+    task_results = mteb.load_results(tasks=tasks, download_latest=False)
+    task_results = task_results.join_revisions()
+
+    task_results_df = task_results.to_dataframe(format="long")
+    # some scores are in percentage, convert them to decimal
+    task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
+    # remove results of models in this pr from max score calculation
+    task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
+    max_dataframe = task_results_df.groupby(task_col_name).max()
+    high_model_performance_tasks = []
+
+    model_select_colum = model if model in df.columns else f"{model}__{new_model_revision}"
+    if not max_dataframe.empty:
+        for task_name, row in max_dataframe.iterrows():
+            df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
+            model_score = df.loc[df[task_col_name] == task_name, model_select_colum].values[0]
+            if model_score > row["score"]:
+                high_model_performance_tasks.append(task_name)
 
     averages: dict[str, float | None] = {}
     index_columns = defaultdict(list)
@@ -179,7 +179,7 @@ def create_comparison_table(
             **{col: [val] for col, val in averages.items()},
         }
     )
-    return pd.concat([df, avg_row], ignore_index=True), [] # high_model_performance_tasks
+    return pd.concat([df, avg_row], ignore_index=True), high_model_performance_tasks
 
 
 def highlight_max_bold(
