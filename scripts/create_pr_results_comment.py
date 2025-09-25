@@ -79,7 +79,7 @@ def extract_new_models_and_tasks(
 
         with model_meta.open("r") as f:
             model_meta = json.load(f)
-            model_name = ["name"]
+            model_name = model_meta["name"]
             revision = model_meta["revision"]
 
         with diff.open("r") as f:
