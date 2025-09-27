@@ -34,6 +34,7 @@ import pandas as pd
 from mteb.abstasks.AbsTask import AbsTask
 
 ModelName = str
+ModelRevision = str
 
 # Default reference models to compare against
 REFERENCE_MODELS: list[str] = [
@@ -64,7 +65,7 @@ def get_diff_from_main() -> list[str]:
 
 def extract_new_models_and_tasks(
     differences: list[str],
-) -> dict[ModelName, list[AbsTask]]:
+) -> dict[tuple[ModelName, ModelRevision], list[AbsTask]]:
     diffs = [repo_path / diff for diff in differences]
     result_diffs = filter(
         lambda p: p.exists() and p.suffix == ".json" and p.name != "model_meta.json",
@@ -77,7 +78,9 @@ def extract_new_models_and_tasks(
         task_name = diff.stem
 
         with model_meta.open("r") as f:
-            model_name = json.load(f)["name"]
+            model_meta = json.load(f)
+            model_name = model_meta["name"]
+            revision = model_meta["revision"]
 
         with diff.open("r") as f:
             task_result = json.load(f)
@@ -92,13 +95,14 @@ def extract_new_models_and_tasks(
         task = mteb.get_task(
             task_name, eval_splits=list(splits), hf_subsets=list(subsets)
         )
-        models_tasks[model_name].append(task)
+        models_tasks[(model_name, revision)].append(task)
 
     return models_tasks
 
 
 def create_comparison_table(
     model: ModelName,
+    new_model_revision: str,
     tasks: list[AbsTask],
     reference_models: list[ModelName],
     models_in_pr: list[ModelName],
@@ -107,9 +111,30 @@ def create_comparison_table(
     max_col_name = "Max result"
     task_col_name = "task_name"
     results = mteb.load_results(models=models, tasks=tasks, download_latest=False)
+    df = results.to_dataframe(include_model_revision=True)
+    new_df_columns = []
+    columns_to_merge = defaultdict(list)
+    new_model_revisions = []
+    for model_name, revision in df.columns:
+        col_with_revision = f"{model_name}__{revision}"
+        new_df_columns.append(col_with_revision)
+        if model_name != model:
+            columns_to_merge[model_name].append(col_with_revision)
+        else:
+            new_model_revisions.append(col_with_revision)
+    # if only one revision of the new model exists, then no need to show revision in the column name
+    if len(new_model_revisions) == 1:
+        columns_to_merge[model] = new_model_revisions
 
-    results = results.join_revisions()
-    df = results.to_dataframe()
+    df.columns = new_df_columns
+
+    # Merge columns with the same model name by taking the maximum value
+    for model_name, cols in columns_to_merge.items():
+        if len(cols) > 1:
+            df[model_name] = df[cols].max(axis=1)
+            df.drop(columns=cols, inplace=True)
+        else:
+            df.rename(columns={cols[0]: model_name}, inplace=True)
 
     if df.empty:
         raise ValueError(f"No results found for models {models} on tasks {tasks}")
@@ -126,20 +151,27 @@ def create_comparison_table(
     max_dataframe = task_results_df.groupby(task_col_name).max()
     high_model_performance_tasks = []
 
+    model_select_colum = model if model in df.columns else f"{model}__{new_model_revision}"
     if not max_dataframe.empty:
         for task_name, row in max_dataframe.iterrows():
             df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
-            model_score = df.loc[df[task_col_name] == task_name, model].values[0]
+            model_score = df.loc[df[task_col_name] == task_name, model_select_colum].values[0]
             if model_score > row["score"]:
                 high_model_performance_tasks.append(task_name)
 
     averages: dict[str, float | None] = {}
+    index_columns = defaultdict(list)
+    # models with revisions if exists
+    for col in df.columns:
+        index_columns[col.split("__")[0]].append(col)
     for col in models + [max_col_name]:
-        if col not in df.columns:
+        available_columns = index_columns.get(col)
+        if available_columns is None:
             continue
-        numeric = pd.to_numeric(df[col], errors="coerce")
-        avg = numeric.mean()
-        averages[col] = avg if not pd.isna(avg) else None
+        for cur_col in available_columns:
+            numeric = pd.to_numeric(df[cur_col], errors="coerce")
+            avg = numeric.mean()
+            averages[cur_col] = avg if not pd.isna(avg) else None
 
     avg_row = pd.DataFrame(
         {
@@ -171,6 +203,31 @@ def highlight_max_bold(
         if pd.notna(row[max_col]):
             result_df.at[idx, max_col] = f"**{result_df.at[idx, max_col]}**"
 
+    # add revisions row if at least one column has revision
+    revisions = []
+    new_df_columns = []
+    at_least_one_revision = False
+    for col in result_df.columns:
+        if "__" in col:
+            at_least_one_revision = True
+            model_name, revision = col.split("__")
+            revisions.append(revision)
+            new_df_columns.append(model_name)
+        elif col == "task_name":
+            revisions.append("**Revisions**")
+            new_df_columns.append(col)
+        else:
+            revisions.append("")
+            new_df_columns.append(col)
+
+    if at_least_one_revision:
+        # add row with revisions after the header
+        revisions_row = pd.DataFrame(
+            {col: [rev] for col, rev in zip(result_df.columns, revisions)}
+        )
+        result_df = pd.concat([revisions_row, result_df], ignore_index=True).reset_index(drop=True)
+        result_df.columns = new_df_columns
+
     return result_df
 
 
@@ -183,7 +240,7 @@ def generate_markdown_content(
     all_tasks = sorted(
         {t.metadata.name for tasks in model_tasks.values() for t in tasks}
     )
-    new_models = list(model_tasks.keys())
+    new_models = [model_name for model_name, revision in model_tasks.keys()]
 
     parts: list[str] = [
         "# Model Results Comparison",
@@ -194,11 +251,11 @@ def generate_markdown_content(
         "",
     ]
 
-    for model_name, tasks in model_tasks.items():
+    for (model_name, revision), tasks in model_tasks.items():
         parts.append(f"## Results for `{model_name}`")
 
         df, high_model_performance_tasks = create_comparison_table(
-            model_name, tasks, reference_models, list(model_tasks.keys())
+            model_name, revision, tasks, reference_models, new_models
         )
         bold_df = highlight_max_bold(df)
         parts.append(bold_df.to_markdown(index=False))
