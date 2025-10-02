@@ -13,7 +13,6 @@ USAGE:
 
 REQUIREMENTS:
     - Set environment variables: ARGILLA_API_KEY and HF_TOKEN
-    - Install dependencies: argilla, pandas, numpy, scikit-learn, scipy
 
 OUTPUT:
     - Creates timestamped aggregate results in: results/Human/{YYYY_MM_DD}/
@@ -1441,8 +1440,6 @@ def main():
                     test_entry["hf_subset"] = hf_subset
                     test_entry["languages"] = languages
                     
-                    # For multilingual tasks: only the FIRST entry (usually English) gets full structure
-                    # Other language entries get only basic metrics (no scores_per_experiment or agreement)
                     if len(test_entries) > 0:  # Not the first entry
                         # Remove scores_per_experiment and agreement for non-first entries
                         if "scores_per_experiment" in test_entry:
@@ -1478,9 +1475,8 @@ def main():
     
     print(f"\n" + "=" * 50)
     print(f"Completed successfully!")
-    print(f"📊 Saved {results_saved}/{total_datasets} datasets")
+    print(f"📊 Saved {results_saved} results")
     print(f"📁 Results saved in: results/Human/{datetime.now().strftime('%Y_%m_%d')}/")
-    print(f"🔄 Files are in MTEB format and ready for analysis")
 
 if __name__ == "__main__":
     main()
