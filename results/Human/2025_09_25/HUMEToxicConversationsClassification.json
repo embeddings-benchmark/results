@@ -1,0 +1,45 @@
+{
+  "dataset_revision": "human_evaluation",
+  "task_name": "HUMEToxicConversationsClassification",
+  "mteb_version": "1.18.0",
+  "scores": {
+    "test": [
+      {
+        "accuracy": 0.7333333333333333,
+        "f1": 0.73,
+        "f1_weighted": 0.7333333333333333,
+        "precision": 0.73,
+        "recall": 0.73,
+        "main_score": 0.7333333333333333,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.7333333333333333,
+            "f1": 0.733201581027668,
+            "f1_weighted": 0.7338603425559947
+          },
+          {
+            "accuracy": 0.7333333333333333,
+            "f1": 0.733201581027668,
+            "f1_weighted": 0.7325428194993413
+          }
+        ],
+        "agreement": {
+          "metric": "fleiss_kappa",
+          "value": 0.55,
+          "interpretation": "Moderate",
+          "n_annotators": 2,
+          "n_items": 45,
+          "total_annotations": 90,
+          "mean_pairwise_kappa": 0.5508982035928143,
+          "mean_percentage_agreement": 0.7777777777777778
+        },
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ]
+      }
+    ]
+  },
+  "evaluation_time": 0,
+  "kg_co2_emissions": null
+}
