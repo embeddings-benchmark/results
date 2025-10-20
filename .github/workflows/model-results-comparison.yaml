@@ -43,7 +43,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install git+https://github.com/embeddings-benchmark/mteb.git tabulate
+        pip install git+https://github.com/embeddings-benchmark/mteb@v2.0.0 tabulate
 
     - name: Generate model comparison
       env:
