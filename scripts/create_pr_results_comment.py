@@ -24,14 +24,14 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import os
 import subprocess
 from collections import defaultdict
 from pathlib import Path
 
 import mteb
 import pandas as pd
-from mteb.abstasks.AbsTask import AbsTask
+from mteb import AbsTask
+from mteb.cache import ResultCache
 
 ModelName = str
 ModelRevision = str
@@ -49,7 +49,7 @@ logger = logging.getLogger(__name__)
 
 repo_path = Path(__file__).parents[1]
 
-os.environ["MTEB_CACHE"] = str(repo_path.parent)
+cache = ResultCache(repo_path)
 
 
 def get_diff_from_main() -> list[str]:
@@ -110,7 +110,7 @@ def create_comparison_table(
     models = [model] + reference_models
     max_col_name = "Max result"
     task_col_name = "task_name"
-    results = mteb.load_results(models=models, tasks=tasks, download_latest=False)
+    results = cache.load_results(models=models, tasks=tasks)
     df = results.to_dataframe(include_model_revision=True)
     new_df_columns = []
     columns_to_merge = defaultdict(list)
@@ -140,7 +140,7 @@ def create_comparison_table(
         raise ValueError(f"No results found for models {models} on tasks {tasks}")
 
     df[max_col_name] = None
-    task_results = mteb.load_results(tasks=tasks, download_latest=False)
+    task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
     task_results_df = task_results.to_dataframe(format="long")
