@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 import mteb
-from mteb import TaskResult
+from mteb.load_results.task_results import TaskResult
 
 
 def test_load_results():
