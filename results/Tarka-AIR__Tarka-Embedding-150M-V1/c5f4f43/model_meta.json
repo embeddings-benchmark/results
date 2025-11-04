@@ -1,0 +1,53 @@
+{
+    "loader_kwargs": {},
+    "name": "Tarka-AIR/Tarka-Embedding-150M-V1",
+    "revision": "c5f4f43",
+    "release_date": "2025-11-04",
+    "languages": [
+        "arb-Arab",
+        "eng-Latn",
+        "spa-Latn",
+        "deu-Latn",
+        "fra-Latn",
+        "jpn-Jpan",
+        "kor-Hang",
+        "zho-Hans"
+    ],
+    "n_parameters": 155714304,
+    "memory_usage_mb": 576.0,
+    "max_tokens": 2048.0,
+    "embed_dim": 768,
+    "license": "gemma",
+    "open_weights": null,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch"
+    ],
+    "reference": "https://huggingface.co/Tarka-AIR/Tarka-Embedding-150M-V1",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "MIRACLRetrieval",
+        "MrTidyRetrieval",
+        "T2Retrieval",
+        "CMedQAv2-reranking",
+        "DuRetrieval",
+        "CodeSearchNet",
+        "MMarcoReranking",
+        "FEVER",
+        "HotpotQA",
+        "MSMARCO",
+        "NQ"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "is_cross_encoder": null,
+    "citation": "@misc{tarka_ai_research_2025,\n\tauthor       = { Tarka AI Research },\n\ttitle        = { Tarka-Embedding-150M-V1 (Revision c5f4f43) },\n\tyear         = 2025,\n\turl          = { https://huggingface.co/Tarka-AIR/Tarka-Embedding-150M-V1 },\n\tdoi          = { 10.57967/hf/6875 },\n\tpublisher    = { Hugging Face }\n}",
+    "contacts": null,
+    "loader": "gemma_embedding_loader"
+}
