@@ -1,5 +1,6 @@
 import json
 import subprocess
+from collections import defaultdict
 from pathlib import Path
 
 
@@ -19,11 +20,18 @@ def test_no_splits_are_removed():
     )
 
     changed_files = [f.strip() for f in result.stdout.split("\n") if f.strip()]
+    root = Path(__file__).parent.parent
 
-    for filepath in changed_files:
+    errors = []
+    for filepath_str in changed_files:
+        filepath = root / Path(filepath_str)
+        if filepath.name == "model_meta.json":
+            continue
         # Get the file from main branch
         old_content = subprocess.run(
-            ["git", "show", f"origin/main:{filepath}"], capture_output=True, text=True
+            ["git", "show", f"origin/main:{filepath_str}"],
+            capture_output=True,
+            text=True,
         )
 
         if old_content.returncode != 0:
@@ -34,8 +42,6 @@ def test_no_splits_are_removed():
         old_data = json.loads(old_content.stdout)
 
         # Load new version
-        root = Path(__file__).parent.parent
-        filepath = root / Path(filepath)
         with filepath.open("r") as f:
             new_data = json.load(f)
 
@@ -49,16 +55,16 @@ def test_no_splits_are_removed():
             for split, results in new_data["scores"].items()
         }
 
-        errors = []
+        removed_split_subsets = defaultdict(list)
         for split, old_subsets in old_splits_subsets.items():
-            if split not in new_data["scores"]:
-                errors.append(f"Split '{split}' was removed in file '{filepath}'")
-
             for subset in old_subsets:
                 if subset not in new_splits_subsets.get(split, set()):
-                    errors.append(
-                        f"Subset '{subset}' from split '{split}' was removed in file '{filepath}'"
-                    )
+                    removed_split_subsets[split].append(subset)
 
-        if errors:
-            raise AssertionError("\n".join(errors))
+        if removed_split_subsets:
+            errors.append(
+                f"{filepath_str} has had splits/subsets removed: {removed_split_subsets}"
+            )
+
+    if errors:
+        raise AssertionError("\n".join(errors))
