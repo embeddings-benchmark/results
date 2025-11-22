@@ -4,9 +4,16 @@ from pathlib import Path
 
 
 def test_no_splits_are_removed():
+    # Find the merge-base (common ancestor) between main and current branch
+    merge_base = subprocess.run(
+        ["git", "merge-base", "main", "HEAD"],
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
     # Get changed files from git diff between main and HEAD
     result = subprocess.run(
-        ["git", "diff", "--name-only", "origin/main", "HEAD", "*.json"],
+        ["git", "diff", "--name-only", merge_base, "HEAD", "*.json"],
         capture_output=True,
         text=True,
     )
@@ -28,12 +35,12 @@ def test_no_splits_are_removed():
 
         # Load new version
         root = Path(__file__).parent.parent
-        filepath = Path(filepath)
-        with Path(filepath).open("r") as f:
+        filepath = root / Path(filepath)
+        with filepath.open("r") as f:
             new_data = json.load(f)
 
         old_splits_subsets = {
-            split: [r["hf_subset"] for r in results]
+            split: set(r["hf_subset"] for r in results)
             for split, results in old_data["scores"].items()
         }
 
@@ -42,12 +49,16 @@ def test_no_splits_are_removed():
             for split, results in new_data["scores"].items()
         }
 
-        for split, new_subsets in old_splits_subsets.items():
-            assert (
-                split in new_data["scores"]
-            ), f"Split '{split}' was removed in file '{filepath}'"
+        errors = []
+        for split, old_subsets in old_splits_subsets.items():
+            if split not in new_data["scores"]:
+                errors.append(f"Split '{split}' was removed in file '{filepath}'")
 
-            for subset in new_subsets:
-                assert (
-                    subset in new_splits_subsets[split]
-                ), f"Subset '{subset}' from split '{split}' was removed in file '{filepath}'"
+            for subset in old_subsets:
+                if subset not in new_splits_subsets.get(split, set()):
+                    errors.append(
+                        f"Subset '{subset}' from split '{split}' was removed in file '{filepath}'"
+                    )
+
+        if errors:
+            raise AssertionError("\n".join(errors))
