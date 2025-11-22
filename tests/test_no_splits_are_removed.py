@@ -1,27 +1,23 @@
 import json
+import os
 import subprocess
 from collections import defaultdict
 from pathlib import Path
 
 
 def test_no_splits_are_removed():
-    current_branch = subprocess.run(
-        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-        capture_output=True,
-        text=True,
-    ).stdout.strip()
-    print(f"Current branch: {current_branch}")
+    # In CI on PRs, use the PR base SHA; otherwise use merge-base with main
+    pr_base_sha = os.environ.get("PR_BASE_SHA")
 
-    if current_branch == "main":
-        print("On main branch, skipping test.")
-        return
-
-    # Find the merge-base (common ancestor) between main and current branch
-    merge_base = subprocess.run(
-        ["git", "merge-base", "main", "HEAD"],
-        capture_output=True,
-        text=True,
-    ).stdout.strip()
+    if pr_base_sha:
+        merge_base = pr_base_sha
+    else:
+        # Find the merge-base (common ancestor) between main and current branch
+        merge_base = subprocess.run(
+            ["git", "merge-base", "main", "HEAD"],
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
 
     # Get changed files from git diff between main and HEAD
     result = subprocess.run(
