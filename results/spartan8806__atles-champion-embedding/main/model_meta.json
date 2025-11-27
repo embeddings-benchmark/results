@@ -1,0 +1,27 @@
+{
+  "name": "spartan8806/atles-champion-embedding",
+  "revision": "d4c74d7000bbd25f3597fc0f2dcde59ef1386e8f",
+  "release_date": "2025-01-16",
+  "languages": [
+    "en"
+  ],
+  "framework": [
+    "Sentence Transformers"
+  ],
+  "model_type": "sentence-transformers",
+  "base_model": "sentence-transformers/all-mpnet-base-v2",
+  "public": true,
+  "open_source": true,
+  "embedding_size": 768,
+  "max_tokens": 512,
+  "similarity_fn_name": "cosine",
+  "training_details": {
+    "dataset": "STS-B",
+    "hardware": "NVIDIA H200 SXM 143GB",
+    "training_time_minutes": 30,
+    "batch_size": 64,
+    "learning_rate": 1e-05
+  },
+  "model_url": "https://huggingface.co/spartan8806/atles-champion-embedding"
+}
+
