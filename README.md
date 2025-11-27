@@ -5,7 +5,7 @@ submission_name: MTEB
 ---
 
 > [!NOTE]  
-> Previously, it was possible to submit model results to MTEB by adding them to the metadata of the model card on huggingface. However, this is no longer possible as we want to ensure that we can match the results with the model implementation. If you want to add your model, please follow the [guide](https://github.com/embeddings-benchmark/mteb/blob/main/docs/adding_a_model.md) on how to do so.
+> Previously, it was possible to submit model results to MTEB by adding them to the metadata of the model card on huggingface. However, this is no longer possible as we want to ensure that we can match the results with the model implementation. If you want to add your model, please follow the [guide](https://embeddings-benchmark.github.io/mteb/contributing/adding_a_model/) on how to do so.
 
 This repository contains the results of the embedding benchmark evaluated using the package `mteb`.
 
