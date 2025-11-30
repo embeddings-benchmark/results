@@ -2,25 +2,28 @@
   "loader_kwargs": {},
   "name": "spartan8806/atles-champion-embedding",
   "revision": "d4c74d7000bbd25f3597fc0f2dcde59ef1386e8f",
-  "release_date": null,
-  "languages": null,
-  "n_parameters": null,
-  "memory_usage_mb": null,
-  "max_tokens": null,
-  "embed_dim": null,
-  "license": "mit",
+  "release_date": "2025-11-15",
+  "languages": [
+    "eng-Latn"
+  ],
+  "n_parameters": 110000000,
+  "memory_usage_mb": 420.0,
+  "max_tokens": 512.0,
+  "embed_dim": 768,
+  "license": "apache-2.0",
   "open_weights": true,
   "public_training_code": null,
   "public_training_data": null,
   "framework": [
-    "PyTorch",
     "Sentence Transformers"
   ],
-  "reference": null,
-  "similarity_fn_name": null,
-  "use_instructions": null,
-  "training_datasets": null,
-  "adapted_from": null,
+  "reference": "https://huggingface.co/spartan8806/atles-champion-embedding",
+  "similarity_fn_name": "cosine",
+  "use_instructions": false,
+  "training_datasets": [
+    "STSBenchmark"
+  ],
+  "adapted_from": "sentence-transformers/all-mpnet-base-v2",
   "superseded_by": null,
   "modalities": [
     "text"
