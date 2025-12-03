@@ -18,6 +18,13 @@ jobs:
         os: [ubuntu-latest] #, macos-latest, windows-latest]
         python-version: ["3.10"]
     steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          docker system prune -af
+
       - uses: actions/checkout@v3
 
       - name: Setup Python ${{ matrix.python-version }}
