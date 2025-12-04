@@ -2,7 +2,6 @@
 # 1) install Python dependencies
 # 2) run make test
 
-
 name: Test
 on:
   push:
@@ -26,10 +25,12 @@ jobs:
           docker system prune -af
 
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # to allow us to examine the git diff
 
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
-        
+
       - name: Install dependencies
         shell: bash
         run: |
@@ -37,5 +38,7 @@ jobs:
 
       - name: Run tests
         shell: bash
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           make test
