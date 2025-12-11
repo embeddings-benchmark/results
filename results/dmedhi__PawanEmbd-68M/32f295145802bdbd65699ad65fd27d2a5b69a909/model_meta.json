@@ -1,1 +1,35 @@
-{"loader_kwargs": {}, "name": "no_model_name_available", "revision": "no_revision_available", "release_date": null, "languages": null, "n_parameters": null, "memory_usage_mb": null, "max_tokens": null, "embed_dim": 768, "license": null, "open_weights": true, "public_training_code": null, "public_training_data": null, "framework": ["Sentence Transformers"], "reference": null, "similarity_fn_name": null, "use_instructions": null, "training_datasets": null, "adapted_from": null, "superseded_by": null, "modalities": ["text"], "is_cross_encoder": null, "citation": null, "contacts": null, "loader": "sentence_transformers_loader"}
+{
+    "loader_kwargs": {},
+    "name": "dmedhi/PawanEmbd-68M",
+    "revision": "32f295145802bdbd65699ad65fd27d2a5b69a909",
+    "release_date": "2025-12-08",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 68000000,
+    "memory_usage_mb": 260.0,
+    "max_tokens": 512.0,
+    "embed_dim": 768,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch"
+    ],
+    "reference": "https://huggingface.co/dmedhi/PawanEmbd-68M",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "AllNLI"
+    ],
+    "adapted_from": "ibm-granite/granite-embedding-278m-multilingual",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "is_cross_encoder": null,
+    "citation": "@misc{medhi2025pawanembd,\n    title={PawanEmbd-68M: Distilled Embedding Model},\n    author={Medhi, D.},\n    year={2025},\n    url={https://huggingface.co/dmedhi/PawanEmbd-68M}\n}",
+    "contacts": null
+}
