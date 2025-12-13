@@ -7,12 +7,13 @@ For each model:
             - If reference revision is present, delete other revisions
             - Otherwise, only delete 'external' and 'no_revision_available' revisions
 """
-import json
+
 import shutil
 from pathlib import Path
 from collections import defaultdict
 from typing import Dict, List
 import mteb
+import csv
 
 def get_reference_revision(model_name: str) -> str | None:
     try:
@@ -24,6 +25,8 @@ def get_reference_revision(model_name: str) -> str | None:
 def clean_duplicate_results():
     results_folder = Path(__file__).parent / "results"
     deletions = []
+    model_deleted_revisions = defaultdict(set)
+    model_retained_revisions = defaultdict(set)
     stats = {
         'models_processed': 0,
         'tasks_with_duplicates': 0,
@@ -65,23 +68,25 @@ def clean_duplicate_results():
                 continue  
                 
             stats['tasks_with_duplicates'] += 1
-            
-            print(f"\n  Task: '{task_name}' has {len(revision_list)} results")
             revisions_present = [r['revision'] for r in revision_list]
-            print(f"    Revisions: {revisions_present}")
             
             to_delete = []
+            retained_revision = None
+            
             if reference_revision and reference_revision in revisions_present:
                 # Reference revision exists - delete all others
-                print(f"    ✓ Reference revision '{reference_revision}' found - will delete others")
                 to_delete = [r for r in revision_list if r['revision'] != reference_revision]
+                retained_revision = reference_revision
             else:
                 # Reference revision not present - only delete external and no_revision_available
-                print(f"    ℹ Reference revision not found - will delete only 'external' and 'no_revision_available'")
                 to_delete = [
                     r for r in revision_list 
                     if r['revision'] in ['external', 'no_revision_available']
                 ]
+                # Find retained revision (the one not deleted)
+                retained_revisions = [r['revision'] for r in revision_list if r not in to_delete]
+                if retained_revisions:
+                    retained_revision = retained_revisions[0]  # Take first if multiple
             
             # Delete the files
             for item in to_delete:
@@ -89,9 +94,14 @@ def clean_duplicate_results():
                 file_path = item['file_path']
                 relative_path = file_path.relative_to(results_folder)
 
-                file_path.unlink()
+                # file_path.unlink()
                 stats['files_deleted'] += 1
                 deletions.append(str(relative_path))
+                model_deleted_revisions[model_name].add(revision)
+            
+            # Track retained revision
+            if retained_revision:
+                model_retained_revisions[model_name].add(retained_revision)
         
         # Clean up empty revision folders
         for revision_folder in model_folder.glob("*"):
@@ -105,7 +115,7 @@ def clean_duplicate_results():
             ):
                 relative_path = revision_folder.relative_to(results_folder)
 
-                shutil.rmtree(revision_folder)
+                # shutil.rmtree(revision_folder)
                 stats['folders_removed'] += 1
     
     print(f"\n{'='*80}")
@@ -115,15 +125,28 @@ def clean_duplicate_results():
     print(f"Tasks with duplicates: {stats['tasks_with_duplicates']}")
     print(f"Files deleted: {stats['files_deleted']}")
     print(f"Folders removed: {stats['folders_removed']}")
-    
-    if deletions :
-        log_file = results_folder / "deletion_log.txt"
-        with log_file.open("w") as f:
-            f.write(f"Deletion log - {stats['files_deleted']} files deleted\n")
-            f.write("="*80 + "\n\n")
-            f.write("\n".join(deletions))
-        print(f"\nDeletion log saved to: {log_file}")
+
+    if model_deleted_revisions:
+        csv_folder = Path(__file__).parent
+        csv_file = csv_folder / "deleted_revisions.csv"
+        with csv_file.open("w", newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(["model", "revision_retained", "deleted_revisions", "num_deleted_revisions"])
+            
+            for model_name in sorted(model_deleted_revisions.keys()):
+                deleted_revs = sorted(model_deleted_revisions[model_name])
+                retained_revs = sorted(model_retained_revisions[model_name])
+                retained_revs_str = ", ".join(retained_revs) if retained_revs else "N/A"
+                
+                writer.writerow([
+                    model_name,
+                    retained_revs_str,
+                    ", ".join(deleted_revs),
+                    len(deleted_revs)
+                ])
+        
+        print(f"Deleted revisions CSV saved to: {csv_file}")
+        print(f"Models with deleted revisions: {len(model_deleted_revisions)}")
 
 if __name__ == "__main__":
     clean_duplicate_results()
-    
