@@ -106,7 +106,7 @@ def clean_duplicate_results():
             for item in to_delete:
                 revision = item['revision']
                 file_path = item['file_path']
-                relative_path = file_path.relative_to(results_folder)
+                relative_path1 = file_path.relative_to(results_folder)
                 
                 retained_path = f"{retained_revision}/{task_name}.json"
                 deleted_path = f"{revision}/{task_name}.json"
@@ -115,7 +115,7 @@ def clean_duplicate_results():
                 
                 # file_path.unlink()
                 stats['files_deleted'] += 1
-                deletions.append(str(relative_path))
+                deletions.append(str(relative_path1))
         
         # Only add model logs if there were duplicates
         if model_has_duplicates:
@@ -132,13 +132,13 @@ def clean_duplicate_results():
             if len(json_files) == 0 or (
                 len(json_files) == 1 and json_files[0].name == "model_meta.json"
             ):
-                relative_path = revision_folder.relative_to(results_folder)
+                relative_path2 = revision_folder.relative_to(results_folder)
                 
                 # Only log if this model had duplicates (to keep log clean)
                 if model_has_duplicates:
                     if log_lines and log_lines[-1] == "":
                         log_lines.pop()
-                    log_lines.append(f"Removing empty revision folder: {relative_path}")
+                    log_lines.append(f"Removing empty revision folder: {relative_path2}")
                     log_lines.append("")
                 
                 # shutil.rmtree(revision_folder)
