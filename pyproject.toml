@@ -3,10 +3,16 @@ name = "results"
 version = "0.1.0"
 description = "The result repository for mteb"
 readme = "README.md"
-requires-python = ">=3.10,<3.13"                # pytrec-eval-terrier does not compile for 3.13
-dependencies = ["mteb>=1.13.0"]
+requires-python = ">=3.10"
+dependencies = ["mteb>=2.0"]
 
 [dependency-groups]
 dev = [
     "pytest>=8.3.4",
+]
+lint = [
+    "ruff>=0.14.9",
+]
+pr-comment = [
+    "tabulate>=0.9.0",
 ]
