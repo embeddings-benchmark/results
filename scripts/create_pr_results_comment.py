@@ -109,6 +109,7 @@ def create_comparison_table(
 ) -> tuple[pd.DataFrame, list[str]]:
     models = [model] + reference_models
     max_col_name = "Max result"
+    max_model_col_name = "Model with max result"
     task_col_name = "task_name"
     results = cache.load_results(models=models, tasks=tasks)
     df = results.to_dataframe(include_model_revision=True)
@@ -140,6 +141,7 @@ def create_comparison_table(
         raise ValueError(f"No results found for models {models} on tasks {tasks}")
 
     df[max_col_name] = None
+    df[max_model_col_name] = ''
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
@@ -148,14 +150,24 @@ def create_comparison_table(
     task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
     # remove results of models in this pr from max score calculation
     task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
-    max_dataframe = task_results_df.groupby(task_col_name).max()
+    max_dataframe = task_results_df.sort_values(
+        "score", ascending=False
+    ).drop_duplicates(subset=task_col_name, keep="first")
     high_model_performance_tasks = []
 
-    model_select_colum = model if model in df.columns else f"{model}__{new_model_revision}"
+    model_select_colum = (
+        model if model in df.columns else f"{model}__{new_model_revision}"
+    )
     if not max_dataframe.empty:
-        for task_name, row in max_dataframe.iterrows():
+        for _, row in max_dataframe.iterrows():
+            task_name = row["task_name"]
             df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
-            model_score = df.loc[df[task_col_name] == task_name, model_select_colum].values[0]
+            df.loc[df[task_col_name] == task_name, max_model_col_name] = row[
+                "model_name"
+            ]
+            model_score = df.loc[
+                df[task_col_name] == task_name, model_select_colum
+            ].values[0]
             if model_score > row["score"]:
                 high_model_performance_tasks.append(task_name)
 
@@ -225,7 +237,9 @@ def highlight_max_bold(
         revisions_row = pd.DataFrame(
             {col: [rev] for col, rev in zip(result_df.columns, revisions)}
         )
-        result_df = pd.concat([revisions_row, result_df], ignore_index=True).reset_index(drop=True)
+        result_df = pd.concat(
+            [revisions_row, result_df], ignore_index=True
+        ).reset_index(drop=True)
         result_df.columns = new_df_columns
 
     return result_df
