@@ -113,7 +113,7 @@ def clean_duplicate_results():
                 
                 model_log_lines.append(f"    deleting {deleted_path} as {retained_path} already exists")
                 
-                # file_path.unlink()
+                file_path.unlink()
                 stats['files_deleted'] += 1
                 deletions.append(str(relative_path1))
         
@@ -141,7 +141,8 @@ def clean_duplicate_results():
                     log_lines.append(f"Removing empty revision folder: {relative_path2}")
                     log_lines.append("")
                 
-                # shutil.rmtree(revision_folder)
+                shutil.rmtree(revision_folder)
+                print(f"Removed empty folder: {revision_folder}")
                 stats['folders_removed'] += 1
     
     with log_file.open("w") as f:
