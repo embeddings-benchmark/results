@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to generate __cached_results.json for the MTEB leaderboard.
+Script to generate __cached_results.json.gz for the MTEB leaderboard.
 
 This pre-generates the cached results file that the leaderboard uses,
 which can save 100+ seconds on fresh leaderboard builds.
@@ -9,9 +9,10 @@ Usage:
     python generate_cached_results.py
 
 Output:
-    Creates __cached_results.json in the remote repo root directory
+    Creates __cached_results.json.gz in the remote repo root directory
 """
 
+import gzip
 import json
 import logging
 import sys
@@ -65,19 +66,24 @@ def generate_cached_results():
     serialize_time = time.time() - serialize_start
     logger.info(f"Serialized in {serialize_time:.2f}s")
     
-    # Write to file in remote repo root directory
+    # Write to gzip file in remote repo root directory
     repo_root = Path(__file__).parent.parent
-    output_path = repo_root / "__cached_results.json"
+    output_path = repo_root / "__cached_results.json.gz"
     logger.info(f"Writing to {output_path}...")
     write_start = time.time()
-    with output_path.open('w') as f:
-        json.dump(results_dict, f, indent=None, separators=(',', ':'))
+    json_str = json.dumps(results_dict, separators=(',', ':'))
+    with gzip.open(output_path, 'wt', encoding='utf-8') as f:
+        f.write(json_str)
     write_time = time.time() - write_start
     logger.info(f"Written in {write_time:.2f}s")
     
     # Report file size
     file_size_mb = output_path.stat().st_size / (1024 * 1024)
+    uncompressed_size_mb = len(json_str) / (1024 * 1024)
+    compression_ratio = (1 - file_size_mb / uncompressed_size_mb) * 100
     logger.info(f"Generated {output_path} ({file_size_mb:.1f} MB)")
+    logger.info(f"Uncompressed size: {uncompressed_size_mb:.1f} MB")
+    logger.info(f"Compression ratio: {compression_ratio:.1f}%")
     
     total_time = time.time() - start_time
     logger.info(f"Total time: {total_time:.2f}s")

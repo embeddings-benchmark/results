@@ -44,8 +44,8 @@ jobs:
       - name: Check if cached results changed
         id: check_changes
         run: |
-          if [ -f "__cached_results.json" ]; then
-            git add __cached_results.json
+          if [ -f "__cached_results.json.gz" ]; then
+            git add __cached_results.json.gz
             if git diff --cached --quiet; then
               echo "changes=false" >> $GITHUB_OUTPUT
               echo "No changes to cached results"
@@ -63,7 +63,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add __cached_results.json
+          git add __cached_results.json.gz
           git commit -m "chore: update cached results [skip ci]"
           git push
         env:
@@ -72,7 +72,7 @@ jobs:
       - name: Report file size
         if: steps.check_changes.outputs.changes == 'true'
         run: |
-          if [ -f "__cached_results.json" ]; then
-            ls -lh __cached_results.json
-            echo "Cached results file size: $(du -h __cached_results.json | cut -f1)"
+          if [ -f "__cached_results.json.gz" ]; then
+            ls -lh __cached_results.json.gz
+            echo "Cached results file size: $(du -h __cached_results.json.gz | cut -f1)"
           fi
