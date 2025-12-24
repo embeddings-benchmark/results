@@ -56,6 +56,11 @@ jobs:
           FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
           echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
 
+          # Temporarily move the cache file to avoid checkout conflicts
+          if [ -f "__cached_results.json.gz" ]; then
+            mv __cached_results.json.gz __cached_results.json.gz.tmp
+          fi
+
           # Check if cached-data branch exists
           if git show-ref --verify --quiet refs/remotes/origin/cached-data; then
             echo "📋 Switching to existing cached-data branch"
@@ -66,6 +71,11 @@ jobs:
             git checkout --orphan cached-data
             # Remove all files from staging area when creating orphan branch
             git rm -rf . 2>/dev/null || true
+          fi
+
+          # Restore the cache file
+          if [ -f "__cached_results.json.gz.tmp" ]; then
+            mv __cached_results.json.gz.tmp __cached_results.json.gz
           fi
 
           # Ensure we only have the files we want
