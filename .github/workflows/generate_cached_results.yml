@@ -39,55 +39,52 @@ jobs:
         env:
           PYTHONUNBUFFERED: 1
 
-      - name: Create uncompressed version for leaderboard app
+      - name: Configure Git
         run: |
-          if [ -f "__cached_results.json.gz" ]; then
-            # Create mteb/leaderboard directory if it doesn't exist
-            mkdir -p mteb/leaderboard
-            # Decompress the gzip file to the leaderboard directory for app.py compatibility
-            gunzip -c __cached_results.json.gz > mteb/leaderboard/__cached_results.json
-            echo "✅ Created uncompressed cache file for leaderboard app"
-          else
-            echo "❌ Compressed cache file not found"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update cached-data branch
+        run: |
+          # Check if __cached_results.json.gz was created
+          if [ ! -f "__cached_results.json.gz" ]; then
+            echo "❌ Cached results file not found"
             exit 1
           fi
 
-      - name: Check if cached results changed
-        id: check_changes
-        run: |
-          if [ -f "__cached_results.json.gz" ] && [ -f "mteb/leaderboard/__cached_results.json" ]; then
-            git add __cached_results.json.gz mteb/leaderboard/__cached_results.json
-            if git diff --cached --quiet; then
-              echo "changes=false" >> $GITHUB_OUTPUT
-              echo "No changes to cached results"
-            else
-              echo "changes=true" >> $GITHUB_OUTPUT
-              echo "Cached results have changed"
-            fi
+          # Get file size for logging
+          FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
+          echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+
+          # Switch to cached-data branch (create if doesn't exist)
+          git checkout --orphan cached-data 2>/dev/null || git checkout cached-data
+
+          # Remove all files except the cached results
+          git rm -rf . 2>/dev/null || true
+
+          # Add only the cached results file
+          git add __cached_results.json.gz
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "✅ No changes in cached results, skipping commit"
           else
-            echo "changes=false" >> $GITHUB_OUTPUT
-            echo "No cached results files generated"
+            # Commit with timestamp and file size
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+            COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
+            git commit -m "$COMMIT_MSG"
+
+            # Push to remote
+            git push origin cached-data
+            echo "✅ Successfully updated cached-data branch"
           fi
 
-      - name: Commit and push cached results
-        if: steps.check_changes.outputs.changes == 'true'
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add __cached_results.json.gz mteb/leaderboard/__cached_results.json
-          git commit -m "chore: update cached results [skip ci]"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Report file size
-        if: steps.check_changes.outputs.changes == 'true'
+      - name: Report status
+        if: always()
         run: |
           if [ -f "__cached_results.json.gz" ]; then
-            echo "📦 Compressed cache (repo root): $(du -h __cached_results.json.gz | cut -f1)"
-            ls -lh __cached_results.json.gz
-          fi
-          if [ -f "mteb/leaderboard/__cached_results.json" ]; then
-            echo "📄 Uncompressed cache (leaderboard): $(du -h mteb/leaderboard/__cached_results.json | cut -f1)"
-            ls -lh mteb/leaderboard/__cached_results.json
+            FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
+            echo "✅ Workflow completed. Cache file size: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+          else
+            echo "❌ Workflow failed - no cache file generated"
           fi
