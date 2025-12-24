@@ -39,11 +39,24 @@ jobs:
         env:
           PYTHONUNBUFFERED: 1
 
+      - name: Create uncompressed version for leaderboard app
+        run: |
+          if [ -f "__cached_results.json.gz" ]; then
+            # Create mteb/leaderboard directory if it doesn't exist
+            mkdir -p mteb/leaderboard
+            # Decompress the gzip file to the leaderboard directory for app.py compatibility
+            gunzip -c __cached_results.json.gz > mteb/leaderboard/__cached_results.json
+            echo "✅ Created uncompressed cache file for leaderboard app"
+          else
+            echo "❌ Compressed cache file not found"
+            exit 1
+          fi
+
       - name: Check if cached results changed
         id: check_changes
         run: |
-          if [ -f "__cached_results.json.gz" ]; then
-            git add __cached_results.json.gz
+          if [ -f "__cached_results.json.gz" ] && [ -f "mteb/leaderboard/__cached_results.json" ]; then
+            git add __cached_results.json.gz mteb/leaderboard/__cached_results.json
             if git diff --cached --quiet; then
               echo "changes=false" >> $GITHUB_OUTPUT
               echo "No changes to cached results"
@@ -53,7 +66,7 @@ jobs:
             fi
           else
             echo "changes=false" >> $GITHUB_OUTPUT
-            echo "No cached results file generated"
+            echo "No cached results files generated"
           fi
 
       - name: Commit and push cached results
@@ -61,7 +74,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add __cached_results.json.gz
+          git add __cached_results.json.gz mteb/leaderboard/__cached_results.json
           git commit -m "chore: update cached results [skip ci]"
           git push
         env:
@@ -71,6 +84,10 @@ jobs:
         if: steps.check_changes.outputs.changes == 'true'
         run: |
           if [ -f "__cached_results.json.gz" ]; then
+            echo "📦 Compressed cache (repo root): $(du -h __cached_results.json.gz | cut -f1)"
             ls -lh __cached_results.json.gz
-            echo "Cached results file size: $(du -h __cached_results.json.gz | cut -f1)"
+          fi
+          if [ -f "mteb/leaderboard/__cached_results.json" ]; then
+            echo "📄 Uncompressed cache (leaderboard): $(du -h mteb/leaderboard/__cached_results.json | cut -f1)"
+            ls -lh mteb/leaderboard/__cached_results.json
           fi
