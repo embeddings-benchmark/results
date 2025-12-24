@@ -39,6 +39,10 @@ jobs:
         env:
           PYTHONUNBUFFERED: 1
 
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+
       - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
@@ -78,6 +82,15 @@ jobs:
             mv __cached_results.json.gz.tmp __cached_results.json.gz
           fi
 
+          # Setup Git LFS tracking for the cache file (if not already tracked)
+          if ! git lfs ls-files | grep -q "__cached_results.json.gz"; then
+            git lfs track "__cached_results.json.gz"
+            # Add .gitattributes if it was created
+            if [ -f ".gitattributes" ]; then
+              git add .gitattributes
+            fi
+          fi
+
           # Ensure we only have the files we want
           # Remove all tracked files except README.md
           if [ -f "README.md" ]; then
@@ -101,7 +114,7 @@ jobs:
             # Verify we're not committing too many files (safety check)
             STAGED_FILES=$(git diff --staged --name-only | wc -l)
             if [ "$STAGED_FILES" -gt 10 ]; then
-              echo "❌ ERROR: Too many files staged ($STAGED_FILES). Expected only 1-2 files."
+              echo "❌ ERROR: Too many files staged ($STAGED_FILES). Expected only 1-3 files (.gitattributes, __cached_results.json.gz, README.md)."
               echo "Staged files:"
               git diff --staged --name-only
               exit 1
@@ -112,7 +125,7 @@ jobs:
             COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
             git commit -m "$COMMIT_MSG"
 
-            # Push to remote
+            # Push to remote (LFS will handle the large file automatically)
             git push origin cached-data
             echo "✅ Successfully updated cached-data branch"
           fi
