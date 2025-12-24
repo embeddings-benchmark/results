@@ -59,23 +59,16 @@ def generate_cached_results():
     load_time = time.time() - load_start
     logger.info(f"Loaded results in {load_time:.2f}s")
     
-    # Serialize to JSON
-    logger.info("Serializing to JSON...")
-    serialize_start = time.time()
-    results_dict = all_results.model_dump(mode='json')
-    serialize_time = time.time() - serialize_start
-    logger.info(f"Serialized in {serialize_time:.2f}s")
-    
-    # Write to gzip file in remote repo root directory
+    # Serialize to JSON and write to gzip file
     repo_root = Path(__file__).parent.parent
     output_path = repo_root / "__cached_results.json.gz"
-    logger.info(f"Writing to {output_path}...")
+    logger.info(f"Serializing to JSON and writing to {output_path}...")
     write_start = time.time()
-    json_str = json.dumps(results_dict, separators=(',', ':'))
+    json_str = all_results.model_dump_json()
     with gzip.open(output_path, 'wt', encoding='utf-8') as f:
         f.write(json_str)
     write_time = time.time() - write_start
-    logger.info(f"Written in {write_time:.2f}s")
+    logger.info(f"Serialized and written in {write_time:.2f}s")
     
     # Report file size
     file_size_mb = output_path.stat().st_size / (1024 * 1024)
