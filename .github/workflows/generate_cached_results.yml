@@ -59,8 +59,8 @@ jobs:
           # Switch to cached-data branch (create if doesn't exist)
           git checkout --orphan cached-data 2>/dev/null || git checkout cached-data
 
-          # Remove all files except the cached results
-          git rm -rf . 2>/dev/null || true
+          # Remove all files except README.md and the cached results
+          git ls-files | grep -v "README.md" | grep -v "__cached_results.json.gz" | xargs -r git rm 2>/dev/null || true
 
           # Add only the cached results file
           git add __cached_results.json.gz
