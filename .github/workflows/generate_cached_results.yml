@@ -1,0 +1,78 @@
+name: Generate Cached Results
+
+on:
+  push:
+    branches: [main]
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  generate-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          docker system prune -af
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mteb>=2.0
+
+      - name: Generate cached results
+        run: |
+          cd scripts
+          python generate_cached_results.py
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Check if cached results changed
+        id: check_changes
+        run: |
+          if [ -f "__cached_results.json" ]; then
+            git add __cached_results.json
+            if git diff --cached --quiet; then
+              echo "changes=false" >> $GITHUB_OUTPUT
+              echo "No changes to cached results"
+            else
+              echo "changes=true" >> $GITHUB_OUTPUT
+              echo "Cached results have changed"
+            fi
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No cached results file generated"
+          fi
+
+      - name: Commit and push cached results
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add __cached_results.json
+          git commit -m "chore: update cached results [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Report file size
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          if [ -f "__cached_results.json" ]; then
+            ls -lh __cached_results.json
+            echo "Cached results file size: $(du -h __cached_results.json | cut -f1)"
+          fi
