@@ -56,19 +56,47 @@ jobs:
           FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
           echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
 
-          # Switch to cached-data branch (create if doesn't exist)
-          git checkout --orphan cached-data 2>/dev/null || git checkout cached-data
+          # Check if cached-data branch exists
+          if git show-ref --verify --quiet refs/remotes/origin/cached-data; then
+            echo "📋 Switching to existing cached-data branch"
+            git checkout cached-data
+            git pull origin cached-data
+          else
+            echo "🆕 Creating new cached-data branch"
+            git checkout --orphan cached-data
+            # Remove all files from staging area when creating orphan branch
+            git rm -rf . 2>/dev/null || true
+          fi
 
-          # Remove all files except README.md and the cached results
-          git ls-files | grep -v "README.md" | grep -v "__cached_results.json.gz" | xargs -r git rm 2>/dev/null || true
+          # Ensure we only have the files we want
+          # Remove all tracked files except README.md
+          if [ -f "README.md" ]; then
+            git ls-files | grep -v "README.md" | xargs -r git rm 2>/dev/null || true
+          else
+            git ls-files | xargs -r git rm 2>/dev/null || true
+          fi
 
           # Add only the cached results file
           git add __cached_results.json.gz
+
+          # Preserve README.md if it exists in the working directory
+          if [ -f "README.md" ]; then
+            git add README.md
+          fi
 
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "✅ No changes in cached results, skipping commit"
           else
+            # Verify we're not committing too many files (safety check)
+            STAGED_FILES=$(git diff --staged --name-only | wc -l)
+            if [ "$STAGED_FILES" -gt 10 ]; then
+              echo "❌ ERROR: Too many files staged ($STAGED_FILES). Expected only 1-2 files."
+              echo "Staged files:"
+              git diff --staged --name-only
+              exit 1
+            fi
+
             # Commit with timestamp and file size
             TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
             COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
