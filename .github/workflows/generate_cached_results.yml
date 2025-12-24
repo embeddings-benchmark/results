@@ -1,0 +1,90 @@
+name: Generate Cached Results
+
+on:
+  push:
+    branches: [main]
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  generate-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          docker system prune -af
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+           pip install git+https://github.com/embeddings-benchmark/mteb.git
+
+      - name: Generate cached results
+        run: |
+          python scripts/generate_cached_results.py
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update cached-data branch
+        run: |
+          # Check if __cached_results.json.gz was created
+          if [ ! -f "__cached_results.json.gz" ]; then
+            echo "❌ Cached results file not found"
+            exit 1
+          fi
+
+          # Get file size for logging
+          FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
+          echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+
+          # Switch to cached-data branch (create if doesn't exist)
+          git checkout --orphan cached-data 2>/dev/null || git checkout cached-data
+
+          # Remove all files except README.md and the cached results
+          git ls-files | grep -v "README.md" | grep -v "__cached_results.json.gz" | xargs -r git rm 2>/dev/null || true
+
+          # Add only the cached results file
+          git add __cached_results.json.gz
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "✅ No changes in cached results, skipping commit"
+          else
+            # Commit with timestamp and file size
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+            COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
+            git commit -m "$COMMIT_MSG"
+
+            # Push to remote
+            git push origin cached-data
+            echo "✅ Successfully updated cached-data branch"
+          fi
+
+      - name: Report status
+        if: always()
+        run: |
+          if [ -f "__cached_results.json.gz" ]; then
+            FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
+            echo "✅ Workflow completed. Cache file size: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+          else
+            echo "❌ Workflow failed - no cache file generated"
+          fi
