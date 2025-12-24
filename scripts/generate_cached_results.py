@@ -35,7 +35,7 @@ def generate_cached_results():
     start_time = time.time()
     
     logger.info("Initializing ResultCache...")
-    cache = ResultCache()
+    cache = ResultCache(Path(__file__).parent.parent)
     
     # The remote repo should already be cloned from previous runs
     logger.info("Using existing remote results repository...")
