@@ -22,6 +22,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+          lfs: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -38,6 +39,14 @@ jobs:
           python scripts/generate_cached_results.py
         env:
           PYTHONUNBUFFERED: 1
+
+      - name: Install Git LFS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+          # Explicitly pull LFS files to work around checkout action issues
+          git lfs pull || true
 
       - name: Configure Git
         run: |
@@ -66,6 +75,8 @@ jobs:
             echo "📋 Switching to existing cached-data branch"
             git checkout cached-data
             git pull origin cached-data
+            # Ensure LFS files are available after branch checkout
+            git lfs pull || true
           else
             echo "🆕 Creating new cached-data branch"
             git checkout --orphan cached-data
@@ -78,20 +89,30 @@ jobs:
             mv __cached_results.json.gz.tmp __cached_results.json.gz
           fi
 
-          # Ensure we only have the files we want
-          # Remove all tracked files except README.md
-          if [ -f "README.md" ]; then
-            git ls-files | grep -v "README.md" | xargs -r git rm 2>/dev/null || true
-          else
-            git ls-files | xargs -r git rm 2>/dev/null || true
+          # Setup Git LFS tracking for the cache file (if not already tracked)
+          if ! git lfs ls-files | grep -q "__cached_results.json.gz"; then
+            git lfs track "__cached_results.json.gz"
           fi
 
-          # Add only the cached results file
+          # Ensure we only have the files we want
+          # Remove all tracked files except README.md and .gitattributes
+          if [ -f "README.md" ]; then
+            git ls-files | grep -v "README.md" | grep -v ".gitattributes" | xargs -r git rm 2>/dev/null || true
+          else
+            git ls-files | grep -v ".gitattributes" | xargs -r git rm 2>/dev/null || true
+          fi
+
+          # Add the cached results file (will be tracked by LFS)
           git add __cached_results.json.gz
 
           # Preserve README.md if it exists in the working directory
           if [ -f "README.md" ]; then
             git add README.md
+          fi
+
+          # Add .gitattributes file (required for LFS tracking)
+          if [ -f ".gitattributes" ]; then
+            git add .gitattributes
           fi
 
           # Check if there are changes to commit
@@ -101,7 +122,7 @@ jobs:
             # Verify we're not committing too many files (safety check)
             STAGED_FILES=$(git diff --staged --name-only | wc -l)
             if [ "$STAGED_FILES" -gt 10 ]; then
-              echo "❌ ERROR: Too many files staged ($STAGED_FILES). Expected only 1-2 files."
+              echo "❌ ERROR: Too many files staged ($STAGED_FILES). Expected only 1-3 files (__cached_results.json.gz, README.md, .gitattributes)."
               echo "Staged files:"
               git diff --staged --name-only
               exit 1
@@ -112,7 +133,7 @@ jobs:
             COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
             git commit -m "$COMMIT_MSG"
 
-            # Push to remote
+            # Push to remote (LFS will handle the large file automatically)
             git push origin cached-data
             echo "✅ Successfully updated cached-data branch"
           fi
