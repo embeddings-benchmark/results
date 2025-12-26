@@ -213,11 +213,7 @@ def highlight_max_bold(
     df: pd.DataFrame, exclude_cols: list[str] = ["task_name"]
 ) -> pd.DataFrame:
     result_df = df.copy()
-    for col in result_df.columns:
-        if result_df[col].dtype == bool or col == "In Training Data":
-            result_df[col] = result_df[col].apply(
-                lambda x: "✓" if x is True else ("✗" if x is False else x)
-            )
+    
     for col in result_df.columns:
         if col not in exclude_cols and col != "In Training Data":
             result_df[col] = result_df[col].apply(
