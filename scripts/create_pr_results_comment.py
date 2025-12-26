@@ -146,8 +146,14 @@ def create_comparison_table(
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
+    task_results_df = task_results.to_dataframe(format="long")
+    # some scores are in percentage, convert them to decimal
+    task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
+    # remove results of models in this pr from max score calculation
+    task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
+
     model_training_datasets: dict[str, str] = {}
-    for unique_model in task_results["model_name"].unique():
+    for unique_model in task_results_df["model_name"].unique():
         try:
             model_meta = mteb.get_model_meta(unique_model)
             training_datasets = model_meta.get_training_datasets()
@@ -156,24 +162,18 @@ def create_comparison_table(
         except (ValueError, KeyError):
             model_training_datasets[unique_model] = ""
 
-    # Apply training datasets to all rows for each model
     for model_name, datasets_str in model_training_datasets.items():
+        mask = task_results_df["model_name"] == model_name
         df.loc[df[task_col_name].isin(
-            task_results[task_results["model_name"] == model_name][task_col_name].unique()
+            task_results_df.loc[mask, task_col_name].unique()
         ), "Training Datasets"] = datasets_str
 
-
-    task_results_df = task_results.to_dataframe(format="long")
-    # some scores are in percentage, convert them to decimal
-    task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
-    # remove results of models in this pr from max score calculation
-    task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
     max_dataframe = task_results_df.sort_values(
         "score", ascending=False
     ).drop_duplicates(subset=task_col_name, keep="first")
     high_model_performance_tasks = []
 
-    model_select_colum = (
+    model_select_column = (
         model if model in df.columns else f"{model}__{new_model_revision}"
     )
     if not max_dataframe.empty:
@@ -184,7 +184,7 @@ def create_comparison_table(
                 "model_name"
             ]
             model_score = df.loc[
-                df[task_col_name] == task_name, model_select_colum
+                df[task_col_name] == task_name, model_select_column
             ].values[0]
             if model_score > row["score"]:
                 high_model_performance_tasks.append(task_name)
