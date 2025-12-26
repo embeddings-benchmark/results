@@ -146,21 +146,22 @@ def create_comparison_table(
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
-    for _, row in task_results.iterrows():
-        task_name = row["task_name"]
-        df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
-        df.loc[df[task_col_name] == task_name, max_model_col_name] = row[
-            "model_name"
-        ]
-        
-        # Get training datasets for the model
+    model_training_datasets: dict[str, str] = {}
+    for unique_model in task_results["model_name"].unique():
         try:
-            model_meta = mteb.get_model_meta(row["model_name"])
+            model_meta = mteb.get_model_meta(unique_model)
             training_datasets = model_meta.get_training_datasets()
             if training_datasets:
-                df.loc[df[task_col_name] == task_name, "Training Datasets"] = ", ".join(sorted(training_datasets))
+                model_training_datasets[unique_model] = ", ".join(sorted(training_datasets))
         except (ValueError, KeyError):
-            pass
+            model_training_datasets[unique_model] = ""
+
+    # Apply training datasets to all rows for each model
+    for model_name, datasets_str in model_training_datasets.items():
+        df.loc[df[task_col_name].isin(
+            task_results[task_results["model_name"] == model_name][task_col_name].unique()
+        ), "Training Datasets"] = datasets_str
+
 
     task_results_df = task_results.to_dataframe(format="long")
     # some scores are in percentage, convert them to decimal
