@@ -223,7 +223,12 @@ def highlight_max_bold(
 ) -> pd.DataFrame:
     result_df = df.copy()
     for col in result_df.columns:
-        if col not in exclude_cols:
+        if result_df[col].dtype == bool or col == "In Training Data":
+            result_df[col] = result_df[col].apply(
+                lambda x: "✓" if x is True else ("✗" if x is False else x)
+            )
+    for col in result_df.columns:
+        if col not in exclude_cols and col != "In Training Data":
             result_df[col] = result_df[col].apply(
                 lambda x: f"{x:.4f}"
                 if isinstance(x, (int, float)) and pd.notna(x)
