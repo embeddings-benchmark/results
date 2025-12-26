@@ -155,22 +155,20 @@ def create_comparison_table(
     task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
 
     all_training_datasets: dict[str, set[str]] = {}
-    for unique_model in task_results_df["model_name"].unique():
-        try:
-            model_meta = mteb.get_model_meta(unique_model)
-            training_datasets = model_meta.get_training_datasets()
-            if training_datasets:
-                all_training_datasets[unique_model] = training_datasets
-        except (ValueError, KeyError):
-            all_training_datasets[unique_model] = set()
-
-    for model_name, training_datasets in all_training_datasets.items():
+    try:
+        model_meta = mteb.get_model_meta(model)
+        training_datasets = model_meta.get_training_datasets()
         if training_datasets:
-            mask = task_results_df["model_name"] == model_name
-            tasks_for_model = task_results_df.loc[mask, task_col_name].unique()
-            for task_name in tasks_for_model:
-                if task_name in training_datasets:
-                    df.loc[df[task_col_name] == task_name, in_training_col_name] = True
+            all_training_datasets[model] = training_datasets
+    except (ValueError, KeyError):
+        all_training_datasets[model] = set()
+
+    if all_training_datasets.get(model):
+        mask = task_results_df["model_name"] == model
+        tasks_for_model = task_results_df.loc[mask, task_col_name].unique()
+        for task_name in tasks_for_model:
+            if task_name in all_training_datasets[model]:
+                df.loc[df[task_col_name] == task_name, in_training_col_name] = True
 
     max_dataframe = task_results_df.sort_values(
         "score", ascending=False
