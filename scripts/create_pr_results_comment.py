@@ -213,7 +213,7 @@ def highlight_max_bold(
     df: pd.DataFrame, exclude_cols: list[str] = ["task_name"]
 ) -> pd.DataFrame:
     result_df = df.copy()
-    
+
     for col in result_df.columns:
         if col not in exclude_cols and col != "In Training Data":
             result_df[col] = result_df[col].apply(
@@ -302,14 +302,8 @@ def generate_markdown_content(
         
         if all_training_datasets:
             parts.extend(["### Training Datasets Summary", ""])
-            
-            for model, datasets in sorted(all_training_datasets.items()):
-                if datasets:
-                    datasets_list = ", ".join(f"`{d}`" for d in sorted(datasets))
-                    parts.append(f"**{model}:** {datasets_list}")
-                else:
-                    parts.append(f"**{model}:** No training datasets specified")
-            
+            datasets_list = ", ".join(f"`{d}`" for d in sorted(all_training_datasets))
+            parts.append(f"**Training datasets:** {datasets_list}")
             parts.extend(["", ""])
 
         parts.extend(["", "---", ""])
