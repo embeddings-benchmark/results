@@ -142,7 +142,7 @@ def create_comparison_table(
 
     df[max_col_name] = None
     df[max_model_col_name] = ''
-    df["Training_datasets"] = ''
+    df["Training Datasets"] = ''
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
