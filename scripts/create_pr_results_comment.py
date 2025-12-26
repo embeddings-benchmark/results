@@ -106,11 +106,13 @@ def create_comparison_table(
     tasks: list[AbsTask],
     reference_models: list[ModelName],
     models_in_pr: list[ModelName],
-) -> tuple[pd.DataFrame, list[str]]:
+) -> tuple[pd.DataFrame, list[str], set[str]]:
     models = [model] + reference_models
     max_col_name = "Max result"
     max_model_col_name = "Model with max result"
     task_col_name = "task_name"
+    in_training_col_name = "In Training Data"
+
     results = cache.load_results(models=models, tasks=tasks)
     df = results.to_dataframe(include_model_revision=True)
     new_df_columns = []
@@ -142,6 +144,7 @@ def create_comparison_table(
 
     df[max_col_name] = None
     df[max_model_col_name] = ''
+    df[in_training_col_name] = False
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
@@ -150,12 +153,22 @@ def create_comparison_table(
     task_results_df.loc[task_results_df["score"] > 1, "score"] /= 100
     # remove results of models in this pr from max score calculation
     task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
+
+    model_meta = mteb.get_model_meta(model)
+    all_training_datasets: set[str] = model_meta.get_training_datasets()
+
+    if all_training_datasets:
+        df.loc[
+            df[task_col_name].isin(all_training_datasets),
+            in_training_col_name
+        ] = True
+
     max_dataframe = task_results_df.sort_values(
         "score", ascending=False
     ).drop_duplicates(subset=task_col_name, keep="first")
     high_model_performance_tasks = []
 
-    model_select_colum = (
+    model_select_column = (
         model if model in df.columns else f"{model}__{new_model_revision}"
     )
     if not max_dataframe.empty:
@@ -166,7 +179,7 @@ def create_comparison_table(
                 "model_name"
             ]
             model_score = df.loc[
-                df[task_col_name] == task_name, model_select_colum
+                df[task_col_name] == task_name, model_select_column
             ].values[0]
             if model_score > row["score"]:
                 high_model_performance_tasks.append(task_name)
@@ -175,7 +188,8 @@ def create_comparison_table(
     index_columns = defaultdict(list)
     # models with revisions if exists
     for col in df.columns:
-        index_columns[col.split("__")[0]].append(col)
+        if col != in_training_col_name:
+            index_columns[col.split("__")[0]].append(col)
     for col in models + [max_col_name]:
         available_columns = index_columns.get(col)
         if available_columns is None:
@@ -188,18 +202,20 @@ def create_comparison_table(
     avg_row = pd.DataFrame(
         {
             task_col_name: ["**Average**"],
+            in_training_col_name: ["-"],
             **{col: [val] for col, val in averages.items()},
         }
     )
-    return pd.concat([df, avg_row], ignore_index=True), high_model_performance_tasks
+    return pd.concat([df, avg_row], ignore_index=True), high_model_performance_tasks, all_training_datasets
 
 
 def highlight_max_bold(
     df: pd.DataFrame, exclude_cols: list[str] = ["task_name"]
 ) -> pd.DataFrame:
     result_df = df.copy()
+
     for col in result_df.columns:
-        if col not in exclude_cols:
+        if col not in exclude_cols and col != "In Training Data":
             result_df[col] = result_df[col].apply(
                 lambda x: f"{x:.4f}"
                 if isinstance(x, (int, float)) and pd.notna(x)
@@ -268,7 +284,7 @@ def generate_markdown_content(
     for (model_name, revision), tasks in model_tasks.items():
         parts.append(f"## Results for `{model_name}`")
 
-        df, high_model_performance_tasks = create_comparison_table(
+        df, high_model_performance_tasks, all_training_datasets = create_comparison_table(
             model_name, revision, tasks, reference_models, new_models
         )
         bold_df = highlight_max_bold(df)
@@ -283,6 +299,11 @@ def generate_markdown_content(
                     "",
                 ]
             )
+        
+        if all_training_datasets:
+            datasets_list = ", ".join(f"`{d}`" for d in sorted(all_training_datasets))
+            parts.append(f"**Training datasets:** {datasets_list}")
+            parts.extend(["", ""])
 
         parts.extend(["", "---", ""])
 
