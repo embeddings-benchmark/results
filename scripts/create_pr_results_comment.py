@@ -106,11 +106,13 @@ def create_comparison_table(
     tasks: list[AbsTask],
     reference_models: list[ModelName],
     models_in_pr: list[ModelName],
-) -> tuple[pd.DataFrame, list[str]]:
+) -> tuple[pd.DataFrame, list[str], dict[str, set[str]]]:
     models = [model] + reference_models
     max_col_name = "Max result"
     max_model_col_name = "Model with max result"
     task_col_name = "task_name"
+    in_training_col_name = "In Training Data"
+
     results = cache.load_results(models=models, tasks=tasks)
     df = results.to_dataframe(include_model_revision=True)
     new_df_columns = []
@@ -142,7 +144,7 @@ def create_comparison_table(
 
     df[max_col_name] = None
     df[max_model_col_name] = ''
-    df["Training Datasets"] = ''
+    df[in_training_col_name] = False
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
 
@@ -152,21 +154,23 @@ def create_comparison_table(
     # remove results of models in this pr from max score calculation
     task_results_df = task_results_df[~task_results_df["model_name"].isin(models_in_pr)]
 
-    model_training_datasets: dict[str, str] = {}
+    all_training_datasets: dict[str, set[str]] = {}
     for unique_model in task_results_df["model_name"].unique():
         try:
             model_meta = mteb.get_model_meta(unique_model)
             training_datasets = model_meta.get_training_datasets()
             if training_datasets:
-                model_training_datasets[unique_model] = ", ".join(sorted(training_datasets))
+                all_training_datasets[unique_model] = training_datasets
         except (ValueError, KeyError):
-            model_training_datasets[unique_model] = ""
+            all_training_datasets[unique_model] = set()
 
-    for model_name, datasets_str in model_training_datasets.items():
-        mask = task_results_df["model_name"] == model_name
-        df.loc[df[task_col_name].isin(
-            task_results_df.loc[mask, task_col_name].unique()
-        ), "Training Datasets"] = datasets_str
+    for model_name, training_datasets in all_training_datasets.items():
+        if training_datasets:
+            mask = task_results_df["model_name"] == model_name
+            tasks_for_model = task_results_df.loc[mask, task_col_name].unique()
+            for task_name in tasks_for_model:
+                if task_name in training_datasets:
+                    df.loc[df[task_col_name] == task_name, in_training_col_name] = True
 
     max_dataframe = task_results_df.sort_values(
         "score", ascending=False
@@ -193,7 +197,8 @@ def create_comparison_table(
     index_columns = defaultdict(list)
     # models with revisions if exists
     for col in df.columns:
-        index_columns[col.split("__")[0]].append(col)
+        if col != in_training_col_name:
+            index_columns[col.split("__")[0]].append(col)
     for col in models + [max_col_name]:
         available_columns = index_columns.get(col)
         if available_columns is None:
@@ -206,10 +211,11 @@ def create_comparison_table(
     avg_row = pd.DataFrame(
         {
             task_col_name: ["**Average**"],
+            in_training_col_name: ["-"],
             **{col: [val] for col, val in averages.items()},
         }
     )
-    return pd.concat([df, avg_row], ignore_index=True), high_model_performance_tasks
+    return pd.concat([df, avg_row], ignore_index=True), high_model_performance_tasks, all_training_datasets
 
 
 def highlight_max_bold(
@@ -286,7 +292,7 @@ def generate_markdown_content(
     for (model_name, revision), tasks in model_tasks.items():
         parts.append(f"## Results for `{model_name}`")
 
-        df, high_model_performance_tasks = create_comparison_table(
+        df, high_model_performance_tasks, all_training_datasets = create_comparison_table(
             model_name, revision, tasks, reference_models, new_models
         )
         bold_df = highlight_max_bold(df)
@@ -301,6 +307,18 @@ def generate_markdown_content(
                     "",
                 ]
             )
+        
+        if all_training_datasets:
+            parts.extend(["### Training Datasets Summary", ""])
+            
+            for model, datasets in sorted(all_training_datasets.items()):
+                if datasets:
+                    datasets_list = ", ".join(f"`{d}`" for d in sorted(datasets))
+                    parts.append(f"**{model}:** {datasets_list}")
+                else:
+                    parts.append(f"**{model}:** No training datasets specified")
+            
+            parts.extend(["", ""])
 
         parts.extend(["", "---", ""])
 
