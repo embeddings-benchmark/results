@@ -142,8 +142,25 @@ def create_comparison_table(
 
     df[max_col_name] = None
     df[max_model_col_name] = ''
+    df["Training_datasets"] = ''
     task_results = cache.load_results(tasks=tasks)
     task_results = task_results.join_revisions()
+
+    for _, row in task_results.iterrows():
+        task_name = row["task_name"]
+        df.loc[df[task_col_name] == task_name, max_col_name] = row["score"]
+        df.loc[df[task_col_name] == task_name, max_model_col_name] = row[
+            "model_name"
+        ]
+        
+        # Get training datasets for the model
+        try:
+            model_meta = mteb.get_model_meta(row["model_name"])
+            training_datasets = model_meta.get_training_datasets()
+            if training_datasets:
+                df.loc[df[task_col_name] == task_name, "Training Datasets"] = ", ".join(sorted(training_datasets))
+        except (ValueError, KeyError):
+            pass
 
     task_results_df = task_results.to_dataframe(format="long")
     # some scores are in percentage, convert them to decimal
