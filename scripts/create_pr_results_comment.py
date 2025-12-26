@@ -302,8 +302,12 @@ def generate_markdown_content(
         
         if all_training_datasets:
             datasets_list = ", ".join(f"`{d}`" for d in sorted(all_training_datasets))
-            parts.append(f"**Training datasets:** {datasets_list}")
-            parts.extend(["", ""])
+            parts.extend([
+                "",  # need blank line before to not merge with table
+                f"**Training datasets:** {datasets_list}",
+                "",
+                "",
+            ])
 
         parts.extend(["", "---", ""])
 
