@@ -301,7 +301,6 @@ def generate_markdown_content(
             )
         
         if all_training_datasets:
-            parts.extend(["### Training Datasets Summary", ""])
             datasets_list = ", ".join(f"`{d}`" for d in sorted(all_training_datasets))
             parts.append(f"**Training datasets:** {datasets_list}")
             parts.extend(["", ""])
