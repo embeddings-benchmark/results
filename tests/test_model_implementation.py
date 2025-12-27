@@ -54,7 +54,9 @@ def find_unimplemented_models() -> dict[str, list[str]]:
         # Collect revisions for unimplemented models
         if not impl_exists:
             for revision_folder in model_folder.glob("*"):
-                if revision_folder.is_dir() and not revision_folder.name.startswith("."):
+                if revision_folder.is_dir() and not revision_folder.name.startswith(
+                    "."
+                ):
                     revisions.append(revision_folder.name)
 
             if revisions:
