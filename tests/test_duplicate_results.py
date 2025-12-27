@@ -20,6 +20,8 @@ def get_reference_revision(path: Path, model_name: str) -> str | None:
             " Trying to load from local 'model_meta.json' file."
         )
     meta_file = path / "model_meta.json"
+    # try to load from model meta, because some models have spaces in their name
+    # which are replaced by underscores in the folder names and original names cannot be derived
     if meta_file.exists():
         with open(meta_file, "r", encoding="utf-8") as f:
 
