@@ -77,22 +77,19 @@ def test_all_models_are_implemented_in_mteb(unimplemented_check):
     1. Its name appears in mteb.get_model_metas(), OR
     2. Its model_meta.json file contains a name that appears in mteb.get_model_metas()
     """
-    if not unimplemented_check:
-        assert True
-        return
+    if unimplemented_check:
+        error_lines = [
+            "Found models in results that are not implemented in MTEB:\n",
+        ]
 
-    error_lines = [
-        "Found models in results that are not implemented in MTEB:\n",
-    ]
+        for model_name, revisions in sorted(unimplemented_check.items()):
+            error_lines.append(f"  {model_name}")
+            error_lines.append(f"    Revisions: {revisions}")
 
-    for model_name, revisions in sorted(unimplemented_check.items()):
-        error_lines.append(f"  {model_name}")
-        error_lines.append(f"    Revisions: {revisions}")
+        error_lines.append(
+            "\nThese models need to be added to MTEB's model implementations "
+            "or the results should be removed."
+        )
 
-    error_lines.append(
-        "\nThese models need to be added to MTEB's model implementations "
-        "or the results should be removed."
-    )
-
-    error_message = "\n".join(error_lines)
-    pytest.fail(error_message)
+        error_message = "\n".join(error_lines)
+        pytest.fail(error_message)

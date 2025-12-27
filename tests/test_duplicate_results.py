@@ -105,23 +105,20 @@ def test_no_duplicate_task_results_exist(duplicate_check):
     A duplicate is when the same task exists in multiple revisions for the same model.
     These should be cleaned up by keeping only the reference revision or the first valid one.
     """
-    if not duplicate_check:
-        assert True
-        return
+    if duplicate_check:
+        error_lines = [
+            "Found duplicate task results that could be deleted:\n",
+        ]
 
-    error_lines = [
-        "Found duplicate task results that could be deleted:\n",
-    ]
+        for model_name, duplicates in sorted(duplicate_check.items()):
+            reference_revision = get_reference_revision(model_name)
+            error_lines.append(f"\n{model_name} (reference revision: {reference_revision}):")
 
-    for model_name, duplicates in sorted(duplicate_check.items()):
-        reference_revision = get_reference_revision(model_name)
-        error_lines.append(f"\n{model_name} (reference revision: {reference_revision}):")
+            for dup in duplicates:
+                error_lines.append(f"  Task: {dup['task_name']}")
+                error_lines.append(f"    Revisions present: {dup['revisions_present']}")
+                error_lines.append(f"    Retained revision: {dup['retained_revision']}")
+                error_lines.append(f"    Should delete from revisions: {dup['to_delete']}")
 
-        for dup in duplicates:
-            error_lines.append(f"  Task: {dup['task_name']}")
-            error_lines.append(f"    Revisions present: {dup['revisions_present']}")
-            error_lines.append(f"    Retained revision: {dup['retained_revision']}")
-            error_lines.append(f"    Should delete from revisions: {dup['to_delete']}")
-
-    error_message = "\n".join(error_lines)
-    pytest.fail(error_message)
+        error_message = "\n".join(error_lines)
+        pytest.fail(error_message)
