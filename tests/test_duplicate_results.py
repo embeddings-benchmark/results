@@ -1,14 +1,40 @@
 from collections import defaultdict
 from pathlib import Path
 
-import pytest
 import mteb
+import pytest
+import logging
+import json
+
+logger = logging.getLogger(__name__)
 
 
-def get_reference_revision(model_name: str) -> str | None:
-    """Get the reference revision for a model from MTEB."""
-    model_meta = mteb.get_model_meta(model_name)
-    return model_meta.revision
+def get_reference_revision(path: Path, model_name: str) -> str | None:
+    """Load model metadata from a JSON file."""
+    try:
+        model_meta = mteb.get_model_meta(model_name, fetch_from_hf=False)
+        return model_meta.revision
+    except KeyError:
+        logger.info(
+            f"Model metadata for '{model_name}' not found in MTEB registry."
+            " Trying to load from local 'model_meta.json' file."
+        )
+    meta_file = path / "model_meta.json"
+    if meta_file.exists():
+        with open(meta_file, "r", encoding="utf-8") as f:
+
+            meta_data = json.load(f)
+        model_name = meta_data.get("name")
+        if model_name:
+            try:
+                model_meta = mteb.get_model_meta(model_name, fetch_from_hf=False)
+                return model_meta.revision
+            except KeyError:
+                logger.warning(
+                    f"Model metadata for '{model_name}' from local file not found in MTEB registry."
+                )
+    return None
+
 
 
 def find_duplicate_tasks() -> dict[str, list[dict]]:
@@ -30,8 +56,9 @@ def find_duplicate_tasks() -> dict[str, list[dict]]:
             continue
 
         model_name = model_folder.name.replace("__", "/")
-        reference_revision = get_reference_revision(model_name)
         task_to_revisions: dict[str, list[str]] = defaultdict(list)
+
+        reference_revision = None
 
         # Collect all task files across revisions
         for revision_folder in model_folder.glob("*"):
@@ -39,6 +66,8 @@ def find_duplicate_tasks() -> dict[str, list[dict]]:
                 continue
 
             revision = revision_folder.name
+            if reference_revision is None:
+                reference_revision = get_reference_revision(revision_folder, model_name)
 
             for task_file in revision_folder.glob("*.json"):
                 if task_file.name == "model_meta.json":
@@ -104,9 +133,8 @@ def test_no_duplicate_task_results_exist():
         ]
 
         for model_name, duplicates in sorted(duplicate_check.items()):
-            reference_revision = get_reference_revision(model_name)
             error_lines.append(
-                f"\n{model_name} (reference revision: {reference_revision}):"
+                f"\n{model_name}:"
             )
 
             for dup in duplicates:
