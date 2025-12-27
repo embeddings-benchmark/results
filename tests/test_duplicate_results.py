@@ -33,8 +33,10 @@ def get_reference_revision(path: Path, model_name: str) -> str | None:
                 logger.warning(
                     f"Model metadata for '{model_name}' from local file not found in MTEB registry."
                 )
-    return None
-
+    raise KeyError(
+        f"Could not determine reference revision for model '{model_name}'."
+        f" On path: {path}"
+    )
 
 
 def find_duplicate_tasks() -> dict[str, list[dict]]:
