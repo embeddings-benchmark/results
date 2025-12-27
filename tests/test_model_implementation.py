@@ -6,21 +6,11 @@ import pytest
 import mteb
 
 
-def get_mteb_implementations() -> set[str]:
-    """Get all model names that are implemented in MTEB."""
-    try:
-        implementations = {meta.name for meta in mteb.get_model_metas() if meta.name}
-        return implementations
-    except Exception as e:
-        pytest.skip(f"Could not load MTEB model implementations: {e}")
-        return set()
-
-
 def find_unimplemented_models() -> dict[str, list[str]]:
     """
     Find all models in results that are not implemented in MTEB.
     """
-    implementations = get_mteb_implementations()
+    implementations = {meta.name for meta in mteb.get_model_metas() if meta.name}
     results_folder = Path(__file__).parent.parent / "results"
     unimplemented = {}
 
@@ -44,7 +34,7 @@ def find_unimplemented_models() -> dict[str, list[str]]:
                     if model_name_from_meta and model_name_from_meta in implementations:
                         impl_exists = True
                         break
-            except (json.JSONDecodeError, IOError) as e:
+            except Exception as e:
                 pytest.fail(f"Error reading {meta_file}: {e}")
 
         # Also check model name from path
@@ -65,13 +55,7 @@ def find_unimplemented_models() -> dict[str, list[str]]:
     return unimplemented
 
 
-@pytest.fixture
-def unimplemented_check():
-    """Fixture to find unimplemented models."""
-    return find_unimplemented_models()
-
-
-def test_all_models_are_implemented_in_mteb(unimplemented_check):
+def test_all_models_are_implemented_in_mteb():
     """
     Test that all models in the results folder are implemented in MTEB.
 
@@ -79,6 +63,7 @@ def test_all_models_are_implemented_in_mteb(unimplemented_check):
     1. Its name appears in mteb.get_model_metas(), OR
     2. Its model_meta.json file contains a name that appears in mteb.get_model_metas()
     """
+    unimplemented_check = find_unimplemented_models()
     if unimplemented_check:
         error_lines = [
             "Found models in results that are not implemented in MTEB:\n",
