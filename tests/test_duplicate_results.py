@@ -50,6 +50,7 @@ def find_duplicate_tasks() -> dict[str, list[dict]]:
     """
     results_folder = Path(__file__).parent.parent / "results"
     duplicates_found = {}
+    exclude_models = {"jinaai/jina-clip-v2", "sentence-transformers/multi-qa-mpnet-base-dot-v1", "sentence-transformers/static-retrieval-mrl-en-v1"}
 
     for model_folder in sorted(results_folder.glob("*")):
         if (
@@ -60,6 +61,8 @@ def find_duplicate_tasks() -> dict[str, list[dict]]:
             continue
 
         model_name = model_folder.name.replace("__", "/")
+        if model_name in exclude_models:
+            continue
         task_to_revisions: dict[str, list[str]] = defaultdict(list)
 
         reference_revision = None
