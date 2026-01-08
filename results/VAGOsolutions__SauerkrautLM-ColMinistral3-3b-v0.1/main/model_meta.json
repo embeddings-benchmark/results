@@ -1,0 +1,39 @@
+{
+  "loader_kwargs": {},
+  "name": "VAGOsolutions/SauerkrautLM-ColMinistral3-3b-v0.1",
+  "revision": "54aa3ffbbce20471fdcc4afc07d13989c65e71b8",
+  "release_date": "2025-12-20",
+  "languages": [
+    "eng-Latn",
+    "deu-Latn",
+    "fra-Latn",
+    "spa-Latn",
+    "ita-Latn",
+    "por-Latn"
+  ],
+  "n_parameters": 4252136448,
+  "memory_usage_mb": 8110,
+  "max_tokens": 262144,
+  "embed_dim": 128,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": null,
+  "public_training_data": null,
+  "framework": [
+    "ColPali"
+  ],
+  "reference": "https://huggingface.co/VAGOsolutions/SauerkrautLM-ColMinistral3-3b-v0.1",
+  "similarity_fn_name": "MaxSim",
+  "use_instructions": true,
+  "training_datasets": ["VidoreDocVQARetrieval", "VidoreInfoVQARetrieval", "VidoreTatdqaRetrieval", "VidoreArxivQARetrieval"],
+  "adapted_from": "mistralai/Ministral-3B-Instruct-2410",
+  "superseded_by": null,
+  "modalities": [
+    "image",
+    "text"
+  ],
+  "is_cross_encoder": null,
+  "citation": "\n@misc{sauerkrautlm-colpali-2025,\n  title={SauerkrautLM-ColPali: Multi-Vector Vision Retrieval Models},\n  author={David Golchinfar},\n  organization={VAGO Solutions},\n  year={2025},\n  url={https://github.com/VAGOsolutions/sauerkrautlm-colpali}\n}\n\n@misc{faysse2024colpali,\n  title={ColPali: Efficient Document Retrieval with Vision Language Models},\n  author={Faysse, Manuel and Sibille, Hugues and Wu, Tony and Omrani, Bilel and Viaud, Gautier and Hudelot, C\\'eline and Colombo, Pierre},\n  year={2024},\n  eprint={2407.01449},\n  archivePrefix={arXiv},\n  primaryClass={cs.IR}\n}\n",
+  "contacts": null,
+  "loader": "SLMColMinistral3Wrapper"
+}
