@@ -17,15 +17,15 @@
   "embed_dim": 128,
   "license": "apache-2.0",
   "open_weights": true,
-  "public_training_code": null,
-  "public_training_data": null,
+  "public_training_code": "https://github.com/VAGOsolutions/sauerkrautlm-colpali",
+  "public_training_data": "https://huggingface.co/datasets/vidore/colpali_train_set",
   "framework": [
     "ColPali"
   ],
   "reference": "https://huggingface.co/VAGOsolutions/SauerkrautLM-ColMinistral3-3b-v0.1",
-  "similarity_fn_name": "MaxSim",
+  "similarity_fn_name": "max_sim",
   "use_instructions": true,
-  "training_datasets": ["VidoreDocVQARetrieval", "VidoreInfoVQARetrieval", "VidoreTatdqaRetrieval", "VidoreArxivQARetrieval"],
+  "training_datasets": {"DocVQA": ["train"], "InfoVQA": ["train"], "TATDQA": ["train"], "arXivQA": ["train"]},
   "adapted_from": "mistralai/Ministral-3B-Instruct-2410",
   "superseded_by": null,
   "modalities": [
