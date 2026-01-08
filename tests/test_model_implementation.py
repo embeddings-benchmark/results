@@ -13,15 +13,12 @@ def find_unimplemented_models() -> dict[str, list[str]]:
     implementations = {meta.name for meta in mteb.get_model_metas() if meta.name}
     results_folder = Path(__file__).parent.parent / "results"
     unimplemented = {}
-    exclude_models = {"jinaai/jina-clip-v2", "sentence-transformers/multi-qa-mpnet-base-dot-v1", "sentence-transformers/static-retrieval-mrl-en-v1"}
 
     for model_folder in sorted(results_folder.glob("*")):
         if not model_folder.is_dir() or model_folder.name.startswith("."):
             continue
 
         model_name_from_path = model_folder.name.replace("__", "/")
-        if model_name_from_path in exclude_models:
-            continue
         revisions = []
 
         # Check if model is implemented via model_meta.json files
