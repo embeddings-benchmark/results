@@ -1,0 +1,39 @@
+{
+  "loader_kwargs": {},
+  "name": "VAGOsolutions/SauerkrautLM-ColQwen3-1.7b-Turbo-v0.1",
+  "revision": "19c295a18e057d6d82754f627c09408117ffdb66",
+  "release_date": "2025-12-20",
+  "languages": [
+    "eng-Latn",
+    "deu-Latn",
+    "fra-Latn",
+    "spa-Latn",
+    "ita-Latn",
+    "por-Latn"
+  ],
+  "n_parameters": 1756572288,
+  "memory_usage_mb": 3350,
+  "max_tokens": 262144,
+  "embed_dim": 128,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": "https://github.com/VAGOsolutions/sauerkrautlm-colpali",
+  "public_training_data": "https://huggingface.co/datasets/vidore/colpali_train_set",
+  "framework": [
+    "ColPali"
+  ],
+  "reference": "https://huggingface.co/VAGOsolutions/SauerkrautLM-ColQwen3-1.7b-Turbo-v0.1",
+  "similarity_fn_name": "max_sim",
+  "use_instructions": true,
+  "training_datasets": {"DocVQA": ["train"], "InfoVQA": ["train"], "TATDQA": ["train"], "arXivQA": ["train"]},
+  "adapted_from": "Qwen/Qwen3-VL-2B-Instruct",
+  "superseded_by": null,
+  "modalities": [
+    "image",
+    "text"
+  ],
+  "is_cross_encoder": null,
+  "citation": "\n@misc{sauerkrautlm-colpali-2025,\n  title={SauerkrautLM-ColPali: Multi-Vector Vision Retrieval Models},\n  author={David Golchinfar},\n  organization={VAGO Solutions},\n  year={2025},\n  url={https://github.com/VAGOsolutions/sauerkrautlm-colpali}\n}\n\n@misc{faysse2024colpali,\n  title={ColPali: Efficient Document Retrieval with Vision Language Models},\n  author={Faysse, Manuel and Sibille, Hugues and Wu, Tony and Omrani, Bilel and Viaud, Gautier and Hudelot, C\\'eline and Colombo, Pierre},\n  year={2024},\n  eprint={2407.01449},\n  archivePrefix={arXiv},\n  primaryClass={cs.IR}\n}\n",
+  "contacts": null,
+  "loader": "SLMColQwen3Wrapper"
+}
