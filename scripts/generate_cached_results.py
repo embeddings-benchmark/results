@@ -40,18 +40,24 @@ def generate_cached_results():
     # The remote repo should already be cloned from previous runs
     logger.info("Using existing remote results repository...")
     
-    # Load all model names
-    logger.info("Getting all model names...")
+    # Load all model metas (not just names)
+    # Passing ModelMeta objects ensures filtering uses both name AND revision,
+    # which avoids loading no_revision_available folders when a proper revision exists
+    logger.info("Getting all model metas...")
     models_start = time.time()
-    all_model_names = [model_meta.name for model_meta in mteb.get_model_metas()]
+    all_model_metas = [
+        model_meta
+        for model_meta in mteb.get_model_metas()
+        if model_meta.name is not None
+    ]
     models_time = time.time() - models_start
-    logger.info(f"Found {len(all_model_names)} models in {models_time:.2f}s")
-    
+    logger.info(f"Found {len(all_model_metas)} models in {models_time:.2f}s")
+
     # Load results for all models
     logger.info("Loading results from cache...")
     load_start = time.time()
     all_results = cache.load_results(
-        models=all_model_names,
+        models=all_model_metas,
         only_main_score=True,
         require_model_meta=False,
         include_remote=True,
