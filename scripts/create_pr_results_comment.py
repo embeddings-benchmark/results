@@ -113,7 +113,7 @@ def create_comparison_table(
     task_col_name = "task_name"
     in_training_col_name = "In Training Data"
 
-    results = cache.load_results(models=models, tasks=tasks)
+    results = cache.load_results(models=models, tasks=tasks, validate_and_filter=True)
     df = results.to_dataframe(include_model_revision=True)
     new_df_columns = []
     columns_to_merge = defaultdict(list)
@@ -145,7 +145,7 @@ def create_comparison_table(
     df[max_col_name] = None
     df[max_model_col_name] = ''
     df[in_training_col_name] = False
-    task_results = cache.load_results(tasks=tasks)
+    task_results = cache.load_results(tasks=tasks, validate_and_filter=True)
     task_results = task_results.join_revisions()
 
     task_results_df = task_results.to_dataframe(format="long")
