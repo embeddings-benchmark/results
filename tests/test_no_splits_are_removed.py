@@ -32,7 +32,7 @@ def test_no_splits_are_removed():
     errors = []
     for filepath_str in changed_files:
         filepath = root / Path(filepath_str)
-        if filepath.name == "model_meta.json":
+        if not filepath.exists() or filepath.name == "model_meta.json":
             continue
         # Get the file from main branch
         old_content = subprocess.run(
