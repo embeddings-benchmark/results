@@ -28,8 +28,10 @@ jobs:
         with:
           fetch-depth: 0 # to allow us to examine the git diff
 
-      - name: Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+      - name: Install uv and set the Python ${{ matrix.python-version }} version
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         shell: bash
