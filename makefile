@@ -1,6 +1,6 @@
 install-for-tests:
 	@echo "--- Installing dependencies for tests ---"
-	uv synv --group dev
+	uv sync --group dev --group pr-comment
 
 test:
 	@echo "--- Running tests ---"
