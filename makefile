@@ -1,11 +1,10 @@
 install-for-tests:
 	@echo "--- Installing dependencies for tests ---"
-	pip install pip --upgrade
-	pip install . --group dev
+	uv synv --group dev
 
 test:
 	@echo "--- Running tests ---"
-	pytest
+	uv run --no-sync pytest
 
 pre-push:
 	@echo "--- Running pre-push commands ---"
