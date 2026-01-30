@@ -131,7 +131,7 @@ folders_without_meta = [  # please do not add to this list it is only intended f
     ("bigscience-data__sgpt-bloom-1b7-nli", "no_revision_available"),
     ("bigscience-data__sgpt-bloom-7b1-msmarco", "no_revision_available"),
     ("bm25", "no_revision_available"),
-    ("bm25s", "0_1_10"),
+    ("baseline__bm25s", "0_1_10"),
     ("castorini__monobert-large-msmarco", "no_revision_available"),
     ("castorini__monot5-3b-msmarco-10k", "no_revision_available"),
     ("castorini__monot5-base-msmarco-10k", "no_revision_available"),
