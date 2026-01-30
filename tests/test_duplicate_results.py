@@ -55,7 +55,7 @@ def find_duplicate_tasks() -> dict[str, list[dict]]:
         if (
             not model_folder.is_dir()
             or model_folder.name.startswith(".")
-            or model_folder.name == "Human"
+            or model_folder.name == "baseline/Human"
         ):
             continue
 

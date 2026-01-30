@@ -671,8 +671,6 @@ def test_organization_is_specified_for_new_additions(model_rev_pair):
     meta_file = rev_folder / "model_meta.json"
     with meta_file.open("r") as f:
         meta = json.load(f)
-    if meta["name"] in ["Human"]:
-        return
     assert "/" in meta["name"]
 
 
