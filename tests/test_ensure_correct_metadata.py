@@ -627,11 +627,11 @@ revision_exceptions = [
     ("thenlper__gte-large-zh", "external"),
     ("jinaai__jina-embeddings-v2-base-es", "external"),
     ("nomic-ai__nomic-embed-text-v1", "external"),
-    ("Human", "annotator_fa668689-538c-4dc3-a9b4-b1ca70a237e9"),
-    ("Human", "annotator_a7e82e0b-ad1c-450d-b9ff-7502e96815d6"),
-    ("Human", "annotator_d215cdb8-cd38-4af5-8d35-3d237ddec07a"),
-    ("Human", "v1.0"),
-    ("Human", "2025_09_25"),
+    ("baseline__Human", "annotator_fa668689-538c-4dc3-a9b4-b1ca70a237e9"),
+    ("baseline__Human", "annotator_a7e82e0b-ad1c-450d-b9ff-7502e96815d6"),
+    ("baseline__Human", "annotator_d215cdb8-cd38-4af5-8d35-3d237ddec07a"),
+    ("baseline__Human", "v1.0"),
+    ("baseline__Human", "2025_09_25"),
 ]
 
 
@@ -671,8 +671,6 @@ def test_organization_is_specified_for_new_additions(model_rev_pair):
     meta_file = rev_folder / "model_meta.json"
     with meta_file.open("r") as f:
         meta = json.load(f)
-    if meta["name"] in ["Human"]:
-        return
     assert "/" in meta["name"]
 
 
