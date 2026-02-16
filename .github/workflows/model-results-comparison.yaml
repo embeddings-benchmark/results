@@ -76,18 +76,14 @@ jobs:
           echo "pr_number=" >> $GITHUB_OUTPUT
         fi
 
-    - name: Truncate markdown for GitHub API limit
-      run: |
-        # Only truncate if the file exists and exceeds GitHub's API limit
-        if [ -f model-comparison.md ] && [ $(wc -c < model-comparison.md) -gt 65536 ]; then
-          echo "Truncating model-comparison.md to fit GitHub API limit..."
-          head -c 65300 model-comparison.md > model-comparison-truncated.md
-          echo -e "\n\n---\n**Note:** Content truncated due to GitHub API limits. See the full report in the workflow artifacts." >> model-comparison-truncated.md
-          mv model-comparison-truncated.md model-comparison.md
-        fi
-
     - name: Post PR comment
       if: steps.pr_info.outputs.pr_number != ''
       env:
         GITHUB_TOKEN: ${{ github.token }}
-      run: gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
+      run: |
+        echo "Truncating model-comparison.md to fit GitHub API limit..."
+        head -c 65300 model-comparison.md > model-comparison-truncated.md
+        echo -e "\n\n---\n**Note:** Content truncated due to GitHub API limits. See the full report in the workflow artifacts." >> model-comparison-truncated.md
+        mv model-comparison-truncated.md model-comparison.md
+
+        gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
