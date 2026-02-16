@@ -632,6 +632,18 @@ revision_exceptions = [
     ("baseline__Human", "annotator_d215cdb8-cd38-4af5-8d35-3d237ddec07a"),
     ("baseline__Human", "v1.0"),
     ("baseline__Human", "2025_09_25"),
+    # OpenAI Whisper models using "main" as revision
+    ("openai__whisper-base", "main"),
+    ("openai__whisper-large-v3", "main"),
+    ("openai__whisper-medium", "main"),
+    ("openai__whisper-small", "main"),
+    ("openai__whisper-tiny", "main"),
+    # Models using "no_revision" as revision
+    ("lyrebird__wav2clip", "no_revision"),
+    ("microsoft__msclap-2022", "no_revision"),
+    ("microsoft__msclap-2023", "no_revision"),
+    # Model with concatenated SHA revision
+    ("microsoft__speecht5_multimodal", "53615c10408485422e09a12cda191a747f4bbe34-30fcde30f19b87502b8435427b5f5068e401d5f6"),
 ]
 
 
