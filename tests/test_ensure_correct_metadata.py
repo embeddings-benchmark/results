@@ -632,8 +632,8 @@ revision_exceptions = [
     ("baseline__Human", "annotator_d215cdb8-cd38-4af5-8d35-3d237ddec07a"),
     ("baseline__Human", "v1.0"),
     ("baseline__Human", "2025_09_25"),
-    ("mteb/baseline-bm25s", "0_1_10"),
-    ("mteb/baseline-bm25s", "1"),
+    ("mteb__baseline-bm25s", "0_1_10"),
+    ("mteb__baseline-random-encoder", "1"),
     # OpenAI Whisper models using "main" as revision
     ("openai__whisper-base", "main"),
     ("openai__whisper-large-v3", "main"),
@@ -674,7 +674,7 @@ def test_revision_is_specified_for_new_additions(model_rev_pair):
     ], f"Model {meta['name']} in {rev_folder} does not have a valid revision specified."
     assert (
         is_sha1(rev) or len(rev) == 1  # e.g. "1", "2", "3" etc. used for API versions
-    )
+    ), f"Model {meta['name']} in {rev_folder} does not have a valid revision specified."
 
 
 @pytest.mark.parametrize("model_rev_pair", model_rev_pairs)
