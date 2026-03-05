@@ -1,7 +1,7 @@
 {
   "dataset_revision": "406f09a45cc106a8f7b7fd0c25078883fe58cb1f",
   "task_name": "VieQuADRetrieval",
-  "mteb_version": "1.38.41",
+  "mteb_version": "2.5.4",
   "scores": {
     "validation": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.47144,
         "recall_at_100": 0.6958,
         "recall_at_1000": 0.90063,
+        "accuracy": 0.10767,
         "precision_at_1": 0.21533,
         "precision_at_3": 0.15332,
         "precision_at_5": 0.11465,
@@ -145,6 +146,13 @@
         "nauc_mrr_at_1000_max": 0.069244,
         "nauc_mrr_at_1000_std": -0.050583,
         "nauc_mrr_at_1000_diff1": 0.203369,
+        "cv_recall_at_1": 0.21533,
+        "cv_recall_at_3": 0.42432,
+        "cv_recall_at_5": 0.5083,
+        "cv_recall_at_10": 0.62842,
+        "cv_recall_at_20": 0.74219,
+        "cv_recall_at_100": 0.93262,
+        "cv_recall_at_1000": 0.99951,
         "main_score": 0.28236,
         "hf_subset": "default",
         "languages": [
@@ -153,6 +161,6 @@
       }
     ]
   },
-  "evaluation_time": 5.4146506786346436,
+  "evaluation_time": 8.589465141296387,
   "kg_co2_emissions": null
 }

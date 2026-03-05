@@ -1,7 +1,7 @@
 {
   "dataset_revision": "d0cc9b60ba66faa3fb21cb9a54ef969af548b312",
   "task_name": "CQADupstackMathematica-VN",
-  "mteb_version": "1.38.39",
+  "mteb_version": "2.8.1",
   "scores": {
     "test": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.14392,
         "recall_at_100": 0.22903,
         "recall_at_1000": 0.44897,
+        "accuracy": 0.02736,
         "precision_at_1": 0.03198,
         "precision_at_3": 0.02416,
         "precision_at_5": 0.01706,
@@ -145,6 +146,13 @@
         "nauc_mrr_at_1000_max": -0.193954,
         "nauc_mrr_at_1000_std": 0.288017,
         "nauc_mrr_at_1000_diff1": 0.198225,
+        "cv_recall_at_1": 0.03198,
+        "cv_recall_at_3": 0.07036,
+        "cv_recall_at_5": 0.08102,
+        "cv_recall_at_10": 0.1258,
+        "cv_recall_at_20": 0.15991,
+        "cv_recall_at_100": 0.26439,
+        "cv_recall_at_1000": 0.52665,
         "main_score": 0.0662,
         "hf_subset": "default",
         "languages": [
@@ -153,6 +161,6 @@
       }
     ]
   },
-  "evaluation_time": 28.56890058517456,
+  "evaluation_time": 45.98954725265503,
   "kg_co2_emissions": null
 }

@@ -1,7 +1,7 @@
 {
   "dataset_revision": "a13d72fbb859be3dc19ab669d1ec9510407d2dcd",
   "task_name": "NFCorpus-VN",
-  "mteb_version": "1.38.39",
+  "mteb_version": "2.8.1",
   "scores": {
     "test": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.09302,
         "recall_at_100": 0.15802,
         "recall_at_1000": 0.41789,
+        "accuracy": 0.02358,
         "precision_at_1": 0.1747,
         "precision_at_3": 0.15462,
         "precision_at_5": 0.13614,
@@ -58,9 +59,9 @@
         "nauc_ndcg_at_100_max": -0.117913,
         "nauc_ndcg_at_100_std": 0.468333,
         "nauc_ndcg_at_100_diff1": 0.471703,
-        "nauc_ndcg_at_1000_max": -0.061274,
-        "nauc_ndcg_at_1000_std": 0.450824,
-        "nauc_ndcg_at_1000_diff1": 0.458572,
+        "nauc_ndcg_at_1000_max": -0.061273,
+        "nauc_ndcg_at_1000_std": 0.450823,
+        "nauc_ndcg_at_1000_diff1": 0.458571,
         "nauc_map_at_1_max": -0.310986,
         "nauc_map_at_1_std": 0.400218,
         "nauc_map_at_1_diff1": 0.701867,
@@ -79,9 +80,9 @@
         "nauc_map_at_100_max": -0.214508,
         "nauc_map_at_100_std": 0.457522,
         "nauc_map_at_100_diff1": 0.573659,
-        "nauc_map_at_1000_max": -0.202728,
-        "nauc_map_at_1000_std": 0.455606,
-        "nauc_map_at_1000_diff1": 0.563387,
+        "nauc_map_at_1000_max": -0.202727,
+        "nauc_map_at_1000_std": 0.455605,
+        "nauc_map_at_1000_diff1": 0.563386,
         "nauc_recall_at_1_max": -0.310986,
         "nauc_recall_at_1_std": 0.400218,
         "nauc_recall_at_1_diff1": 0.701867,
@@ -145,6 +146,13 @@
         "nauc_mrr_at_1000_max": -0.159563,
         "nauc_mrr_at_1000_std": 0.36226,
         "nauc_mrr_at_1000_diff1": 0.381371,
+        "cv_recall_at_1": 0.1747,
+        "cv_recall_at_3": 0.30723,
+        "cv_recall_at_5": 0.37952,
+        "cv_recall_at_10": 0.44578,
+        "cv_recall_at_20": 0.5241,
+        "cv_recall_at_100": 0.72289,
+        "cv_recall_at_1000": 0.91566,
         "main_score": 0.14054,
         "hf_subset": "default",
         "languages": [
@@ -153,6 +161,6 @@
       }
     ]
   },
-  "evaluation_time": 7.9784910678863525,
+  "evaluation_time": 11.722295761108398,
   "kg_co2_emissions": null
 }
