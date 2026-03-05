@@ -1,7 +1,7 @@
 {
   "dataset_revision": "54d73a1ea11ea0ae4ec0214ec519c93db79dee88",
   "task_name": "TRECCOVID-VN",
-  "mteb_version": "1.38.39",
+  "mteb_version": "2.8.1",
   "scores": {
     "test": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.00516,
         "recall_at_100": 0.01955,
         "recall_at_1000": 0.07083,
+        "accuracy": 0.00043,
         "precision_at_1": 0.13636,
         "precision_at_3": 0.13636,
         "precision_at_5": 0.13182,
@@ -39,7 +40,7 @@
         "mrr_at_10": 0.197754,
         "mrr_at_20": 0.209629,
         "mrr_at_100": 0.216413,
-        "mrr_at_1000": 0.217223,
+        "mrr_at_1000": 0.217224,
         "nauc_ndcg_at_1_max": 0.185026,
         "nauc_ndcg_at_1_std": 0.291575,
         "nauc_ndcg_at_1_diff1": 0.371186,
@@ -58,9 +59,9 @@
         "nauc_ndcg_at_100_max": 0.142736,
         "nauc_ndcg_at_100_std": 0.610227,
         "nauc_ndcg_at_100_diff1": 0.161404,
-        "nauc_ndcg_at_1000_max": 0.08334,
-        "nauc_ndcg_at_1000_std": 0.607619,
-        "nauc_ndcg_at_1000_diff1": 0.181747,
+        "nauc_ndcg_at_1000_max": 0.083339,
+        "nauc_ndcg_at_1000_std": 0.607618,
+        "nauc_ndcg_at_1000_diff1": 0.181746,
         "nauc_map_at_1_max": -0.057587,
         "nauc_map_at_1_std": 0.130426,
         "nauc_map_at_1_diff1": 0.483204,
@@ -142,9 +143,16 @@
         "nauc_mrr_at_100_max": 0.108869,
         "nauc_mrr_at_100_std": 0.301924,
         "nauc_mrr_at_100_diff1": 0.205166,
-        "nauc_mrr_at_1000_max": 0.110121,
-        "nauc_mrr_at_1000_std": 0.301334,
-        "nauc_mrr_at_1000_diff1": 0.205959,
+        "nauc_mrr_at_1000_max": 0.110119,
+        "nauc_mrr_at_1000_std": 0.301331,
+        "nauc_mrr_at_1000_diff1": 0.205957,
+        "cv_recall_at_1": 0.13636,
+        "cv_recall_at_3": 0.22727,
+        "cv_recall_at_5": 0.29545,
+        "cv_recall_at_10": 0.36364,
+        "cv_recall_at_20": 0.52273,
+        "cv_recall_at_100": 0.77273,
+        "cv_recall_at_1000": 1.0,
         "main_score": 0.11748,
         "hf_subset": "default",
         "languages": [
@@ -153,6 +161,6 @@
       }
     ]
   },
-  "evaluation_time": 245.5053107738495,
+  "evaluation_time": 454.31627202033997,
   "kg_co2_emissions": null
 }
