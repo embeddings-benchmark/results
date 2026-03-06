@@ -1,0 +1,45 @@
+{
+    "loader_kwargs": {},
+    "name": "lightonai/GTE-ModernColBERT-v1",
+    "revision": "c1647d10d6edc6f70837f42f0a978f2df53f51dd",
+    "release_date": "2025-04-30",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 149000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 38684160,
+    "memory_usage_mb": null,
+    "max_tokens": 8192.0,
+    "embed_dim": null,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://gist.github.com/NohTow/3030fe16933d8276dd5b3e9877d89f0f",
+    "public_training_data": "https://huggingface.co/datasets/lightonai/ms-marco-en-bge-gemma",
+    "framework": [
+        "PyLate",
+        "ColBERT",
+        "safetensors",
+        "Sentence Transformers"
+    ],
+    "reference": "https://huggingface.co/lightonai/GTE-ModernColBERT-v1",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": [
+        "mMARCO-NL",
+        "MSMARCO"
+    ],
+    "adapted_from": "Alibaba-NLP/gte-modernbert-base",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "@inproceedings{reimers-2019-sentence-bert,\n    title = \"Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks\",\n    author = \"Reimers, Nils and Gurevych, Iryna\",\n    booktitle = \"Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing\",\n    month = \"11\",\n    year = \"2019\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://arxiv.org/abs/1908.10084\"\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "loader": "MultiVectorModel",
+    "is_cross_encoder": false
+}
