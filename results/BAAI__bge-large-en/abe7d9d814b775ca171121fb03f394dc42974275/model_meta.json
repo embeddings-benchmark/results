@@ -1,1 +1,73 @@
-{"name": "BAAI/bge-large-en", "revision": "abe7d9d814b775ca171121fb03f394dc42974275", "release_date": null, "languages": null, "n_parameters": null, "memory_usage": null, "max_tokens": null, "embed_dim": null, "license": "mit", "open_weights": null, "public_training_data": false, "public_training_code": null, "framework": ["PyTorch"], "reference": null, "similarity_fn_name": null, "use_instructions": null, "training_datasets": null, "adapted_from": null, "superseded_by": null, "loader": null}
+{
+    "loader_kwargs": {
+        "model_prompts": {
+            "query": "Represent this sentence for searching relevant passages: ",
+            "BrightBiologyRetrieval-query": "Represent this biology post for searching relevant passages: ",
+            "BrightEarthScienceRetrieval-query": "Represent this earth_science post for searching relevant passages: ",
+            "BrightEconomicsRetrieval-query": "Represent this economics post for searching relevant passages: ",
+            "BrightPsychologyRetrieval-query": "Represent this psychology post for searching relevant passages: ",
+            "BrightRoboticsRetrieval-query": "Represent this robotics post for searching relevant passages: ",
+            "BrightStackoverflowRetrieval-query": "Represent this stackoverflow post for searching relevant passages: ",
+            "BrightSustainableLivingRetrieval-query": "Represent this sustainable_living post for searching relevant passages: ",
+            "BrightPonyRetrieval-query": "Represent this Pony question for searching relevant passages: ",
+            "BrightLeetcodeRetrieval-query": "Represent this Coding problem for searching relevant examples: ",
+            "BrightAopsRetrieval-query": "Represent this Math problem for searching relevant examples: ",
+            "BrightTheoremQATheoremsRetrieval-query": "Represent this Math problem for searching relevant theorems: ",
+            "BrightTheoremQAQuestionsRetrieval-query": "Represent this Math problem for searching relevant examples: ",
+            "BrightBiologyLongRetrieval-query": "Represent this biology post for searching relevant documents: ",
+            "BrightEarthScienceLongRetrieval-query": "Represent this earth_science post for searching relevant documents: ",
+            "BrightEconomicsLongRetrieval-query": "Represent this economics post for searching relevant documents: ",
+            "BrightPsychologyLongRetrieval-query": "Represent this psychology post for searching relevant documents: ",
+            "BrightRoboticsLongRetrieval-query": "Represent this robotics post for searching relevant document: ",
+            "BrightStackoverflowLongRetrieval-query": "Represent this stackoverflow post for searching relevant document: ",
+            "BrightSustainableLivingLongRetrieval-query": "Represent this sustainable_living post for searching relevant documents: ",
+            "BrightPonyLongRetrieval-query": "Represent this Pony question for searching relevant documents: "
+        }
+    },
+    "name": "BAAI/bge-large-en",
+    "revision": "abe7d9d814b775ca171121fb03f394dc42974275",
+    "release_date": "2023-08-05",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 335000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 31254528,
+    "memory_usage_mb": 1242.0,
+    "max_tokens": 512.0,
+    "embed_dim": 1024,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://data.baai.ac.cn/details/BAAI-MTP",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/BAAI/bge-large-en",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "NQ",
+        "AmazonReviewsClassification",
+        "NQHardNegatives",
+        "MLQARetrieval",
+        "NQ-NL",
+        "DuRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": "BAAI/bge-large-en-v1.5",
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@misc{xiao2024cpackpackagedresourcesadvance,\n  archiveprefix = {arXiv},\n  author = {Shitao Xiao and Zheng Liu and Peitian Zhang and Niklas Muennighoff and Defu Lian and Jian-Yun Nie},\n  eprint = {2309.07597},\n  primaryclass = {cs.CL},\n  title = {C-Pack: Packaged Resources To Advance General Chinese Embedding},\n  url = {https://arxiv.org/abs/2309.07597},\n  year = {2024},\n}\n",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "loader": "sentence_transformers_loader",
+    "is_cross_encoder": false
+}

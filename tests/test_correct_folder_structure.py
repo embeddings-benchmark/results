@@ -32,8 +32,16 @@ def test_correct_folder_structure(meta_file):
     if meta_file.parent.parts[-1] == "external":
         revision = "external"
 
-    expected_path = results_folder / mdl_name / revision
-    assert expected_path == meta_file.parent
+    if "experiments" in meta_file.parts:
+        from mteb.models import ModelMeta
+        meta["loader"] = None  # to hack validation
+
+        validated_meta = ModelMeta.model_validate(meta)
+        expected_path = results_folder / mdl_name / revision / "experiments" / validated_meta.experiment_name
+        assert expected_path == meta_file.parent
+    else:
+        expected_path = results_folder / mdl_name / revision
+        assert expected_path == meta_file.parent
     assert expected_path.exists()
     assert len(list(expected_path.glob("*.json"))) > 0
     for file in expected_path.glob("*.json"):
