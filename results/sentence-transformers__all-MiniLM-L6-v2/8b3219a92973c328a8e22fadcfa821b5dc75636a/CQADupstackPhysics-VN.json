@@ -1,7 +1,7 @@
 {
   "dataset_revision": "8b6b68b59933cc72985f674f76c80a678c27d6be",
   "task_name": "CQADupstackPhysics-VN",
-  "mteb_version": "1.38.39",
+  "mteb_version": "2.8.1",
   "scores": {
     "test": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.18212,
         "recall_at_100": 0.31151,
         "recall_at_1000": 0.55958,
+        "accuracy": 0.05229,
         "precision_at_1": 0.06804,
         "precision_at_3": 0.0433,
         "precision_at_5": 0.03258,
@@ -145,6 +146,13 @@
         "nauc_mrr_at_1000_max": 0.11891,
         "nauc_mrr_at_1000_std": 0.197253,
         "nauc_mrr_at_1000_diff1": 0.244132,
+        "cv_recall_at_1": 0.06804,
+        "cv_recall_at_3": 0.12371,
+        "cv_recall_at_5": 0.15464,
+        "cv_recall_at_10": 0.19794,
+        "cv_recall_at_20": 0.24536,
+        "cv_recall_at_100": 0.39381,
+        "cv_recall_at_1000": 0.66804,
         "main_score": 0.10188,
         "hf_subset": "default",
         "languages": [
@@ -153,6 +161,6 @@
       }
     ]
   },
-  "evaluation_time": 45.04702949523926,
+  "evaluation_time": 93.5632438659668,
   "kg_co2_emissions": null
 }
