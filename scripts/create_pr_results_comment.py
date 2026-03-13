@@ -3,20 +3,22 @@ Script to generate a Markdown comparison table for new model results in a pull r
 
 Usage:
     gh pr checkout {pr-number}
-    python scripts/create_pr_results_comment.py [--models MODEL1 MODEL2 ...] [--output OUTPUT_FILE]
+    python scripts/create_pr_results_comment.py [--models MODEL1 MODEL2 ...] [--output-comparison FILE] [--output-diff FILE]
 
 Description:
     - Compares new model results (added in the current PR) against reference models.
     - Outputs a Markdown file with results for each new model and highlights the best scores.
+    - Also generates a table comparing old (base branch) vs new (PR) scores for updated result files.
     - By default, compares against: intfloat/multilingual-e5-large and google/gemini-embedding-001.
     - You can specify reference models with the --models argument.
 
 Arguments:
     --reference-models: List of reference models to compare against (default: intfloat/multilingual-e5-large google/gemini-embedding-001)
-    --output: Output markdown file path (default: model-comparison.md)
+    --output-comparison: Output markdown file for reference model comparison (default: model-comparison.md)
+    --output-diff: Output markdown file for old vs new results diff (default: model-diff.md)
 
 Example:
-    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
+    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model --output-comparison comp.md --output-diff diff.md
 """
 
 from __future__ import annotations
@@ -506,36 +508,36 @@ def create_argparse() -> argparse.ArgumentParser:
         help="List of reference models to compare against (default: %(default)s)",
     )
     parser.add_argument(
-        "--output_comparison",
+        "--output-comparison",
         type=Path,
         default=Path("model-comparison.md"),
-        help="Output markdown file path",
+        help="Output markdown file for reference model comparison (default: model-comparison.md)",
     )
     parser.add_argument(
-        "--output_diff",
+        "--output-diff",
         type=Path,
         default=Path("model-diff.md"),
-        help="Output markdown file path for diff comparison",
+        help="Output markdown file for old vs new results diff (default: model-diff.md)",
     )
     return parser
 
 
-def main(reference_models: list[str], output_path: Path, output_diff_path: Path) -> None:
+def main(reference_models: list[str], output_comparison: Path, output_diff: Path) -> None:
     logger.info("Starting to create PR results comment...")
     logger.info(f"Using reference models: {', '.join(reference_models)}")
     diff = get_diff_from_main()
     base_ref = get_base_ref()
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_diff_path.parent.mkdir(parents=True, exist_ok=True)
+    output_comparison.parent.mkdir(parents=True, exist_ok=True)
+    output_diff.parent.mkdir(parents=True, exist_ok=True)
     
     model_tasks = extract_new_models_and_tasks(diff)
     markdown = generate_markdown_content(model_tasks, reference_models)
-    output_path.write_text(markdown)
+    output_comparison.write_text(markdown)
 
     diff_table_df = create_old_new_diff_table(diff, base_ref)
     old_new_markdown = generate_old_new_diff_markdown(diff_table_df, base_ref)
-    output_diff_path.write_text(old_new_markdown)
+    output_diff.write_text(old_new_markdown)
 
 
 if __name__ == "__main__":
