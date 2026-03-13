@@ -237,7 +237,6 @@ def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
     for model in display_df["model_name"].unique():
         model_df = display_df[display_df["model_name"] == model]
         parts.append(f"### {model}")
-        parts.append(f"Revision: `{model_df['revision'].iloc[0]}`")
         parts.append("")
         parts.append(model_df.to_markdown(index=False))
         parts.append("")
