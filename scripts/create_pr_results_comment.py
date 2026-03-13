@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import logging
 import subprocess
 from collections import defaultdict
@@ -51,6 +52,9 @@ repo_path = Path(__file__).parents[1]
 
 cache = ResultCache(repo_path)
 
+def get_base_ref() -> str:
+    """Get the base reference for comparison (PR_BASE_SHA env var or origin/main)."""
+    return os.getenv("PR_BASE_SHA", "origin/main")
 
 def get_diff_from_main() -> list[str]:
     differences = subprocess.run(
@@ -61,6 +65,182 @@ def get_diff_from_main() -> list[str]:
     ).stdout.splitlines()
 
     return differences
+
+
+def load_json_from_git_ref(relative_path: str, git_ref: str) -> dict | None:
+    """Load a JSON file from a specific git reference."""
+    result = subprocess.run(
+        ["git", "show", f"{git_ref}:{relative_path}"],
+        cwd=repo_path,
+        text=True,
+        capture_output=True,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        return json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return None
+    
+
+def extract_all_metrics(task_result: dict) -> dict[tuple[str, str, str], float]:
+    """
+    Extract all metrics from task result for each split/subset/metric combination.
+    Returns dict with key (split, subset, metric_name) -> value
+    """
+    extracted: dict[tuple[str, str, str], float] = {}
+    for split_name, split_results in task_result.get("scores", {}).items():
+        for subset_result in split_results:
+            subset = subset_result.get("hf_subset", "default")
+            # Extract all numeric metrics (skip non-numeric fields)
+            for metric_name, metric_value in subset_result.items():
+                if metric_name in ["hf_subset", "languages", "scores_per_experiment"]:
+                    continue
+                if not isinstance(metric_value, (int, float)):
+                    continue
+                # Normalize percentage scores to decimal
+                value = float(metric_value)
+                if value > 1:
+                    value /= 100
+                extracted[(split_name, subset, metric_name)] = value
+    return extracted
+
+
+def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataFrame:
+    """Create a DataFrame comparing old and new results for all changed metrics."""
+    columns = [
+        "model_name",
+        "revision",
+        "task_name",
+        "split",
+        "hf_subset",
+        "metric",
+        "old_value",
+        "new_value",
+        "delta",
+        "pct_change",
+    ]
+    rows: list[dict] = []
+
+    for relative_path in differences:
+        path = repo_path / relative_path
+        # Skip non-result files
+        if (
+            not path.exists()
+            or path.suffix != ".json"
+            or path.name == "model_meta.json"
+        ):
+            continue
+
+        # Load model metadata from model_meta.json (same approach as extract_new_models_and_tasks)
+        model_meta_path = path.parent / "model_meta.json"
+        task_name = path.stem
+        
+        if not model_meta_path.exists():
+            continue
+            
+        try:
+            with model_meta_path.open("r") as f:
+                model_meta = json.load(f)
+                model_name = model_meta["name"]
+                revision = model_meta["revision"]
+        except (json.JSONDecodeError, IOError, KeyError):
+            continue
+
+        # Load old version from base ref
+        old_json = load_json_from_git_ref(relative_path, base_ref)
+        if old_json is None:
+            continue  # File is new in this PR, skip comparison
+
+        # Load new version
+        try:
+            with path.open("r") as f:
+                new_json = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            continue
+
+        # Extract all metrics
+        old_metrics = extract_all_metrics(old_json)
+        new_metrics = extract_all_metrics(new_json)
+        common_keys = sorted(set(old_metrics).intersection(new_metrics))
+        if not common_keys:
+            continue
+
+        # Create row for each split/subset/metric combination
+        for split_name, subset_name, metric_name in common_keys:
+            old_value = old_metrics[(split_name, subset_name, metric_name)]
+            new_value = new_metrics[(split_name, subset_name, metric_name)]
+            
+            # Skip if either value is None or NaN
+            if old_value is None or new_value is None or pd.isna(old_value) or pd.isna(new_value):
+                continue
+            
+            delta = new_value - old_value
+            
+            # Only include if there's an actual change
+            if delta == 0:
+                continue
+            
+            pct_change = None if old_value == 0 else delta / old_value
+
+            rows.append(
+                {
+                    "model_name": model_name,
+                    "revision": revision,
+                    "task_name": task_name,
+                    "split": split_name,
+                    "hf_subset": subset_name,
+                    "metric": metric_name,
+                    "old_value": old_value,
+                    "new_value": new_value,
+                    "delta": delta,
+                    "pct_change": pct_change,
+                }
+            )
+
+    if not rows:
+        return pd.DataFrame(columns=columns)
+
+    return pd.DataFrame(rows, columns=columns).sort_values(
+        ["model_name", "revision", "task_name", "split", "hf_subset", "metric"]
+    )
+
+
+def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
+    """Generate markdown table from old vs new comparison DataFrame."""
+    parts = [
+        "# Updated Results: Old vs New Comparison",
+        "",
+        f"**Comparing against:** `{base_ref}`",
+        "",
+    ]
+
+    if diff_df.empty:
+        parts.append("No comparable updated result files found between base and PR.")
+        return "\n".join(parts)
+
+    # Format display DataFrame
+    display_df = diff_df.copy()
+    for col in ["old_value", "new_value", "delta"]:
+        display_df[col] = display_df[col].apply(lambda x: f"{x:.6f}")
+    display_df["pct_change"] = display_df["pct_change"].apply(
+        lambda x: "-" if x is None or pd.isna(x) else f"{x * 100:+.2f}%"
+    )
+
+    # Add summary by model
+    parts.append(f"**Total metric changes:** {len(display_df)}")
+    parts.append("")
+    
+    # Group by model for easier navigation
+    for model in display_df["model_name"].unique():
+        model_df = display_df[display_df["model_name"] == model]
+        parts.append(f"### {model}")
+        parts.append(f"Revision: `{model_df['revision'].iloc[0]}`")
+        parts.append("")
+        parts.append(model_df.to_markdown(index=False))
+        parts.append("")
+
+    return "\n".join(parts)
 
 
 def extract_new_models_and_tasks(
@@ -326,27 +506,39 @@ def create_argparse() -> argparse.ArgumentParser:
         help="List of reference models to compare against (default: %(default)s)",
     )
     parser.add_argument(
-        "--output",
+        "--output_comparison",
         type=Path,
         default=Path("model-comparison.md"),
         help="Output markdown file path",
     )
+    parser.add_argument(
+        "--output_diff",
+        type=Path,
+        default=Path("model-diff.md"),
+        help="Output markdown file path for diff comparison",
+    )
     return parser
 
 
-def main(reference_models: list[str], output_path: Path) -> None:
+def main(reference_models: list[str], output_path: Path, output_diff_path: Path) -> None:
     logger.info("Starting to create PR results comment...")
     logger.info(f"Using reference models: {', '.join(reference_models)}")
     diff = get_diff_from_main()
-
-    model_tasks = extract_new_models_and_tasks(diff)
-    markdown = generate_markdown_content(model_tasks, reference_models)
+    base_ref = get_base_ref()
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_diff_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    model_tasks = extract_new_models_and_tasks(diff)
+    markdown = generate_markdown_content(model_tasks, reference_models)
     output_path.write_text(markdown)
+
+    diff_table_df = create_old_new_diff_table(diff, base_ref)
+    old_new_markdown = generate_old_new_diff_markdown(diff_table_df, base_ref)
+    output_diff_path.write_text(old_new_markdown)
 
 
 if __name__ == "__main__":
     parser = create_argparse()
     args = parser.parse_args()
-    main(args.reference_models, args.output)
+    main(args.reference_models, args.output_comparison, args.output_diff)
