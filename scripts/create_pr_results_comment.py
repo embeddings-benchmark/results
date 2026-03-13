@@ -18,7 +18,7 @@ Arguments:
     --output-diff: Output markdown file for old vs new results diff (default: model-diff.md)
 
 Example:
-    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model --output-comparison comp.md --output-diff diff.md
+    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model --output-comparison model-comparison.md --output-diff model-diff.md
 """
 
 from __future__ import annotations
