@@ -103,8 +103,8 @@ def extract_main_score(task_result: dict) -> dict[str, float]:
 
 
 def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataFrame:
-    """Create DataFrame comparing old and new main_score."""
-    columns = ["model_name", "revision", "task_name", "old_value", "new_value", "delta", "pct_change"]
+    """Create DataFrame comparing old and new main_score with old and new revisions."""
+    columns = ["model_name", "task_name", "old_revision", "old_value", "new_revision", "new_value", "delta", "pct_change"]
     rows: list[dict] = []
 
     for relative_path in differences:
@@ -122,13 +122,24 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
             with model_meta_path.open("r") as f:
                 model_meta = json.load(f)
                 model_name = model_meta["name"]
-                revision = model_meta["revision"]
+                new_revision = model_meta["revision"]
         except (json.JSONDecodeError, IOError, KeyError):
             continue
 
+        # Load old version from base ref
         old_json = load_json_from_git_ref(relative_path, base_ref)
         if old_json is None:
             continue
+
+        # Load old revision from model_meta.json in base ref
+        old_model_meta = load_json_from_git_ref(str(model_meta_path.relative_to(repo_path)), base_ref)
+        if old_model_meta is None:
+            old_revision = "unknown"
+        else:
+            try:
+                old_revision = old_model_meta.get("revision", "unknown")
+            except (AttributeError, TypeError):
+                old_revision = "unknown"
 
         try:
             with path.open("r") as f:
@@ -156,9 +167,10 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
 
         rows.append({
             "model_name": model_name,
-            "revision": revision,
             "task_name": task_name,
+            "old_revision": old_revision,
             "old_value": old_value,
+            "new_revision": new_revision,
             "new_value": new_value,
             "delta": delta,
             "pct_change": pct_change,
@@ -168,12 +180,12 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
         return pd.DataFrame(columns=columns)
 
     return pd.DataFrame(rows, columns=columns).sort_values(
-        ["model_name", "revision", "task_name"]
+        ["model_name", "task_name"]
     )
 
 
 def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
-    """Generate markdown table from main_score comparison."""
+    """Generate markdown table with merged model_name rows and revisions on right."""
     parts = [
         "# Updated Results: Old vs New Comparison",
         "",
@@ -185,22 +197,39 @@ def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
         parts.append("No comparable updated result files found.")
         return "\n".join(parts)
 
-    display_df = diff_df.copy()
-    for col in ["old_value", "new_value", "delta"]:
-        display_df[col] = display_df[col].apply(lambda x: f"{x:.6f}")
-    display_df["pct_change"] = display_df["pct_change"].apply(
-        lambda x: "-" if x is None or pd.isna(x) else f"{x * 100:+.2f}%"
-    )
-
-    parts.append(f"**Total tasks updated:** {len(display_df)}")
+    parts.append(f"**Total tasks updated:** {len(diff_df)}")
     parts.append("")
     
-    for model in display_df["model_name"].unique():
-        model_df = display_df[display_df["model_name"] == model]
-        parts.append(f"### {model}")
-        parts.append("")
-        parts.append(model_df.to_markdown(index=False))
-        parts.append("")
+    # Build markdown table with merged model_name rows, revisions on right
+    table_rows = [
+        "| Model | Task Name | Old Score | New Score | Δ Score | % Change | Old Revision | New Revision |",
+        "|-------|-----------|-----------|-----------|---------|----------|--------------|--------------|",
+    ]
+    
+    current_model = None
+    for _, row in diff_df.iterrows():
+        model_name = row["model_name"]
+        task_name = row["task_name"]
+        old_value = f"{row['old_value']:.6f}"
+        new_value = f"{row['new_value']:.6f}"
+        delta = f"{row['delta']:+.6f}"
+        pct_change = "-" if row["pct_change"] is None or pd.isna(row["pct_change"]) else f"{row['pct_change']*100:+.2f}%"
+        old_revision = row["old_revision"]
+        new_revision = row["new_revision"]
+        
+        # Show model name only for the first row of each model (merged rows effect)
+        if model_name != current_model:
+            display_model = model_name
+            current_model = model_name
+        else:
+            display_model = ""
+        
+        table_rows.append(
+            f"| {display_model} | {task_name} | {old_value} | {new_value} | {delta} | {pct_change} | {old_revision} | {new_revision} |"
+        )
+    
+    parts.extend(table_rows)
+    parts.append("")
 
     return "\n".join(parts)
 
