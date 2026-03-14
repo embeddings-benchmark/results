@@ -34,7 +34,7 @@ import sys
 
 import mteb
 import pandas as pd
-from mteb import AbsTask
+from mteb import AbsTask, TaskResult
 from mteb.cache import ResultCache
 
 ModelName = str
@@ -86,21 +86,27 @@ def load_json_from_git_ref(relative_path: str, git_ref: str) -> dict | None:
         return None
     
 
-def extract_main_score(task_result: dict) -> dict[str, float]:
+def extract_main_score(task_result_dict: dict) -> float | None:
     """
-    Extract main_score from task result.
-    Returns dict with key 'main_score' -> value
+    Extract main_score from task result dictionary using TaskResult.
+    Returns the normalized main_score or None if not found.
     """
-    # Find main_score in the first split/subset result
-    for split_name, split_results in task_result.get("scores", {}).items():
-        for subset_result in split_results:
-            if "main_score" in subset_result:
-                value = float(subset_result["main_score"])
-                # Normalize percentage scores to decimal
-                if value > 1:
-                    value /= 100
-                return {"main_score": value}
-    return {}
+    try:
+        task_result = TaskResult.from_dict(task_result_dict)
+        filtered_result = task_result.only_main_score()
+        # Get the main_score from the first split/subset
+        for split_scores in filtered_result.scores.values():
+            for subset_score in split_scores:
+                main_score = subset_score.get("main_score")
+                if main_score is not None and not pd.isna(main_score):
+                    value = float(main_score)
+                    # Normalize percentage scores to decimal
+                    if value > 1:
+                        value /= 100
+                    return value
+        return None
+    except Exception:
+        return None
 
 
 def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataFrame:
@@ -148,14 +154,11 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
         except (json.JSONDecodeError, IOError):
             continue
 
-        old_metrics = extract_main_score(old_json)
-        new_metrics = extract_main_score(new_json)
+        old_value = extract_main_score(old_json)
+        new_value = extract_main_score(new_json)
         
-        if "main_score" not in old_metrics or "main_score" not in new_metrics:
+        if old_value is None or new_value is None:
             continue
-
-        old_value = old_metrics["main_score"]
-        new_value = new_metrics["main_score"]
         
         if pd.isna(old_value) or pd.isna(new_value):
             continue
