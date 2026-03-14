@@ -85,56 +85,33 @@ def load_json_from_git_ref(relative_path: str, git_ref: str) -> dict | None:
         return None
     
 
-def extract_all_metrics(task_result: dict) -> dict[tuple[str, str, str], float]:
+def extract_main_score(task_result: dict) -> dict[str, float]:
     """
-    Extract all metrics from task result for each split/subset/metric combination.
-    Returns dict with key (split, subset, metric_name) -> value
+    Extract main_score from task result.
+    Returns dict with key 'main_score' -> value
     """
-    extracted: dict[tuple[str, str, str], float] = {}
+    # Find main_score in the first split/subset result
     for split_name, split_results in task_result.get("scores", {}).items():
         for subset_result in split_results:
-            subset = subset_result.get("hf_subset", "default")
-            # Extract all numeric metrics (skip non-numeric fields)
-            for metric_name, metric_value in subset_result.items():
-                if metric_name in ["hf_subset", "languages", "scores_per_experiment"]:
-                    continue
-                if not isinstance(metric_value, (int, float)):
-                    continue
+            if "main_score" in subset_result:
+                value = float(subset_result["main_score"])
                 # Normalize percentage scores to decimal
-                value = float(metric_value)
                 if value > 1:
                     value /= 100
-                extracted[(split_name, subset, metric_name)] = value
-    return extracted
+                return {"main_score": value}
+    return {}
 
 
 def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataFrame:
-    """Create a DataFrame comparing old and new results for all changed metrics."""
-    columns = [
-        "model_name",
-        "revision",
-        "task_name",
-        "split",
-        "hf_subset",
-        "metric",
-        "old_value",
-        "new_value",
-        "delta",
-        "pct_change",
-    ]
+    """Create DataFrame comparing old and new main_score."""
+    columns = ["model_name", "revision", "task_name", "old_value", "new_value", "delta", "pct_change"]
     rows: list[dict] = []
 
     for relative_path in differences:
         path = repo_path / relative_path
-        # Skip non-result files
-        if (
-            not path.exists()
-            or path.suffix != ".json"
-            or path.name == "model_meta.json"
-        ):
+        if not path.exists() or path.suffix != ".json" or path.name == "model_meta.json":
             continue
 
-        # Load model metadata from model_meta.json (same approach as extract_new_models_and_tasks)
         model_meta_path = path.parent / "model_meta.json"
         task_name = path.stem
         
@@ -149,67 +126,54 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
         except (json.JSONDecodeError, IOError, KeyError):
             continue
 
-        # Load old version from base ref
         old_json = load_json_from_git_ref(relative_path, base_ref)
         if old_json is None:
-            continue  # File is new in this PR, skip comparison
+            continue
 
-        # Load new version
         try:
             with path.open("r") as f:
                 new_json = json.load(f)
         except (json.JSONDecodeError, IOError):
             continue
 
-        # Extract all metrics
-        old_metrics = extract_all_metrics(old_json)
-        new_metrics = extract_all_metrics(new_json)
-        common_keys = sorted(set(old_metrics).intersection(new_metrics))
-        if not common_keys:
+        old_metrics = extract_main_score(old_json)
+        new_metrics = extract_main_score(new_json)
+        
+        if "main_score" not in old_metrics or "main_score" not in new_metrics:
             continue
 
-        # Create row for each split/subset/metric combination
-        for split_name, subset_name, metric_name in common_keys:
-            old_value = old_metrics[(split_name, subset_name, metric_name)]
-            new_value = new_metrics[(split_name, subset_name, metric_name)]
-            
-            # Skip if either value is None or NaN
-            if old_value is None or new_value is None or pd.isna(old_value) or pd.isna(new_value):
-                continue
-            
-            delta = new_value - old_value
-            
-            # Only include if there's an actual change
-            if delta == 0:
-                continue
-            
-            pct_change = None if old_value == 0 else delta / old_value
+        old_value = old_metrics["main_score"]
+        new_value = new_metrics["main_score"]
+        
+        if pd.isna(old_value) or pd.isna(new_value):
+            continue
+        
+        delta = new_value - old_value
+        if delta == 0:
+            continue
+        
+        pct_change = None if old_value == 0 else delta / old_value
 
-            rows.append(
-                {
-                    "model_name": model_name,
-                    "revision": revision,
-                    "task_name": task_name,
-                    "split": split_name,
-                    "hf_subset": subset_name,
-                    "metric": metric_name,
-                    "old_value": old_value,
-                    "new_value": new_value,
-                    "delta": delta,
-                    "pct_change": pct_change,
-                }
-            )
+        rows.append({
+            "model_name": model_name,
+            "revision": revision,
+            "task_name": task_name,
+            "old_value": old_value,
+            "new_value": new_value,
+            "delta": delta,
+            "pct_change": pct_change,
+        })
 
     if not rows:
         return pd.DataFrame(columns=columns)
 
     return pd.DataFrame(rows, columns=columns).sort_values(
-        ["model_name", "revision", "task_name", "split", "hf_subset", "metric"]
+        ["model_name", "revision", "task_name"]
     )
 
 
 def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
-    """Generate markdown table from old vs new comparison DataFrame."""
+    """Generate markdown table from main_score comparison."""
     parts = [
         "# Updated Results: Old vs New Comparison",
         "",
@@ -218,10 +182,9 @@ def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
     ]
 
     if diff_df.empty:
-        parts.append("No comparable updated result files found between base and PR.")
+        parts.append("No comparable updated result files found.")
         return "\n".join(parts)
 
-    # Format display DataFrame
     display_df = diff_df.copy()
     for col in ["old_value", "new_value", "delta"]:
         display_df[col] = display_df[col].apply(lambda x: f"{x:.6f}")
@@ -229,11 +192,9 @@ def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
         lambda x: "-" if x is None or pd.isna(x) else f"{x * 100:+.2f}%"
     )
 
-    # Add summary by model
-    parts.append(f"**Total metric changes:** {len(display_df)}")
+    parts.append(f"**Total tasks updated:** {len(display_df)}")
     parts.append("")
     
-    # Group by model for easier navigation
     for model in display_df["model_name"].unique():
         model_df = display_df[display_df["model_name"] == model]
         parts.append(f"### {model}")
