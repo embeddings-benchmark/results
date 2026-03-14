@@ -30,6 +30,7 @@ import logging
 import subprocess
 from collections import defaultdict
 from pathlib import Path
+import sys
 
 import mteb
 import pandas as pd
@@ -511,7 +512,7 @@ def create_argparse() -> argparse.ArgumentParser:
     return parser
 
 
-def main(reference_models: list[str], output_comparison: Path, output_diff: Path) -> None:
+def main(reference_models: list[str], output_comparison: Path, output_diff: Path) -> int:
     logger.info("Starting to create PR results comment...")
     logger.info(f"Using reference models: {', '.join(reference_models)}")
     diff = get_diff_from_main()
@@ -526,10 +527,16 @@ def main(reference_models: list[str], output_comparison: Path, output_diff: Path
 
     diff_table_df = create_old_new_diff_table(diff, base_ref)
     old_new_markdown = generate_old_new_diff_markdown(diff_table_df, base_ref)
+    if diff_table_df.empty:
+        logger.info("No result changes detected. Skipping comment generation.")
+        return 1
+    
     output_diff.write_text(old_new_markdown)
+    return 0
 
 
 if __name__ == "__main__":
     parser = create_argparse()
     args = parser.parse_args()
-    main(args.reference_models, args.output_comparison, args.output_diff)
+    exit_code = main(args.reference_models, args.output_comparison, args.output_diff)
+    sys.exit(exit_code)

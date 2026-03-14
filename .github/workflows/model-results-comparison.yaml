@@ -54,6 +54,8 @@ jobs:
         make install-for-tests
 
     - name: Generate model comparison
+      id: generate_comparison
+      continue-on-error: true
       env:
         REFERENCE_MODELS: ${{ github.event.inputs.reference_models || 'intfloat/multilingual-e5-large google/gemini-embedding-001' }}
       run: |
@@ -66,6 +68,7 @@ jobs:
         path: model-comparison.md
 
     - name: Upload diff report
+      if: steps.generate_comparison.outcome == 'success'
       uses: actions/upload-artifact@v4
       with:
         name: model-diff
@@ -95,7 +98,7 @@ jobs:
         gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
 
     - name: Post diff PR comment
-      if: steps.pr_info.outputs.pr_number != ''
+      if: steps.pr_info.outputs.pr_number != '' && steps.generate_comparison.outcome == 'success'
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
