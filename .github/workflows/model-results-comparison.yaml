@@ -57,13 +57,19 @@ jobs:
       env:
         REFERENCE_MODELS: ${{ github.event.inputs.reference_models || 'intfloat/multilingual-e5-large google/gemini-embedding-001' }}
       run: |
-        uv run python scripts/create_pr_results_comment.py --reference-models $REFERENCE_MODELS --output model-comparison.md
+        uv run python scripts/create_pr_results_comment.py --reference-models $REFERENCE_MODELS --output-comparison model-comparison.md --output-diff model-diff.md
 
     - name: Upload comparison report
       uses: actions/upload-artifact@v4
       with:
         name: model-comparison
         path: model-comparison.md
+
+    - name: Upload diff report
+      uses: actions/upload-artifact@v4
+      with:
+        name: model-diff
+        path: model-diff.md
 
     - name: Determine PR Number
       id: pr_info
@@ -87,3 +93,13 @@ jobs:
         mv model-comparison-truncated.md model-comparison.md
 
         gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
+
+    - name: Post diff PR comment
+      if: steps.pr_info.outputs.pr_number != ''
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        echo "Posting results diff comment..."
+        head -c 65300 model-diff.md > model-diff-truncated.md
+        echo -e "\n\n---\n**Note:** Content truncated due to GitHub API limits. See the full report in the workflow artifacts." >> model-diff-truncated.md
+        gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-diff-truncated.md
