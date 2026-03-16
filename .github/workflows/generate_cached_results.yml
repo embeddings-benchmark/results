@@ -58,72 +58,41 @@ jobs:
           FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
           echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
 
-          # Temporarily move the cache file to avoid checkout conflicts
-          if [ -f "__cached_results.json.gz" ]; then
-            mv __cached_results.json.gz __cached_results.json.gz.tmp
-          fi
+          # Move the generated file outside repository before rebuilding branch
+          CACHE_TMP_PATH="$RUNNER_TEMP/__cached_results.json.gz"
+          mv __cached_results.json.gz "$CACHE_TMP_PATH"
+          README_TMP_PATH="$RUNNER_TEMP/cached-data-README.md"
 
-          # Check if cached-data branch exists
-          if git show-ref --verify --quiet refs/remotes/origin/cached-data; then
-            echo "📋 Switching to existing cached-data branch"
-            git checkout cached-data
-            git pull origin cached-data
-
-            # Remove .gitattributes to clean up LFS tracking (one-time migration)
-            if [ -f ".gitattributes" ]; then
-              echo "🧹 Removing .gitattributes (LFS cleanup)"
-              git rm .gitattributes 2>/dev/null || rm -f .gitattributes
+          # Preserve README.md from cached-data branch (if it exists) without modifications
+          if git ls-remote --exit-code --heads origin cached-data >/dev/null 2>&1; then
+            git fetch origin cached-data:refs/remotes/origin/cached-data
+            if git cat-file -e origin/cached-data:README.md 2>/dev/null; then
+              git show origin/cached-data:README.md > "$README_TMP_PATH"
             fi
-          else
-            echo "🆕 Creating new cached-data branch"
-            git checkout --orphan cached-data
-            # Remove all files from staging area when creating orphan branch
-            git rm -rf . 2>/dev/null || true
           fi
 
-          # Restore the cache file
-          if [ -f "__cached_results.json.gz.tmp" ]; then
-            mv __cached_results.json.gz.tmp __cached_results.json.gz
-          fi
+          # Rebuild cached-data as a fresh orphan branch so history always has one commit
+          git checkout --orphan cached-data
+          git rm -rf . 2>/dev/null || true
 
-          # Ensure we only have the files we want
-          # Remove all tracked files except README.md
-          if [ -f "README.md" ]; then
-            git ls-files | grep -v "README.md" | xargs -r git rm 2>/dev/null || true
-          else
-            git ls-files | xargs -r git rm 2>/dev/null || true
-          fi
-
-          # Add only the cached results file
+          # Restore and stage cache file
+          mv "$CACHE_TMP_PATH" __cached_results.json.gz
           git add __cached_results.json.gz
 
-          # Preserve README.md if it exists in the working directory
-          if [ -f "README.md" ]; then
+          # Restore preserved README.md exactly as it was in cached-data
+          if [ -f "$README_TMP_PATH" ]; then
+            cp "$README_TMP_PATH" README.md
             git add README.md
           fi
 
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
-            echo "✅ No changes in cached results, skipping commit"
-          else
-            # Verify we're not committing too many files (safety check)
-            STAGED_FILES=$(git diff --staged --name-only | wc -l)
-            if [ "$STAGED_FILES" -gt 10 ]; then
-              echo "❌ ERROR: Too many files staged ($STAGED_FILES). Expected only 1-2 files."
-              echo "Staged files:"
-              git diff --staged --name-only
-              exit 1
-            fi
+          # Commit with timestamp and file size
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
+          git commit -m "$COMMIT_MSG"
 
-            # Commit with timestamp and file size
-            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-            COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
-            git commit -m "$COMMIT_MSG"
-
-            # Push to remote
-            git push origin cached-data
-            echo "✅ Successfully updated cached-data branch"
-          fi
+          # Force push keeps remote branch as a single-commit history
+          git push origin cached-data --force
+          echo "✅ Successfully replaced cached-data branch with a single commit"
 
       - name: Report status
         if: always()
