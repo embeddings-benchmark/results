@@ -54,8 +54,6 @@ jobs:
         make install-for-tests
 
     - name: Generate model comparison
-      id: generate_comparison
-      continue-on-error: true
       env:
         REFERENCE_MODELS: ${{ github.event.inputs.reference_models || 'intfloat/multilingual-e5-large google/gemini-embedding-001' }}
       run: |
