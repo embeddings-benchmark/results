@@ -34,6 +34,7 @@ def test_result_diffs_within_threshold():
     
     base_ref = get_base_ref()
     differences = get_diff_from_main()
+    print(differences)
     
     # Skip test if no changes found
     if not differences:

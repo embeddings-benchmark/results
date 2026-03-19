@@ -30,7 +30,6 @@ import logging
 import subprocess
 from collections import defaultdict
 from pathlib import Path
-import sys
 
 import mteb
 import pandas as pd
@@ -186,56 +185,6 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
     return pd.DataFrame(rows, columns=columns).sort_values(
         ["model_name", "task_name"]
     )
-
-
-def generate_old_new_diff_markdown(diff_df: pd.DataFrame, base_ref: str) -> str:
-    """Generate markdown table with merged model_name rows and revisions on right."""
-    parts = [
-        "# Updated Results: Old vs New Comparison",
-        "",
-        f"**Comparing against:** `{base_ref}`",
-        "",
-    ]
-
-    if diff_df.empty:
-        parts.append("No comparable updated result files found.")
-        return "\n".join(parts)
-
-    parts.append(f"**Total tasks updated:** {len(diff_df)}")
-    parts.append("")
-    
-    # Build markdown table with merged model_name rows, revisions on right
-    table_rows = [
-        "| Model | Task Name | Old Score | New Score | Δ Score | % Change | Old Revision | New Revision |",
-        "|-------|-----------|-----------|-----------|---------|----------|--------------|--------------|",
-    ]
-    
-    current_model = None
-    for _, row in diff_df.iterrows():
-        model_name = row["model_name"]
-        task_name = row["task_name"]
-        old_value = f"{row['old_value']:.6f}"
-        new_value = f"{row['new_value']:.6f}"
-        delta = f"{row['delta']:+.6f}"
-        pct_change = "-" if row["pct_change"] is None or pd.isna(row["pct_change"]) else f"{row['pct_change']*100:+.2f}%"
-        old_revision = row["old_revision"]
-        new_revision = row["new_revision"]
-        
-        # Show model name only for the first row of each model (merged rows effect)
-        if model_name != current_model:
-            display_model = model_name
-            current_model = model_name
-        else:
-            display_model = ""
-        
-        table_rows.append(
-            f"| {display_model} | {task_name} | {old_value} | {new_value} | {delta} | {pct_change} | {old_revision} | {new_revision} |"
-        )
-    
-    parts.extend(table_rows)
-    parts.append("")
-
-    return "\n".join(parts)
 
 
 def extract_new_models_and_tasks(
@@ -501,45 +450,26 @@ def create_argparse() -> argparse.ArgumentParser:
         help="List of reference models to compare against (default: %(default)s)",
     )
     parser.add_argument(
-        "--output-comparison",
+        "--output",
         type=Path,
         default=Path("model-comparison.md"),
         help="Output markdown file for reference model comparison (default: model-comparison.md)",
     )
-    parser.add_argument(
-        "--output-diff",
-        type=Path,
-        default=Path("model-diff.md"),
-        help="Output markdown file for old vs new results diff (default: model-diff.md)",
-    )
     return parser
 
 
-def main(reference_models: list[str], output_comparison: Path, output_diff: Path) -> int:
+def main(reference_models: list[str], output_path: Path) -> None:
     logger.info("Starting to create PR results comment...")
     logger.info(f"Using reference models: {', '.join(reference_models)}")
     diff = get_diff_from_main()
-    base_ref = get_base_ref()
-
-    output_comparison.parent.mkdir(parents=True, exist_ok=True)
-    output_diff.parent.mkdir(parents=True, exist_ok=True)
     
     model_tasks = extract_new_models_and_tasks(diff)
     markdown = generate_markdown_content(model_tasks, reference_models)
-    output_comparison.write_text(markdown)
-
-    diff_table_df = create_old_new_diff_table(diff, base_ref)
-    old_new_markdown = generate_old_new_diff_markdown(diff_table_df, base_ref)
-    if diff_table_df.empty:
-        logger.info("No result changes detected. Skipping comment generation.")
-        return 1
-    
-    output_diff.write_text(old_new_markdown)
-    return 0
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(markdown)
 
 
 if __name__ == "__main__":
     parser = create_argparse()
     args = parser.parse_args()
-    exit_code = main(args.reference_models, args.output_comparison, args.output_diff)
-    sys.exit(exit_code)
+    main(args.reference_models, args.output)
