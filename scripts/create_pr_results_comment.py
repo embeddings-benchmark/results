@@ -14,11 +14,10 @@ Description:
 
 Arguments:
     --reference-models: List of reference models to compare against (default: intfloat/multilingual-e5-large google/gemini-embedding-001)
-    --output-comparison: Output markdown file for reference model comparison (default: model-comparison.md)
-    --output-diff: Output markdown file for old vs new results diff (default: model-diff.md)
+    --output: Output markdown file for reference model comparison (default: model-comparison.md)
 
 Example:
-    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model --output-comparison model-comparison.md --output-diff model-diff.md
+    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model --output model-comparison.md
 """
 
 from __future__ import annotations
