@@ -83,33 +83,41 @@ def load_json_from_git_ref(relative_path: str, git_ref: str) -> dict | None:
     except json.JSONDecodeError:
         return None
     
-
-def extract_main_score(task_result_dict: dict) -> float | None:
+def extract_main_score(task_result_dict: dict) -> dict[tuple[str, str], float]:
     """
-    Extract main_score from task result dictionary using TaskResult.
-    Returns the normalized main_score or None if not found.
+    Extract main_score for each split/subset combination from task result.
+    No aggregation - returns the main_score value for each (split, subset) pair.
+    
+    Returns:
+        Dict mapping (split, subset) tuples to their main_score value.
+        Example: {("test", "default"): 0.85, ("test", "en"): 0.90}
     """
+    split_subset_scores: dict[tuple[str, str], float] = {}
+    
     try:
         task_result = TaskResult.from_dict(task_result_dict)
         filtered_result = task_result.only_main_score()
-        # Get the main_score from the first split/subset
-        for split_scores in filtered_result.scores.values():
+        
+        for split_name, split_scores in filtered_result.scores.items():
             for subset_score in split_scores:
+                subset_name = subset_score.get("hf_subset")
                 main_score = subset_score.get("main_score")
-                if main_score is not None and not pd.isna(main_score):
+                
+                if (subset_name is not None and main_score is not None 
+                    and not pd.isna(main_score)):
                     value = float(main_score)
-                    # Normalize percentage scores to decimal
                     if value > 1:
                         value /= 100
-                    return value
-        return None
+                    split_subset_scores[(split_name, subset_name)] = value
+        
+        return split_subset_scores
     except Exception:
-        return None
+        return {}
 
 
 def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataFrame:
-    """Create DataFrame comparing old and new main_score with old and new revisions."""
-    columns = ["model_name", "task_name", "old_revision", "old_value", "new_revision", "new_value", "delta", "pct_change"]
+    """Create DataFrame comparing old and new main_score for each split/subset."""
+    columns = ["model_name", "task_name", "split", "subset", "old_revision", "old_value", "new_revision", "new_value", "delta", "pct_change"]
     rows: list[dict] = []
 
     for relative_path in differences:
@@ -131,12 +139,10 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
         except (json.JSONDecodeError, IOError, KeyError):
             continue
 
-        # Load old version from base ref
         old_json = load_json_from_git_ref(relative_path, base_ref)
         if old_json is None:
             continue
 
-        # Load old revision from model_meta.json in base ref
         old_model_meta = load_json_from_git_ref(str(model_meta_path.relative_to(repo_path)), base_ref)
         if old_model_meta is None:
             old_revision = "unknown"
@@ -152,37 +158,42 @@ def create_old_new_diff_table(differences: list[str], base_ref: str) -> pd.DataF
         except (json.JSONDecodeError, IOError):
             continue
 
-        old_value = extract_main_score(old_json)
-        new_value = extract_main_score(new_json)
+        old_scores = extract_main_score(old_json)
+        new_scores = extract_main_score(new_json)
         
-        if old_value is None or new_value is None:
+        if not old_scores or not new_scores:
             continue
         
-        if pd.isna(old_value) or pd.isna(new_value):
-            continue
-        
-        delta = new_value - old_value
-        if delta == 0:
-            continue
-        
-        pct_change = None if old_value == 0 else delta / old_value
+        for (split, subset), new_value in new_scores.items():
+            if (split, subset) not in old_scores:
+                continue
+            
+            old_value = old_scores[(split, subset)]
+            
+            delta = new_value - old_value
+            if delta == 0:
+                continue
+            
+            pct_change = None if old_value == 0 else delta / old_value
 
-        rows.append({
-            "model_name": model_name,
-            "task_name": task_name,
-            "old_revision": old_revision,
-            "old_value": old_value,
-            "new_revision": new_revision,
-            "new_value": new_value,
-            "delta": delta,
-            "pct_change": pct_change,
-        })
+            rows.append({
+                "model_name": model_name,
+                "task_name": task_name,
+                "split": split,
+                "subset": subset,
+                "old_revision": old_revision,
+                "old_value": old_value,
+                "new_revision": new_revision,
+                "new_value": new_value,
+                "delta": delta,
+                "pct_change": pct_change,
+            })
 
     if not rows:
         return pd.DataFrame(columns=columns)
 
     return pd.DataFrame(rows, columns=columns).sort_values(
-        ["model_name", "task_name"]
+        ["model_name", "task_name", "split", "subset"]
     )
 
 
