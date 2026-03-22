@@ -22,15 +22,12 @@ from create_pr_results_comment import (
     create_old_new_diff_table,
 )
 
+MTEB_SCORE_EPSILON=0.001 
 
 def test_result_diffs_within_threshold():
     """
     Fail if any main_score delta exceeds configured thresholds.
-    
-    Environment variables:
-    - MAX_ALLOWED_PCT_CHANGE: Maximum percent change allowed (default: 0.05 = 5%)
     """
-    max_pct_change = float(os.getenv("MAX_ALLOWED_PCT_CHANGE", "0.05"))
     
     base_ref = get_base_ref()
     differences = get_diff_from_main()
@@ -48,17 +45,17 @@ def test_result_diffs_within_threshold():
     
     violations = []
     for _, row in diff_table.iterrows():
-        pct_change = abs(row["pct_change"]) if row["pct_change"] else 0
+        delta = abs(row["delta"])
         
         model_task = f"{row['model_name']}/{row['task_name']}"
         
-        if pct_change > max_pct_change:
+        if delta > MTEB_SCORE_EPSILON:
             violations.append(
-                f"  {model_task}: percent change {pct_change*100:.2f}% exceeds threshold {max_pct_change*100:.0f}%"
+                f"  {model_task}: delta {delta:.4f} exceeds threshold {MTEB_SCORE_EPSILON}"
             )
     
     assert not violations, (
-        f"Main score changes exceed configured thresholds "
-        f"(MAX_ALLOWED_PCT_CHANGE={max_pct_change*100:.0f}%):\n"
+        f"Main score changes exceed configured threshold "
+        f"(MTEB_SCORE_EPSILON={MTEB_SCORE_EPSILON}):\n"
         + "\n".join(violations)
     )
