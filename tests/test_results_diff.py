@@ -11,7 +11,7 @@ import os
 import sys
 import subprocess
 from pathlib import Path
-from turtle import pd
+import pandas as pd
 import pytest
 from mteb import TaskResult
 
