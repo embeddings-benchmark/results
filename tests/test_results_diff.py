@@ -51,7 +51,7 @@ def test_result_diffs_within_threshold():
         
         if delta > MTEB_SCORE_EPSILON:
             violations.append(
-                f"  {model_task}: The difference between the current score ({}) and the previous ({})  exceeds threshold of {MTEB_SCORE_EPSILON}"
+            f"  {model_task}: The difference between the current score ({row['new_score']}) and the previous ({row['old_score']}) exceeds threshold of {MTEB_SCORE_EPSILON}"
             )
     
     assert not violations, (
