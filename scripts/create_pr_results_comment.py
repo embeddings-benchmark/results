@@ -8,21 +8,23 @@ Usage:
 Description:
     - Compares new model results (added in the current PR) against reference models.
     - Outputs a Markdown file with results for each new model and highlights the best scores.
+    - Also generates a table comparing old (base branch) vs new (PR) scores for updated result files.
     - By default, compares against: intfloat/multilingual-e5-large and google/gemini-embedding-001.
     - You can specify reference models with the --models argument.
 
 Arguments:
     --reference-models: List of reference models to compare against (default: intfloat/multilingual-e5-large google/gemini-embedding-001)
-    --output: Output markdown file path (default: model-comparison.md)
+    --output: Output markdown file for reference model comparison (default: model-comparison.md)
 
 Example:
-    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model
+    python scripts/create_pr_results_comment.py --models intfloat/multilingual-e5-large myorg/my-new-model --output model-comparison.md
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import logging
 import subprocess
 from collections import defaultdict
@@ -50,7 +52,6 @@ logger = logging.getLogger(__name__)
 repo_path = Path(__file__).parents[1]
 
 cache = ResultCache(repo_path)
-
 
 def get_diff_from_main() -> list[str]:
     differences = subprocess.run(
@@ -329,7 +330,7 @@ def create_argparse() -> argparse.ArgumentParser:
         "--output",
         type=Path,
         default=Path("model-comparison.md"),
-        help="Output markdown file path",
+        help="Output markdown file for reference model comparison (default: model-comparison.md)",
     )
     return parser
 
@@ -338,10 +339,9 @@ def main(reference_models: list[str], output_path: Path) -> None:
     logger.info("Starting to create PR results comment...")
     logger.info(f"Using reference models: {', '.join(reference_models)}")
     diff = get_diff_from_main()
-
+    
     model_tasks = extract_new_models_and_tasks(diff)
     markdown = generate_markdown_content(model_tasks, reference_models)
-
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(markdown)
 
