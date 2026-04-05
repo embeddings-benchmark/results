@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "instruction_template": "<function instruction_template at 0x78d5570bbf60>",
+        "instruction_template": "<function instruction_template at 0x7b7e4448ff60>",
         "apply_instruction_to_passages": true,
         "prompts_dict": {
             "AILACasedocs": "Given a legal case scenario, retrieve the most relevant case documents",
@@ -35,9 +35,6 @@
         },
         "max_seq_length": 18480,
         "embed_dim": 1024,
-        "model_kwargs": {
-            "torch_dtype": "bfloat16"
-        },
         "device": "cuda"
     },
     "name": "Octen/Octen-Embedding-4B-INT8",
@@ -137,16 +134,16 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "T2Retrieval",
         "CMedQAv2-reranking",
-        "HotpotQA",
-        "NQ",
-        "MSMARCO",
-        "DuRetrieval",
-        "MrTidyRetrieval",
-        "CodeSearchNet",
-        "MMarcoReranking",
         "FEVER",
+        "DuRetrieval",
+        "T2Retrieval",
+        "MrTidyRetrieval",
+        "NQ",
+        "CodeSearchNet",
+        "MSMARCO",
+        "MMarcoReranking",
+        "HotpotQA",
         "MIRACLRetrieval"
     ],
     "adapted_from": "Qwen/Qwen3-Embedding-4B",
@@ -160,7 +157,9 @@
     "citation": "@misc{octen2025rteb,\n  title={Octen Series: Optimizing Embedding Models to #1 on RTEB Leaderboard},\n  author={Octen Team},\n  year={2025},\n  url={https://octen-team.github.io/octen_blog/posts/octen-rteb-first-place/}\n}",
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": [
+        "float16"
+    ],
     "loader": "InstructSentenceTransformerModel",
     "is_cross_encoder": false
 }
