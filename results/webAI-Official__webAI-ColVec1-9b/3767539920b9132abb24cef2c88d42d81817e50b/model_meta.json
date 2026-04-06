@@ -1,0 +1,61 @@
+{
+    "loader_kwargs": {
+        "torch_dtype": "torch.bfloat16",
+        "attn_implementation": "flash_attention_2",
+        "device": "cuda"
+    },
+    "name": "webAI-Official/webAI-ColVec1-9b",
+    "revision": "3767539920b9132abb24cef2c88d42d81817e50b",
+    "release_date": "2026-04-05",
+    "languages": [
+        "eng-Latn",
+        "fra-Latn"
+    ],
+    "n_parameters": 9420302064,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 10488320,
+    "memory_usage_mb": 17968.0,
+    "max_tokens": 262144.0,
+    "embed_dim": 2560,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/webAI-Official/webAI-ColVec1-9b",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": [
+        "VidoreDocVQARetrieval",
+        "VisRAG-Ret-Train-Synthetic-data",
+        "VidoreTabfquadRetrieval",
+        "VisRAG-Ret-Train-In-domain-data",
+        "VDRMultilingualRetrieval",
+        "VidoreTatdqaRetrieval",
+        "VidoreArxivQARetrieval",
+        "VidoreInfoVQARetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "\n@misc{webAI-ColVec1,\n  title={webAI-ColVec1: Late-Interaction Multi-Vector Embedding Model for Visual Document Retrieval},\n  author={webAI},\n  year={2026},\n  url={https://huggingface.co/webAI-Official/webAI-ColVec1-4b}\n}\n",
+    "contacts": null,
+    "experiment_kwargs": {
+        "attn_implementation": "flash_attention_2"
+    },
+    "output_dtypes": [
+        "bfloat16"
+    ],
+    "loader": "ColVec1Wrapper",
+    "is_cross_encoder": false
+}
