@@ -21,3 +21,11 @@ pr-comment = [
 
 [tool.uv.sources]
 mteb = { git = "https://github.com/embeddings-benchmark/mteb" }
+# This repo only reads/aggregates cached JSON results; it never runs a model.
+# Pin torch to the CPU-only wheel so uv doesn't pull in large GPU-specific libraries.
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
