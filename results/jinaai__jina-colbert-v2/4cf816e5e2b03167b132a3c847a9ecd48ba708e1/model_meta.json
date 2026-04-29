@@ -1,0 +1,79 @@
+{
+    "loader_kwargs": {
+        "query_prefix": "[QueryMarker]",
+        "document_prefix": "[DocumentMarker]",
+        "attend_to_expansion_tokens": true,
+        "trust_remote_code": true,
+        "device": "cuda:0"
+    },
+    "name": "jinaai/jina-colbert-v2",
+    "revision": "4cf816e5e2b03167b132a3c847a9ecd48ba708e1",
+    "release_date": "2024-08-16",
+    "languages": [
+        "ara-Arab",
+        "ben-Beng",
+        "deu-Latn",
+        "spa-Latn",
+        "eng-Latn",
+        "fas-Arab",
+        "fin-Latn",
+        "fra-Latn",
+        "hin-Deva",
+        "ind-Latn",
+        "jpn-Jpan",
+        "kor-Kore",
+        "rus-Cyrl",
+        "swa-Latn",
+        "tel-Telu",
+        "tha-Thai",
+        "yor-Latn",
+        "zho-Hans",
+        "nld-Latn",
+        "ita-Latn",
+        "por-Latn",
+        "vie-Latn"
+    ],
+    "n_parameters": 559366144,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 256004096,
+    "memory_usage_mb": 1067.0,
+    "max_tokens": 8192.0,
+    "embed_dim": null,
+    "license": "cc-by-nc-4.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "PyLate",
+        "ColBERT",
+        "ONNX",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/jinaai/jina-colbert-v2",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": [
+        "MIRACL",
+        "mMARCO-NL",
+        "MSMARCO",
+        "DuRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "@inproceedings{xiao-etal-2024-jina,\n    title = \"{J}ina-{C}ol{BERT}-v2: A General-Purpose Multilingual Late Interaction Retriever\",\n    author = {Jha, Rohan  and\n      Wang, Bo  and\n      G{\"u}nther, Michael  and\n      Mastrapas, Georgios  and\n      Sturua, Saba  and\n      Mohr, Isabelle  and\n      Koukounas, Andreas  and\n      Wang, Mohammad Kalim  and\n      Wang, Nan  and\n      Xiao, Han},\n    editor = {S{\"a}lev{\"a}, Jonne  and\n      Owodunni, Abraham},\n    booktitle = \"Proceedings of the Fourth Workshop on Multilingual Representation Learning (MRL 2024)\",\n    month = nov,\n    year = \"2024\",\n    address = \"Miami, Florida, USA\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://aclanthology.org/2024.mrl-1.11/\",\n    doi = \"10.18653/v1/2024.mrl-1.11\",\n    pages = \"159--166\",\n    abstract = \"Multi-vector dense models, such as ColBERT, have proven highly effective in information retrieval. ColBERT`s late interaction scoring approximates the joint query-document attention seen in cross-encoders while maintaining inference efficiency closer to traditional dense retrieval models, thanks to its bi-encoder architecture and recent optimizations in indexing and search. In this paper, we introduce a novel architecture and a training framework to support long context window and multilingual retrieval. Leveraging Matryoshka Representation Loss, we further demonstrate that the reducing the embedding dimensionality from 128 to 64 has insignificant impact on the model`s retrieval performance and cut storage requirements by up to 50{\\%}. Our new model, Jina-ColBERT-v2, demonstrates strong performance across a range of English and multilingual retrieval tasks,\"\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "pylate",
+        "jina"
+    ],
+    "loader": "MultiVectorModel",
+    "is_cross_encoder": false
+}
