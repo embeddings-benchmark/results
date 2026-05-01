@@ -27,6 +27,7 @@ import mteb
 import pyarrow as pa
 import pyarrow.parquet as pq
 from mteb.cache import ResultCache
+from mteb.results import BenchmarkResults
 
 logging.basicConfig(
     level=logging.INFO,
@@ -60,7 +61,7 @@ _PARQUET_SCHEMA = pa.schema(
 )
 
 
-def _benchmark_results_to_table(all_results) -> pa.Table:
+def _benchmark_results_to_table(all_results: BenchmarkResults) -> pa.Table:
     """Flatten BenchmarkResults into a long Arrow table.
 
     One row per (model_result, task_result, split, subset_score) tuple. The
@@ -172,10 +173,8 @@ def generate_cached_results():
     )
     write_parquet_time = time.time() - write_parquet_start
     parquet_size_mb = parquet_path.stat().st_size / (1024 * 1024)
-    logger.info(
-        f"Wrote {parquet_path} in {write_parquet_time:.2f}s"
-    )
-    logger.info(f"Parquet size: {parquet_size_mb:.1f} MB")
+    logger.info(f"Wrote {parquet_path} in {write_parquet_time:.2f}s")
+    logger.info(f"Generated {parquet_path} ({parquet_size_mb:.1f} MB)")
 
     # Smoke test: read back and assert row counts match. Cheap (sub-second)
     # and catches schema regressions before they hit the cached-data branch.
