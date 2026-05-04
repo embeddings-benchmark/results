@@ -29,10 +29,10 @@ from pathlib import Path
 import mteb
 
 # setup logger:
-# logging.basicConfig(
-#     format="%(asctime)s - %(levelname)s - %(message)s",
-#     level=logging.INFO,
-# )
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+)
 
 task = mteb.get_tasks(
     [
