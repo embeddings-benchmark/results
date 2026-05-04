@@ -47,9 +47,7 @@ model_names = [
     "microsoft/harrier-oss-v1-0.6b",
     "Qwen/Qwen3-Embedding-0.6B",
     "jinaai/jina-embeddings-v5-text-small",
-    "Octen/Octen-Embedding-0.6B",
-    "nvidia/llama-nemotron-embed-1b-v2",
-    
+    "Octen/Octen-Embedding-0.6B",    
     "BAAI/bge-m3",
     "intfloat/multilingual-e5-large",
 ]
@@ -64,10 +62,10 @@ model_metas = mteb.get_model_metas(model_names)
 #     model_meta._check_requirements() # peft
 
 # not implemented in mteb yet, so directly get model and evaluate here - sentence trf. compatible though.
-model_name= "nvidia/llama-nemotron-embed-1b-v2"
-model = mteb.get_model("nvidia/llama-nemotron-embed-1b-v2", trust_remote_code=True, device="cuda")
-print(model_name)
-res = mteb.evaluate(model, task, cache=cache, raise_error=False, encode_kwargs={"batch_size": 8})
+# model_name= "nvidia/llama-nemotron-embed-1b-v2"
+# model = mteb.get_model("nvidia/llama-nemotron-embed-1b-v2", trust_remote_code=True, device="cuda")
+# print(model_name)
+# res = mteb.evaluate(model, task, cache=cache, raise_error=False, encode_kwargs={"batch_size": 8})
 
 for model in model_metas:
     print(model.name)
