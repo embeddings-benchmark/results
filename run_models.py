@@ -7,7 +7,7 @@
 # ]
 #
 # [tool.uv.sources]
-# mteb = { git = "https://github.com/embeddings-benchmark/mteb"}
+# mteb = { git = "https://github.com/embeddings-benchmark/mteb", branch="fix-private-sets" }
 # torch = { index = "pytorch-cu128" }
 #
 # [[tool.uv.index]]
@@ -29,10 +29,10 @@ from pathlib import Path
 import mteb
 
 # setup logger:
-logging.basicConfig(
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
-)
+# logging.basicConfig(
+#     format="%(asctime)s - %(levelname)s - %(message)s",
+#     level=logging.INFO,
+# )
 
 task = mteb.get_tasks(
     [
@@ -44,10 +44,10 @@ task = mteb.get_tasks(
 )
 
 model_names = [
-    "microsoft/harrier-oss-v1-0.6b",
-    "Qwen/Qwen3-Embedding-0.6B",
-    "jinaai/jina-embeddings-v5-text-small",
-    "Octen/Octen-Embedding-0.6B",    
+    # "microsoft/harrier-oss-v1-0.6b",
+    # "Qwen/Qwen3-Embedding-0.6B",
+    # "jinaai/jina-embeddings-v5-text-small",
+    # "Octen/Octen-Embedding-0.6B",    
     "BAAI/bge-m3",
     "intfloat/multilingual-e5-large",
 ]
@@ -69,11 +69,6 @@ model_metas = mteb.get_model_metas(model_names)
 
 for model in model_metas:
     print(model.name)
-    mdl = model.load_model(device="cuda")
-    res = mteb.evaluate(mdl, task, cache=cache, encode_kwargs={"batch_size": 8}, raise_error=False)
+    # mdl = model.load_model(device="cuda")
+    res = mteb.evaluate(model, task, cache=cache, encode_kwargs={"batch_size": 8}, raise_error=True)
 
-
-for model in model_metas:
-    print(model.name)
-    mdl = model.load_model(device="cuda")
-    res = mteb.evaluate(mdl, task, cache=cache, encode_kwargs={"batch_size": 1}, raise_error=False)
