@@ -1,7 +1,5 @@
 {
-    "loader_kwargs": {
-        "device": "cuda"
-    },
+    "loader_kwargs": {},
     "name": "Qwen/Qwen3-Embedding-0.6B",
     "revision": "b22da495047858cce924d27d76261e96be6febc0",
     "release_date": "2025-06-05",
@@ -100,17 +98,17 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MIRACLRetrieval",
         "MSMARCO",
-        "HotpotQA",
-        "MrTidyRetrieval",
-        "NQ",
-        "T2Retrieval",
-        "MMarcoReranking",
-        "DuRetrieval",
         "FEVER",
+        "NQ",
+        "CodeSearchNet",
+        "DuRetrieval",
+        "T2Retrieval",
         "CMedQAv2-reranking",
-        "CodeSearchNet"
+        "MMarcoReranking",
+        "MIRACLRetrieval",
+        "HotpotQA",
+        "MrTidyRetrieval"
     ],
     "adapted_from": null,
     "superseded_by": null,
