@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "instruction_template": "<function instruction_template at 0x7ed175701120>",
+        "instruction_template": "<function instruction_template at 0x74592a6c5120>",
         "apply_instruction_to_passages": true,
         "prompts_dict": {
             "AILACasedocs": "Given a legal case scenario, retrieve the most relevant case documents",
@@ -36,8 +36,7 @@
         "max_seq_length": 18480,
         "model_kwargs": {
             "torch_dtype": "bfloat16"
-        },
-        "device": "cuda"
+        }
     },
     "name": "Octen/Octen-Embedding-0.6B",
     "revision": "1a00a4e837bd788f6f8d91bc43201a5e52cf8ef8",
@@ -136,17 +135,17 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "T2Retrieval",
-        "DuRetrieval",
-        "NQ",
-        "CMedQAv2-reranking",
-        "MSMARCO",
-        "MrTidyRetrieval",
-        "FEVER",
         "MMarcoReranking",
-        "MIRACLRetrieval",
+        "T2Retrieval",
+        "FEVER",
+        "MSMARCO",
+        "NQ",
         "HotpotQA",
-        "CodeSearchNet"
+        "CodeSearchNet",
+        "MIRACLRetrieval",
+        "CMedQAv2-reranking",
+        "DuRetrieval",
+        "MrTidyRetrieval"
     ],
     "adapted_from": "Qwen/Qwen3-Embedding-0.6B",
     "superseded_by": null,

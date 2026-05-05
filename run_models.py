@@ -44,9 +44,9 @@ task = mteb.get_tasks(
 )
 
 model_names = [
-    "microsoft/harrier-oss-v1-0.6b",
-    "Qwen/Qwen3-Embedding-0.6B",
-    # "jinaai/jina-embeddings-v5-text-small",
+    # "microsoft/harrier-oss-v1-0.6b",
+    # "Qwen/Qwen3-Embedding-0.6B",
+    "jinaai/jina-embeddings-v5-text-small",
     # "Octen/Octen-Embedding-0.6B",    
     # "BAAI/bge-m3",
     # "intfloat/multilingual-e5-large",
