@@ -2,6 +2,8 @@
 # requires-python = "==3.12.*"
 # dependencies = [
 #     "mteb[peft]>=2.12.37",
+#     "transformers>=4.57.0",
+#     "peft>=0.15.2",
 #     "torch",
 #     "flash-attn @ https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.7.16/flash_attn-2.8.3+cu128torch2.7-cp312-cp312-linux_x86_64.whl",
 # ]
@@ -69,6 +71,7 @@ model_metas = mteb.get_model_metas(model_names)
 
 for model in model_metas:
     print(model.name)
-    # mdl = model.load_model(device="cuda")
+    model.revision = "dd76d535f5447ca3897a9c893fb1e612ead98192" # overwrite revision
+    print(model.revision)
     res = mteb.evaluate(model, task, cache=cache, encode_kwargs={"batch_size": 8}, raise_error=True)
 
