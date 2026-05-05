@@ -46,12 +46,7 @@ task = mteb.get_tasks(
 )
 
 model_names = [
-    # "microsoft/harrier-oss-v1-0.6b",
-    # "Qwen/Qwen3-Embedding-0.6B",
-    "jinaai/jina-embeddings-v5-text-small",
-    # "Octen/Octen-Embedding-0.6B",    
-    # "BAAI/bge-m3",
-    # "intfloat/multilingual-e5-large",
+    "jinaai/jina-embeddings-v5-text-small", # missing elastic
 ]
 
 cache_path = Path(__file__).parent
@@ -72,6 +67,6 @@ model_metas = mteb.get_model_metas(model_names)
 for model in model_metas:
     print(model.name)
     model.revision = "dd76d535f5447ca3897a9c893fb1e612ead98192" # overwrite revision
-    print(model.revision)
-    res = mteb.evaluate(model, task, cache=cache, encode_kwargs={"batch_size": 8}, raise_error=True)
+    # res = mteb.evaluate(model, task, cache=cache, encode_kwargs={"batch_size": 8}, raise_error=True)
+    res = mteb.evaluate(model, task, cache=cache, encode_kwargs={"batch_size": 8})
 
