@@ -1,8 +1,22 @@
 {
-    "loader_kwargs": {},
-    "name": "Qwen/Qwen3-Embedding-0.6B",
-    "revision": "b22da495047858cce924d27d76261e96be6febc0",
-    "release_date": "2025-06-05",
+    "loader_kwargs": {
+        "trust_remote_code": true,
+        "model_prompts": {
+            "Retrieval": "retrieval",
+            "Clustering": "clustering",
+            "Classification": "classification",
+            "STS": "text-matching",
+            "PairClassification": "text-matching",
+            "BitextMining": "text-matching",
+            "MultilabelClassification": "classification",
+            "Reranking": "retrieval",
+            "Summarization": "text-matching",
+            "InstructionReranking": "retrieval"
+        }
+    },
+    "name": "jinaai/jina-embeddings-v5-text-small",
+    "revision": "dd76d535f5447ca3897a9c893fb1e612ead98192",
+    "release_date": "2026-02-17",
     "languages": [
         "afr-Latn",
         "ara-Arab",
@@ -78,39 +92,27 @@
         "yor-Latn",
         "zho-Hans"
     ],
-    "n_parameters": 595776512,
+    "n_parameters": 596049920,
     "n_active_parameters_override": null,
-    "n_embedding_parameters": 155309056,
-    "memory_usage_mb": 1136.0,
+    "n_embedding_parameters": 155582464,
+    "memory_usage_mb": 1137.0,
     "max_tokens": 32768.0,
     "embed_dim": 1024,
-    "license": "apache-2.0",
+    "license": "cc-by-nc-4.0",
     "open_weights": true,
     "public_training_code": null,
     "public_training_data": null,
     "framework": [
         "Sentence Transformers",
         "PyTorch",
-        "safetensors",
-        "Transformers"
+        "Transformers",
+        "safetensors"
     ],
-    "reference": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+    "reference": "https://huggingface.co/jinaai/jina-embeddings-v5-text-small",
     "similarity_fn_name": "cosine",
     "use_instructions": true,
-    "training_datasets": [
-        "MSMARCO",
-        "FEVER",
-        "NQ",
-        "CodeSearchNet",
-        "DuRetrieval",
-        "T2Retrieval",
-        "CMedQAv2-reranking",
-        "MMarcoReranking",
-        "MIRACLRetrieval",
-        "HotpotQA",
-        "MrTidyRetrieval"
-    ],
-    "adapted_from": null,
+    "training_datasets": null,
+    "adapted_from": "Qwen/Qwen3-0.6B",
     "superseded_by": null,
     "modalities": [
         "text"
@@ -118,11 +120,13 @@
     "model_type": [
         "dense"
     ],
-    "citation": "@article{qwen3embedding,\n  title={Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models},\n  author={Zhang, Yanzhao and Li, Mingxin and Long, Dingkun and Zhang, Xin and Lin, Huan and Yang, Baosong and Xie, Pengjun and Yang, An and Liu, Dayiheng and Lin, Junyang and Huang, Fei and Zhou, Jingren},\n  journal={arXiv preprint arXiv:2506.05176},\n  year={2025}\n}",
+    "citation": "@misc{akram2026jinaembeddingsv5texttasktargetedembeddingdistillation,\n      title={jina-embeddings-v5-text: Task-Targeted Embedding Distillation},\n      author={Mohammad Kalim Akram and Saba Sturua and Nastia Havriushenko and Quentin Herreros and Michael G\u00fcnther and Maximilian Werk and Han Xiao},\n      year={2026},\n      eprint={2602.15547},\n      archivePrefix={arXiv},\n      primaryClass={cs.CL},\n      url={https://arxiv.org/abs/2602.15547},\n}",
     "contacts": null,
     "experiment_kwargs": null,
     "output_dtypes": null,
-    "extra_requirements_groups": null,
-    "loader": "q3e_instruct_loader",
+    "extra_requirements_groups": [
+        "peft"
+    ],
+    "loader": "JinaV5TextWrapper",
     "is_cross_encoder": false
 }
