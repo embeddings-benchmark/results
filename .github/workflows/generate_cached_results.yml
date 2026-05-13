@@ -54,13 +54,23 @@ jobs:
             exit 1
           fi
 
-          # Get file size for logging
-          FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
-          echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+          # Check if __cached_results.parquet was created
+          if [ ! -f "__cached_results.parquet" ]; then
+            echo "❌ Cached results parquet file not found"
+            exit 1
+          fi
 
-          # Move the generated file outside repository before rebuilding branch
+          # Get file sizes for logging
+          FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
+          PARQUET_SIZE=$(stat -f%z __cached_results.parquet 2>/dev/null || stat -c%s __cached_results.parquet)
+          echo "📦 Generated cache file: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+          echo "📦 Generated parquet file: $(echo "scale=1; $PARQUET_SIZE/1024/1024" | bc -l)MB"
+
+          # Move the generated files outside repository before rebuilding branch
           CACHE_TMP_PATH="$RUNNER_TEMP/__cached_results.json.gz"
+          PARQUET_TMP_PATH="$RUNNER_TEMP/__cached_results.parquet"
           mv __cached_results.json.gz "$CACHE_TMP_PATH"
+          mv __cached_results.parquet "$PARQUET_TMP_PATH"
           README_TMP_PATH="$RUNNER_TEMP/cached-data-README.md"
 
           # Preserve README.md from cached-data branch (if it exists) without modifications
@@ -75,9 +85,10 @@ jobs:
           git checkout --orphan cached-data
           git rm -rf . 2>/dev/null || true
 
-          # Restore and stage cache file
+          # Restore and stage cache files
           mv "$CACHE_TMP_PATH" __cached_results.json.gz
-          git add __cached_results.json.gz
+          mv "$PARQUET_TMP_PATH" __cached_results.parquet
+          git add __cached_results.json.gz __cached_results.parquet
 
           # Restore preserved README.md exactly as it was in cached-data
           if [ -f "$README_TMP_PATH" ]; then
@@ -85,9 +96,11 @@ jobs:
             git add README.md
           fi
 
-          # Commit with timestamp and file size
+          # Commit with timestamp and file sizes
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-          COMMIT_MSG="Update cached results - $TIMESTAMP ($(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB)"
+          GZIP_MB=$(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)
+          PARQUET_MB=$(echo "scale=1; $PARQUET_SIZE/1024/1024" | bc -l)
+          COMMIT_MSG="Update cached results - $TIMESTAMP (json.gz ${GZIP_MB}MB, parquet ${PARQUET_MB}MB)"
           git commit -m "$COMMIT_MSG"
 
           # Force push keeps remote branch as a single-commit history
@@ -97,9 +110,13 @@ jobs:
       - name: Report status
         if: always()
         run: |
-          if [ -f "__cached_results.json.gz" ]; then
+          if [ -f "__cached_results.json.gz" ] && [ -f "__cached_results.parquet" ]; then
             FILE_SIZE=$(stat -f%z __cached_results.json.gz 2>/dev/null || stat -c%s __cached_results.json.gz)
-            echo "✅ Workflow completed. Cache file size: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+            PARQUET_SIZE=$(stat -f%z __cached_results.parquet 2>/dev/null || stat -c%s __cached_results.parquet)
+            echo "✅ Workflow completed."
+            echo "   json.gz size: $(echo "scale=1; $FILE_SIZE/1024/1024" | bc -l)MB"
+            echo "   parquet size: $(echo "scale=1; $PARQUET_SIZE/1024/1024" | bc -l)MB"
           else
-            echo "❌ Workflow failed - no cache file generated"
+            echo "❌ Workflow failed - one or more cache files missing"
+            ls -la __cached_results.* 2>/dev/null || true
           fi
