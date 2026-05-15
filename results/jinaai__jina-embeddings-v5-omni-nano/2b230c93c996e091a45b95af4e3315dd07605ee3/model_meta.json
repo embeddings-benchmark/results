@@ -1,41 +1,19 @@
 {
     "loader_kwargs": {
         "trust_remote_code": true,
-        "model_kwargs": {
-            "torch_dtype": "torch.float32"
-        },
         "fps": 2.0,
         "max_frames": 64,
         "target_sampling_rate": 16000,
         "max_samples": 480000,
         "model_prompts": {
-            "Retrieval": "retrieval",
-            "Clustering": "clustering",
-            "Classification": "classification",
-            "STS": "text-matching",
-            "PairClassification": "text-matching",
-            "BitextMining": "text-matching",
-            "MultilabelClassification": "classification",
-            "Reranking": "retrieval",
-            "Summarization": "text-matching",
-            "InstructionReranking": "retrieval",
-            "Any2AnyRetrieval": "retrieval",
-            "Any2AnyMultilingualRetrieval": "retrieval",
-            "DocumentUnderstanding": "retrieval",
-            "ZeroShotClassification": "retrieval",
             "ImageClassification": "retrieval",
-            "VisionCentricQA": "retrieval",
-            "ImageClustering": "clustering",
-            "Compositionality": "clustering",
-            "VisualSTS(eng)": "text-matching",
-            "VisualSTS(multi)": "text-matching",
+            "ZeroShotClassification": "retrieval",
             "AudioClassification": "retrieval",
             "AudioZeroshotClassification": "retrieval",
-            "AudioRetrieval": "retrieval",
             "AudioMultilabelClassification": "retrieval",
-            "AudioReranking": "retrieval",
-            "AudioClustering": "clustering",
-            "AudioPairClassification": "text-matching"
+            "VideoClassification": "retrieval",
+            "VideoZeroshotClassification": "retrieval",
+            "Compositionality": "clustering"
         },
         "device": 0
     },
