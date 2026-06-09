@@ -217,13 +217,19 @@ def highlight_max_bold(
 ) -> pd.DataFrame:
     result_df = df.copy()
 
+    def format_score(x):
+        if isinstance(x, (int, float)) and pd.notna(x):
+            s = f"{x:.3f}"
+            if s.startswith("0."):
+                return s[1:]
+            elif s.startswith("-0."):
+                return "-" + s[2:]
+            return s
+        return x
+
     for col in result_df.columns:
         if col not in exclude_cols and col != "In Training Data":
-            result_df[col] = result_df[col].apply(
-                lambda x: f"{x:.4f}"
-                if isinstance(x, (int, float)) and pd.notna(x)
-                else x
-            )
+            result_df[col] = result_df[col].apply(format_score)
 
     tmp = df.drop(columns=exclude_cols)
     for idx in df.index:
@@ -280,7 +286,6 @@ def generate_markdown_content(
         "",
         f"**Reference models:** {', '.join(f'`{m}`' for m in reference_models)}",
         f"**New models evaluated:** {', '.join(f'`{m}`' for m in new_models)}",
-        f"**Tasks:** {', '.join(f'`{t}`' for t in all_tasks)}",
         "",
     ]
 
@@ -302,15 +307,6 @@ def generate_markdown_content(
                     "",
                 ]
             )
-        
-        if all_training_datasets:
-            datasets_list = ", ".join(f"`{d}`" for d in sorted(all_training_datasets))
-            parts.extend([
-                "",  # need blank line before to not merge with table
-                f"**Training datasets:** {datasets_list}",
-                "",
-                "",
-            ])
 
         parts.extend(["", "---", ""])
 
