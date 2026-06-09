@@ -211,7 +211,7 @@ def create_comparison_table(
 
 
 def highlight_max_bold(
-    df: pd.DataFrame, exclude_cols: list[str] = ["task_name"]
+    df: pd.DataFrame, exclude_cols: list[str] = ["task_name", "is_public"]
 ) -> pd.DataFrame:
     result_df = df.copy()
 
