@@ -6,17 +6,29 @@ from pathlib import Path
 
 
 def test_no_languages_are_removed():
-    merge_base = os.environ.get("PR_BASE_SHA") or subprocess.run(
-        ["git", "merge-base", "main", "HEAD"],
-        capture_output=True,
-        text=True,
-    ).stdout.strip()
+    merge_base = os.environ.get("PR_BASE_SHA")
+    if not merge_base:
+        for ref in ("origin/main", "main"):
+            res = subprocess.run(
+                ["git", "merge-base", ref, "HEAD"],
+                capture_output=True,
+                text=True,
+            )
+            if res.returncode == 0:
+                merge_base = res.stdout.strip()
+                break
+        if not merge_base:
+            raise RuntimeError("Could not find a valid base ref (neither origin/main nor main exists).")
 
-    changed_files = subprocess.run(
+    diff_res = subprocess.run(
         ["git", "diff", "--name-only", merge_base, "HEAD", "*.json"],
         capture_output=True,
         text=True,
-    ).stdout.splitlines()
+    )
+    if diff_res.returncode != 0:
+        raise RuntimeError(f"git diff failed with code {diff_res.returncode}: {diff_res.stderr}")
+
+    changed_files = sorted(diff_res.stdout.splitlines())
 
     root = Path(__file__).parent.parent
     errors = []
@@ -52,10 +64,14 @@ def test_no_languages_are_removed():
 
         try:
             old_data = json.loads(old_content)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Failed to parse old JSON content for {f_str}: {e}")
+
+        try:
             with filepath.open() as f:
                 new_data = json.load(f)
-        except (json.JSONDecodeError, IOError):
-            continue
+        except (json.JSONDecodeError, IOError) as e:
+            raise ValueError(f"Failed to load/parse new JSON file {f_str}: {e}")
 
         old_langs = get_languages(old_data)
         new_langs = get_languages(new_data)
@@ -67,8 +83,9 @@ def test_no_languages_are_removed():
                 removed_languages[(split, subset)].extend(sorted(list(missing)))
 
         if removed_languages:
-            removed_str = ", ".join(f"{split}/{subset}: {langs}" for (split, subset), langs in removed_languages.items())
+            sorted_keys = sorted(removed_languages.keys())
+            removed_str = ", ".join(f"{split}/{subset}: {removed_languages[(split, subset)]}" for split, subset in sorted_keys)
             errors.append(f"{f_str} has had languages removed: {removed_str}")
 
     if errors:
-        raise AssertionError("\n".join(errors))
+        raise AssertionError("\n".join(sorted(errors)))
