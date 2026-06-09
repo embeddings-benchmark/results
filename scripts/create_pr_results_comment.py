@@ -116,6 +116,8 @@ def create_comparison_table(
 
     results = cache.load_results(models=models, tasks=tasks, validate_and_filter=True)
     df = results.to_dataframe(include_model_revision=True)
+    if "is_public" in df.columns:
+        df.drop(columns=["is_public"], inplace=True)
     new_df_columns = []
     columns_to_merge = defaultdict(list)
     new_model_revisions = []
@@ -211,7 +213,7 @@ def create_comparison_table(
 
 
 def highlight_max_bold(
-    df: pd.DataFrame, exclude_cols: list[str] = ["task_name", "is_public"]
+    df: pd.DataFrame, exclude_cols: list[str] = ["task_name", "In Training Data"]
 ) -> pd.DataFrame:
     result_df = df.copy()
 
