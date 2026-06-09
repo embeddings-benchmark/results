@@ -296,7 +296,7 @@ def generate_markdown_content(
             model_name, revision, tasks, reference_models, new_models
         )
         bold_df = highlight_max_bold(df)
-        parts.append(bold_df.to_markdown(index=False))
+        parts.append(bold_df.to_markdown(index=False, disable_numparse=True))
 
         if len(high_model_performance_tasks) > 0:
             parts.extend(
