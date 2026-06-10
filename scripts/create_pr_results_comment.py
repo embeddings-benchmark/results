@@ -116,6 +116,8 @@ def create_comparison_table(
 
     results = cache.load_results(models=models, tasks=tasks, validate_and_filter=True)
     df = results.to_dataframe(include_model_revision=True)
+    if "is_public" in df.columns:
+        df.drop(columns=["is_public"], inplace=True)
     new_df_columns = []
     columns_to_merge = defaultdict(list)
     new_model_revisions = []
@@ -211,17 +213,23 @@ def create_comparison_table(
 
 
 def highlight_max_bold(
-    df: pd.DataFrame, exclude_cols: list[str] = ["task_name"]
+    df: pd.DataFrame, exclude_cols: list[str] = ["task_name", "In Training Data"]
 ) -> pd.DataFrame:
     result_df = df.copy()
 
+    def format_score(x):
+        if isinstance(x, (int, float)) and pd.notna(x):
+            s = f"{x:.3f}"
+            if s.startswith("0."):
+                return s[1:]
+            elif s.startswith("-0."):
+                return "-" + s[2:]
+            return s
+        return x
+
     for col in result_df.columns:
         if col not in exclude_cols and col != "In Training Data":
-            result_df[col] = result_df[col].apply(
-                lambda x: f"{x:.4f}"
-                if isinstance(x, (int, float)) and pd.notna(x)
-                else x
-            )
+            result_df[col] = result_df[col].apply(format_score)
 
     tmp = df.drop(columns=exclude_cols)
     for idx in df.index:
@@ -278,7 +286,6 @@ def generate_markdown_content(
         "",
         f"**Reference models:** {', '.join(f'`{m}`' for m in reference_models)}",
         f"**New models evaluated:** {', '.join(f'`{m}`' for m in new_models)}",
-        f"**Tasks:** {', '.join(f'`{t}`' for t in all_tasks)}",
         "",
     ]
 
@@ -289,7 +296,7 @@ def generate_markdown_content(
             model_name, revision, tasks, reference_models, new_models
         )
         bold_df = highlight_max_bold(df)
-        parts.append(bold_df.to_markdown(index=False))
+        parts.append(bold_df.to_markdown(index=False, disable_numparse=True))
 
         if len(high_model_performance_tasks) > 0:
             parts.extend(
@@ -300,15 +307,6 @@ def generate_markdown_content(
                     "",
                 ]
             )
-        
-        if all_training_datasets:
-            datasets_list = ", ".join(f"`{d}`" for d in sorted(all_training_datasets))
-            parts.extend([
-                "",  # need blank line before to not merge with table
-                f"**Training datasets:** {datasets_list}",
-                "",
-                "",
-            ])
 
         parts.extend(["", "---", ""])
 
