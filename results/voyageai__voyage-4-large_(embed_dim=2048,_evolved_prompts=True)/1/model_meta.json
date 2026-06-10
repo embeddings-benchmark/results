@@ -5,9 +5,11 @@
             "query": "query",
             "document": "document"
         },
-        "api_model_name": "voyage-4-large"
+        "api_model_name": "voyage-4-large",
+        "evolved_prompts": true,
+        "device": "cpu"
     },
-    "name": "voyageai/voyage-4-large-2048d-evolved",
+    "name": "voyageai/voyage-4-large (embed_dim=2048, evolved_prompts=True)",
     "revision": "1",
     "release_date": "2026-01-15",
     "languages": null,
@@ -28,7 +30,7 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [],
-    "adapted_from": null,
+    "adapted_from": "voyageai/voyage-4-large (embed_dim=2048)",
     "superseded_by": null,
     "modalities": [
         "text"
@@ -39,8 +41,14 @@
     "citation": null,
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
-    "extra_requirements_groups": null,
-    "loader": "VoyageEvolvedPromptsModel",
+    "output_dtypes": [
+        "int8",
+        "uint8",
+        "binary"
+    ],
+    "extra_requirements_groups": [
+        "voyageai"
+    ],
+    "loader": "VoyageModel",
     "is_cross_encoder": false
 }
