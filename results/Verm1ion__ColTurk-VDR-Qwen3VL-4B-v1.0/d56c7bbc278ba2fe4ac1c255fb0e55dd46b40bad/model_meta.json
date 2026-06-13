@@ -1,41 +1,53 @@
 {
-  "loader_kwargs": {},
-  "name": "Verm1ion/ColTurk-VDR-Qwen3VL-4B-v1.0",
-  "revision": "d56c7bbc278ba2fe4ac1c255fb0e55dd46b40bad",
-  "release_date": "2026-06-11",
-  "languages": [
-    "eng-Latn",
-    "fra-Latn"
-  ],
-  "n_parameters": 4505515136,
-  "memory_usage_mb": 8593.0,
-  "max_tokens": 262144.0,
-  "embed_dim": 128,
-  "license": "apache-2.0",
-  "open_weights": true,
-  "public_training_code": "https://github.com/Verm1lion/ColTurk-VDR",
-  "public_training_data": "https://huggingface.co/datasets/manu/colpali-queries",
-  "framework": [
-    "PyTorch"
-  ],
-  "reference": "https://huggingface.co/Verm1ion/ColTurk-VDR-Qwen3VL-4B-v1.0",
-  "similarity_fn_name": "MaxSim",
-  "use_instructions": false,
-  "training_datasets": [
-    "VidoreDocVQARetrieval",
-    "VidoreInfoVQARetrieval",
-    "VidoreTatdqaRetrieval",
-    "VidoreArxivQARetrieval"
-  ],
-  "adapted_from": "Qwen/Qwen3-VL-4B-Instruct",
-  "superseded_by": null,
-  "modalities": [
-    "image",
-    "text"
-  ],
-  "is_cross_encoder": null,
-  "citation": "@misc{karatay2026colturkvdr,\n  title={ColTurk-VDR: A Late-Interaction Visual Document Retriever on Qwen3-VL-4B},\n  author={Karatay, Mert},\n  year={2026},\n  url={https://github.com/Verm1lion/ColTurk-VDR}\n}",
-  "contacts": null,
-  "loader": "ColQwen3EngineWrapper",
-  "n_embedding_parameters": 388956160
+    "loader_kwargs": {
+        "torch_dtype": "torch.bfloat16"
+    },
+    "name": "Verm1ion/ColTurk-VDR-Qwen3VL-4B-v1.0",
+    "revision": "d56c7bbc278ba2fe4ac1c255fb0e55dd46b40bad",
+    "release_date": "2026-06-11",
+    "languages": [
+        "eng-Latn",
+        "fra-Latn"
+    ],
+    "n_parameters": 4505515136,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 388956160,
+    "memory_usage_mb": 8593.0,
+    "max_tokens": 262144.0,
+    "embed_dim": 128,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/Verm1lion/ColTurk-VDR",
+    "public_training_data": "https://huggingface.co/datasets/manu/colpali-queries",
+    "framework": [
+        "ColPali",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/Verm1ion/ColTurk-VDR-Qwen3VL-4B-v1.0",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": true,
+    "training_datasets": [
+        "VidoreTatdqaRetrieval",
+        "VidoreArxivQARetrieval",
+        "VidoreDocVQARetrieval",
+        "VidoreInfoVQARetrieval"
+    ],
+    "adapted_from": "Qwen/Qwen3-VL-4B-Instruct",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "\n@misc{karatay2026colturkvdr,\n  title={ColTurk-VDR: A Late-Interaction Visual Document Retriever on Qwen3-VL-4B},\n  author={Karatay, Mert},\n  year={2026},\n  url={https://github.com/Verm1lion/ColTurk-VDR}\n}\n",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "colpali_engine"
+    ],
+    "loader": "ColQwen3EngineWrapper",
+    "is_cross_encoder": false
 }
