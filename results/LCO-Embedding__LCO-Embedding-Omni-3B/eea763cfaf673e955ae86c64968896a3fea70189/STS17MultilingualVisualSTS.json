@@ -1,7 +1,7 @@
 {
   "dataset_revision": "2e31b4b459551a51e1ab54fd7266b40f3fe510d4",
   "task_name": "STS17MultilingualVisualSTS",
-  "mteb_version": "2.12.16",
+  "mteb_version": "2.12.16-2.15.4",
   "scores": {
     "test": [
       {
@@ -17,7 +17,8 @@
         "hf_subset": "ko-ko",
         "languages": [
           "kor-Hang"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.684913,
@@ -32,7 +33,8 @@
         "hf_subset": "ar-ar",
         "languages": [
           "ara-Arab"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.585051,
@@ -48,7 +50,8 @@
         "languages": [
           "eng-Latn",
           "ara-Arab"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.855859,
@@ -64,7 +67,8 @@
         "languages": [
           "eng-Latn",
           "deu-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.732372,
@@ -80,7 +84,8 @@
         "languages": [
           "eng-Latn",
           "tur-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.848897,
@@ -96,7 +101,8 @@
         "languages": [
           "spa-Latn",
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.895638,
@@ -111,7 +117,8 @@
         "hf_subset": "es-es",
         "languages": [
           "spa-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.864199,
@@ -127,7 +134,8 @@
         "languages": [
           "fra-Latn",
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.868662,
@@ -143,7 +151,8 @@
         "languages": [
           "ita-Latn",
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
       },
       {
         "pearson": 0.859407,
@@ -159,11 +168,65 @@
         "languages": [
           "nld-Latn",
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.12.16"
+      },
+      {
+        "pearson": 0.900613,
+        "spearman": 0.898051,
+        "cosine_pearson": 0.900613,
+        "cosine_spearman": 0.898051,
+        "manhattan_pearson": 0.901209,
+        "manhattan_spearman": 0.896691,
+        "euclidean_pearson": 0.902274,
+        "euclidean_spearman": 0.897908,
+        "main_score": 0.898051,
+        "hf_subset": "en-en",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.15.4"
       }
     ]
   },
-  "evaluation_time": 925.1426198482513,
+  "evaluation_time": 988.0008489132515,
   "kg_co2_emissions": null,
-  "date": 1776353621.477986
+  "date": 1781633749.189093,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.6799997360503767e-06,
+      "end": 0.2086385570000857,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.20864762900009737,
+      "end": 0.20864887700008694,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 0.21055543500006024,
+      "end": 31.664646426999752,
+      "split": "test",
+      "subset": "en-en"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 31.66465914699984,
+      "end": 62.847925940000096,
+      "split": "test",
+      "subset": "en-en"
+    },
+    {
+      "name": "Scoring",
+      "start": 62.84793693199981,
+      "end": 62.85361426999998,
+      "split": "test",
+      "subset": "en-en"
+    }
+  ]
 }
