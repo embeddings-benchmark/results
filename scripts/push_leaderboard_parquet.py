@@ -35,7 +35,7 @@ def main():
     )
 
     ds = all_results._to_dataset()
-    logger.info("  %s: %d rows", len(ds))
+    logger.info("  %d rows", len(ds))
     ds.push_to_hub(DEFAULT_REPO_ID)
 
 
