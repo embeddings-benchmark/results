@@ -1,0 +1,64 @@
+{
+  "loader_kwargs": {
+    "torch_dtype": "torch.bfloat16"
+  },
+  "name": "vultr/VultronRetrieverCore-Qwen3.5-4.5B",
+  "revision": "5b63301ce5a49993f9ec1cf36645840b8cbd8120",
+  "release_date": "2026-06-22",
+  "languages": [
+    "eng-Latn",
+    "fra-Latn",
+    "deu-Latn",
+    "spa-Latn",
+    "ita-Latn",
+    "por-Latn"
+  ],
+  "n_parameters": 4540085056,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": 635699200,
+  "memory_usage_mb": 9080.0,
+  "max_tokens": 262144.0,
+  "embed_dim": 320,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": null,
+  "public_training_data": null,
+  "framework": [
+    "PyTorch",
+    "ColPali",
+    "safetensors"
+  ],
+  "reference": "https://huggingface.co/vultr/VultronRetrieverCore-Qwen3.5-4.5B",
+  "similarity_fn_name": "MaxSim",
+  "use_instructions": false,
+  "training_datasets": [
+    "VDRMultilingualRetrieval",
+    "VidoreArxivQARetrieval",
+    "VidoreDocVQARetrieval",
+    "VidoreInfoVQARetrieval",
+    "VidoreTabfquadRetrieval",
+    "VidoreTatdqaRetrieval",
+    "VisRAG-Ret-Train-In-domain-data",
+    "VisRAG-Ret-Train-Synthetic-data",
+    "docmatix-ir",
+    "wiki-ss-nq"
+  ],
+  "adapted_from": null,
+  "superseded_by": null,
+  "modalities": [
+    "image",
+    "text"
+  ],
+  "model_type": [
+    "late-interaction"
+  ],
+  "citation": null,
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": null,
+  "extra_requirements_groups": [
+    "colpali_engine"
+  ],
+  "loader": "ColQwen3_5Wrapper",
+  "is_cross_encoder": false
+}
