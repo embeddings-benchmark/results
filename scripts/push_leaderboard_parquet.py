@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import logging
-import os
 from pathlib import Path
 
 from mteb.cache import ResultCache
@@ -18,16 +17,13 @@ DEFAULT_REPO_ID = "mteb/results"
 
 def main():
     results_dir = Path(
-        os.environ.get(
-            "RESULTS_DIR",
-            Path(__file__).resolve().parent.parent / "results",
-        )
+        Path(__file__).resolve().parent.parent
     ).resolve()
     if not results_dir.is_dir():
         raise RuntimeError(f"Results dir not found: {results_dir}")
 
-    cache = ResultCache(cache_path=results_dir.parent)
-    logger.info("Loading all results from %s", cache.cache_path / "results")
+    cache = ResultCache(cache_path=results_dir)
+    logger.info("Loading all results from %s", cache.cache_path)
     all_results = cache.load_results(
         require_model_meta=False,
         include_remote=False,
