@@ -1,0 +1,26 @@
+name: Sync leaderboard parquet to Hugging Face hub
+on:
+  push:
+    branches: [main]
+  # to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - name: Install uv and set the Python version
+        uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Build and push leaderboard parquet
+        run: uv run --no-sync python scripts/push_leaderboard_parquet.py
