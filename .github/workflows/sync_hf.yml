@@ -26,4 +26,6 @@ jobs:
         run: uv sync
 
       - name: Build and push leaderboard parquet
+        env:
+          HF_OIDC_RESOURCE: datasets/mteb/results
         run: uv run --no-sync python scripts/push_leaderboard_parquet.py
