@@ -1,7 +1,7 @@
 {
   "dataset_revision": "dfd4b43eb04bc516860fe5d3cbff67769944833e",
   "task_name": "Vidore3HrRetrieval.v2",
-  "mteb_version": "2.10.6",
+  "mteb_version": "2.13.1",
   "scores": {
     "test": [
       {
@@ -59,9 +59,9 @@
         "nauc_ndcg_at_100_max": 0.19683,
         "nauc_ndcg_at_100_std": 0.004765,
         "nauc_ndcg_at_100_diff1": -0.029335,
-        "nauc_ndcg_at_1000_max": 0.219082,
+        "nauc_ndcg_at_1000_max": 0.219081,
         "nauc_ndcg_at_1000_std": 0.041438,
-        "nauc_ndcg_at_1000_diff1": -0.004985,
+        "nauc_ndcg_at_1000_diff1": -0.004986,
         "nauc_map_at_1_max": -0.122549,
         "nauc_map_at_1_std": -0.193362,
         "nauc_map_at_1_diff1": 0.043445,
@@ -157,7 +157,8 @@
         "hf_subset": "french",
         "languages": [
           "fra-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.0456,
@@ -215,7 +216,7 @@
         "nauc_ndcg_at_100_std": -0.051835,
         "nauc_ndcg_at_100_diff1": -0.093017,
         "nauc_ndcg_at_1000_max": 0.150782,
-        "nauc_ndcg_at_1000_std": 0.003208,
+        "nauc_ndcg_at_1000_std": 0.003209,
         "nauc_ndcg_at_1000_diff1": -0.084561,
         "nauc_map_at_1_max": -0.043429,
         "nauc_map_at_1_std": -0.238556,
@@ -312,7 +313,8 @@
         "hf_subset": "spanish",
         "languages": [
           "spa-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.06761,
@@ -467,7 +469,8 @@
         "hf_subset": "english",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.03145,
@@ -622,7 +625,8 @@
         "hf_subset": "german",
         "languages": [
           "deu-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.03145,
@@ -777,7 +781,8 @@
         "hf_subset": "italian",
         "languages": [
           "ita-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.02358,
@@ -834,9 +839,9 @@
         "nauc_ndcg_at_100_max": 0.158136,
         "nauc_ndcg_at_100_std": -0.02125,
         "nauc_ndcg_at_100_diff1": 0.036326,
-        "nauc_ndcg_at_1000_max": 0.140892,
+        "nauc_ndcg_at_1000_max": 0.140891,
         "nauc_ndcg_at_1000_std": 0.009036,
-        "nauc_ndcg_at_1000_diff1": 0.050318,
+        "nauc_ndcg_at_1000_diff1": 0.050317,
         "nauc_map_at_1_max": 0.679917,
         "nauc_map_at_1_std": 0.085794,
         "nauc_map_at_1_diff1": -0.261943,
@@ -855,9 +860,9 @@
         "nauc_map_at_100_max": 0.208562,
         "nauc_map_at_100_std": -0.028719,
         "nauc_map_at_100_diff1": 0.016827,
-        "nauc_map_at_1000_max": 0.204095,
-        "nauc_map_at_1000_std": -0.009854,
-        "nauc_map_at_1000_diff1": 0.017247,
+        "nauc_map_at_1000_max": 0.204094,
+        "nauc_map_at_1000_std": -0.009853,
+        "nauc_map_at_1000_diff1": 0.017246,
         "nauc_recall_at_1_max": 0.679917,
         "nauc_recall_at_1_std": 0.085794,
         "nauc_recall_at_1_diff1": -0.261943,
@@ -932,11 +937,112 @@
         "hf_subset": "portuguese",
         "languages": [
           "por-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       }
     ]
   },
-  "evaluation_time": 539.2201242446899,
+  "evaluation_time": 1426.1511300259735,
   "kg_co2_emissions": null,
-  "date": 1772807037.711406
+  "date": 1783087721.75693,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 9.034108370542526e-05,
+      "end": 63.73749683005735,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 63.73751500016078,
+      "end": 63.737516650231555,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 63.74829996819608,
+      "end": 310.6749325732235,
+      "split": "test",
+      "subset": "french"
+    },
+    {
+      "name": "Scoring",
+      "start": 310.67511914414354,
+      "end": 310.98730918206275,
+      "split": "test",
+      "subset": "french"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 311.0156037712004,
+      "end": 532.9912048340775,
+      "split": "test",
+      "subset": "spanish"
+    },
+    {
+      "name": "Scoring",
+      "start": 532.9914166361559,
+      "end": 533.3179348800331,
+      "split": "test",
+      "subset": "spanish"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 533.3515815020073,
+      "end": 756.7876839670353,
+      "split": "test",
+      "subset": "english"
+    },
+    {
+      "name": "Scoring",
+      "start": 756.7879026092123,
+      "end": 757.0717590991408,
+      "split": "test",
+      "subset": "english"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 757.1089820200577,
+      "end": 980.171547482023,
+      "split": "test",
+      "subset": "german"
+    },
+    {
+      "name": "Scoring",
+      "start": 980.1717647141777,
+      "end": 980.4690085481852,
+      "split": "test",
+      "subset": "german"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 980.5017819232307,
+      "end": 1204.5780436750501,
+      "split": "test",
+      "subset": "italian"
+    },
+    {
+      "name": "Scoring",
+      "start": 1204.5783254781272,
+      "end": 1204.8915758721996,
+      "split": "test",
+      "subset": "italian"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 1204.9280884310137,
+      "end": 1425.80312507716,
+      "split": "test",
+      "subset": "portuguese"
+    },
+    {
+      "name": "Scoring",
+      "start": 1425.8034839401953,
+      "end": 1426.1223502091598,
+      "split": "test",
+      "subset": "portuguese"
+    }
+  ]
 }
