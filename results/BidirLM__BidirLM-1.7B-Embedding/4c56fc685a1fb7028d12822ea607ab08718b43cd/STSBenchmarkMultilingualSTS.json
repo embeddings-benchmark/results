@@ -1,0 +1,83 @@
+{
+  "dataset_revision": "29afa2569dcedaaa2fe6a3dcfebab33d28b82e8c",
+  "task_name": "STSBenchmarkMultilingualSTS",
+  "mteb_version": "2.16.2",
+  "scores": {
+    "dev": [
+      {
+        "pearson": 0.862963,
+        "spearman": 0.862721,
+        "cosine_pearson": 0.862963,
+        "cosine_spearman": 0.862721,
+        "manhattan_pearson": 0.860008,
+        "manhattan_spearman": 0.867073,
+        "euclidean_pearson": 0.857889,
+        "euclidean_spearman": 0.863502,
+        "main_score": 0.862721,
+        "hf_subset": "nl",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.16.2"
+      }
+    ],
+    "test": [
+      {
+        "pearson": 0.833777,
+        "spearman": 0.834425,
+        "cosine_pearson": 0.833777,
+        "cosine_spearman": 0.834425,
+        "manhattan_pearson": 0.821671,
+        "manhattan_spearman": 0.832978,
+        "euclidean_pearson": 0.823191,
+        "euclidean_spearman": 0.834028,
+        "main_score": 0.834425,
+        "hf_subset": "nl",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.16.2"
+      }
+    ]
+  },
+  "evaluation_time": 54.86815918900538,
+  "kg_co2_emissions": null,
+  "date": 1782987943.457067,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.000660628080368042,
+      "end": 1.4779303360264748,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.4779513460816815,
+      "end": 1.4793642030563205,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 1.4948934430722147,
+      "end": 5.272508543101139,
+      "split": "test",
+      "subset": "nl"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 5.274027158040553,
+      "end": 8.48035681201145,
+      "split": "test",
+      "subset": "nl"
+    },
+    {
+      "name": "Scoring",
+      "start": 8.481885456014425,
+      "end": 8.529761679004878,
+      "split": "test",
+      "subset": "nl"
+    }
+  ]
+}
