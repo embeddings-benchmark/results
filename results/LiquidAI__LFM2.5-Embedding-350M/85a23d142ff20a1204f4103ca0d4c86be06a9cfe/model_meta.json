@@ -1,0 +1,57 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true,
+        "device": "cuda"
+    },
+    "name": "LiquidAI/LFM2.5-Embedding-350M",
+    "revision": "85a23d142ff20a1204f4103ca0d4c86be06a9cfe",
+    "release_date": "2026-06-18",
+    "languages": [
+        "ara-Arab",
+        "deu-Latn",
+        "eng-Latn",
+        "fra-Latn",
+        "ita-Latn",
+        "jpn-Jpan",
+        "kor-Hang",
+        "nor-Latn",
+        "por-Latn",
+        "spa-Latn",
+        "swe-Latn"
+    ],
+    "n_parameters": 354483968,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 67108864,
+    "memory_usage_mb": 676.0,
+    "max_tokens": 128000.0,
+    "embed_dim": 1024,
+    "license": "https://huggingface.co/LiquidAI/LFM2-ColBERT-350M/blob/main/LICENSE",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/LiquidAI/LFM2.5-Embedding-350M",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": null,
+    "adapted_from": "LiquidAI/LFM2.5-350M-Base",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@article{liquidAI2026Retrievers,\n  author = {Liquid AI},\n  title = {LFM2.5 Retrievers: Bi-directional LFMs for Fast Multilingual Search},\n  journal = {Liquid AI Blog},\n  year = {2026},\n  note = {www.liquid.ai/blog/lfm2-5-retrievers}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
