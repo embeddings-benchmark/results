@@ -1,53 +1,51 @@
 {
-    "loader_kwargs": {
-        "device": "cpu"
-    },
-    "name": "minishlab/potion-base-2M",
-    "revision": "389b9f64be5aa4ae7a6bc6fe95ef20ce485ae5da",
-    "release_date": "2024-10-29",
-    "languages": [
-        "eng-Latn"
-    ],
-    "n_parameters": 2000000,
-    "n_active_parameters_override": null,
-    "n_embedding_parameters": 2000000,
-    "memory_usage_mb": 7.0,
-    "max_tokens": Infinity,
-    "embed_dim": 64,
-    "license": "mit",
-    "open_weights": true,
-    "public_training_code": "https://github.com/MinishLab/model2vec",
-    "public_training_data": null,
-    "framework": [
-        "NumPy",
-        "Sentence Transformers",
-        "ONNX",
-        "safetensors"
-    ],
-    "reference": "https://huggingface.co/minishlab/potion-base-2M",
-    "similarity_fn_name": "cosine",
-    "use_instructions": false,
-    "training_datasets": [
-        "DuRetrieval",
-        "MLQARetrieval",
-        "NQ-NL",
-        "AmazonReviewsClassification",
-        "NQHardNegatives",
-        "NQ"
-    ],
-    "adapted_from": "BAAI/bge-base-en-v1.5",
-    "superseded_by": null,
-    "modalities": [
-        "text"
-    ],
-    "model_type": [
-        "dense"
-    ],
-    "citation": "@software{minishlab2024model2vec,\n  author       = {Stephan Tulkens and {van Dongen}, Thomas},\n  title        = {Model2Vec: Fast State-of-the-Art Static Embeddings},\n  year         = {2024},\n  publisher    = {Zenodo},\n  doi          = {10.5281/zenodo.17270888},\n  url          = {https://github.com/MinishLab/model2vec},\n  license      = {MIT}\n}",
-    "contacts": null,
-    "experiment_kwargs": null,
-    "output_dtypes": null,
-    "extra_requirements_groups": null,
-    "loader": "SentenceTransformerEncoderWrapper",
-    "is_cross_encoder": false
+  "loader_kwargs": {},
+  "name": "minishlab/potion-base-2M",
+  "revision": "389b9f64be5aa4ae7a6bc6fe95ef20ce485ae5da",
+  "release_date": "2024-10-29",
+  "languages": [
+    "eng-Latn"
+  ],
+  "n_parameters": 2000000,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": 2000000,
+  "memory_usage_mb": 7.0,
+  "max_tokens": Infinity,
+  "embed_dim": 64,
+  "license": "mit",
+  "open_weights": true,
+  "public_training_code": "https://github.com/MinishLab/model2vec",
+  "public_training_data": null,
+  "framework": [
+    "NumPy",
+    "Sentence Transformers",
+    "ONNX",
+    "safetensors"
+  ],
+  "reference": "https://huggingface.co/minishlab/potion-base-2M",
+  "similarity_fn_name": "cosine",
+  "use_instructions": false,
+  "training_datasets": [
+    "AmazonReviewsClassification",
+    "NQ-NL",
+    "NQHardNegatives",
+    "MLQARetrieval",
+    "DuRetrieval",
+    "NQ"
+  ],
+  "adapted_from": "BAAI/bge-base-en-v1.5",
+  "superseded_by": null,
+  "modalities": [
+    "text"
+  ],
+  "model_type": [
+    "dense"
+  ],
+  "citation": "@software{minishlab2024model2vec,\n  author       = {Stephan Tulkens and {van Dongen}, Thomas},\n  title        = {Model2Vec: Fast State-of-the-Art Static Embeddings},\n  year         = {2024},\n  publisher    = {Zenodo},\n  doi          = {10.5281/zenodo.17270888},\n  url          = {https://github.com/MinishLab/model2vec},\n  license      = {MIT}\n}",
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": null,
+  "extra_requirements_groups": null,
+  "loader": null,
+  "is_cross_encoder": false
 }
