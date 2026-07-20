@@ -1,0 +1,24 @@
+{
+  "name": "papr-ai/papr-embed-mini-v1-scifact",
+  "revision": "6b484bbcadd9",
+  "release_date": "2026-07-17",
+  "languages": ["eng-Latn"],
+  "n_parameters": 595776000,
+  "memory_usage_mb": 2400,
+  "embed_dim": 1280,
+  "max_tokens": 2048,
+  "license": "apache-2.0",
+  "open_weights": false,
+  "similarity_fn_name": "cosine",
+  "framework": ["PyTorch", "Transformers"],
+  "reference": "https://papr.ai",
+  "use_instructions": true,
+  "adapted_from": "Qwen/Qwen3-Embedding-0.6B",
+  "modalities": ["text"],
+  "model_type": ["dense"],
+  "training_datasets": {
+    "SciFact": ["train"]
+  },
+  "public_training_code": null,
+  "public_training_data": null
+}
