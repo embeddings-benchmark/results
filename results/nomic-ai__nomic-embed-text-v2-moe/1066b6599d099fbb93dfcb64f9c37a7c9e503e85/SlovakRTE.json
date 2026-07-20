@@ -1,48 +1,87 @@
 {
-    "dataset_revision": "2e428d17ae4178dae14f6643785647fc9f30edaa",
-    "task_name": "SlovakRTE",
-    "mteb_version": "1.39.7",
-    "scores": {
-        "test": [
-            {
-                "similarity_accuracy": 0.51506,
-                "similarity_f1": 0.652862,
-                "similarity_precision": 0.484629,
-                "similarity_recall": 1.0,
-                "similarity_ap": 0.382849,
-                "cosine_accuracy": 0.51506,
-                "cosine_f1": 0.652862,
-                "cosine_precision": 0.484629,
-                "cosine_recall": 1.0,
-                "cosine_ap": 0.382849,
-                "manhattan_accuracy": 0.51506,
-                "manhattan_f1": 0.652862,
-                "manhattan_precision": 0.484629,
-                "manhattan_recall": 1.0,
-                "manhattan_ap": 0.382878,
-                "euclidean_accuracy": 0.51506,
-                "euclidean_f1": 0.652862,
-                "euclidean_precision": 0.484629,
-                "euclidean_recall": 1.0,
-                "euclidean_ap": 0.382849,
-                "dot_accuracy": 0.51506,
-                "dot_f1": 0.652862,
-                "dot_precision": 0.484629,
-                "dot_recall": 1.0,
-                "dot_ap": 0.382849,
-                "max_accuracy": 0.51506,
-                "max_f1": 0.652862,
-                "max_precision": 0.484629,
-                "max_recall": 1.0,
-                "max_ap": 0.382878,
-                "main_score": 0.382878,
-                "hf_subset": "default",
-                "languages": [
-                    "slk-Latn"
-                ]
-            }
-        ]
+  "dataset_revision": "10549a8c63542e6a0db4fcf5fcdc29b3e1b8c4e9",
+  "task_name": "SlovakRTE",
+  "mteb_version": "2.16.0",
+  "scores": {
+    "test": [
+      {
+        "similarity_accuracy": 0.623494,
+        "similarity_f1": 0.696841,
+        "similarity_precision": 0.58419,
+        "similarity_recall": 0.863318,
+        "similarity_ap": 0.664486,
+        "cosine_accuracy": 0.623494,
+        "cosine_f1": 0.696841,
+        "cosine_precision": 0.58419,
+        "cosine_recall": 0.863318,
+        "cosine_ap": 0.664486,
+        "manhattan_accuracy": 0.623494,
+        "manhattan_f1": 0.693051,
+        "manhattan_precision": 0.571754,
+        "manhattan_recall": 0.879673,
+        "manhattan_ap": 0.664342,
+        "euclidean_accuracy": 0.623494,
+        "euclidean_f1": 0.696841,
+        "euclidean_precision": 0.58419,
+        "euclidean_recall": 0.863318,
+        "euclidean_ap": 0.664486,
+        "dot_accuracy": 0.623494,
+        "dot_f1": 0.696841,
+        "dot_precision": 0.58419,
+        "dot_recall": 0.863318,
+        "dot_ap": 0.664485,
+        "max_accuracy": 0.623494,
+        "max_f1": 0.696841,
+        "max_precision": 0.58419,
+        "max_recall": 0.879673,
+        "max_ap": 0.664486,
+        "main_score": 0.664486,
+        "hf_subset": "default",
+        "languages": [
+          "slk-Latn"
+        ],
+        "mteb_version": "2.16.0"
+      }
+    ]
+  },
+  "evaluation_time": 7.8945766930009995,
+  "kg_co2_emissions": null,
+  "date": 1784314156.173381,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 1.010999949357938e-05,
+      "end": 1.1138069110002107,
+      "split": "",
+      "subset": ""
     },
-    "evaluation_time": 49.692747592926025,
-    "kg_co2_emissions": null
+    {
+      "name": "Dataset transform",
+      "start": 1.113816320999831,
+      "end": 1.1552719779992913,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 1.4347140219997527,
+      "end": 6.124474497999472,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 6.12450540700047,
+      "end": 7.846338642999399,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 7.846368122000058,
+      "end": 7.859433285000705,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

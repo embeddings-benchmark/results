@@ -1,48 +1,87 @@
 {
-    "dataset_revision": "2e428d17ae4178dae14f6643785647fc9f30edaa",
-    "task_name": "SlovakRTE",
-    "mteb_version": "1.39.7",
-    "scores": {
-        "test": [
-            {
-                "similarity_accuracy": 0.51506,
-                "similarity_f1": 0.652315,
-                "similarity_precision": 0.484318,
-                "similarity_recall": 0.998756,
-                "similarity_ap": 0.403313,
-                "cosine_accuracy": 0.51506,
-                "cosine_f1": 0.652315,
-                "cosine_precision": 0.484318,
-                "cosine_recall": 0.998756,
-                "cosine_ap": 0.403313,
-                "manhattan_accuracy": 0.51506,
-                "manhattan_f1": 0.652315,
-                "manhattan_precision": 0.484318,
-                "manhattan_recall": 0.998756,
-                "manhattan_ap": 0.404436,
-                "euclidean_accuracy": 0.51506,
-                "euclidean_f1": 0.652315,
-                "euclidean_precision": 0.484318,
-                "euclidean_recall": 0.998756,
-                "euclidean_ap": 0.403313,
-                "dot_accuracy": 0.51506,
-                "dot_f1": 0.652315,
-                "dot_precision": 0.484318,
-                "dot_recall": 0.998756,
-                "dot_ap": 0.403312,
-                "max_accuracy": 0.51506,
-                "max_f1": 0.652315,
-                "max_precision": 0.484318,
-                "max_recall": 0.998756,
-                "max_ap": 0.404436,
-                "main_score": 0.404436,
-                "hf_subset": "default",
-                "languages": [
-                    "slk-Latn"
-                ]
-            }
-        ]
+  "dataset_revision": "10549a8c63542e6a0db4fcf5fcdc29b3e1b8c4e9",
+  "task_name": "SlovakRTE",
+  "mteb_version": "2.16.0",
+  "scores": {
+    "test": [
+      {
+        "similarity_accuracy": 0.595181,
+        "similarity_f1": 0.689189,
+        "similarity_precision": 0.539683,
+        "similarity_recall": 0.953271,
+        "similarity_ap": 0.627012,
+        "cosine_accuracy": 0.595181,
+        "cosine_f1": 0.689189,
+        "cosine_precision": 0.539683,
+        "cosine_recall": 0.953271,
+        "cosine_ap": 0.627012,
+        "manhattan_accuracy": 0.598795,
+        "manhattan_f1": 0.690189,
+        "manhattan_precision": 0.546322,
+        "manhattan_recall": 0.936916,
+        "manhattan_ap": 0.625555,
+        "euclidean_accuracy": 0.595181,
+        "euclidean_f1": 0.689189,
+        "euclidean_precision": 0.539683,
+        "euclidean_recall": 0.953271,
+        "euclidean_ap": 0.627014,
+        "dot_accuracy": 0.595181,
+        "dot_f1": 0.689189,
+        "dot_precision": 0.539683,
+        "dot_recall": 0.953271,
+        "dot_ap": 0.627012,
+        "max_accuracy": 0.598795,
+        "max_f1": 0.690189,
+        "max_precision": 0.546322,
+        "max_recall": 0.953271,
+        "max_ap": 0.627014,
+        "main_score": 0.627014,
+        "hf_subset": "default",
+        "languages": [
+          "slk-Latn"
+        ],
+        "mteb_version": "2.16.0"
+      }
+    ]
+  },
+  "evaluation_time": 3.4314696680012275,
+  "kg_co2_emissions": null,
+  "date": 1784313889.20081,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 1.0539999493630603e-05,
+      "end": 1.135784498999783,
+      "split": "",
+      "subset": ""
     },
-    "evaluation_time": 11.063236951828003,
-    "kg_co2_emissions": null
+    {
+      "name": "Dataset transform",
+      "start": 1.1357940689995303,
+      "end": 1.1817760209996777,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 1.4719678530000238,
+      "end": 2.829827788998955,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 2.8298523079993174,
+      "end": 3.3858089729983476,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 3.3858290019998094,
+      "end": 3.3938896479994582,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

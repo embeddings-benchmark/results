@@ -1,48 +1,87 @@
 {
-  "dataset_revision": "2e428d17ae4178dae14f6643785647fc9f30edaa",
+  "dataset_revision": "10549a8c63542e6a0db4fcf5fcdc29b3e1b8c4e9",
   "task_name": "SlovakRTE",
-  "mteb_version": "2.3.0",
+  "mteb_version": "2.16.0",
   "scores": {
     "test": [
       {
-        "similarity_accuracy": 0.51506,
-        "similarity_f1": 0.65205,
-        "similarity_precision": 0.484027,
-        "similarity_recall": 0.998756,
-        "similarity_ap": 0.385575,
-        "cosine_accuracy": 0.51506,
-        "cosine_f1": 0.65205,
-        "cosine_precision": 0.484027,
-        "cosine_recall": 0.998756,
-        "cosine_ap": 0.385575,
-        "manhattan_accuracy": 0.51506,
-        "manhattan_f1": 0.65205,
-        "manhattan_precision": 0.484027,
-        "manhattan_recall": 0.998756,
-        "manhattan_ap": 0.385561,
-        "euclidean_accuracy": 0.51506,
-        "euclidean_f1": 0.65205,
-        "euclidean_precision": 0.484027,
-        "euclidean_recall": 0.998756,
-        "euclidean_ap": 0.385575,
-        "dot_accuracy": 0.51506,
-        "dot_f1": 0.65205,
-        "dot_precision": 0.484027,
-        "dot_recall": 0.998756,
-        "dot_ap": 0.385575,
-        "max_accuracy": 0.51506,
-        "max_f1": 0.65205,
-        "max_precision": 0.484027,
-        "max_recall": 0.998756,
-        "max_ap": 0.385575,
-        "main_score": 0.385575,
+        "similarity_accuracy": 0.622892,
+        "similarity_f1": 0.687029,
+        "similarity_precision": 0.535202,
+        "similarity_recall": 0.959112,
+        "similarity_ap": 0.663899,
+        "cosine_accuracy": 0.622892,
+        "cosine_f1": 0.687029,
+        "cosine_precision": 0.535202,
+        "cosine_recall": 0.959112,
+        "cosine_ap": 0.663899,
+        "manhattan_accuracy": 0.624699,
+        "manhattan_f1": 0.687023,
+        "manhattan_precision": 0.539281,
+        "manhattan_recall": 0.946262,
+        "manhattan_ap": 0.664214,
+        "euclidean_accuracy": 0.622892,
+        "euclidean_f1": 0.687029,
+        "euclidean_precision": 0.535202,
+        "euclidean_recall": 0.959112,
+        "euclidean_ap": 0.6639,
+        "dot_accuracy": 0.622892,
+        "dot_f1": 0.687029,
+        "dot_precision": 0.535202,
+        "dot_recall": 0.959112,
+        "dot_ap": 0.6639,
+        "max_accuracy": 0.624699,
+        "max_f1": 0.687029,
+        "max_precision": 0.539281,
+        "max_recall": 0.959112,
+        "max_ap": 0.664214,
+        "main_score": 0.664214,
         "hf_subset": "default",
         "languages": [
           "slk-Latn"
-        ]
+        ],
+        "mteb_version": "2.16.0"
       }
     ]
   },
-  "evaluation_time": 9.419591665267944,
-  "kg_co2_emissions": null
+  "evaluation_time": 9.62307579499975,
+  "kg_co2_emissions": null,
+  "date": 1784314496.987939,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 9.639999916544184e-06,
+      "end": 1.1339807250005833,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.1339915250009653,
+      "end": 1.174493717000587,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 1.4562907950003137,
+      "end": 7.930688835000183,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 7.930722524000885,
+      "end": 9.570038871001088,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 9.570068199000161,
+      "end": 9.586969883001075,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }
