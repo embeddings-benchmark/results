@@ -1,0 +1,109 @@
+{
+    "loader_kwargs": {
+        "processor_kwargs": {
+            "model_max_length": 4096
+        }
+    },
+    "name": "nvidia/Nemotron-3-Embed-1B-BF16",
+    "revision": "f880174635613cff04033875fc6a69296cb72006",
+    "release_date": "2026-07-16",
+    "languages": [
+        "eng-Latn",
+        "ara-Arab",
+        "asm-Beng",
+        "ben-Beng",
+        "bul-Cyrl",
+        "zho-Hans",
+        "dan-Latn",
+        "nld-Latn",
+        "fin-Latn",
+        "fra-Latn",
+        "deu-Latn",
+        "hin-Deva",
+        "hin-Latn",
+        "ind-Latn",
+        "ita-Latn",
+        "jpn-Jpan",
+        "kor-Hang",
+        "msa-Latn",
+        "mar-Deva",
+        "nep-Deva",
+        "nor-Latn",
+        "fas-Arab",
+        "por-Latn",
+        "ron-Latn",
+        "rus-Cyrl",
+        "spa-Latn",
+        "swa-Latn",
+        "swe-Latn",
+        "tam-Taml",
+        "tel-Telu",
+        "tha-Thai",
+        "ukr-Cyrl",
+        "urd-Arab",
+        "vie-Latn"
+    ],
+    "n_parameters": 1140918272,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 268435456,
+    "memory_usage_mb": 2176.0,
+    "max_tokens": 32768.0,
+    "embed_dim": 2048,
+    "license": "https://huggingface.co/nvidia/Nemotron-3-Embed-1B-BF16/blob/main/LICENSE",
+    "open_weights": true,
+    "public_training_code": "https://github.com/NVIDIA-NeMo/Automodel",
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/nvidia/Nemotron-3-Embed-1B-BF16",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "WinoGrande",
+        "MLQARetrieval",
+        "CodeTransOceanContest",
+        "BioASQ",
+        "PAQ",
+        "FEVER",
+        "NQ",
+        "AppsRetrieval",
+        "MIRACLRetrieval",
+        "RedditClustering",
+        "WikiSQLRetrieval",
+        "StackOverflowQA",
+        "CosQA",
+        "FinQARetrieval",
+        "HoVer",
+        "SyntheticText2SQL",
+        "TriviaQA",
+        "SQuAD",
+        "FinePDFs",
+        "HotpotQA",
+        "SpartQA",
+        "Nemotron-CC-v2",
+        "TempReasonL1",
+        "CodeTransOceanDL"
+    ],
+    "adapted_from": "mistralai/Ministral-3-3B-Instruct-2512",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": [
+        "ybabakhin"
+    ],
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": [
+        "nemotron-3-embed"
+    ],
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
