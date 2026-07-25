@@ -19,24 +19,19 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
-  compare-results:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      pr_number: ${{ steps.pr_info.outputs.pr_number }}
 
     steps:
-    - name: Free disk space
-      run: |
-        sudo rm -rf /usr/share/dotnet
-        sudo rm -rf /opt/ghc
-        sudo rm -rf /usr/local/share/boost
-        docker system prune -af
-
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
-        # IMPORTANT: For pull_request_target, check out the PR branch explicitly
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
 
@@ -59,27 +54,40 @@ jobs:
       run: |
         uv run python scripts/create_pr_results_comment.py --reference-models $REFERENCE_MODELS --output model-comparison.md
 
+    - name: Save PR number
+      id: pr_info
+      run: |
+        if [ "${{ github.event_name }}" == "pull_request_target" ]; then
+          echo "pr_number=${{ github.event.number }}" >> "$GITHUB_OUTPUT"
+        elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+          echo "pr_number=${{ github.event.inputs.pull_request_number }}" >> "$GITHUB_OUTPUT"
+        else
+          echo "pr_number=" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Upload comparison report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: model-comparison
         path: model-comparison.md
 
-    - name: Determine PR Number
-      id: pr_info
-      run: |
-        if [ "${{ github.event_name }}" == "pull_request_target" ]; then
-          echo "pr_number=${{ github.event.number }}" >> $GITHUB_OUTPUT
-        elif [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.pull_request_number }}" ]; then
-          echo "pr_number=${{ github.event.inputs.pull_request_number }}" >> $GITHUB_OUTPUT
-        else
-          echo "pr_number=" >> $GITHUB_OUTPUT
-        fi
+  comment:
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.result == 'success' && needs.build.outputs.pr_number != ''
+    permissions:
+      pull-requests: write
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v8
+      with:
+        name: model-comparison
 
     - name: Post PR comment
-      if: steps.pr_info.outputs.pr_number != ''
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        PR_NUMBER: ${{ needs.build.outputs.pr_number }}
       run: |
         if [ -f model-comparison.md ]; then
           FILE_SIZE=$(wc -c < model-comparison.md | tr -d ' ')
@@ -89,7 +97,7 @@ jobs:
             echo -e "\n\n---\n**Note:** Content truncated due to GitHub API limits. See the full report in the workflow artifacts." >> model-comparison-truncated.md
             mv model-comparison-truncated.md model-comparison.md
           fi
-          gh pr comment ${{ steps.pr_info.outputs.pr_number }} --body-file model-comparison.md --create-if-none --edit-last
+          gh pr comment "$PR_NUMBER" --body-file model-comparison.md --create-if-none --edit-last
         else
           echo "model-comparison.md not found, skipping comment."
         fi
