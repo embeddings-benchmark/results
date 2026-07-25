@@ -89,6 +89,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
         PR_NUMBER: ${{ needs.build.outputs.pr_number }}
+        GH_REPO: ${{ github.repository }}
       run: |
         if [ -f model-comparison.md ]; then
           FILE_SIZE=$(wc -c < model-comparison.md | tr -d ' ')
