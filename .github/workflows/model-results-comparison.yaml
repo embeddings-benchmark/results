@@ -39,10 +39,10 @@ jobs:
     - name: Fetch origin main
       run: git fetch origin main
 
-    - name: Install uv and set the Python ${{ matrix.python-version }} version
+    - name: Install uv and set the Python
       uses: astral-sh/setup-uv@v7
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.12"
 
     - name: Install dependencies
       shell: bash
