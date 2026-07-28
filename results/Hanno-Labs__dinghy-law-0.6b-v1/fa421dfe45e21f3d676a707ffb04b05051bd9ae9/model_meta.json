@@ -1,0 +1,63 @@
+{
+    "loader_kwargs": {
+        "model_kwargs": {
+            "torch_dtype": "bfloat16"
+        },
+        "prompts_dict": {
+            "AILACasedocs": "Retrieve the case document that most closely matches or is most relevant to the scenario described in the provided query.",
+            "AILAStatutes": "Identify the most relevant statutes for the given situation.",
+            "LegalSummarization": "Given a contract summary, retrieve the contract.",
+            "LegalBenchConsumerContractsQA": "Retrieve the contract text most relevant to answering the given question.",
+            "LegalBenchCorporateLobbying": "Given a bill title, retrieve the corresponding bill summary.",
+            "GerDaLIRSmall": "Retrieve relevant legal case documents.",
+            "LegalQuAD": "Retrieve relevant legal case documents.",
+            "LeCaRDv2": "Retrieve the case document that most closely matches or is most relevant to the scenario described in the provided query."
+        }
+    },
+    "name": "Hanno-Labs/dinghy-law-0.6b-v1",
+    "revision": "fa421dfe45e21f3d676a707ffb04b05051bd9ae9",
+    "release_date": "2026-07-13",
+    "languages": [
+        "eng-Latn",
+        "deu-Latn",
+        "zho-Hans"
+    ],
+    "n_parameters": 596826112,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 155309056,
+    "memory_usage_mb": 1138.0,
+    "max_tokens": 32768.0,
+    "embed_dim": 1024,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://huggingface.co/datasets/Hanno-Labs/legal-retrieval-pairs-v1",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/Hanno-Labs/dinghy-law-0.6b-v1",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "BillSumUS",
+        "GerDaLIR",
+        "GerDaLIRSmall"
+    ],
+    "adapted_from": "Qwen/Qwen3-Embedding-0.6B",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@misc{dinghy-law-0.6b,\n  title  = {dinghy-law-0.6b: a compact legal text-embedding model},\n  author = {Solka, Stephen},\n  year   = {2026},\n  note   = {Hanno Labs / Clause Logic Inc.},\n  howpublished = {\\url{https://huggingface.co/Hanno-Labs/dinghy-law-0.6b-v1}}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "q3e_instruct_loader",
+    "is_cross_encoder": false
+}

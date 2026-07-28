@@ -1,0 +1,46 @@
+{
+    "loader_kwargs": {},
+    "name": "iara-project/e5-large-matryoshka-sts-pt",
+    "revision": "85f530106aca75bcb1b8e7b483817b4c942d7810",
+    "release_date": "2026-03-23",
+    "languages": [
+        "por-Latn"
+    ],
+    "n_parameters": 559890432,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 256002048,
+    "memory_usage_mb": 2136.0,
+    "max_tokens": 514.0,
+    "embed_dim": 1024,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/iara-project/e5-large-matryoshka-sts-pt",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "Assin2STS",
+        "SICK-BR-STS",
+        "STSBenchmarkMultilingualSTS"
+    ],
+    "adapted_from": "intfloat/multilingual-e5-large",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "\n@misc{okamura2026multilingualaveragesmtebptbenchmark,\n  archiveprefix = {arXiv},\n  author = {Lucas Hideki Takeuchi Okamura and Alexandre Alcoforado and Anna Helena Reali Costa},\n  eprint = {2607.04071},\n  primaryclass = {cs.CL},\n  title = {Beyond Multilingual Averages: MTEB-PT, a Benchmark for Portuguese Sentence Encoders},\n  url = {https://arxiv.org/abs/2607.04071},\n  year = {2026},\n}\n",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
