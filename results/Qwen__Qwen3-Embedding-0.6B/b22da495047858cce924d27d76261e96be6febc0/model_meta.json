@@ -1,5 +1,10 @@
 {
-    "loader_kwargs": {},
+    "loader_kwargs": {
+        "model_kwargs": {
+            "attn_implementation": "sdpa",
+            "torch_dtype": "auto"
+        }
+    },
     "name": "Qwen/Qwen3-Embedding-0.6B",
     "revision": "b22da495047858cce924d27d76261e96be6febc0",
     "release_date": "2025-06-05",
@@ -98,17 +103,17 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MSMARCO",
         "FEVER",
-        "NQ",
-        "CodeSearchNet",
-        "DuRetrieval",
-        "T2Retrieval",
         "CMedQAv2-reranking",
-        "MMarcoReranking",
+        "DuRetrieval",
+        "MSMARCO",
+        "NQ",
         "MIRACLRetrieval",
+        "MMarcoReranking",
+        "MrTidyRetrieval",
         "HotpotQA",
-        "MrTidyRetrieval"
+        "T2Retrieval",
+        "CodeSearchNet"
     ],
     "adapted_from": null,
     "superseded_by": null,

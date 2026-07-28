@@ -1,0 +1,143 @@
+{
+    "loader_kwargs": {
+        "instruction_template": "<function instruction_template at 0x147f2add7060>",
+        "trust_remote_code": true,
+        "prompts_dict": {
+            "BrightBiologyRetrieval": {
+                "query": "Given a Biology post, retrieve relevant passages that help answer the post"
+            },
+            "BrightEarthScienceRetrieval": {
+                "query": "Given a Earth Science post, retrieve relevant passages that help answer the post"
+            },
+            "BrightEconomicsRetrieval": {
+                "query": "Given a Economics post, retrieve relevant passages that help answer the post"
+            },
+            "BrightPsychologyRetrieval": {
+                "query": "Given a Psychology post, retrieve relevant passages that help answer the post"
+            },
+            "BrightRoboticsRetrieval": {
+                "query": "Given a Robotics post, retrieve relevant passages that help answer the post"
+            },
+            "BrightStackoverflowRetrieval": {
+                "query": "Given a Stackoverflow post, retrieve relevant passages that help answer the post"
+            },
+            "BrightSustainableLivingRetrieval": {
+                "query": "Given a Sustainable Living post, retrieve relevant passages that help answer the post"
+            },
+            "BrightPonyRetrieval": {
+                "query": "Given a Pony question, retrieve relevant passages that help answer the question"
+            },
+            "BrightLeetcodeRetrieval": {
+                "query": "Given a coding problem, retrieve relevant examples that help answer the problem"
+            },
+            "BrightAopsRetrieval": {
+                "query": "Given a Math problem, retrieve relevant examples that help answer the problem"
+            },
+            "BrightTheoremQATheoremsRetrieval": {
+                "query": "Given a Math problem, retrieve relevant theorems that help answer the problem"
+            },
+            "BrightTheoremQAQuestionsRetrieval": {
+                "query": "Given a Math problem, retrieve relevant examples that help answer the problem"
+            },
+            "BrightBiologyLongRetrieval": {
+                "query": "Given a Biology post, retrieve relevant documents that help answer the post"
+            },
+            "BrightEarthScienceLongRetrieval": {
+                "query": "Given a Earth Science post, retrieve relevant documents that help answer the post"
+            },
+            "BrightEconomicsLongRetrieval": {
+                "query": "Given a Economics post, retrieve relevant documents that help answer the post"
+            },
+            "BrightPsychologyLongRetrieval": {
+                "query": "Given a Psychology post, retrieve relevant documents that help answer the post"
+            },
+            "BrightRoboticsLongRetrieval": {
+                "query": "Given a Robotics post, retrieve relevant documents that help answer the post"
+            },
+            "BrightStackoverflowLongRetrieval": {
+                "query": "Given a Stackoverflow post, retrieve relevant documents that help answer the post"
+            },
+            "BrightSustainableLivingLongRetrieval": {
+                "query": "Given a Sustainable Living post, retrieve relevant documents that help answer the post"
+            },
+            "BrightPonyLongRetrieval": {
+                "query": "Given a Pony question, retrieve relevant documents that help answer the question"
+            },
+            "BrightProBiologyRetrieval": {
+                "query": "Given a Biology post, retrieve relevant passages that help answer the post"
+            },
+            "BrightProEarthScienceRetrieval": {
+                "query": "Given an Earth Science post, retrieve relevant passages that help answer the post"
+            },
+            "BrightProEconomicsRetrieval": {
+                "query": "Given an Economics post, retrieve relevant passages that help answer the post"
+            },
+            "BrightProPsychologyRetrieval": {
+                "query": "Given a Psychology post, retrieve relevant passages that help answer the post"
+            },
+            "BrightProRoboticsRetrieval": {
+                "query": "Given a Robotics post, retrieve relevant passages that help answer the post"
+            },
+            "BrightProStackoverflowRetrieval": {
+                "query": "Given a Stack Overflow post, retrieve relevant passages that help answer the post"
+            },
+            "BrightProSustainableLivingRetrieval": {
+                "query": "Given a Sustainable Living post, retrieve relevant passages that help answer the post"
+            }
+        },
+        "model_kwargs": {
+            "torch_dtype": "auto"
+        }
+    },
+    "name": "ReasonIR/ReasonIR-8B",
+    "revision": "c3d0690370ff4a8c3d3882d8dfa85c43650034fa",
+    "release_date": "2025-04-29",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 7504924672,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 525336576,
+    "memory_usage_mb": null,
+    "max_tokens": 131072.0,
+    "embed_dim": 4096,
+    "license": "cc-by-nc-4.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/facebookresearch/ReasonIR/tree/main/training",
+    "public_training_data": "https://huggingface.co/datasets/reasonir/reasonir-data",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/ReasonIR/ReasonIR-8B",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "MIRACLRetrieval",
+        "MrTidyRetrieval",
+        "NQ",
+        "T2Reranking",
+        "HotpotQA",
+        "FEVER",
+        "QuoraRetrieval",
+        "DuRetrieval",
+        "MSMARCO"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@article{shao2025reasonir,\n      title={ReasonIR: Training Retrievers for Reasoning Tasks},\n      author={Rulin Shao and Rui Qiao and Varsha Kishore and Niklas Muennighoff and Xi Victoria Lin and Daniela Rus and Bryan Kian Hsiang Low and Sewon Min and Wen-tau Yih and Pang Wei Koh and Luke Zettlemoyer},\n      year={2025},\n      journal={arXiv preprint arXiv:2504.20595},\n      url={https://arxiv.org/abs/2504.20595},\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "InstructSentenceTransformerModel",
+    "is_cross_encoder": false
+}

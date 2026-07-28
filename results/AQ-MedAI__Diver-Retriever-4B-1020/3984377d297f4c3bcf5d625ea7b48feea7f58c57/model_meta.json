@@ -1,0 +1,63 @@
+{
+    "loader_kwargs": {
+        "model_kwargs": {
+            "attn_implementation": "sdpa",
+            "torch_dtype": "auto"
+        }
+    },
+    "name": "AQ-MedAI/Diver-Retriever-4B-1020",
+    "revision": "3984377d297f4c3bcf5d625ea7b48feea7f58c57",
+    "release_date": "2025-10-20",
+    "languages": [
+        "eng-Latn",
+        "zho-Hans"
+    ],
+    "n_parameters": 4021774336,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 388262400,
+    "memory_usage_mb": 7670.0,
+    "max_tokens": 40960.0,
+    "embed_dim": 2560,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/AQ-MedAI/Diver",
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/AQ-MedAI/Diver-Retriever-4B-1020",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "BrightRoboticsRetrieval",
+        "BrightTheoremQAQuestionsRetrieval",
+        "BrightStackoverflowRetrieval",
+        "BrightPonyRetrieval",
+        "BrightPsychologyRetrieval",
+        "BrightAopsRetrieval",
+        "BrightEconomicsRetrieval",
+        "BrightBiologyRetrieval",
+        "BrightSustainableLivingRetrieval",
+        "BrightLeetcodeRetrieval",
+        "BrightEarthScienceRetrieval",
+        "BrightTheoremQATheoremsRetrieval"
+    ],
+    "adapted_from": "Qwen/Qwen3-Embedding-4B",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@misc{sun2026divermultistageapproachreasoningintensive,\n      title={DIVER: A Multi-Stage Approach for Reasoning-intensive Information Retrieval},\n      author={Duolin Sun and Meixiu Long and Dan Yang and Junjie Wang and Yecheng Luo and Yue Shen and Jian Wang and Hualei Zhou and Chunxiao Guo and Peng Wei and Jiahai Wang and Jinjie Gu},\n      year={2026},\n      eprint={2508.07995},\n      archivePrefix={arXiv},\n      primaryClass={cs.IR},\n      url={https://arxiv.org/abs/2508.07995},\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "q3e_instruct_loader",
+    "is_cross_encoder": false
+}
