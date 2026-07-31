@@ -1,7 +1,5 @@
 {
-    "loader_kwargs": {
-        "device": "cuda"
-    },
+    "loader_kwargs": {},
     "name": "deepvk/USER-bge-m3",
     "revision": "0cc6cfe48e260fb0474c753087a69369e88709ae",
     "release_date": "2024-07-05",
@@ -27,11 +25,11 @@
     "similarity_fn_name": "cosine",
     "use_instructions": false,
     "training_datasets": [
-        "MLSUMClusteringS2S",
-        "MLSUMClusteringP2P",
         "MLSUMClusteringS2S.v2",
         "MLSUMClusteringP2P.v2",
-        "BibleNLPBitextMining"
+        "MLSUMClusteringS2S",
+        "BibleNLPBitextMining",
+        "MLSUMClusteringP2P"
     ],
     "adapted_from": "BAAI/bge-m3",
     "superseded_by": null,
