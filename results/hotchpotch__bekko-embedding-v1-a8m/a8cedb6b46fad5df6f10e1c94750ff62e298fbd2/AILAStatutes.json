@@ -1,7 +1,7 @@
 {
   "dataset_revision": "ebfcd844eadd3d667efa3c57fc5c8c87f5c2867e",
   "task_name": "AILAStatutes",
-  "mteb_version": "2.18.7",
+  "mteb_version": "2.18.11",
   "scores": {
     "test": [
       {
@@ -10,15 +10,15 @@
         "ndcg_at_5": 0.26079,
         "ndcg_at_10": 0.33939,
         "ndcg_at_20": 0.40617,
-        "ndcg_at_100": 0.53715,
-        "ndcg_at_1000": 0.53715,
+        "ndcg_at_100": 0.53714,
+        "ndcg_at_1000": 0.53714,
         "map_at_1": 0.075,
         "map_at_3": 0.1405,
         "map_at_5": 0.16572,
         "map_at_10": 0.21088,
         "map_at_20": 0.23952,
-        "map_at_100": 0.27937,
-        "map_at_1000": 0.27937,
+        "map_at_100": 0.27934,
+        "map_at_1000": 0.27934,
         "recall_at_1": 0.075,
         "recall_at_3": 0.191,
         "recall_at_5": 0.25467,
@@ -56,12 +56,12 @@
         "nauc_ndcg_at_20_max": 0.175199,
         "nauc_ndcg_at_20_std": 0.256749,
         "nauc_ndcg_at_20_diff1": 0.043189,
-        "nauc_ndcg_at_100_max": 0.129571,
-        "nauc_ndcg_at_100_std": 0.245518,
-        "nauc_ndcg_at_100_diff1": 0.017076,
-        "nauc_ndcg_at_1000_max": 0.129571,
-        "nauc_ndcg_at_1000_std": 0.245518,
-        "nauc_ndcg_at_1000_diff1": 0.017076,
+        "nauc_ndcg_at_100_max": 0.129591,
+        "nauc_ndcg_at_100_std": 0.245296,
+        "nauc_ndcg_at_100_diff1": 0.016925,
+        "nauc_ndcg_at_1000_max": 0.129591,
+        "nauc_ndcg_at_1000_std": 0.245296,
+        "nauc_ndcg_at_1000_diff1": 0.016925,
         "nauc_map_at_1_max": -0.019797,
         "nauc_map_at_1_std": 0.129766,
         "nauc_map_at_1_diff1": -0.049491,
@@ -77,12 +77,12 @@
         "nauc_map_at_20_max": 0.192801,
         "nauc_map_at_20_std": 0.263107,
         "nauc_map_at_20_diff1": 0.049677,
-        "nauc_map_at_100_max": 0.174413,
-        "nauc_map_at_100_std": 0.263756,
-        "nauc_map_at_100_diff1": 0.046413,
-        "nauc_map_at_1000_max": 0.174413,
-        "nauc_map_at_1000_std": 0.263756,
-        "nauc_map_at_1000_diff1": 0.046413,
+        "nauc_map_at_100_max": 0.174497,
+        "nauc_map_at_100_std": 0.263444,
+        "nauc_map_at_100_diff1": 0.046322,
+        "nauc_map_at_1000_max": 0.174497,
+        "nauc_map_at_1000_std": 0.263444,
+        "nauc_map_at_1000_diff1": 0.046322,
         "nauc_recall_at_1_max": -0.019797,
         "nauc_recall_at_1_std": 0.129766,
         "nauc_recall_at_1_diff1": -0.049491,
@@ -158,39 +158,39 @@
         "languages": [
           "eng-Latn"
         ],
-        "mteb_version": "2.18.7"
+        "mteb_version": "2.18.11"
       }
     ]
   },
-  "evaluation_time": 6.7039643889293075,
+  "evaluation_time": 5.904341422021389,
   "kg_co2_emissions": null,
-  "date": 1785221709.350234,
+  "date": 1785626135.361388,
   "evaluation_phases": [
     {
       "name": "Data loading",
-      "start": 0.0005863641854375601,
-      "end": 5.7017310271039605,
+      "start": 0.0003399895504117012,
+      "end": 5.548931533936411,
       "split": "",
       "subset": ""
     },
     {
       "name": "Dataset transform",
-      "start": 5.701737530063838,
-      "end": 5.701739644166082,
+      "start": 5.548939137719572,
+      "end": 5.548941091634333,
       "split": "",
       "subset": ""
     },
     {
       "name": "Encoding queries and documents",
-      "start": 5.704501683125272,
-      "end": 6.376611516112462,
+      "start": 5.551746260840446,
+      "end": 5.881068081595004,
       "split": "test",
       "subset": "default"
     },
     {
       "name": "Scoring",
-      "start": 6.377082723192871,
-      "end": 6.40196571405977,
+      "start": 5.881485296878964,
+      "end": 5.9009777419269085,
       "split": "test",
       "subset": "default"
     }
