@@ -1,0 +1,44 @@
+{
+  "loader_kwargs": {},
+  "name": "matthewagi/HeAR-s1.1",
+  "revision": "a5776bebff935a81c79720467ae1e10a4effe10e",
+  "release_date": "2026-03-26",
+  "languages": null,
+  "n_parameters": 22140288,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": null,
+  "memory_usage_mb": 84.0,
+  "max_tokens": null,
+  "embed_dim": 384,
+  "license": "https://developers.google.com/health-ai-developer-foundations/terms",
+  "open_weights": true,
+  "public_training_code": "https://github.com/Matthew-agi/hear-distillation-datalake",
+  "public_training_data": "https://huggingface.co/datasets/laion/LAION-Audio-300M",
+  "framework": [
+    "PyTorch",
+    "Transformers",
+    "safetensors"
+  ],
+  "reference": "https://huggingface.co/matthewagi/HeAR-s1.1",
+  "similarity_fn_name": "cosine",
+  "use_instructions": false,
+  "training_datasets": [],
+  "adapted_from": null,
+  "superseded_by": null,
+  "modalities": [
+    "audio"
+  ],
+  "model_type": [
+    "dense"
+  ],
+  "citation": null,
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": null,
+  "extra_requirements_groups": [
+    "audio",
+    "timm"
+  ],
+  "loader": "HeARS11AudioWrapper",
+  "is_cross_encoder": false
+}
