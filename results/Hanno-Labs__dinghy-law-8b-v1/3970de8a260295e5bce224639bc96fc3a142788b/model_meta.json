@@ -1,0 +1,51 @@
+{
+    "loader_kwargs": {},
+    "name": "Hanno-Labs/dinghy-law-8b-v1",
+    "revision": "3970de8a260295e5bce224639bc96fc3a142788b",
+    "release_date": "2026-07-31",
+    "languages": [
+        "eng-Latn",
+        "deu-Latn",
+        "zho-Hans"
+    ],
+    "n_parameters": 7969464320,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 536870912,
+    "memory_usage_mb": 15201.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 4096,
+    "license": "https://huggingface.co/Hanno-Labs/dinghy-law-8b-v1/blob/main/LICENSE",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://huggingface.co/datasets/Hanno-Labs/legal-retrieval-pairs-v2",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/Hanno-Labs/dinghy-law-8b-v1",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "GerDaLIRSmall",
+        "BillSumUS",
+        "GerDaLIR"
+    ],
+    "adapted_from": "nvidia/Nemotron-3-Embed-8B-BF16",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@misc{dinghy-law-8b,\n  title  = {dinghy-law-8b: an 8B multilingual legal text-embedding model},\n  author = {Solka, Stephen},\n  year   = {2026},\n  note   = {Hanno Labs / Clause Logic Inc.},\n  howpublished = {\\url{https://huggingface.co/Hanno-Labs/dinghy-law-8b-v1}}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "nemotron-3-embed"
+    ],
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "58a863a958586a5d6ba51088b94ac74a46aa864f",
+  "task_name": "BigPatentClustering.v2",
+  "mteb_version": "2.18.7",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.319166,
+            0.244634,
+            0.273546,
+            0.263852,
+            0.315096,
+            0.337433,
+            0.273033,
+            0.349051,
+            0.253747,
+            0.381733
+          ]
+        },
+        "v_measure": 0.301129,
+        "v_measure_std": 0.043599,
+        "ami_scores": {
+          "Level 0": [
+            0.318647,
+            0.244038,
+            0.27299,
+            0.263278,
+            0.314572,
+            0.336926,
+            0.272478,
+            0.348548,
+            0.253181,
+            0.381257
+          ]
+        },
+        "ami": 0.300592,
+        "ami_std": 0.043633,
+        "main_score": 0.301129,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.7"
+      }
+    ]
+  },
+  "evaluation_time": 6.074970531044528,
+  "kg_co2_emissions": null,
+  "date": 1785234048.417172,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0006260881200432777,
+      "end": 1.785687595140189,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.7856940680649132,
+      "end": 1.787368348101154,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.7907066701445729,
+      "end": 5.058802142040804,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 5.06651428504847,
+      "end": 5.844526716973633,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

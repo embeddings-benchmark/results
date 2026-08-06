@@ -1,0 +1,380 @@
+{
+  "dataset_revision": "fbc0599a0b5f00b3c7d87ab4d13490f04fb77f8e",
+  "task_name": "RuSciBenchCitedCountRegression",
+  "mteb_version": "2.18.1",
+  "scores": {
+    "test": [
+      {
+        "scores_per_experiment": [
+          {
+            "mse": 127.265762,
+            "mae": 7.417131,
+            "r2": -1.095593,
+            "kendalltau": 0.025941,
+            "rmse": 11.281213
+          },
+          {
+            "mse": 171.317291,
+            "mae": 8.946483,
+            "r2": -1.820958,
+            "kendalltau": 0.013561,
+            "rmse": 13.088823
+          },
+          {
+            "mse": 94.421516,
+            "mae": 5.904171,
+            "r2": -0.554771,
+            "kendalltau": 0.019521,
+            "rmse": 9.717073
+          },
+          {
+            "mse": 155.79599,
+            "mae": 8.524565,
+            "r2": -1.56538,
+            "kendalltau": 0.033895,
+            "rmse": 12.481826
+          },
+          {
+            "mse": 97.488411,
+            "mae": 6.070313,
+            "r2": -0.605271,
+            "kendalltau": 0.04194,
+            "rmse": 9.873622
+          },
+          {
+            "mse": 108.754898,
+            "mae": 6.551634,
+            "r2": -0.790788,
+            "kendalltau": 0.024894,
+            "rmse": 10.428562
+          },
+          {
+            "mse": 93.042183,
+            "mae": 5.813116,
+            "r2": -0.532058,
+            "kendalltau": 0.027647,
+            "rmse": 9.645838
+          },
+          {
+            "mse": 118.959885,
+            "mae": 7.037555,
+            "r2": -0.958826,
+            "kendalltau": 0.019384,
+            "rmse": 10.906873
+          },
+          {
+            "mse": 130.977173,
+            "mae": 7.594,
+            "r2": -1.156706,
+            "kendalltau": 0.024247,
+            "rmse": 11.444526
+          },
+          {
+            "mse": 110.06002,
+            "mae": 6.764677,
+            "r2": -0.812279,
+            "kendalltau": 0.027143,
+            "rmse": 10.490949
+          }
+        ],
+        "mse": 120.808313,
+        "mae": 7.062365,
+        "r2": -0.989263,
+        "kendalltau": 0.025817,
+        "rmse": 10.935931,
+        "main_score": 0.025817,
+        "hf_subset": "cited_count_ru",
+        "languages": [
+          "rus-Cyrl"
+        ],
+        "mteb_version": "2.18.1"
+      },
+      {
+        "scores_per_experiment": [
+          {
+            "mse": 132.030975,
+            "mae": 7.720765,
+            "r2": -1.174058,
+            "kendalltau": 0.02363,
+            "rmse": 11.490473
+          },
+          {
+            "mse": 175.82338,
+            "mae": 9.070004,
+            "r2": -1.895156,
+            "kendalltau": 0.034773,
+            "rmse": 13.259841
+          },
+          {
+            "mse": 93.225273,
+            "mae": 5.853489,
+            "r2": -0.535073,
+            "kendalltau": 0.043837,
+            "rmse": 9.655324
+          },
+          {
+            "mse": 151.073853,
+            "mae": 8.415605,
+            "r2": -1.487624,
+            "kendalltau": 0.031416,
+            "rmse": 12.29121
+          },
+          {
+            "mse": 99.582321,
+            "mae": 6.192277,
+            "r2": -0.63975,
+            "kendalltau": 0.032967,
+            "rmse": 9.979094
+          },
+          {
+            "mse": 102.323555,
+            "mae": 6.176431,
+            "r2": -0.684888,
+            "kendalltau": 0.030204,
+            "rmse": 10.115511
+          },
+          {
+            "mse": 92.517227,
+            "mae": 5.773228,
+            "r2": -0.523414,
+            "kendalltau": 0.026241,
+            "rmse": 9.618588
+          },
+          {
+            "mse": 118.222168,
+            "mae": 7.018473,
+            "r2": -0.946679,
+            "kendalltau": 0.016812,
+            "rmse": 10.873002
+          },
+          {
+            "mse": 135.7612,
+            "mae": 7.802052,
+            "r2": -1.235482,
+            "kendalltau": 0.029805,
+            "rmse": 11.651661
+          },
+          {
+            "mse": 113.984795,
+            "mae": 6.892202,
+            "r2": -0.876905,
+            "kendalltau": 0.047301,
+            "rmse": 10.676366
+          }
+        ],
+        "mse": 121.454475,
+        "mae": 7.091452,
+        "r2": -0.999903,
+        "kendalltau": 0.031699,
+        "rmse": 10.961107,
+        "main_score": 0.031699,
+        "hf_subset": "cited_count_en",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.1"
+      }
+    ]
+  },
+  "evaluation_time": 132.18706288933754,
+  "kg_co2_emissions": null,
+  "date": 1785354228.188723,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 9.08784568309784e-05,
+      "end": 3.237539120018482,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.237551297992468,
+      "end": 3.2375540286302567,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding training samples",
+      "start": 34.52064463496208,
+      "end": 40.09947034716606,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Encoding test samples",
+      "start": 42.96585960686207,
+      "end": 48.315175108611584,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (0/10)",
+      "start": 48.40754825621843,
+      "end": 50.814904022961855,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (1/10)",
+      "start": 50.89954675734043,
+      "end": 52.80716639012098,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (2/10)",
+      "start": 52.89771968498826,
+      "end": 54.89171166718006,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (3/10)",
+      "start": 54.979168716818094,
+      "end": 57.09808289259672,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (4/10)",
+      "start": 57.18472133204341,
+      "end": 59.09687013924122,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (5/10)",
+      "start": 59.18918972089887,
+      "end": 61.2073077596724,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (6/10)",
+      "start": 61.290986608713865,
+      "end": 63.4265521094203,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (7/10)",
+      "start": 63.51497072726488,
+      "end": 65.40920427814126,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (8/10)",
+      "start": 65.49557445570827,
+      "end": 67.4198075979948,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Running experiment (9/10)",
+      "start": 67.50314803794026,
+      "end": 69.49005838111043,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Scoring",
+      "start": 48.31538674235344,
+      "end": 69.49006623029709,
+      "split": "test",
+      "subset": "cited_count_ru"
+    },
+    {
+      "name": "Encoding training samples",
+      "start": 98.96212732419372,
+      "end": 103.7841086871922,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Encoding test samples",
+      "start": 106.25212603062391,
+      "end": 110.91786026954651,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (0/10)",
+      "start": 111.00452333316207,
+      "end": 113.51865940541029,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (1/10)",
+      "start": 113.6096016280353,
+      "end": 115.73318255320191,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (2/10)",
+      "start": 115.82250155881047,
+      "end": 117.71457961574197,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (3/10)",
+      "start": 117.80312098190188,
+      "end": 119.71083027124405,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (4/10)",
+      "start": 119.8011378236115,
+      "end": 121.77094046398997,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (5/10)",
+      "start": 121.85799434408545,
+      "end": 123.71619965136051,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (6/10)",
+      "start": 123.80217814818025,
+      "end": 125.8140988536179,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (7/10)",
+      "start": 125.9063180424273,
+      "end": 127.83358369767666,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (8/10)",
+      "start": 127.92264105379581,
+      "end": 129.99356727302074,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Running experiment (9/10)",
+      "start": 130.0829023681581,
+      "end": 132.12529508024454,
+      "split": "test",
+      "subset": "cited_count_en"
+    },
+    {
+      "name": "Scoring",
+      "start": 110.91807506978512,
+      "end": 132.12533762305975,
+      "split": "test",
+      "subset": "cited_count_en"
+    }
+  ]
+}

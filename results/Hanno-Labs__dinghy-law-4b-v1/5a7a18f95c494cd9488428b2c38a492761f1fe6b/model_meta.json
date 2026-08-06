@@ -1,0 +1,63 @@
+{
+    "loader_kwargs": {
+        "model_kwargs": {
+            "torch_dtype": "bfloat16"
+        },
+        "prompts_dict": {
+            "AILACasedocs": "Represent this legal case by its core governing legal issue, so cases on the same issue match: ",
+            "AILAStatutes": "Represent these facts by the legal provisions and issue that govern them: ",
+            "LegalSummarization": "Represent this contract clause by its legal function and the questions it answers: ",
+            "LegalBenchConsumerContractsQA": "Represent this contract clause by its legal function and the questions it answers: ",
+            "LegalBenchCorporateLobbying": "Represent this bill by its legislative purpose and legal effect: ",
+            "GerDaLIRSmall": "Represent this legal case by its core governing legal issue, so cases on the same issue match: ",
+            "LegalQuAD": "Represent this legal case by its core governing legal issue, so cases on the same issue match: ",
+            "LeCaRDv2": "Represent this legal case by its core governing legal issue, so cases on the same issue match: "
+        }
+    },
+    "name": "Hanno-Labs/dinghy-law-4b-v1",
+    "revision": "5a7a18f95c494cd9488428b2c38a492761f1fe6b",
+    "release_date": "2026-07-22",
+    "languages": [
+        "eng-Latn",
+        "deu-Latn",
+        "zho-Hans"
+    ],
+    "n_parameters": 4028327936,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 388262400,
+    "memory_usage_mb": 7683.0,
+    "max_tokens": 32768.0,
+    "embed_dim": 2560,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://huggingface.co/datasets/Hanno-Labs/legal-retrieval-pairs-v2",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/Hanno-Labs/dinghy-law-4b-v1",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "GerDaLIRSmall",
+        "BillSumUS",
+        "GerDaLIR"
+    ],
+    "adapted_from": "Qwen/Qwen3-Embedding-4B",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@misc{dinghy-law-4b,\n  title  = {dinghy-law-4b: a 4B legal text-embedding model},\n  author = {Solka, Stephen},\n  year   = {2026},\n  note   = {Hanno Labs / Clause Logic Inc.},\n  howpublished = {\\url{https://huggingface.co/Hanno-Labs/dinghy-law-4b-v1}}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "q3e_instruct_loader",
+    "is_cross_encoder": false
+}

@@ -1,0 +1,96 @@
+{
+  "dataset_revision": "20e815e8ac8787331546386dfd177821510f79a3",
+  "task_name": "RuSciBenchBitextMining.v2",
+  "mteb_version": "2.18.1",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.970346,
+        "recall": 0.979829,
+        "f1": 0.973437,
+        "accuracy": 0.979829,
+        "main_score": 0.973437,
+        "hf_subset": "ru-en",
+        "languages": [
+          "rus-Cyrl",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.1"
+      },
+      {
+        "precision": 0.963806,
+        "recall": 0.974706,
+        "f1": 0.967182,
+        "accuracy": 0.974706,
+        "main_score": 0.967182,
+        "hf_subset": "en-ru",
+        "languages": [
+          "eng-Latn",
+          "rus-Cyrl"
+        ],
+        "mteb_version": "2.18.1"
+      }
+    ]
+  },
+  "evaluation_time": 28.37800721824169,
+  "kg_co2_emissions": null,
+  "date": 1785353990.777572,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.00010551512241363525,
+      "end": 2.372448403388262,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 2.3724678345024586,
+      "end": 2.372471936047077,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 3.4518646486103535,
+      "end": 6.3450442254543304,
+      "split": "test",
+      "subset": "ru-en"
+    },
+    {
+      "name": "Encoding",
+      "start": 7.075195450335741,
+      "end": 9.367407400161028,
+      "split": "test",
+      "subset": "ru-en"
+    },
+    {
+      "name": "Scoring",
+      "start": 9.36800641939044,
+      "end": 14.985925082117319,
+      "split": "test",
+      "subset": "ru-en"
+    },
+    {
+      "name": "Encoding",
+      "start": 16.098615407943726,
+      "end": 18.560960981994867,
+      "split": "test",
+      "subset": "en-ru"
+    },
+    {
+      "name": "Encoding",
+      "start": 19.385532796382904,
+      "end": 22.15981236845255,
+      "split": "test",
+      "subset": "en-ru"
+    },
+    {
+      "name": "Scoring",
+      "start": 22.160566706210375,
+      "end": 28.20860507339239,
+      "split": "test",
+      "subset": "en-ru"
+    }
+  ]
+}
