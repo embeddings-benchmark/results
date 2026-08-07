@@ -1,0 +1,164 @@
+{
+  "dataset_revision": "36700ea628118312ebf2f90ad2353a9a8f188dc9",
+  "task_name": "PubChemSMILESBitextMining",
+  "mteb_version": "2.18.16",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.000392,
+        "recall": 0.00495,
+        "f1": 0.000598,
+        "accuracy": 0.00495,
+        "main_score": 0.000598,
+        "hf_subset": "iso-title",
+        "languages": [
+          "eng-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.16"
+      },
+      {
+        "precision": 0.001057,
+        "recall": 0.004526,
+        "f1": 0.001343,
+        "accuracy": 0.004526,
+        "main_score": 0.001343,
+        "hf_subset": "iso-desc",
+        "languages": [
+          "eng-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.16"
+      },
+      {
+        "precision": 0.002885,
+        "recall": 0.011322,
+        "f1": 0.003802,
+        "accuracy": 0.011322,
+        "main_score": 0.003802,
+        "hf_subset": "canon-title",
+        "languages": [
+          "eng-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.16"
+      },
+      {
+        "precision": 0.003166,
+        "recall": 0.009575,
+        "f1": 0.003837,
+        "accuracy": 0.009575,
+        "main_score": 0.003837,
+        "hf_subset": "canon-desc",
+        "languages": [
+          "eng-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.16"
+      }
+    ]
+  },
+  "evaluation_time": 23.889255373738706,
+  "kg_co2_emissions": null,
+  "date": 1785989654.214427,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.2180920243263245e-05,
+      "end": 4.081957196816802,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 4.081964350771159,
+      "end": 4.083059950731695,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 4.343179007992148,
+      "end": 5.378697563894093,
+      "split": "test",
+      "subset": "iso-title"
+    },
+    {
+      "name": "Encoding",
+      "start": 5.5960149127058685,
+      "end": 6.761773020029068,
+      "split": "test",
+      "subset": "iso-title"
+    },
+    {
+      "name": "Scoring",
+      "start": 6.762464746832848,
+      "end": 6.906200157944113,
+      "split": "test",
+      "subset": "iso-title"
+    },
+    {
+      "name": "Encoding",
+      "start": 7.2060763710178435,
+      "end": 8.583703503012657,
+      "split": "test",
+      "subset": "iso-desc"
+    },
+    {
+      "name": "Encoding",
+      "start": 8.799082755111158,
+      "end": 9.928660508710891,
+      "split": "test",
+      "subset": "iso-desc"
+    },
+    {
+      "name": "Scoring",
+      "start": 9.929353778716177,
+      "end": 10.080827970057726,
+      "split": "test",
+      "subset": "iso-desc"
+    },
+    {
+      "name": "Encoding",
+      "start": 10.70307984482497,
+      "end": 12.881746679078788,
+      "split": "test",
+      "subset": "canon-title"
+    },
+    {
+      "name": "Encoding",
+      "start": 13.37394074909389,
+      "end": 15.30267484113574,
+      "split": "test",
+      "subset": "canon-title"
+    },
+    {
+      "name": "Scoring",
+      "start": 15.303093722090125,
+      "end": 16.612132554873824,
+      "split": "test",
+      "subset": "canon-title"
+    },
+    {
+      "name": "Encoding",
+      "start": 17.316182651091367,
+      "end": 19.896333571057767,
+      "split": "test",
+      "subset": "canon-desc"
+    },
+    {
+      "name": "Encoding",
+      "start": 20.392375534866005,
+      "end": 22.31051362492144,
+      "split": "test",
+      "subset": "canon-desc"
+    },
+    {
+      "name": "Scoring",
+      "start": 22.310939869843423,
+      "end": 23.799144888762385,
+      "split": "test",
+      "subset": "canon-desc"
+    }
+  ]
+}
