@@ -7,7 +7,8 @@
             "STS": "text-matching",
             "PairClassification": "text-matching",
             "DocumentUnderstanding": "retrieval.query"
-        }
+        },
+        "vector_type": "multi_vector"
     },
     "name": "jinaai/jina-embeddings-v4",
     "revision": "4a58ca57710c49f51896e4bc820e202fbf64904b",
@@ -133,28 +134,28 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "VDRMultilingualRetrieval",
-        "VidoreDocVQARetrieval",
-        "SICK-R",
-        "CodeFeedbackMT",
-        "CodeFeedbackST",
-        "NQ-NL",
-        "MSMARCOHardNegatives",
-        "MSMARCO",
-        "NanoMSMARCORetrieval",
-        "CornStack",
-        "NQ-PL",
         "STS12",
-        "AppsRetrieval",
+        "NQ-PL",
+        "NanoNQRetrieval",
+        "SICK-R",
         "CodeSearchNetRetrieval",
+        "VidoreDocVQARetrieval",
+        "AppsRetrieval",
+        "CodeFeedbackMT",
         "VidoreInfoVQARetrieval",
         "NQHardNegatives",
+        "CornStack",
         "NQ",
+        "MSMARCOHardNegatives",
+        "MSMARCO",
+        "NQ-NL",
         "VidoreArxivQARetrieval",
+        "CodeFeedbackST",
         "VidoreTatdqaRetrieval",
-        "StackOverflowQA",
         "mMARCO-NL",
-        "NanoNQRetrieval"
+        "StackOverflowQA",
+        "VDRMultilingualRetrieval",
+        "NanoMSMARCORetrieval"
     ],
     "adapted_from": "Qwen/Qwen2.5-VL-3B-Instruct",
     "superseded_by": null,
@@ -162,12 +163,12 @@
         "image",
         "text"
     ],
-    "model_type": [
-        "dense"
-    ],
+    "model_type": ["late-interaction"],
     "citation": "@misc{g\u00fcnther2025jinaembeddingsv4universalembeddingsmultimodal,\n      title={jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval},\n      author={Michael G\u00fcnther and Saba Sturua and Mohammad Kalim Akram and Isabelle Mohr and Andrei Ungureanu and Sedigheh Eslami and Scott Martens and Bo Wang and Nan Wang and Han Xiao},\n      year={2025},\n      eprint={2506.18902},\n      archivePrefix={arXiv},\n      primaryClass={cs.AI},\n      url={https://arxiv.org/abs/2506.18902},\n}",
     "contacts": null,
-    "experiment_kwargs": null,
+    "experiment_kwargs": {
+        "vector_type": "multi_vector"
+    },
     "output_dtypes": null,
     "extra_requirements_groups": [
         "jina-v4"
