@@ -1,8 +1,7 @@
 {
     "loader_kwargs": {
-        "model_kwargs": {
-            "torch_dtype": "bfloat16"
-        },
+        "instruction_template": "Instruct: {instruction}\nQuery:",
+        "apply_instruction_to_passages": false,
         "prompts_dict": {
             "AILACasedocs": "Retrieve the case document that most closely matches or is most relevant to the scenario described in the provided query.",
             "AILAStatutes": "Identify the most relevant statutes for the given situation.",
@@ -12,7 +11,11 @@
             "GerDaLIRSmall": "Retrieve relevant legal case documents.",
             "LegalQuAD": "Retrieve relevant legal case documents.",
             "LeCaRDv2": "Retrieve the case document that most closely matches or is most relevant to the scenario described in the provided query."
-        }
+        },
+        "model_kwargs": {
+            "torch_dtype": "bfloat16"
+        },
+        "device": "cuda"
     },
     "name": "Hanno-Labs/dinghy-law-0.6b-v1",
     "revision": "fa421dfe45e21f3d676a707ffb04b05051bd9ae9",
@@ -41,9 +44,9 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "BillSumUS",
         "GerDaLIR",
-        "GerDaLIRSmall"
+        "GerDaLIRSmall",
+        "BillSumUS"
     ],
     "adapted_from": "Qwen/Qwen3-Embedding-0.6B",
     "superseded_by": null,
@@ -58,6 +61,6 @@
     "experiment_kwargs": null,
     "output_dtypes": null,
     "extra_requirements_groups": null,
-    "loader": "q3e_instruct_loader",
+    "loader": "InstructSentenceTransformerModel",
     "is_cross_encoder": false
 }
