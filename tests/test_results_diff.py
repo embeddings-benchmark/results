@@ -7,43 +7,28 @@ This test module reuses functions from create_pr_results_comment.py to:
 """
 
 import json
-import os
-import sys
-import subprocess
-from pathlib import Path
+
 import pandas as pd
 import pytest
 from mteb import TaskResult
 
+from tests.git_utils import (
+    REPO_ROOT,
+    get_base_ref,
+    get_changed_json_files,
+    show_file_at_ref,
+)
+
 MTEB_SCORE_EPSILON=0.001 
-repo_path = Path(__file__).parents[1]
-
-def get_base_ref() -> str:
-    """Get the base reference for comparison (PR_BASE_SHA env var or origin/main)."""
-    return os.getenv("PR_BASE_SHA", "origin/main")
-
-def get_diff_from_main() -> list[str]:
-    differences = subprocess.run(
-        ["git", "diff", "--name-only", "origin/main...HEAD"],
-        cwd=repo_path,
-        text=True,
-        capture_output=True,
-    ).stdout.splitlines()
-
-    return differences
+repo_path = REPO_ROOT
 
 def load_json_from_git_ref(relative_path: str, git_ref: str) -> dict | None:
     """Load a JSON file from a specific git reference."""
-    result = subprocess.run(
-        ["git", "show", f"{git_ref}:{relative_path}"],
-        cwd=repo_path,
-        text=True,
-        capture_output=True,
-    )
-    if result.returncode != 0 or not result.stdout.strip():
+    content = show_file_at_ref(relative_path, git_ref)
+    if content is None or not content.strip():
         return None
     try:
-        return json.loads(result.stdout)
+        return json.loads(content)
     except json.JSONDecodeError:
         return None
 
@@ -164,8 +149,10 @@ def test_result_diffs_within_threshold():
     Fail if any main_score delta exceeds configured thresholds.
     """
     
+    # Use the same base commit for the changed-file list and the old file contents.
+    # See tests/git_utils.py (embeddings-benchmark/mteb#5242).
     base_ref = get_base_ref()
-    differences = get_diff_from_main()
+    differences = get_changed_json_files(base_ref)
     print(differences)
     
     # Skip test if no changes found
