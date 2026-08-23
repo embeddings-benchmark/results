@@ -1,5 +1,7 @@
 {
-  "loader_kwargs": {},
+  "loader_kwargs": {
+    "trust_remote_code": true
+  },
   "name": "judicialmind/greenleaf-law-embed-tiny",
   "revision": "bff06c9474bda26e7b5883640821d6910689eb82",
   "release_date": "2026-08-22",
@@ -38,6 +40,6 @@
   "experiment_kwargs": null,
   "output_dtypes": null,
   "extra_requirements_groups": null,
-  "loader": "GreenLeafEmbedWrapper",
+  "loader": "SentenceTransformerEncoderWrapper",
   "is_cross_encoder": false
 }
