@@ -1,0 +1,66 @@
+{
+  "dataset_revision": "d5491b288ab76356a5f3cbc634f1dc38e23da2b8",
+  "task_name": "SpeechCommandsZeroshotv0.02",
+  "mteb_version": "2.20.0",
+  "scores": {
+    "test": [
+      {
+        "accuracy": 0.167158,
+        "f1": 0.134543,
+        "f1_weighted": 0.133721,
+        "precision": 0.270437,
+        "precision_weighted": 0.270146,
+        "recall": 0.166708,
+        "recall_weighted": 0.167158,
+        "ap": null,
+        "ap_weighted": null,
+        "main_score": 0.167158,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.20.0"
+      }
+    ]
+  },
+  "evaluation_time": 727.082472880953,
+  "kg_co2_emissions": null,
+  "date": 1787458418.493927,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0008375439792871475,
+      "end": 20.884624043945223,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 20.8846593539929,
+      "end": 20.886092173983343,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding labels",
+      "start": 20.897396081942134,
+      "end": 21.136747323907912,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples",
+      "start": 21.138087098952383,
+      "end": 705.2034499039873,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 705.2049267239636,
+      "end": 726.0958847689908,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "dataset_revision": "ac5511f885f65fb75d31a9d8810a8440913f7721",
+  "task_name": "CIFAR100Clustering",
+  "mteb_version": "2.20.0",
+  "scores": {
+    "test": [
+      {
+        "v_measure": 0.832997,
+        "nmi": 0.832997,
+        "ari": 0.584349,
+        "cluster_accuracy": 0.6844,
+        "main_score": 0.832997,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.20.0"
+      }
+    ]
+  },
+  "evaluation_time": 386.85452511999756,
+  "kg_co2_emissions": null,
+  "date": 1787440829.000294,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0008421270176768303,
+      "end": 0.7421017229789868,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.7421536839101464,
+      "end": 0.7421652559423819,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.754038420971483,
+      "end": 380.75143062800635,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 380.75510513596237,
+      "end": 386.5932049219264,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
