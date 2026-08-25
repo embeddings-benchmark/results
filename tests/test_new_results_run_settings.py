@@ -4,6 +4,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -25,10 +26,6 @@ def run_git_command(args: list[str]) -> str:
 
 
 def get_base_ref() -> str:
-    base_ref = os.environ.get("PR_BASE_SHA")
-    if base_ref:
-        return base_ref
-
     for ref in ("origin/main", "main"):
         result = subprocess.run(
             ["git", "merge-base", ref, "HEAD"],
@@ -38,6 +35,10 @@ def get_base_ref() -> str:
         )
         if result.returncode == 0 and result.stdout.strip():
             return result.stdout.strip()
+
+    base_ref = os.environ.get("PR_BASE_SHA")
+    if base_ref:
+        return base_ref
 
     raise RuntimeError("Could not find a valid base ref.")
 
@@ -399,6 +400,20 @@ def test_get_added_result_files_filters_to_task_result_json(monkeypatch):
         "results/model/revision/DemoTask.json",
         "results/model/revision/experiments/exp-a/ExperimentTask.json",
     ]
+
+
+def test_get_base_ref_prefers_current_main_over_stale_pr_base_sha(monkeypatch):
+    calls = []
+
+    def fake_run(args, **kwargs):
+        calls.append(args)
+        return SimpleNamespace(returncode=0, stdout="current-main-base\n")
+
+    monkeypatch.setenv("PR_BASE_SHA", "stale-pr-base")
+    monkeypatch.setattr(subprocess, "run", fake_run)
+
+    assert get_base_ref() == "current-main-base"
+    assert calls == [["git", "merge-base", "origin/main", "HEAD"]]
 
 
 def test_validate_result_file_requires_run_settings(tmp_path):
