@@ -143,6 +143,59 @@ def load_json(path: Path, relative_path: str) -> tuple[dict | None, list[str]]:
     return data, []
 
 
+def run_settings_subsets(
+    entry: dict,
+    relative_path: str,
+    line_number: int,
+) -> tuple[list[str], list[str]]:
+    has_subset = "subset" in entry
+    has_subsets = "subsets" in entry
+
+    if has_subset and has_subsets:
+        return [], [
+            (
+                f"{relative_path} run_settings.jsonl line {line_number} "
+                "must define either subset or subsets, not both."
+            )
+        ]
+
+    if has_subset:
+        subset = entry.get("subset")
+        if isinstance(subset, str) and subset:
+            return [subset], []
+        return [], [
+            (
+                f"{relative_path} run_settings.jsonl line {line_number} "
+                "subset must be a non-empty string."
+            )
+        ]
+
+    if has_subsets:
+        subsets = entry.get("subsets")
+        if not isinstance(subsets, list) or not subsets:
+            return [], [
+                (
+                    f"{relative_path} run_settings.jsonl line {line_number} "
+                    "subsets must be a non-empty list of strings."
+                )
+            ]
+        if not all(isinstance(subset, str) and subset for subset in subsets):
+            return [], [
+                (
+                    f"{relative_path} run_settings.jsonl line {line_number} "
+                    "subsets must contain only non-empty strings."
+                )
+            ]
+        return subsets, []
+
+    return [], [
+        (
+            f"{relative_path} run_settings.jsonl line {line_number} "
+            "must define either subset or subsets."
+        )
+    ]
+
+
 def load_run_settings(
     path: Path,
     relative_path: str,
@@ -177,15 +230,26 @@ def load_run_settings(
             )
             continue
 
-        key = (entry.get("task"), entry.get("split"), entry.get("subset"))
-        if not all(isinstance(value, str) and value for value in key):
+        task = entry.get("task")
+        split = entry.get("split")
+        if not all(isinstance(value, str) and value for value in (task, split)):
             errors.append(
                 f"{relative_path} run_settings.jsonl line {line_number} "
-                "must define task, split, and subset."
+                "must define task and split."
             )
             continue
 
-        entries.setdefault(key, []).append(entry)
+        subsets, subset_errors = run_settings_subsets(
+            entry,
+            relative_path,
+            line_number,
+        )
+        if subset_errors:
+            errors.extend(subset_errors)
+            continue
+
+        for subset in subsets:
+            entries.setdefault((task, split, subset), []).append(entry)
 
     if not entries and not errors:
         errors.append(
@@ -252,18 +316,24 @@ def test_added_result_files_have_run_settings_and_mteb_version():
     assert not errors, "\n".join(errors)
 
 
-def write_valid_result(directory: Path, *, version: str = "2.1.0") -> Path:
-    result_path = directory / "DemoTask.json"
+def write_valid_result(
+    directory: Path,
+    *,
+    task_name: str = "DemoTask",
+    subset: str = "default",
+    version: str = "2.1.0",
+) -> Path:
+    result_path = directory / f"{task_name}.json"
     result_path.parent.mkdir(parents=True, exist_ok=True)
     result_path.write_text(
         json.dumps(
             {
-                "task_name": "DemoTask",
+                "task_name": task_name,
                 "mteb_version": version,
                 "scores": {
                     "test": [
                         {
-                            "hf_subset": "default",
+                            "hf_subset": subset,
                             "main_score": 0.5,
                             "mteb_version": version,
                         }
@@ -280,15 +350,20 @@ def write_run_settings(
     directory: Path,
     *,
     task: str = "DemoTask",
+    subset: str = "default",
+    subsets: list[str] | None = None,
     version: str = "2.1.0",
 ) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     entry = {
         "task": task,
         "split": "test",
-        "subset": "default",
         "version": {"mteb": version},
     }
+    if subsets is None:
+        entry["subset"] = subset
+    else:
+        entry["subsets"] = subsets
     (directory / "run_settings.jsonl").write_text(
         json.dumps(entry) + "\n",
         encoding="utf-8",
@@ -299,7 +374,9 @@ def test_validate_result_file_accepts_matching_v2_run_settings(tmp_path):
     result_path = write_valid_result(tmp_path)
     write_run_settings(tmp_path)
 
-    assert validate_result_file(result_path, "results/model/revision/DemoTask.json") == []
+    assert (
+        validate_result_file(result_path, "results/model/revision/DemoTask.json") == []
+    )
 
 
 def test_get_added_result_files_filters_to_task_result_json(monkeypatch):
@@ -308,7 +385,9 @@ def test_get_added_result_files_filters_to_task_result_json(monkeypatch):
         return "\n".join(
             [
                 "results/model/revision/DemoTask.json",
+                "results/model/revision/experiments/exp-a/ExperimentTask.json",
                 "results/model/revision/model_meta.json",
+                "results/model/revision/experiments/exp-a/model_meta.json",
                 "results/model/revision/run_settings.jsonl",
                 "README.md",
             ]
@@ -316,7 +395,10 @@ def test_get_added_result_files_filters_to_task_result_json(monkeypatch):
 
     monkeypatch.setattr(sys.modules[__name__], "run_git_command", fake_run_git_command)
 
-    assert get_added_result_files("base") == ["results/model/revision/DemoTask.json"]
+    assert get_added_result_files("base") == [
+        "results/model/revision/DemoTask.json",
+        "results/model/revision/experiments/exp-a/ExperimentTask.json",
+    ]
 
 
 def test_validate_result_file_requires_run_settings(tmp_path):
@@ -346,10 +428,41 @@ def test_validate_result_file_requires_matching_run_settings_tuple(tmp_path):
     assert any("no matching run_settings.jsonl entry" in error for error in errors)
 
 
+def test_validate_result_file_accepts_collapsed_run_settings_subsets(tmp_path):
+    result_path = write_valid_result(tmp_path, subset="de")
+    write_run_settings(tmp_path, subsets=["de", "en"])
+
+    errors = validate_result_file(result_path, "results/model/revision/DemoTask.json")
+
+    assert errors == []
+
+
+def test_all_added_tasks_must_have_run_settings_entries(tmp_path):
+    first_result = write_valid_result(tmp_path, task_name="DemoTask")
+    second_result = write_valid_result(tmp_path, task_name="OtherTask")
+    write_run_settings(tmp_path, task="DemoTask")
+
+    errors = []
+    for result_path in (first_result, second_result):
+        errors.extend(
+            validate_result_file(
+                result_path,
+                f"results/model/revision/{result_path.name}",
+            )
+        )
+
+    assert any(
+        "OtherTask" in error and "no matching run_settings.jsonl entry" in error
+        for error in errors
+    )
+
+
 def test_validate_result_file_rejects_malformed_run_settings(tmp_path):
     result_path = write_valid_result(tmp_path)
     (tmp_path / "run_settings.jsonl").write_text("{bad json\n", encoding="utf-8")
 
     errors = validate_result_file(result_path, "results/model/revision/DemoTask.json")
 
-    assert any("run_settings.jsonl line 1 is not valid JSON" in error for error in errors)
+    assert any(
+        "run_settings.jsonl line 1 is not valid JSON" in error for error in errors
+    )
