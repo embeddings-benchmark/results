@@ -1,0 +1,69 @@
+{
+    "loader_kwargs": {
+        "torch_dtype": "torch.bfloat16",
+        "attn_implementation": "sdpa",
+        "processor_kwargs": {
+            "max_num_visual_tokens": 1792
+        }
+    },
+    "name": "webAI-Official/webAI-ColVec1.1-8b",
+    "revision": "5a6eef07351b1c1653aa82e2e4c2f84f45a0d13d",
+    "release_date": "2026-07-22",
+    "languages": [
+        "eng-Latn",
+        "fra-Latn",
+        "deu-Latn",
+        "spa-Latn",
+        "ita-Latn",
+        "por-Latn"
+    ],
+    "n_parameters": 8395317104,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 2622080,
+    "memory_usage_mb": 16013.0,
+    "max_tokens": 262144.0,
+    "embed_dim": 640,
+    "license": "https://huggingface.co/webAI-Official/webAI-ColVec1.1-8b/blob/main/LICENSE.md",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/webAI-Official/webAI-ColVec1.1-8b",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": true,
+    "training_datasets": [
+        "VidoreDocVQARetrieval",
+        "VDRMultilingualRetrieval",
+        "VisRAG-Ret-Train-Synthetic-data",
+        "docmatix-ir",
+        "wiki-ss-nq",
+        "VidoreInfoVQARetrieval",
+        "VisRAG-Ret-Train-In-domain-data",
+        "VidoreTatdqaRetrieval",
+        "VidoreArxivQARetrieval"
+    ],
+    "adapted_from": "Qwen/Qwen3.5-9B",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "\n@misc{webai_colvec1_1,\n  title={webAI-ColVec1.1: Bidirectional Multi-Vector Models for Visual Document Retrieval},\n  author={webAI},\n  year={2026},\n  url={https://huggingface.co/webAI-Official}\n}\n",
+    "contacts": [
+        "zhanlunchang-webai"
+    ],
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "colvec1_1"
+    ],
+    "loader": "ColVec11Wrapper",
+    "is_cross_encoder": false
+}

@@ -5,6 +5,7 @@
             "Retrieval-query": "retrieval.query",
             "Retrieval-document": "retrieval.passage",
             "STS": "text-matching",
+            "PairClassification": "text-matching",
             "DocumentUnderstanding": "retrieval.query"
         }
     },
@@ -112,7 +113,9 @@
         "zho-Hant",
         "zho-Hans"
     ],
-    "n_parameters": 3800000000,
+    "n_parameters": 3934695552,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 311164928,
     "memory_usage_mb": 7500.0,
     "max_tokens": 32768.0,
     "embed_dim": 2048,
@@ -122,34 +125,36 @@
     "public_training_data": null,
     "framework": [
         "Sentence Transformers",
-        "PyTorch"
+        "PyTorch",
+        "Transformers",
+        "safetensors"
     ],
     "reference": "https://huggingface.co/jinaai/jina-embeddings-v4",
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "STS12",
-        "MSMARCOHardNegatives",
-        "arXivQA",
-        "NanoMSMARCORetrieval",
-        "InfoVQA",
-        "TATDQA",
-        "MSMARCO",
-        "AppsRetrieval",
-        "mMARCO-NL",
-        "NQHardNegatives",
-        "NQ-NL",
-        "CodeFeedbackST",
-        "DocVQA",
-        "NQ-PL",
-        "StackOverflowQA",
-        "CodeFeedbackMT",
-        "NanoNQRetrieval",
-        "NQ",
         "VDRMultilingualRetrieval",
-        "CornStack",
+        "VidoreDocVQARetrieval",
         "SICK-R",
-        "CodeSearchNetRetrieval"
+        "CodeFeedbackMT",
+        "CodeFeedbackST",
+        "NQ-NL",
+        "MSMARCOHardNegatives",
+        "MSMARCO",
+        "NanoMSMARCORetrieval",
+        "CornStack",
+        "NQ-PL",
+        "STS12",
+        "AppsRetrieval",
+        "CodeSearchNetRetrieval",
+        "VidoreInfoVQARetrieval",
+        "NQHardNegatives",
+        "NQ",
+        "VidoreArxivQARetrieval",
+        "VidoreTatdqaRetrieval",
+        "StackOverflowQA",
+        "mMARCO-NL",
+        "NanoNQRetrieval"
     ],
     "adapted_from": "Qwen/Qwen2.5-VL-3B-Instruct",
     "superseded_by": null,
@@ -157,8 +162,16 @@
         "image",
         "text"
     ],
-    "is_cross_encoder": null,
+    "model_type": [
+        "dense"
+    ],
     "citation": "@misc{g\u00fcnther2025jinaembeddingsv4universalembeddingsmultimodal,\n      title={jina-embeddings-v4: Universal Embeddings for Multimodal Multilingual Retrieval},\n      author={Michael G\u00fcnther and Saba Sturua and Mohammad Kalim Akram and Isabelle Mohr and Andrei Ungureanu and Sedigheh Eslami and Scott Martens and Bo Wang and Nan Wang and Han Xiao},\n      year={2025},\n      eprint={2506.18902},\n      archivePrefix={arXiv},\n      primaryClass={cs.AI},\n      url={https://arxiv.org/abs/2506.18902},\n}",
     "contacts": null,
-    "loader": "JinaV4Wrapper"
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "jina-v4"
+    ],
+    "loader": "JinaV4Wrapper",
+    "is_cross_encoder": false
 }

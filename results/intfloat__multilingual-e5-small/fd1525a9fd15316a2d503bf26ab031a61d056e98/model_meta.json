@@ -3,6 +3,9 @@
         "model_prompts": {
             "query": "query: ",
             "document": "passage: "
+        },
+        "model_kwargs": {
+            "attn_implementation": "sdpa"
         }
     },
     "name": "intfloat/multilingual-e5-small",
@@ -110,6 +113,8 @@
         "zho-Hans"
     ],
     "n_parameters": 118000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 96014208,
     "memory_usage_mb": 449.0,
     "max_tokens": 512.0,
     "embed_dim": 384,
@@ -119,43 +124,51 @@
     "public_training_data": null,
     "framework": [
         "Sentence Transformers",
-        "PyTorch"
+        "PyTorch",
+        "ONNX",
+        "safetensors"
     ],
     "reference": "https://huggingface.co/intfloat/multilingual-e5-small",
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "NanoMSMARCORetrieval",
-        "MSMARCO-PL",
-        "MSMARCO",
+        "MIRACLRetrievalHardNegatives",
         "NQ",
-        "MIRACLReranking",
-        "MIRACLRetrieval",
-        "HotpotQA",
-        "FEVER-NL",
-        "FEVER",
-        "HotpotQA-PL",
-        "mMARCO-NL",
-        "XQuADRetrieval",
         "NQHardNegatives",
         "MrTidyRetrieval",
-        "NQ-PL",
-        "MIRACLRetrievalHardNegatives",
-        "NQ-NL",
-        "NanoNQRetrieval",
         "FEVER-PL",
-        "HotpotQA-NL",
-        "HotpotQAHardNegatives",
+        "MSMARCO-PL",
+        "FEVER",
+        "FEVER-NL",
         "FEVERHardNegatives",
-        "MSMARCOHardNegatives"
+        "mMARCO-NL",
+        "MIRACLReranking",
+        "NanoMSMARCORetrieval",
+        "NanoNQRetrieval",
+        "HotpotQA",
+        "NQ-NL",
+        "MSMARCOHardNegatives",
+        "HotpotQA-NL",
+        "MIRACLRetrieval",
+        "NQ-PL",
+        "XQuADRetrieval",
+        "HotpotQA-PL",
+        "MSMARCO",
+        "HotpotQAHardNegatives"
     ],
     "adapted_from": "microsoft/Multilingual-MiniLM-L12-H384",
     "superseded_by": null,
     "modalities": [
         "text"
     ],
-    "is_cross_encoder": null,
+    "model_type": [
+        "dense"
+    ],
     "citation": "\n@article{wang2024multilingual,\n  title={Multilingual E5 Text Embeddings: A Technical Report},\n  author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Yang, Linjun and Majumder, Rangan and Wei, Furu},\n  journal={arXiv preprint arXiv:2402.05672},\n  year={2024}\n}\n",
     "contacts": null,
-    "loader": "sentence_transformers_loader"
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
 }

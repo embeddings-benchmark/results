@@ -57,6 +57,8 @@
         "zho-Hans"
     ],
     "n_parameters": 108420096,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 108420096,
     "memory_usage_mb": 413.0,
     "max_tokens": null,
     "embed_dim": 1024,
@@ -66,26 +68,34 @@
     "public_training_data": "https://huggingface.co/collections/sentence-transformers/embedding-model-datasets-6644d7a3673a511914aa7552",
     "framework": [
         "Sentence Transformers",
-        "PyTorch"
+        "PyTorch",
+        "ONNX",
+        "safetensors"
     ],
     "reference": "https://huggingface.co/sentence-transformers/static-similarity-mrl-multilingual-v1",
     "similarity_fn_name": "cosine",
     "use_instructions": false,
     "training_datasets": [
-        "TatoebaBitextMining",
-        "StackExchangeClusteringP2P.v2",
+        "QuoraRetrieval",
         "NanoQuoraRetrieval",
         "Quora-NL",
-        "QuoraRetrieval",
-        "StackExchangeClustering.v2"
+        "StackExchangeClusteringP2P.v2",
+        "StackExchangeClustering.v2",
+        "TatoebaBitextMining"
     ],
     "adapted_from": null,
     "superseded_by": null,
     "modalities": [
         "text"
     ],
-    "is_cross_encoder": null,
-    "citation": null,
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@inproceedings{reimers-2019-sentence-bert,\n    title = \"Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks\",\n    author = \"Reimers, Nils and Gurevych, Iryna\",\n    booktitle = \"Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing\",\n    month = \"11\",\n    year = \"2019\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://arxiv.org/abs/1908.10084\",\n}",
     "contacts": null,
-    "loader": "SentenceTransformerEncoderWrapper"
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
 }

@@ -22,3 +22,8 @@ This repository contains the results of the embedding benchmark evaluated using 
 [mteb]: https://github.com/embeddings-benchmark/mteb
 [Questions]: https://github.com/embeddings-benchmark/mteb/discussions
 [Issues]: https://github.com/embeddings-benchmark/mteb/issues
+
+
+## License
+
+The repository is licensed under CC0 and is free to redistribute, modify and adapt.
