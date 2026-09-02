@@ -1,7 +1,7 @@
 {
   "dataset_revision": "e036defee8f190911de6fc825a944b928c8cda53",
   "task_name": "STSB",
-  "mteb_version": "2.18.0",
+  "mteb_version": "2.20.5",
   "scores": {
     "validation": [
       {
@@ -18,7 +18,7 @@
         "languages": [
           "cmn-Hans"
         ],
-        "mteb_version": "2.18.0"
+        "mteb_version": "2.20.5"
       }
     ],
     "test": [
@@ -36,13 +36,13 @@
         "languages": [
           "cmn-Hans"
         ],
-        "mteb_version": "2.18.0"
+        "mteb_version": "2.20.5"
       }
     ]
   },
-  "evaluation_time": 3.485000000000582,
+  "evaluation_time": 5.282000000002881,
   "kg_co2_emissions": null,
-  "date": 1783931858.3913,
+  "date": 1788330548.60825,
   "evaluation_phases": [
     {
       "name": "Data loading",
@@ -97,6 +97,62 @@
       "name": "Scoring",
       "start": 3.4689999999973224,
       "end": 3.4689999999973224,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Data loading",
+      "start": 3.485000000000582,
+      "end": 5.126000000003842,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 5.126000000003842,
+      "end": 5.126000000003842,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 5.142000000003463,
+      "end": 5.157000000002881,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 5.157000000002881,
+      "end": 5.189000000002125,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 5.189000000002125,
+      "end": 5.189000000002125,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 5.2040000000015425,
+      "end": 5.235000000000582,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 5.235000000000582,
+      "end": 5.267000000003463,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 5.267000000003463,
+      "end": 5.267000000003463,
       "split": "test",
       "subset": "default"
     }
