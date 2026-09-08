@@ -1,26 +1,65 @@
 {
   "dataset_revision": "0ff9c86779e06855536d8775ce5550550e1e5a2d",
-  "evaluation_time": 15.409945011138916,
-  "kg_co2_emissions": 0.0029382195408155804,
-  "mteb_version": "1.12.75",
+  "task_name": "Assin2STS",
+  "mteb_version": "2.16.3",
   "scores": {
     "test": [
       {
-        "cosine_pearson": 0.8363544199213228,
-        "cosine_spearman": 0.804786115389676,
-        "euclidean_pearson": 0.8198002877571823,
-        "euclidean_spearman": 0.8047856104732223,
+        "pearson": 0.831461,
+        "spearman": 0.80562,
+        "cosine_pearson": 0.831461,
+        "cosine_spearman": 0.805621,
+        "manhattan_pearson": 0.815395,
+        "manhattan_spearman": 0.804544,
+        "euclidean_pearson": 0.816119,
+        "euclidean_spearman": 0.805622,
+        "main_score": 0.805621,
         "hf_subset": "default",
         "languages": [
           "por-Latn"
         ],
-        "main_score": 0.804786115389676,
-        "manhattan_pearson": 0.8189446641862664,
-        "manhattan_spearman": 0.8039865384563907,
-        "pearson": 0.8363544199213228,
-        "spearman": 0.804786115389676
+        "mteb_version": "2.16.3"
       }
     ]
   },
-  "task_name": "Assin2STS"
+  "evaluation_time": 7.108078045999719,
+  "kg_co2_emissions": null,
+  "date": 1783227801.893453,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 9.344000318378676e-06,
+      "end": 0.2774465640004564,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.27745891399990796,
+      "end": 0.2806635960005224,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 0.31479666599989287,
+      "end": 3.806272361000083,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 3.806292066000424,
+      "end": 6.962091191000582,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 6.962107471000309,
+      "end": 7.09088567300023,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

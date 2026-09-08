@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "6125ec4e24fa026cec8a478383ee943acfbd5449",
+  "task_name": "TwentyNewsgroupsClustering.v2",
+  "mteb_version": "2.18.13",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.44627,
+            0.471516,
+            0.463797,
+            0.439033,
+            0.447476,
+            0.445092,
+            0.435378,
+            0.430726,
+            0.448208,
+            0.433666
+          ]
+        },
+        "v_measure": 0.446116,
+        "v_measure_std": 0.012339,
+        "ami_scores": {
+          "Level 0": [
+            0.44409,
+            0.469446,
+            0.461714,
+            0.436845,
+            0.445351,
+            0.442913,
+            0.43317,
+            0.428506,
+            0.446068,
+            0.431496
+          ]
+        },
+        "ami": 0.44396,
+        "ami_std": 0.012383,
+        "main_score": 0.446116,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.13"
+      }
+    ]
+  },
+  "evaluation_time": 12.18205648381263,
+  "kg_co2_emissions": null,
+  "date": 1785967773.617039,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.841961294412613e-06,
+      "end": 2.9946716027334332,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 2.994690338615328,
+      "end": 3.193785646930337,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 3.203325890004635,
+      "end": 6.979259783867747,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 7.095731254667044,
+      "end": 11.539306601975113,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

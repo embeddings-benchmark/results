@@ -1,1 +1,52 @@
-{"name": "vidore/colSmol-256M", "revision": "a59110fdf114638b8018e6c9a018907e12f14855", "release_date": "2025-01-22", "languages": ["eng-Latn"], "n_parameters": 256000000, "memory_usage_mb": 800.0, "max_tokens": 8192.0, "embed_dim": 128, "license": "apache-2.0", "open_weights": true, "public_training_code": "https://github.com/illuin-tech/colpali", "public_training_data": "https://huggingface.co/datasets/vidore/colpali_train_set", "framework": ["ColPali"], "reference": "https://huggingface.co/vidore/colSmol-256M", "similarity_fn_name": "max_sim", "use_instructions": true, "training_datasets": {"DocVQA": ["train"], "InfoVQA": ["train"], "TATDQA": ["train"], "arXivQA": ["train"]}, "adapted_from": null, "superseded_by": null, "is_cross_encoder": null, "modalities": ["image", "text"], "loader": "ColSmolWrapper"}
+{
+    "loader_kwargs": {
+        "torch_dtype": "torch.float16"
+    },
+    "name": "vidore/colSmol-256M",
+    "revision": "a59110fdf114638b8018e6c9a018907e12f14855",
+    "release_date": "2025-01-22",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 256000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": null,
+    "memory_usage_mb": 800.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 128,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/illuin-tech/colpali",
+    "public_training_data": "https://huggingface.co/datasets/vidore/colpali_train_set",
+    "framework": [
+        "ColPali",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/vidore/colSmol-256M",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": true,
+    "training_datasets": [
+        "VidoreDocVQARetrieval",
+        "VidoreArxivQARetrieval",
+        "VidoreInfoVQARetrieval",
+        "VidoreTatdqaRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "\n@misc{faysse2024colpali,\n  title={ColPali: Efficient Document Retrieval with Vision Language Models},\n  author={Faysse, Manuel and Sibille, Hugues and Wu, Tony and Omrani, Bilel and Viaud, Gautier and Hudelot, C'eline and Colombo, Pierre},\n  year={2024},\n  eprint={2407.01449},\n  archivePrefix={arXiv},\n  primaryClass={cs.IR}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "colpali_engine"
+    ],
+    "loader": "ColSmolWrapper",
+    "is_cross_encoder": false
+}

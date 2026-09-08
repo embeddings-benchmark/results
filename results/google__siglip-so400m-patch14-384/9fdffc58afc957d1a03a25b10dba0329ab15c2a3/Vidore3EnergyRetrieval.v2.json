@@ -1,7 +1,7 @@
 {
   "dataset_revision": "575fbadfa82b5b5f1d503f4201d1a7d88602b4d8",
   "task_name": "Vidore3EnergyRetrieval.v2",
-  "mteb_version": "2.10.6",
+  "mteb_version": "2.13.1",
   "scores": {
     "test": [
       {
@@ -61,7 +61,7 @@
         "nauc_ndcg_at_100_diff1": 0.236011,
         "nauc_ndcg_at_1000_max": 0.047209,
         "nauc_ndcg_at_1000_std": 0.104546,
-        "nauc_ndcg_at_1000_diff1": 0.221956,
+        "nauc_ndcg_at_1000_diff1": 0.221955,
         "nauc_map_at_1_max": -0.047474,
         "nauc_map_at_1_std": 0.029215,
         "nauc_map_at_1_diff1": 0.420148,
@@ -157,7 +157,8 @@
         "hf_subset": "french",
         "languages": [
           "fra-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.03409,
@@ -312,7 +313,8 @@
         "hf_subset": "spanish",
         "languages": [
           "spa-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.05682,
@@ -369,8 +371,8 @@
         "nauc_ndcg_at_100_max": -0.095706,
         "nauc_ndcg_at_100_std": -0.091712,
         "nauc_ndcg_at_100_diff1": 0.116866,
-        "nauc_ndcg_at_1000_max": -0.064266,
-        "nauc_ndcg_at_1000_std": -0.054615,
+        "nauc_ndcg_at_1000_max": -0.064267,
+        "nauc_ndcg_at_1000_std": -0.054616,
         "nauc_ndcg_at_1000_diff1": 0.109131,
         "nauc_map_at_1_max": -0.150294,
         "nauc_map_at_1_std": -0.221859,
@@ -392,7 +394,7 @@
         "nauc_map_at_100_diff1": 0.199354,
         "nauc_map_at_1000_max": -0.134177,
         "nauc_map_at_1000_std": -0.157371,
-        "nauc_map_at_1000_diff1": 0.194159,
+        "nauc_map_at_1000_diff1": 0.194158,
         "nauc_recall_at_1_max": -0.150294,
         "nauc_recall_at_1_std": -0.221859,
         "nauc_recall_at_1_diff1": 0.387258,
@@ -467,7 +469,8 @@
         "hf_subset": "english",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.03896,
@@ -622,7 +625,8 @@
         "hf_subset": "german",
         "languages": [
           "deu-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.06331,
@@ -777,7 +781,8 @@
         "hf_subset": "italian",
         "languages": [
           "ita-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       },
       {
         "ndcg_at_1": 0.05357,
@@ -932,11 +937,42 @@
         "hf_subset": "portuguese",
         "languages": [
           "por-Latn"
-        ]
+        ],
+        "mteb_version": "2.13.1"
       }
     ]
   },
-  "evaluation_time": 1058.1232228279114,
+  "evaluation_time": 2515.813869659789,
   "kg_co2_emissions": null,
-  "date": 1772810084.417216
+  "date": 1783103645.415988,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.854053258895874e-05,
+      "end": 66.85830309148878,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 66.85832965094596,
+      "end": 66.85833350103348,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 66.8720125630498,
+      "end": 495.95110914018005,
+      "split": "test",
+      "subset": "portuguese"
+    },
+    {
+      "name": "Scoring",
+      "start": 495.95131450053304,
+      "end": 496.21542624477297,
+      "split": "test",
+      "subset": "portuguese"
+    }
+  ]
 }

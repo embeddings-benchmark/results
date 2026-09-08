@@ -1,0 +1,48 @@
+{
+    "loader_kwargs": {
+        "processor_name": "Qwen/Qwen2.5-VL-3B-Instruct"
+    },
+    "name": "moca-embed/MoCa-Qwen25VL-3B",
+    "revision": "89b0e5a9245a95d6df5f54e7ebe1588bc7c7d926",
+    "release_date": "2025-06-29",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 3756720128,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": null,
+    "memory_usage_mb": 7165.0,
+    "max_tokens": 32768.0,
+    "embed_dim": 2048,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/haon-chen/MoCa",
+    "public_training_data": "https://huggingface.co/collections/moca-embed/moca-datasets",
+    "framework": [
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/moca-embed/MoCa-Qwen25VL-3B",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [],
+    "adapted_from": "Qwen/Qwen2.5-VL-3B-Instruct",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@article{chen2025moca,\n  title={MoCa: Modality-aware Continual Pre-training Makes Better Bidirectional Multimodal Embeddings},\n  author={Chen, Haonan and Liu, Hong and Luo, Yuping and Wang, Liang and Yang, Nan and Wei, Furu and Dou, Zhicheng},\n  journal={arXiv preprint arXiv:2506.23115},\n  year={2025}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "transformers-v4"
+    ],
+    "loader": "MoCaWrapper",
+    "is_cross_encoder": false
+}

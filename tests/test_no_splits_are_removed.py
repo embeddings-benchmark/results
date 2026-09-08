@@ -1,76 +1,55 @@
 import json
-import os
-import subprocess
 from collections import defaultdict
-from pathlib import Path
+
+from tests.git_utils import (
+    REPO_ROOT,
+    get_base_ref,
+    get_changed_json_files,
+    show_file_at_ref,
+)
+
+
+def get_splits_subsets(data: dict) -> dict[str, set[str]]:
+    return {
+        split: {r["hf_subset"] for r in results}
+        for split, results in data.get("scores", {}).items()
+    }
 
 
 def test_no_splits_are_removed():
-    # In CI on PRs, use the PR base SHA; otherwise use merge-base with main
-    pr_base_sha = os.environ.get("PR_BASE_SHA")
-
-    if pr_base_sha:
-        merge_base = pr_base_sha
-    else:
-        # Find the merge-base (common ancestor) between main and current branch
-        merge_base = subprocess.run(
-            ["git", "merge-base", "main", "HEAD"],
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
-
-    # Get changed files from git diff between main and HEAD
-    result = subprocess.run(
-        ["git", "diff", "--name-only", merge_base, "HEAD", "*.json"],
-        capture_output=True,
-        text=True,
-    )
-
-    changed_files = [f.strip() for f in result.stdout.split("\n") if f.strip()]
-    root = Path(__file__).parent.parent
+    # Compare every changed file against the *same* base commit that the list of
+    # changed files was computed from. See tests/git_utils.py for why this must not be
+    # PR_BASE_SHA or origin/main (embeddings-benchmark/mteb#5242).
+    base_ref = get_base_ref()
+    changed_files = get_changed_json_files(base_ref)
 
     errors = []
     for filepath_str in changed_files:
-        filepath = root / Path(filepath_str)
+        filepath = REPO_ROOT / filepath_str
         if not filepath.exists() or filepath.name == "model_meta.json":
             continue
-        # Get the file from main branch
-        old_content = subprocess.run(
-            ["git", "show", f"origin/main:{filepath_str}"],
-            capture_output=True,
-            text=True,
-        )
 
-        if old_content.returncode != 0:
-            # New file, skip
+        old_content = show_file_at_ref(filepath_str, base_ref)
+        if not old_content:
+            # New file, nothing could have been removed
             continue
 
-        # Load old version
-        old_data = json.loads(old_content.stdout)
-
-        # Load new version
+        old_data = json.loads(old_content)
         with filepath.open("r") as f:
             new_data = json.load(f)
 
-        old_splits_subsets = {
-            split: set(r["hf_subset"] for r in results)
-            for split, results in old_data["scores"].items()
-        }
-
-        new_splits_subsets = {
-            split: set(r["hf_subset"] for r in results)
-            for split, results in new_data["scores"].items()
-        }
+        old_splits_subsets = get_splits_subsets(old_data)
+        new_splits_subsets = get_splits_subsets(new_data)
 
         removed_split_subsets = defaultdict(list)
         for split, old_subsets in old_splits_subsets.items():
-            for subset in old_subsets:
+            for subset in sorted(old_subsets):
                 if subset not in new_splits_subsets.get(split, set()):
                     removed_split_subsets[split].append(subset)
 
         if removed_split_subsets:
             errors.append(
-                f"{filepath_str} has had splits/subsets removed: {removed_split_subsets}"
+                f"{filepath_str} has had splits/subsets removed: {dict(removed_split_subsets)}"
             )
 
     if errors:

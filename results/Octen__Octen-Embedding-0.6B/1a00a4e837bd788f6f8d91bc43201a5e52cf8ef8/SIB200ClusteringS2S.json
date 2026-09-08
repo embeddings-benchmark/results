@@ -1,7 +1,7 @@
 {
   "dataset_revision": "a74d7350ea12af010cfb1c21e34f1f81fd2e615b",
   "task_name": "SIB200ClusteringS2S",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.10.0-2.18.7",
   "scores": {
     "test": [
       {
@@ -25,11 +25,82 @@
         "hf_subset": "tha_Thai",
         "languages": [
           "tha-Thai"
-        ]
+        ],
+        "mteb_version": "2.10.0"
+      },
+      {
+        "v_measures": {
+          "Level 0": [
+            0.554275,
+            0.529169,
+            0.46873,
+            0.549603,
+            0.546593,
+            0.497655,
+            0.537645,
+            0.546373,
+            0.534115,
+            0.528518
+          ]
+        },
+        "v_measure": 0.529268,
+        "v_measure_std": 0.025279,
+        "ami_scores": {
+          "Level 0": [
+            0.554016,
+            0.528894,
+            0.468421,
+            0.549336,
+            0.546325,
+            0.49736,
+            0.537375,
+            0.546106,
+            0.533843,
+            0.528244
+          ]
+        },
+        "ami": 0.528992,
+        "ami_std": 0.025293,
+        "main_score": 0.529268,
+        "hf_subset": "nld_Latn",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.18.7"
       }
     ]
   },
-  "evaluation_time": 125.94939827919006,
+  "evaluation_time": 132.97980798918434,
   "kg_co2_emissions": null,
-  "date": null
+  "date": 1785170136.405518,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0007193440033006482,
+      "end": 0.5214573190023657,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.5214713590030442,
+      "end": 0.5559017830019002,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.562426399999822,
+      "end": 1.8832416080040275,
+      "split": "test",
+      "subset": "nld_Latn"
+    },
+    {
+      "name": "Scoring",
+      "start": 1.9214947139989818,
+      "end": 7.021936671997537,
+      "split": "test",
+      "subset": "nld_Latn"
+    }
+  ]
 }

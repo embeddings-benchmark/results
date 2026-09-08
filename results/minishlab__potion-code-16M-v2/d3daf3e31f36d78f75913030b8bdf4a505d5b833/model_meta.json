@@ -1,0 +1,45 @@
+{
+    "adapted_from": "nomic-ai/CodeRankEmbed",
+    "citation": "@software{minishlab2024model2vec,\n  author       = {Stephan Tulkens and {van Dongen}, Thomas},\n  title        = {Model2Vec: Fast State-of-the-Art Static Embeddings},\n  year         = {2024},\n  publisher    = {Zenodo},\n  doi          = {10.5281/zenodo.17270888},\n  url          = {https://github.com/MinishLab/model2vec},\n  license      = {MIT}\n}",
+    "contacts": null,
+    "embed_dim": 256,
+    "experiment_kwargs": null,
+    "extra_requirements_groups": null,
+    "framework": [
+        "NumPy",
+        "Sentence Transformers",
+        "safetensors"
+    ],
+    "is_cross_encoder": false,
+    "languages": [
+        "eng-Latn"
+    ],
+    "license": "mit",
+    "loader": "SentenceTransformerEncoderWrapper",
+    "loader_kwargs": {},
+    "max_tokens": Infinity,
+    "memory_usage_mb": 62.0,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 16244992,
+    "n_parameters": 16244992,
+    "name": "minishlab/potion-code-16M-v2",
+    "open_weights": true,
+    "output_dtypes": null,
+    "public_training_code": "https://github.com/MinishLab/model2vec",
+    "public_training_data": "https://huggingface.co/collections/nomic-ai/cornstack; https://huggingface.co/datasets/minishlab/tokenlearn-cornstack-docs-coderankembed-v2; https://huggingface.co/datasets/minishlab/tokenlearn-cornstack-queries-coderankembed-v2",
+    "reference": "https://huggingface.co/minishlab/potion-code-16M-v2",
+    "release_date": "2026-07-08",
+    "revision": "d3daf3e31f36d78f75913030b8bdf4a505d5b833",
+    "similarity_fn_name": "cosine",
+    "superseded_by": null,
+    "training_datasets": [
+        "CoRNStack"
+    ],
+    "use_instructions": false
+}
