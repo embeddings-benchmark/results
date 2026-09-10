@@ -1,7 +1,7 @@
 {
   "dataset_revision": "a4b3685b1854cc26c554dda4c7cb918a36a6fb6c",
   "task_name": "BengaliSentimentAnalysis",
-  "mteb_version": "2.16.3",
+  "mteb_version": "2.20.11",
   "scores": {
     "train": [
       {
@@ -131,12 +131,118 @@
         "languages": [
           "ben-Beng"
         ],
-        "mteb_version": "2.16.3"
+        "mteb_version": "2.20.11"
       }
     ]
   },
-  "evaluation_time": 91.99877786636353,
+  "evaluation_time": 94.52993433200754,
   "kg_co2_emissions": null,
-  "date": null,
-  "evaluation_phases": null
+  "date": 1789026611.378692,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.840091034770012e-06,
+      "end": 3.115816859062761,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.115825050044805,
+      "end": 3.474831805098802,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding training samples",
+      "start": 5.42854314413853,
+      "end": 13.111952213104814,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding test samples",
+      "start": 13.287748537957668,
+      "end": 75.682863723021,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (0/10)",
+      "start": 75.68302609003149,
+      "end": 77.58079249016009,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (1/10)",
+      "start": 77.58088451018557,
+      "end": 79.45474949898198,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (2/10)",
+      "start": 79.45482073514722,
+      "end": 81.382168648066,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (3/10)",
+      "start": 81.38225025800057,
+      "end": 83.26451728097163,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (4/10)",
+      "start": 83.26459629414603,
+      "end": 85.13797584199347,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (5/10)",
+      "start": 85.13804594404064,
+      "end": 87.02002151100896,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (6/10)",
+      "start": 87.02011329913512,
+      "end": 88.89481360814534,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (7/10)",
+      "start": 88.89491233904846,
+      "end": 90.77082940097898,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (8/10)",
+      "start": 90.77091269218363,
+      "end": 92.63339184201322,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (9/10)",
+      "start": 92.63346839416772,
+      "end": 94.51298881717958,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 75.68289803899825,
+      "end": 94.51299755112268,
+      "split": "train",
+      "subset": "default"
+    }
+  ]
 }

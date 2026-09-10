@@ -1,7 +1,7 @@
 {
   "dataset_revision": "51adfef1c1287aab1d2d91b5bead9bcfb9c68583",
   "task_name": "XQuADRetrieval",
-  "mteb_version": "2.16.3",
+  "mteb_version": "2.20.11",
   "scores": {
     "validation": [
       {
@@ -158,12 +158,34 @@
         "languages": [
           "hin-Deva"
         ],
-        "mteb_version": "2.16.3"
+        "mteb_version": "2.20.11"
       }
     ]
   },
-  "evaluation_time": 69.20089483261108,
+  "evaluation_time": 72.63881815015338,
   "kg_co2_emissions": null,
-  "date": null,
-  "evaluation_phases": null
+  "date": 1789030077.094276,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0,
+      "end": 4.33537577604875,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 4.352287139976397,
+      "end": 72.40027942205779,
+      "split": "validation",
+      "subset": "hi"
+    },
+    {
+      "name": "Scoring",
+      "start": 72.40032474999316,
+      "end": 72.61941508785821,
+      "split": "validation",
+      "subset": "hi"
+    }
+  ]
 }

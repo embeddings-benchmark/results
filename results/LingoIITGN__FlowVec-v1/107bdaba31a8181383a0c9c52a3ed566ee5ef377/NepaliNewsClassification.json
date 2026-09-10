@@ -1,7 +1,7 @@
 {
   "dataset_revision": "517059b8db27c65544a855d90b3e30e5a9853fc3",
   "task_name": "NepaliNewsClassification",
-  "mteb_version": "2.16.3",
+  "mteb_version": "2.20.11",
   "scores": {
     "train": [
       {
@@ -131,12 +131,118 @@
         "languages": [
           "nep-Deva"
         ],
-        "mteb_version": "2.16.3"
+        "mteb_version": "2.20.11"
       }
     ]
   },
-  "evaluation_time": 180.49173307418823,
+  "evaluation_time": 176.84708192013204,
   "kg_co2_emissions": null,
-  "date": null,
-  "evaluation_phases": null
+  "date": 1789027534.533891,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.678964614868164e-06,
+      "end": 2.8588605890981853,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 2.8588686001021415,
+      "end": 2.858870092080906,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding training samples",
+      "start": 4.34470161003992,
+      "end": 20.461617219960317,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding test samples",
+      "start": 20.608558274107054,
+      "end": 154.15796757908538,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (0/10)",
+      "start": 154.15831322502345,
+      "end": 156.53398246900178,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (1/10)",
+      "start": 156.53413435909897,
+      "end": 158.51113745197654,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (2/10)",
+      "start": 158.51126211811788,
+      "end": 160.96369981602766,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (3/10)",
+      "start": 160.96383874793537,
+      "end": 163.26295538805425,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (4/10)",
+      "start": 163.2630674780812,
+      "end": 165.3996256729588,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (5/10)",
+      "start": 165.39976381207816,
+      "end": 167.69177447911352,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (6/10)",
+      "start": 167.6919201980345,
+      "end": 169.94362403894775,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (7/10)",
+      "start": 169.94374711206183,
+      "end": 172.21075680013746,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (8/10)",
+      "start": 172.21087445807643,
+      "end": 174.63010060810484,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Running experiment (9/10)",
+      "start": 174.63020900497213,
+      "end": 176.82956746593118,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 154.15802038111724,
+      "end": 176.82957134302706,
+      "split": "train",
+      "subset": "default"
+    }
+  ]
 }

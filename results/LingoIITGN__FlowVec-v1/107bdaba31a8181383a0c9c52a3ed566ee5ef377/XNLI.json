@@ -1,7 +1,7 @@
 {
   "dataset_revision": "09698e0180d87dc247ca447d3a1248b931ac0cdb",
   "task_name": "XNLI",
-  "mteb_version": "2.16.3",
+  "mteb_version": "2.20.11",
   "scores": {
     "test": [
       {
@@ -40,7 +40,7 @@
         "languages": [
           "hin-Deva"
         ],
-        "mteb_version": "2.16.3"
+        "mteb_version": "2.20.11"
       }
     ],
     "validation": [
@@ -80,12 +80,69 @@
         "languages": [
           "hin-Deva"
         ],
-        "mteb_version": "2.16.3"
+        "mteb_version": "2.20.11"
       }
     ]
   },
-  "evaluation_time": 168.99184465408325,
+  "evaluation_time": 180.72580482787453,
   "kg_co2_emissions": null,
-  "date": null,
-  "evaluation_phases": null
+  "date": 1789027852.705539,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.3639447540044785e-06,
+      "end": 6.3553797379136086,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 6.355389551026747,
+      "end": 12.968768246937543,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 13.319842744851485,
+      "end": 65.66217977693304,
+      "split": "test",
+      "subset": "hi"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 65.66222149692476,
+      "end": 96.94938892987557,
+      "split": "test",
+      "subset": "hi"
+    },
+    {
+      "name": "Scoring",
+      "start": 96.9494258640334,
+      "end": 97.21483169100247,
+      "split": "test",
+      "subset": "hi"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 97.70494445692748,
+      "end": 149.48373250383884,
+      "split": "validation",
+      "subset": "hi"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 149.48375550587662,
+      "end": 180.63996444200166,
+      "split": "validation",
+      "subset": "hi"
+    },
+    {
+      "name": "Scoring",
+      "start": 180.64001076295972,
+      "end": 180.68745245295577,
+      "split": "validation",
+      "subset": "hi"
+    }
+  ]
 }
