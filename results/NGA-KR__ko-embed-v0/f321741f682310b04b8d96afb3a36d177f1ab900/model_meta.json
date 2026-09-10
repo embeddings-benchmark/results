@@ -1,0 +1,55 @@
+{
+  "loader_kwargs": {
+    "model_prompts": {
+      "query": "query: ",
+      "document": "passage: "
+    },
+    "trust_remote_code": true,
+    "model_name_or_path": "ckpt/v0/final"
+  },
+  "name": "NGA-KR/ko-embed-v0",
+  "revision": "f321741f682310b04b8d96afb3a36d177f1ab900",
+  "release_date": "2026-09-01",
+  "languages": [
+    "kor-Hang",
+    "eng-Latn"
+  ],
+  "n_parameters": 148731648,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": null,
+  "memory_usage_mb": 284.0,
+  "max_tokens": 512.0,
+  "embed_dim": 768,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": null,
+  "public_training_data": null,
+  "framework": [
+    "Sentence Transformers",
+    "PyTorch"
+  ],
+  "reference": "https://huggingface.co/nga-leo/ko-embed-v0",
+  "similarity_fn_name": "cosine",
+  "use_instructions": true,
+  "training_datasets": [
+    "GooAQ",
+    "HotpotQA",
+    "MSMARCO",
+    "NQ"
+  ],
+  "adapted_from": "skt/A.X-Encoder-base",
+  "superseded_by": null,
+  "modalities": [
+    "text"
+  ],
+  "model_type": [
+    "dense"
+  ],
+  "citation": null,
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": null,
+  "extra_requirements_groups": null,
+  "loader": "SentenceTransformerEncoderWrapper",
+  "is_cross_encoder": false
+}
