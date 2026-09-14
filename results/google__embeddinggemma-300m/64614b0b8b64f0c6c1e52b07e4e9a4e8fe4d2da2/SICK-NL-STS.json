@@ -1,0 +1,65 @@
+{
+  "dataset_revision": "7f88f003fc4e37ed8cd9ade84e390d871b032fef",
+  "task_name": "SICK-NL-STS",
+  "mteb_version": "2.18.7",
+  "scores": {
+    "test": [
+      {
+        "pearson": 0.810883,
+        "spearman": 0.769757,
+        "cosine_pearson": 0.810883,
+        "cosine_spearman": 0.769757,
+        "manhattan_pearson": 0.785729,
+        "manhattan_spearman": 0.769849,
+        "euclidean_pearson": 0.785154,
+        "euclidean_spearman": 0.769757,
+        "main_score": 0.769757,
+        "hf_subset": "default",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.18.7"
+      }
+    ]
+  },
+  "evaluation_time": 415.31191659811884,
+  "kg_co2_emissions": null,
+  "date": 1785461493.837422,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.000571429030969739,
+      "end": 0.752328383969143,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.7523398259654641,
+      "end": 0.7523412988521159,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 0.8220813330262899,
+      "end": 206.77315072901547,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 206.77470319601707,
+      "end": 415.26795366196893,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 415.26932573202066,
+      "end": 415.29668814782053,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

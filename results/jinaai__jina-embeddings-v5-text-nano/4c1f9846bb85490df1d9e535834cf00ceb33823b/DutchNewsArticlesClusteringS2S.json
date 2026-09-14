@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "0a7227d31f85c5676be92767f8df5405ea93de54",
+  "task_name": "DutchNewsArticlesClusteringS2S",
+  "mteb_version": "2.18.7",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.332197,
+            0.30716,
+            0.353474,
+            0.321356,
+            0.336267,
+            0.323344,
+            0.32364,
+            0.331571,
+            0.337846,
+            0.326427
+          ]
+        },
+        "v_measure": 0.329328,
+        "v_measure_std": 0.011613,
+        "ami_scores": {
+          "Level 0": [
+            0.33171,
+            0.306649,
+            0.353,
+            0.320861,
+            0.335778,
+            0.322846,
+            0.323134,
+            0.331085,
+            0.337356,
+            0.325932
+          ]
+        },
+        "ami": 0.328835,
+        "ami_std": 0.011622,
+        "main_score": 0.329328,
+        "hf_subset": "default",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.18.7"
+      }
+    ]
+  },
+  "evaluation_time": 24.06005756900413,
+  "kg_co2_emissions": null,
+  "date": 1785248248.897262,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0007354319968726486,
+      "end": 0.3286113780050073,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.3286232380196452,
+      "end": 0.3340305100136902,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.3488805310043972,
+      "end": 19.175525910017313,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 19.21667484100908,
+      "end": 24.051534922997234,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

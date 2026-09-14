@@ -1,0 +1,54 @@
+{
+  "dataset_revision": "16b4f3ff0eba385e23756afc3fdefc460a5c3444",
+  "task_name": "ImageNetDog15Clustering",
+  "mteb_version": "2.20.0",
+  "scores": {
+    "test": [
+      {
+        "v_measure": 0.870883,
+        "nmi": 0.870883,
+        "ari": 0.786454,
+        "cluster_accuracy": 0.821561,
+        "main_score": 0.870883,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.20.0"
+      }
+    ]
+  },
+  "evaluation_time": 70.13045165000949,
+  "kg_co2_emissions": null,
+  "date": 1787445131.998556,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0009712990140542388,
+      "end": 9.646415787981823,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 9.646457924041897,
+      "end": 9.646459987969138,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 9.656361039029434,
+      "end": 68.74042082100641,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 68.74204532697331,
+      "end": 70.07908379496075,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

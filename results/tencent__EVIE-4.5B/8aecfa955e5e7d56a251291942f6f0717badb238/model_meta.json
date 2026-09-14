@@ -1,0 +1,63 @@
+{
+    "loader_kwargs": {
+        "torch_dtype": "torch.bfloat16"
+    },
+    "name": "tencent/EVIE-4.5B",
+    "revision": "8aecfa955e5e7d56a251291942f6f0717badb238",
+    "release_date": "2026-09-04",
+    "languages": [
+        "eng-Latn",
+        "fra-Latn",
+        "deu-Latn",
+        "spa-Latn",
+        "ita-Latn",
+        "por-Latn"
+    ],
+    "n_parameters": 4544510464,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 635699200,
+    "memory_usage_mb": 9089.0,
+    "max_tokens": 262144.0,
+    "embed_dim": 2048,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/Tencent/EVIE",
+    "public_training_data": null,
+    "framework": [
+        "PyTorch",
+        "ColPali",
+        "Sentence Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/tencent/EVIE-4.5B",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": [
+        "VidoreTabfquadRetrieval",
+        "VidoreDocVQARetrieval",
+        "VidoreTatdqaRetrieval",
+        "VisRAG-Ret-Train-In-domain-data",
+        "VidoreInfoVQARetrieval",
+        "VisRAG-Ret-Train-Synthetic-data",
+        "VidoreArxivQARetrieval",
+        "VDRMultilingualRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "\n@misc{tencent2026evie,\n  title        = {EVIE: Evidence-Vector-Informed Embedding for Visual Document Retrieval},\n  author       = {Wang, Zifei and Wen, Wei},\n  year         = {2026},\n  howpublished = {\\url{https://github.com/Tencent/EVIE}}\n}\n",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "evie"
+    ],
+    "loader": "EvieWrapper",
+    "is_cross_encoder": false
+}

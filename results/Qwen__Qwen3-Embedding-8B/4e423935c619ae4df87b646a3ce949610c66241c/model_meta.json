@@ -1,9 +1,6 @@
 {
     "loader_kwargs": {
-        "model_kwargs": {
-            "attn_implementation": "sdpa"
-        },
-        "max_seq_length": 4096
+        "device": "cuda"
     },
     "name": "Qwen/Qwen3-Embedding-8B",
     "revision": "4e423935c619ae4df87b646a3ce949610c66241c",
@@ -103,17 +100,17 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
+        "T2Retrieval",
+        "CMedQAv2-reranking",
+        "MMarcoReranking",
         "HotpotQA",
         "FEVER",
-        "NQ",
-        "MSMARCO",
+        "DuRetrieval",
         "MrTidyRetrieval",
         "MIRACLRetrieval",
-        "DuRetrieval",
-        "MMarcoReranking",
-        "CMedQAv2-reranking",
-        "CodeSearchNet",
-        "T2Retrieval"
+        "NQ",
+        "MSMARCO",
+        "CodeSearchNet"
     ],
     "adapted_from": null,
     "superseded_by": null,
