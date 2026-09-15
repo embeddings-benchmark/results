@@ -1,23 +1,300 @@
 {
-    "dataset_revision": "69e8f12da6e31d59addadda9a9c8a2e601a0e282",
-    "task_name": "Tatoeba",
-    "mteb_version": "1.39.7",
-    "scores": {
-        "test": [
-            {
-                "precision": 0.92525,
-                "recall": 0.947,
-                "f1": 0.932233,
-                "accuracy": 0.947,
-                "main_score": 0.932233,
-                "hf_subset": "slk-eng",
-                "languages": [
-                    "slk-Latn",
-                    "eng-Latn"
-                ]
-            }
-        ]
+  "dataset_revision": "69e8f12da6e31d59addadda9a9c8a2e601a0e282",
+  "task_name": "Tatoeba",
+  "mteb_version": "2.18.0",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.915583,
+        "recall": 0.942,
+        "f1": 0.924067,
+        "accuracy": 0.942,
+        "main_score": 0.924067,
+        "hf_subset": "afr-eng",
+        "languages": [
+          "afr-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.748288,
+        "recall": 0.807128,
+        "f1": 0.765828,
+        "accuracy": 0.807128,
+        "main_score": 0.765828,
+        "hf_subset": "arz-eng",
+        "languages": [
+          "arz-Arab",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.450806,
+        "recall": 0.545554,
+        "f1": 0.475112,
+        "accuracy": 0.545554,
+        "main_score": 0.475112,
+        "hf_subset": "arq-eng",
+        "languages": [
+          "arq-Arab",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.477474,
+        "recall": 0.552,
+        "f1": 0.49769,
+        "accuracy": 0.552,
+        "main_score": 0.49769,
+        "hf_subset": "kab-eng",
+        "languages": [
+          "kab-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.930417,
+        "recall": 0.949,
+        "f1": 0.9364,
+        "accuracy": 0.949,
+        "main_score": 0.9364,
+        "hf_subset": "por-eng",
+        "languages": [
+          "por-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.839286,
+        "recall": 0.892857,
+        "f1": 0.857143,
+        "accuracy": 0.892857,
+        "main_score": 0.857143,
+        "hf_subset": "amh-eng",
+        "languages": [
+          "amh-Ethi",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.835681,
+        "recall": 0.880282,
+        "f1": 0.849765,
+        "accuracy": 0.880282,
+        "main_score": 0.849765,
+        "hf_subset": "xho-eng",
+        "languages": [
+          "xho-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      },
+      {
+        "precision": 0.755556,
+        "recall": 0.810256,
+        "f1": 0.772015,
+        "accuracy": 0.810256,
+        "main_score": 0.772015,
+        "hf_subset": "swh-eng",
+        "languages": [
+          "swh-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.18.0"
+      }
+    ]
+  },
+  "evaluation_time": 12.58951368497219,
+  "kg_co2_emissions": null,
+  "date": 1784163705.210138,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.301968824118376e-06,
+      "end": 1.6139789439621381,
+      "split": "",
+      "subset": ""
     },
-    "evaluation_time": 10.189050674438477,
-    "kg_co2_emissions": null
+    {
+      "name": "Dataset transform",
+      "start": 1.6140053439885378,
+      "end": 1.6140098619507626,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.701502363954205,
+      "end": 2.650478617986664,
+      "split": "test",
+      "subset": "afr-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 2.7170979629736394,
+      "end": 3.5976724889478646,
+      "split": "test",
+      "subset": "afr-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 3.5984911589766853,
+      "end": 3.6195737199741416,
+      "split": "test",
+      "subset": "afr-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 3.674759264977183,
+      "end": 4.108561789966188,
+      "split": "test",
+      "subset": "arz-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 4.143160657957196,
+      "end": 4.575260818994138,
+      "split": "test",
+      "subset": "arz-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 4.576087713998277,
+      "end": 4.601118361984845,
+      "split": "test",
+      "subset": "arz-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 4.6890239009517245,
+      "end": 5.658183583989739,
+      "split": "test",
+      "subset": "arq-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 5.720746778999455,
+      "end": 6.561705308966339,
+      "split": "test",
+      "subset": "arq-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 6.562621772987768,
+      "end": 6.577389874961227,
+      "split": "test",
+      "subset": "arq-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 6.675706849957351,
+      "end": 7.8198650919948705,
+      "split": "test",
+      "subset": "kab-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 7.888721805997193,
+      "end": 8.774457381980028,
+      "split": "test",
+      "subset": "kab-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 8.775310465949588,
+      "end": 8.790374926000368,
+      "split": "test",
+      "subset": "kab-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 8.886845185945276,
+      "end": 9.88623571000062,
+      "split": "test",
+      "subset": "por-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 9.953498124959879,
+      "end": 10.970004547969438,
+      "split": "test",
+      "subset": "por-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 10.970971446949989,
+      "end": 11.082842398958746,
+      "split": "test",
+      "subset": "por-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 11.116487382969353,
+      "end": 11.276772552984767,
+      "split": "test",
+      "subset": "amh-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 11.291238275996875,
+      "end": 11.443026561988518,
+      "split": "test",
+      "subset": "amh-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 11.443873995973263,
+      "end": 11.446158623963129,
+      "split": "test",
+      "subset": "amh-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 11.47213574196212,
+      "end": 11.610784919990692,
+      "split": "test",
+      "subset": "xho-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 11.622743907966651,
+      "end": 11.747164067986887,
+      "split": "test",
+      "subset": "xho-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 11.747844457975589,
+      "end": 11.749738971993793,
+      "split": "test",
+      "subset": "xho-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 11.79204074095469,
+      "end": 12.14329237898346,
+      "split": "test",
+      "subset": "swh-eng"
+    },
+    {
+      "name": "Encoding",
+      "start": 12.170784667949192,
+      "end": 12.523053448996507,
+      "split": "test",
+      "subset": "swh-eng"
+    },
+    {
+      "name": "Scoring",
+      "start": 12.523812426952645,
+      "end": 12.528158432978671,
+      "split": "test",
+      "subset": "swh-eng"
+    }
+  ]
 }
