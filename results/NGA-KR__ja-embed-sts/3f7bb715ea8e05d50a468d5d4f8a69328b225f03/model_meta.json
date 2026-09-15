@@ -1,0 +1,48 @@
+{
+  "loader_kwargs": {
+    "trust_remote_code": true,
+    "model_name_or_path": "ckpt/ja-sts-2/final"
+  },
+  "name": "NGA-KR/ja-embed-sts-r",
+  "revision": "3f7bb715ea8e05d50a468d5d4f8a69328b225f03",
+  "release_date": "2026-09-15",
+  "languages": [
+    "jpn-Jpan"
+  ],
+  "n_parameters": 337441792,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": null,
+  "memory_usage_mb": 644.0,
+  "max_tokens": 512.0,
+  "embed_dim": 1024,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": null,
+  "public_training_data": null,
+  "framework": [
+    "Sentence Transformers",
+    "PyTorch"
+  ],
+  "reference": "https://huggingface.co/NGA-KR/ja-embed-sts-r",
+  "similarity_fn_name": "cosine",
+  "use_instructions": false,
+  "training_datasets": [
+    "JSICK",
+    "JSTS"
+  ],
+  "adapted_from": "cl-nagoya/ruri-large-v2",
+  "superseded_by": null,
+  "modalities": [
+    "text"
+  ],
+  "model_type": [
+    "dense"
+  ],
+  "citation": null,
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": null,
+  "extra_requirements_groups": null,
+  "loader": "SentenceTransformerEncoderWrapper",
+  "is_cross_encoder": false
+}
