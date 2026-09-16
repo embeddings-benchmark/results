@@ -1,9 +1,57 @@
 {
   "dataset_revision": "a74d7350ea12af010cfb1c21e34f1f81fd2e615b",
   "task_name": "SIB200ClusteringS2S",
-  "mteb_version": "2.18.0",
+  "mteb_version": "1.39.7-2.18.0",
   "scores": {
     "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.400135,
+            0.383275,
+            0.419301,
+            0.381931,
+            0.386585,
+            0.380602,
+            0.377067,
+            0.370502,
+            0.391223,
+            0.454235
+          ]
+        },
+        "v_measure": 0.394486,
+        "v_measure_std": 0.02376,
+        "main_score": 0.394486,
+        "hf_subset": "nld_Latn",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.1.0"
+      },
+      {
+        "v_measures": {
+          "Level 0": [
+            0.404767,
+            0.391029,
+            0.417963,
+            0.346401,
+            0.406944,
+            0.442055,
+            0.398402,
+            0.43027,
+            0.367658,
+            0.378569
+          ]
+        },
+        "v_measure": 0.398406,
+        "v_measure_std": 0.027412,
+        "main_score": 0.398406,
+        "hf_subset": "slk_Latn",
+        "languages": [
+          "slk-Latn"
+        ],
+        "mteb_version": "1.39.7"
+      },
       {
         "v_measures": {
           "Level 0": [
@@ -2326,833 +2374,833 @@
       }
     ]
   },
-  "evaluation_time": 485.70360412599985,
+  "evaluation_time": 510.06610145571176,
   "kg_co2_emissions": null,
   "date": 1784159012.391713,
   "evaluation_phases": [
     {
       "name": "Data loading",
-      "start": 8.606002666056156e-06,
-      "end": 21.958964894991368,
+      "start": 24.36250593571458,
+      "end": 46.32146222470328,
       "split": "",
       "subset": ""
     },
     {
       "name": "Dataset transform",
-      "start": 21.958976836991496,
-      "end": 23.55756561702583,
+      "start": 46.32147416670341,
+      "end": 47.920062946737744,
       "split": "",
       "subset": ""
     },
     {
       "name": "Encoding",
-      "start": 23.56100301403785,
-      "end": 25.781684473040514,
+      "start": 47.923500343749765,
+      "end": 50.14418180275243,
       "split": "test",
       "subset": "aeb_Arab"
     },
     {
       "name": "Scoring",
-      "start": 25.812830968992785,
-      "end": 32.86408543901052,
+      "start": 50.1753282987047,
+      "end": 57.22658276872244,
       "split": "test",
       "subset": "aeb_Arab"
     },
     {
       "name": "Encoding",
-      "start": 32.92801848700037,
-      "end": 35.15965020703152,
+      "start": 57.290515816712286,
+      "end": 59.52214753674343,
       "split": "test",
       "subset": "afr_Latn"
     },
     {
       "name": "Scoring",
-      "start": 35.1907547939918,
-      "end": 39.23762871499639,
+      "start": 59.553252123703714,
+      "end": 63.600126044708304,
       "split": "test",
       "subset": "afr_Latn"
     },
     {
       "name": "Encoding",
-      "start": 39.291857286007144,
-      "end": 42.393838232033886,
+      "start": 63.65435461571906,
+      "end": 66.7563355617458,
       "split": "test",
       "subset": "aka_Latn"
     },
     {
       "name": "Scoring",
-      "start": 42.425175226002466,
-      "end": 48.200627398036886,
+      "start": 66.78767255571438,
+      "end": 72.5631247277488,
       "split": "test",
       "subset": "aka_Latn"
     },
     {
       "name": "Encoding",
-      "start": 48.26213296898641,
-      "end": 50.71680880303029,
+      "start": 72.62463029869832,
+      "end": 75.0793061327422,
       "split": "test",
       "subset": "amh_Ethi"
     },
     {
       "name": "Scoring",
-      "start": 50.74778952798806,
-      "end": 55.52292117703473,
+      "start": 75.11028685769998,
+      "end": 79.88541850674665,
       "split": "test",
       "subset": "amh_Ethi"
     },
     {
       "name": "Encoding",
-      "start": 55.57937905204017,
-      "end": 58.65090733603574,
+      "start": 79.94187638175208,
+      "end": 83.01340466574766,
       "split": "test",
       "subset": "arb_Latn"
     },
     {
       "name": "Scoring",
-      "start": 58.68306690902682,
-      "end": 63.84837380802492,
+      "start": 83.04556423873873,
+      "end": 88.21087113773683,
       "split": "test",
       "subset": "arb_Latn"
     },
     {
       "name": "Encoding",
-      "start": 63.89731579401996,
-      "end": 66.15556895599002,
+      "start": 88.25981312373187,
+      "end": 90.51806628570193,
       "split": "test",
       "subset": "ary_Arab"
     },
     {
       "name": "Scoring",
-      "start": 66.18646849802462,
-      "end": 72.93071254703682,
+      "start": 90.54896582773654,
+      "end": 97.29320987674873,
       "split": "test",
       "subset": "ary_Arab"
     },
     {
       "name": "Encoding",
-      "start": 72.98527902300702,
-      "end": 75.15308062802069,
+      "start": 97.34777635271894,
+      "end": 99.5155779577326,
       "split": "test",
       "subset": "arz_Arab"
     },
     {
       "name": "Scoring",
-      "start": 75.18400354404002,
-      "end": 79.25810712302336,
+      "start": 99.54650087375194,
+      "end": 103.62060445273528,
       "split": "test",
       "subset": "arz_Arab"
     },
     {
       "name": "Encoding",
-      "start": 79.30899806402158,
-      "end": 82.27542357798666,
+      "start": 103.6714953937335,
+      "end": 106.63792090769857,
       "split": "test",
       "subset": "bam_Latn"
     },
     {
       "name": "Scoring",
-      "start": 82.30645219300641,
-      "end": 86.88624661200447,
+      "start": 106.66894952271832,
+      "end": 111.24874394171638,
       "split": "test",
       "subset": "bam_Latn"
     },
     {
       "name": "Encoding",
-      "start": 86.93867406499339,
-      "end": 89.68026665801881,
+      "start": 111.3011713947053,
+      "end": 114.04276398773072,
       "split": "test",
       "subset": "bem_Latn"
     },
     {
       "name": "Scoring",
-      "start": 89.71130834700307,
-      "end": 93.95445972698508,
+      "start": 114.07380567671498,
+      "end": 118.31695705669699,
       "split": "test",
       "subset": "bem_Latn"
     },
     {
       "name": "Encoding",
-      "start": 94.00624338799389,
-      "end": 96.53575417102547,
+      "start": 118.3687407177058,
+      "end": 120.89825150073739,
       "split": "test",
       "subset": "cjk_Latn"
     },
     {
       "name": "Scoring",
-      "start": 96.56632440298563,
-      "end": 101.66110586200375,
+      "start": 120.92882173269754,
+      "end": 126.02360319171567,
       "split": "test",
       "subset": "cjk_Latn"
     },
     {
       "name": "Encoding",
-      "start": 101.71044847101439,
-      "end": 104.69304428598844,
+      "start": 126.0729458007263,
+      "end": 129.05554161570035,
       "split": "test",
       "subset": "dik_Latn"
     },
     {
       "name": "Scoring",
-      "start": 104.72431800101185,
-      "end": 110.45674590399722,
+      "start": 129.08681533072377,
+      "end": 134.81924323370913,
       "split": "test",
       "subset": "dik_Latn"
     },
     {
       "name": "Encoding",
-      "start": 110.51127778104274,
-      "end": 113.30140769103309,
+      "start": 134.87377511075465,
+      "end": 137.663905020745,
       "split": "test",
       "subset": "dyu_Latn"
     },
     {
       "name": "Scoring",
-      "start": 113.3325749640353,
-      "end": 119.61404737801058,
+      "start": 137.69507229374722,
+      "end": 143.9765447077225,
       "split": "test",
       "subset": "dyu_Latn"
     },
     {
       "name": "Encoding",
-      "start": 119.66594623203855,
-      "end": 121.60545240103966,
+      "start": 144.02844356175046,
+      "end": 145.96794973075157,
       "split": "test",
       "subset": "eng_Latn"
     },
     {
       "name": "Scoring",
-      "start": 121.63612485298654,
-      "end": 125.3676246299874,
+      "start": 145.99862218269845,
+      "end": 149.73012195969932,
       "split": "test",
       "subset": "eng_Latn"
     },
     {
       "name": "Encoding",
-      "start": 125.41876438702457,
-      "end": 128.69709792203503,
+      "start": 149.78126171673648,
+      "end": 153.05959525174694,
       "split": "test",
       "subset": "ewe_Latn"
     },
     {
       "name": "Scoring",
-      "start": 128.72752026398666,
-      "end": 133.59571151802083,
+      "start": 153.09001759369858,
+      "end": 157.95820884773275,
       "split": "test",
       "subset": "ewe_Latn"
     },
     {
       "name": "Encoding",
-      "start": 133.64865341602126,
-      "end": 137.5126699510147,
+      "start": 158.01115074573318,
+      "end": 161.8751672807266,
       "split": "test",
       "subset": "fon_Latn"
     },
     {
       "name": "Scoring",
-      "start": 137.5434604359907,
-      "end": 141.33182135300012,
+      "start": 161.90595776570262,
+      "end": 165.69431868271204,
       "split": "test",
       "subset": "fon_Latn"
     },
     {
       "name": "Encoding",
-      "start": 141.38412107201293,
-      "end": 143.969463904039,
+      "start": 165.74661840172485,
+      "end": 168.33196123375092,
       "split": "test",
       "subset": "fuv_Latn"
     },
     {
       "name": "Scoring",
-      "start": 144.00072238000575,
-      "end": 149.23764580400893,
+      "start": 168.36321970971767,
+      "end": 173.60014313372085,
       "split": "test",
       "subset": "fuv_Latn"
     },
     {
       "name": "Encoding",
-      "start": 149.28864147904096,
-      "end": 152.12365028698696,
+      "start": 173.65113880875288,
+      "end": 176.48614761669887,
       "split": "test",
       "subset": "gaz_Latn"
     },
     {
       "name": "Scoring",
-      "start": 152.15458255901467,
-      "end": 158.11178519303212,
+      "start": 176.51707988872658,
+      "end": 182.47428252274403,
       "split": "test",
       "subset": "gaz_Latn"
     },
     {
       "name": "Encoding",
-      "start": 158.16340683598537,
-      "end": 160.56528845103458,
+      "start": 182.52590416569728,
+      "end": 184.9277857807465,
       "split": "test",
       "subset": "hau_Latn"
     },
     {
       "name": "Scoring",
-      "start": 160.59701588802272,
-      "end": 167.3897230810253,
+      "start": 184.95951321773464,
+      "end": 191.7522204107372,
       "split": "test",
       "subset": "hau_Latn"
     },
     {
       "name": "Encoding",
-      "start": 167.44537125900388,
-      "end": 170.87570764002157,
+      "start": 191.8078685887158,
+      "end": 195.2382049697335,
       "split": "test",
       "subset": "ibo_Latn"
     },
     {
       "name": "Scoring",
-      "start": 170.90629522298696,
-      "end": 176.4230381299858,
+      "start": 195.26879255269887,
+      "end": 200.7855354596977,
       "split": "test",
       "subset": "ibo_Latn"
     },
     {
       "name": "Encoding",
-      "start": 176.4774405049975,
-      "end": 179.3340195310302,
+      "start": 200.83993783470942,
+      "end": 203.69651686074212,
       "split": "test",
       "subset": "kab_Latn"
     },
     {
       "name": "Scoring",
-      "start": 179.36530664103338,
-      "end": 185.07226290699327,
+      "start": 203.7278039707453,
+      "end": 209.4347602367052,
       "split": "test",
       "subset": "kab_Latn"
     },
     {
       "name": "Encoding",
-      "start": 185.12878632202046,
-      "end": 188.2244224360329,
+      "start": 209.49128365173237,
+      "end": 212.58691976574482,
       "split": "test",
       "subset": "kam_Latn"
     },
     {
       "name": "Scoring",
-      "start": 188.25514946202748,
-      "end": 192.74161333002849,
+      "start": 212.6176467917394,
+      "end": 217.1041106597404,
       "split": "test",
       "subset": "kam_Latn"
     },
     {
       "name": "Encoding",
-      "start": 192.7990912499954,
-      "end": 197.24156562204007,
+      "start": 217.1615885797073,
+      "end": 221.60406295175198,
       "split": "test",
       "subset": "kbp_Latn"
     },
     {
       "name": "Scoring",
-      "start": 197.27234734100057,
-      "end": 203.70563303900417,
+      "start": 221.63484467071248,
+      "end": 228.06813036871608,
       "split": "test",
       "subset": "kbp_Latn"
     },
     {
       "name": "Encoding",
-      "start": 203.76439081702847,
-      "end": 206.08056926203426,
+      "start": 228.12688814674038,
+      "end": 230.44306659174617,
       "split": "test",
       "subset": "kea_Latn"
     },
     {
       "name": "Scoring",
-      "start": 206.11151753400918,
-      "end": 210.7425587589969,
+      "start": 230.4740148637211,
+      "end": 235.1050560887088,
       "split": "test",
       "subset": "kea_Latn"
     },
     {
       "name": "Encoding",
-      "start": 210.79444090201287,
-      "end": 214.38276046002284,
+      "start": 235.15693823172478,
+      "end": 238.74525778973475,
       "split": "test",
       "subset": "kik_Latn"
     },
     {
       "name": "Scoring",
-      "start": 214.41472313000122,
-      "end": 220.0028633940383,
+      "start": 238.77722045971313,
+      "end": 244.3653607237502,
       "split": "test",
       "subset": "kik_Latn"
     },
     {
       "name": "Encoding",
-      "start": 220.0589308910421,
-      "end": 222.82898247800767,
+      "start": 244.42142822075402,
+      "end": 247.1914798077196,
       "split": "test",
       "subset": "kin_Latn"
     },
     {
       "name": "Scoring",
-      "start": 222.85995696799364,
-      "end": 227.80972520099021,
+      "start": 247.22245429770555,
+      "end": 252.17222253070213,
       "split": "test",
       "subset": "kin_Latn"
     },
     {
       "name": "Encoding",
-      "start": 227.8634579150239,
-      "end": 230.49912288598716,
+      "start": 252.22595524473581,
+      "end": 254.86162021569908,
       "split": "test",
       "subset": "kmb_Latn"
     },
     {
       "name": "Scoring",
-      "start": 230.53137309703743,
-      "end": 234.131841370021,
+      "start": 254.89387042674934,
+      "end": 258.4943386997329,
       "split": "test",
       "subset": "kmb_Latn"
     },
     {
       "name": "Encoding",
-      "start": 234.18575485498877,
-      "end": 237.05730016803136,
+      "start": 258.5482521847007,
+      "end": 261.4197974977433,
       "split": "test",
       "subset": "knc_Latn"
     },
     {
       "name": "Scoring",
-      "start": 237.08763690904016,
-      "end": 242.82417023798916,
+      "start": 261.45013423875207,
+      "end": 267.1866675677011,
       "split": "test",
       "subset": "knc_Latn"
     },
     {
       "name": "Encoding",
-      "start": 242.87959684903035,
-      "end": 245.4192004739889,
+      "start": 267.24209417874226,
+      "end": 269.7816978037008,
       "split": "test",
       "subset": "kon_Latn"
     },
     {
       "name": "Scoring",
-      "start": 245.45034466398647,
-      "end": 251.08305344200926,
+      "start": 269.8128419936984,
+      "end": 275.4455507717212,
       "split": "test",
       "subset": "kon_Latn"
     },
     {
       "name": "Encoding",
-      "start": 251.1368126370362,
-      "end": 253.60573011101224,
+      "start": 275.4993099667481,
+      "end": 277.96822744072415,
       "split": "test",
       "subset": "lin_Latn"
     },
     {
       "name": "Scoring",
-      "start": 253.63723987800768,
-      "end": 258.26773008704185,
+      "start": 277.9997372077196,
+      "end": 282.63022741675377,
       "split": "test",
       "subset": "lin_Latn"
     },
     {
       "name": "Encoding",
-      "start": 258.32333840901265,
-      "end": 260.82803536299616,
+      "start": 282.68583573872456,
+      "end": 285.1905326927081,
       "split": "test",
       "subset": "lua_Latn"
     },
     {
       "name": "Scoring",
-      "start": 260.85989722202066,
-      "end": 265.4337226510397,
+      "start": 285.2223945517326,
+      "end": 289.79621998075163,
       "split": "test",
       "subset": "lua_Latn"
     },
     {
       "name": "Encoding",
-      "start": 265.4871278789942,
-      "end": 268.01025414303876,
+      "start": 289.84962520870613,
+      "end": 292.3727514727507,
       "split": "test",
       "subset": "lug_Latn"
     },
     {
       "name": "Scoring",
-      "start": 268.0414810180082,
-      "end": 272.7243406960042,
+      "start": 292.4039783477201,
+      "end": 297.08683802571613,
       "split": "test",
       "subset": "lug_Latn"
     },
     {
       "name": "Encoding",
-      "start": 272.7779144910164,
-      "end": 275.25423325801967,
+      "start": 297.14041182072833,
+      "end": 299.6167305877316,
       "split": "test",
       "subset": "luo_Latn"
     },
     {
       "name": "Scoring",
-      "start": 275.2850565839908,
-      "end": 280.6601968079922,
+      "start": 299.6475539137027,
+      "end": 305.0226941377041,
       "split": "test",
       "subset": "luo_Latn"
     },
     {
       "name": "Encoding",
-      "start": 280.7151241690153,
-      "end": 283.67465446301503,
+      "start": 305.07762149872724,
+      "end": 308.03715179272695,
       "split": "test",
       "subset": "mos_Latn"
     },
     {
       "name": "Scoring",
-      "start": 283.70565977098886,
-      "end": 289.9274993480067,
+      "start": 308.0681571007008,
+      "end": 314.2899966777186,
       "split": "test",
       "subset": "mos_Latn"
     },
     {
       "name": "Encoding",
-      "start": 289.9834636099986,
-      "end": 293.1052146400325,
+      "start": 314.3459609397105,
+      "end": 317.4677119697444,
       "split": "test",
       "subset": "nqo_Nkoo"
     },
     {
       "name": "Scoring",
-      "start": 293.13623162999284,
-      "end": 296.22380043403246,
+      "start": 317.49872895970475,
+      "end": 320.58629776374437,
       "split": "test",
       "subset": "nqo_Nkoo"
     },
     {
       "name": "Encoding",
-      "start": 296.27820586401504,
-      "end": 299.07104833901394,
+      "start": 320.64070319372695,
+      "end": 323.43354566872586,
       "split": "test",
       "subset": "nso_Latn"
     },
     {
       "name": "Scoring",
-      "start": 299.1019589990028,
-      "end": 302.9818596490077,
+      "start": 323.46445632871473,
+      "end": 327.3443569787196,
       "split": "test",
       "subset": "nso_Latn"
     },
     {
       "name": "Encoding",
-      "start": 303.0357814889867,
-      "end": 306.91339022800094,
+      "start": 327.3982788186986,
+      "end": 331.27588755771285,
       "split": "test",
       "subset": "nus_Latn"
     },
     {
       "name": "Scoring",
-      "start": 306.9435856320197,
-      "end": 312.45077116403263,
+      "start": 331.3060829617316,
+      "end": 336.81326849374454,
       "split": "test",
       "subset": "nus_Latn"
     },
     {
       "name": "Encoding",
-      "start": 312.5098835680401,
-      "end": 315.0556458350038,
+      "start": 336.872380897752,
+      "end": 339.41814316471573,
       "split": "test",
       "subset": "nya_Latn"
     },
     {
       "name": "Scoring",
-      "start": 315.08642781403614,
-      "end": 321.17114941903856,
+      "start": 339.44892514374806,
+      "end": 345.53364674875047,
       "split": "test",
       "subset": "nya_Latn"
     },
     {
       "name": "Encoding",
-      "start": 321.22462585102767,
-      "end": 323.8252909440198,
+      "start": 345.5871231807396,
+      "end": 348.1877882737317,
       "split": "test",
       "subset": "plt_Latn"
     },
     {
       "name": "Scoring",
-      "start": 323.85671430802904,
-      "end": 327.21664722502464,
+      "start": 348.21921163774095,
+      "end": 351.57914455473656,
       "split": "test",
       "subset": "plt_Latn"
     },
     {
       "name": "Encoding",
-      "start": 327.27830868499586,
-      "end": 329.3759123380296,
+      "start": 351.6408060147078,
+      "end": 353.7384096677415,
       "split": "test",
       "subset": "por_Latn"
     },
     {
       "name": "Scoring",
-      "start": 329.40745879500173,
-      "end": 333.87907803902635,
+      "start": 353.76995612471364,
+      "end": 358.24157536873827,
       "split": "test",
       "subset": "por_Latn"
     },
     {
       "name": "Encoding",
-      "start": 335.6900172790047,
-      "end": 338.383584693016,
+      "start": 360.0525146087166,
+      "end": 362.74608202272793,
       "split": "test",
       "subset": "run_Latn"
     },
     {
       "name": "Scoring",
-      "start": 338.4137996340287,
-      "end": 343.4342024209909,
+      "start": 362.7762969637406,
+      "end": 367.7966997507028,
       "split": "test",
       "subset": "run_Latn"
     },
     {
       "name": "Encoding",
-      "start": 343.4909028389957,
-      "end": 346.21090854902286,
+      "start": 367.8534001687076,
+      "end": 370.5734058787348,
       "split": "test",
       "subset": "sag_Latn"
     },
     {
       "name": "Scoring",
-      "start": 346.2418723300216,
-      "end": 350.8067961820052,
+      "start": 370.6043696597335,
+      "end": 375.1692935117171,
       "split": "test",
       "subset": "sag_Latn"
     },
     {
       "name": "Encoding",
-      "start": 350.8624777920195,
-      "end": 353.4839754360146,
+      "start": 375.2249751217314,
+      "end": 377.8464727657265,
       "split": "test",
       "subset": "sna_Latn"
     },
     {
       "name": "Scoring",
-      "start": 353.51597750902874,
-      "end": 359.5375759250019,
+      "start": 377.87847483874066,
+      "end": 383.9000732547138,
       "split": "test",
       "subset": "sna_Latn"
     },
     {
       "name": "Encoding",
-      "start": 359.5949384070118,
-      "end": 361.96545082802186,
+      "start": 383.9574357367237,
+      "end": 386.3279481577338,
       "split": "test",
       "subset": "som_Latn"
     },
     {
       "name": "Scoring",
-      "start": 361.9965362169896,
-      "end": 367.19150013499893,
+      "start": 386.35903354670154,
+      "end": 391.55399746471085,
       "split": "test",
       "subset": "som_Latn"
     },
     {
       "name": "Encoding",
-      "start": 367.24633518303744,
-      "end": 370.0506817889982,
+      "start": 391.60883251274936,
+      "end": 394.4131791187101,
       "split": "test",
       "subset": "sot_Latn"
     },
     {
       "name": "Scoring",
-      "start": 370.08135780802695,
-      "end": 375.68823520402657,
+      "start": 394.44385513773886,
+      "end": 400.0507325337385,
       "split": "test",
       "subset": "sot_Latn"
     },
     {
       "name": "Encoding",
-      "start": 375.74498835002305,
-      "end": 378.3535681919893,
+      "start": 400.10748567973496,
+      "end": 402.71606552170124,
       "split": "test",
       "subset": "ssw_Latn"
     },
     {
       "name": "Scoring",
-      "start": 378.3843017190229,
-      "end": 383.0701013550279,
+      "start": 402.74679904873483,
+      "end": 407.4325986847398,
       "split": "test",
       "subset": "ssw_Latn"
     },
     {
       "name": "Encoding",
-      "start": 383.12580920400796,
-      "end": 385.22443117701914,
+      "start": 407.4883065337199,
+      "end": 409.58692850673106,
       "split": "test",
       "subset": "swh_Latn"
     },
     {
       "name": "Scoring",
-      "start": 385.25593002402456,
-      "end": 392.2338309219922,
+      "start": 409.6184273537365,
+      "end": 416.5963282517041,
       "split": "test",
       "subset": "swh_Latn"
     },
     {
       "name": "Encoding",
-      "start": 392.29630706401076,
-      "end": 395.6380750979879,
+      "start": 416.6588043937227,
+      "end": 420.0005724276998,
       "split": "test",
       "subset": "taq_Tfng"
     },
     {
       "name": "Scoring",
-      "start": 395.6696283770143,
-      "end": 401.41676673002075,
+      "start": 420.0321257067262,
+      "end": 425.77926405973267,
       "split": "test",
       "subset": "taq_Tfng"
     },
     {
       "name": "Encoding",
-      "start": 401.47657904203515,
-      "end": 404.4817530430155,
+      "start": 425.83907637174707,
+      "end": 428.8442503727274,
       "split": "test",
       "subset": "tir_Ethi"
     },
     {
       "name": "Scoring",
-      "start": 404.5126555880415,
-      "end": 407.9788841420086,
+      "start": 428.87515291775344,
+      "end": 432.3413814717205,
       "split": "test",
       "subset": "tir_Ethi"
     },
     {
       "name": "Encoding",
-      "start": 408.0319988030242,
-      "end": 410.87438312900485,
+      "start": 432.3944961327361,
+      "end": 435.23688045871677,
       "split": "test",
       "subset": "tsn_Latn"
     },
     {
       "name": "Scoring",
-      "start": 410.90631139301695,
-      "end": 416.1896029910422,
+      "start": 435.26880872272886,
+      "end": 440.5521003207541,
       "split": "test",
       "subset": "tsn_Latn"
     },
     {
       "name": "Encoding",
-      "start": 416.24550691002514,
-      "end": 419.0169809870422,
+      "start": 440.60800423973706,
+      "end": 443.3794783167541,
       "split": "test",
       "subset": "tso_Latn"
     },
     {
       "name": "Scoring",
-      "start": 419.04809451900655,
-      "end": 424.17609739198815,
+      "start": 443.41059184871847,
+      "end": 448.53859472170006,
       "split": "test",
       "subset": "tso_Latn"
     },
     {
       "name": "Encoding",
-      "start": 424.23149762302637,
-      "end": 427.3194168470218,
+      "start": 448.5939949527383,
+      "end": 451.6819141767337,
       "split": "test",
       "subset": "tum_Latn"
     },
     {
       "name": "Scoring",
-      "start": 427.34963849099586,
-      "end": 432.5257010560017,
+      "start": 451.7121358207078,
+      "end": 456.8881983857136,
       "split": "test",
       "subset": "tum_Latn"
     },
     {
       "name": "Encoding",
-      "start": 432.58365248603513,
-      "end": 435.61201003100723,
+      "start": 456.94614981574705,
+      "end": 459.97450736071914,
       "split": "test",
       "subset": "twi_Latn"
     },
     {
       "name": "Scoring",
-      "start": 435.64349659503205,
-      "end": 439.87989315600134,
+      "start": 460.00599392474396,
+      "end": 464.24239048571326,
       "split": "test",
       "subset": "twi_Latn"
     },
     {
       "name": "Encoding",
-      "start": 439.9329706170247,
-      "end": 442.4638969170046,
+      "start": 464.2954679467366,
+      "end": 466.8263942467165,
       "split": "test",
       "subset": "tzm_Tfng"
     },
     {
       "name": "Scoring",
-      "start": 442.49481808702694,
-      "end": 447.94157645403175,
+      "start": 466.85731541673886,
+      "end": 472.30407378374366,
       "split": "test",
       "subset": "tzm_Tfng"
     },
     {
       "name": "Encoding",
-      "start": 448.0043255999917,
-      "end": 450.6157599640428,
+      "start": 472.36682292970363,
+      "end": 474.9782572937547,
       "split": "test",
       "subset": "umb_Latn"
     },
     {
       "name": "Scoring",
-      "start": 450.64646470703883,
-      "end": 454.235471063992,
+      "start": 475.00896203675075,
+      "end": 478.5979683937039,
       "split": "test",
       "subset": "umb_Latn"
     },
     {
       "name": "Encoding",
-      "start": 454.2918793220306,
-      "end": 456.95286850002594,
+      "start": 478.6543766517425,
+      "end": 481.31536582973786,
       "split": "test",
       "subset": "wol_Latn"
     },
     {
       "name": "Scoring",
-      "start": 456.98380648199236,
-      "end": 460.21585049899295,
+      "start": 481.3463038117043,
+      "end": 484.57834782870486,
       "split": "test",
       "subset": "wol_Latn"
     },
     {
       "name": "Encoding",
-      "start": 460.2692507780157,
-      "end": 462.7493753370363,
+      "start": 484.6317481077276,
+      "end": 487.11187266674824,
       "split": "test",
       "subset": "xho_Latn"
     },
     {
       "name": "Scoring",
-      "start": 462.78031865903176,
-      "end": 467.60822480899515,
+      "start": 487.1428159887437,
+      "end": 491.97072213870706,
       "split": "test",
       "subset": "xho_Latn"
     },
     {
       "name": "Encoding",
-      "start": 467.6741880310001,
-      "end": 471.41140910598915,
+      "start": 492.036685360712,
+      "end": 495.77390643570106,
       "split": "test",
       "subset": "yor_Latn"
     },
     {
       "name": "Scoring",
-      "start": 471.4424044350162,
-      "end": 475.4476735210046,
+      "start": 495.80490176472813,
+      "end": 499.81017085071653,
       "split": "test",
       "subset": "yor_Latn"
     },
     {
       "name": "Encoding",
-      "start": 475.50518084602663,
-      "end": 478.10113430704223,
+      "start": 499.86767817573855,
+      "end": 502.46363163675414,
       "split": "test",
       "subset": "zul_Latn"
     },
     {
       "name": "Scoring",
-      "start": 478.13171439501457,
-      "end": 485.65192323201336,
+      "start": 502.4942117247265,
+      "end": 510.0144205617253,
       "split": "test",
       "subset": "zul_Latn"
     }

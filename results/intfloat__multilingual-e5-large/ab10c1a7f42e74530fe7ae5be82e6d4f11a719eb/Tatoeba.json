@@ -1,9 +1,22 @@
 {
   "dataset_revision": "69e8f12da6e31d59addadda9a9c8a2e601a0e282",
   "task_name": "Tatoeba",
-  "mteb_version": "2.18.0",
+  "mteb_version": "1.39.7-2.18.0",
   "scores": {
     "test": [
+      {
+        "precision": 0.92525,
+        "recall": 0.947,
+        "f1": 0.932233,
+        "accuracy": 0.947,
+        "main_score": 0.932233,
+        "hf_subset": "slk-eng",
+        "languages": [
+          "slk-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "1.39.7"
+      },
       {
         "precision": 0.915583,
         "recall": 0.942,
@@ -110,189 +123,189 @@
       }
     ]
   },
-  "evaluation_time": 12.58951368497219,
+  "evaluation_time": 22.778564359410666,
   "kg_co2_emissions": null,
   "date": 1784163705.210138,
   "evaluation_phases": [
     {
       "name": "Data loading",
-      "start": 6.301968824118376e-06,
-      "end": 1.6139789439621381,
+      "start": 10.1890569764073,
+      "end": 11.803029618400615,
       "split": "",
       "subset": ""
     },
     {
       "name": "Dataset transform",
-      "start": 1.6140053439885378,
-      "end": 1.6140098619507626,
+      "start": 11.803056018427014,
+      "end": 11.80306053638924,
       "split": "",
       "subset": ""
     },
     {
       "name": "Encoding",
-      "start": 1.701502363954205,
-      "end": 2.650478617986664,
+      "start": 11.890553038392682,
+      "end": 12.83952929242514,
       "split": "test",
       "subset": "afr-eng"
     },
     {
       "name": "Encoding",
-      "start": 2.7170979629736394,
-      "end": 3.5976724889478646,
+      "start": 12.906148637412116,
+      "end": 13.786723163386341,
       "split": "test",
       "subset": "afr-eng"
     },
     {
       "name": "Scoring",
-      "start": 3.5984911589766853,
-      "end": 3.6195737199741416,
+      "start": 13.787541833415162,
+      "end": 13.808624394412618,
       "split": "test",
       "subset": "afr-eng"
     },
     {
       "name": "Encoding",
-      "start": 3.674759264977183,
-      "end": 4.108561789966188,
+      "start": 13.86380993941566,
+      "end": 14.297612464404665,
       "split": "test",
       "subset": "arz-eng"
     },
     {
       "name": "Encoding",
-      "start": 4.143160657957196,
-      "end": 4.575260818994138,
+      "start": 14.332211332395673,
+      "end": 14.764311493432615,
       "split": "test",
       "subset": "arz-eng"
     },
     {
       "name": "Scoring",
-      "start": 4.576087713998277,
-      "end": 4.601118361984845,
+      "start": 14.765138388436753,
+      "end": 14.790169036423322,
       "split": "test",
       "subset": "arz-eng"
     },
     {
       "name": "Encoding",
-      "start": 4.6890239009517245,
-      "end": 5.658183583989739,
+      "start": 14.878074575390201,
+      "end": 15.847234258428216,
       "split": "test",
       "subset": "arq-eng"
     },
     {
       "name": "Encoding",
-      "start": 5.720746778999455,
-      "end": 6.561705308966339,
+      "start": 15.909797453437932,
+      "end": 16.750755983404815,
       "split": "test",
       "subset": "arq-eng"
     },
     {
       "name": "Scoring",
-      "start": 6.562621772987768,
-      "end": 6.577389874961227,
+      "start": 16.751672447426245,
+      "end": 16.766440549399704,
       "split": "test",
       "subset": "arq-eng"
     },
     {
       "name": "Encoding",
-      "start": 6.675706849957351,
-      "end": 7.8198650919948705,
+      "start": 16.864757524395827,
+      "end": 18.008915766433347,
       "split": "test",
       "subset": "kab-eng"
     },
     {
       "name": "Encoding",
-      "start": 7.888721805997193,
-      "end": 8.774457381980028,
+      "start": 18.07777248043567,
+      "end": 18.963508056418505,
       "split": "test",
       "subset": "kab-eng"
     },
     {
       "name": "Scoring",
-      "start": 8.775310465949588,
-      "end": 8.790374926000368,
+      "start": 18.964361140388064,
+      "end": 18.979425600438844,
       "split": "test",
       "subset": "kab-eng"
     },
     {
       "name": "Encoding",
-      "start": 8.886845185945276,
-      "end": 9.88623571000062,
+      "start": 19.075895860383753,
+      "end": 20.075286384439096,
       "split": "test",
       "subset": "por-eng"
     },
     {
       "name": "Encoding",
-      "start": 9.953498124959879,
-      "end": 10.970004547969438,
+      "start": 20.142548799398355,
+      "end": 21.159055222407915,
       "split": "test",
       "subset": "por-eng"
     },
     {
       "name": "Scoring",
-      "start": 10.970971446949989,
-      "end": 11.082842398958746,
+      "start": 21.160022121388465,
+      "end": 21.271893073397223,
       "split": "test",
       "subset": "por-eng"
     },
     {
       "name": "Encoding",
-      "start": 11.116487382969353,
-      "end": 11.276772552984767,
+      "start": 21.30553805740783,
+      "end": 21.465823227423243,
       "split": "test",
       "subset": "amh-eng"
     },
     {
       "name": "Encoding",
-      "start": 11.291238275996875,
-      "end": 11.443026561988518,
+      "start": 21.48028895043535,
+      "end": 21.632077236426994,
       "split": "test",
       "subset": "amh-eng"
     },
     {
       "name": "Scoring",
-      "start": 11.443873995973263,
-      "end": 11.446158623963129,
+      "start": 21.63292467041174,
+      "end": 21.635209298401605,
       "split": "test",
       "subset": "amh-eng"
     },
     {
       "name": "Encoding",
-      "start": 11.47213574196212,
-      "end": 11.610784919990692,
+      "start": 21.661186416400596,
+      "end": 21.79983559442917,
       "split": "test",
       "subset": "xho-eng"
     },
     {
       "name": "Encoding",
-      "start": 11.622743907966651,
-      "end": 11.747164067986887,
+      "start": 21.811794582405128,
+      "end": 21.936214742425364,
       "split": "test",
       "subset": "xho-eng"
     },
     {
       "name": "Scoring",
-      "start": 11.747844457975589,
-      "end": 11.749738971993793,
+      "start": 21.936895132414065,
+      "end": 21.93878964643227,
       "split": "test",
       "subset": "xho-eng"
     },
     {
       "name": "Encoding",
-      "start": 11.79204074095469,
-      "end": 12.14329237898346,
+      "start": 21.981091415393166,
+      "end": 22.332343053421937,
       "split": "test",
       "subset": "swh-eng"
     },
     {
       "name": "Encoding",
-      "start": 12.170784667949192,
-      "end": 12.523053448996507,
+      "start": 22.35983534238767,
+      "end": 22.712104123434983,
       "split": "test",
       "subset": "swh-eng"
     },
     {
       "name": "Scoring",
-      "start": 12.523812426952645,
-      "end": 12.528158432978671,
+      "start": 22.71286310139112,
+      "end": 22.717209107417148,
       "split": "test",
       "subset": "swh-eng"
     }

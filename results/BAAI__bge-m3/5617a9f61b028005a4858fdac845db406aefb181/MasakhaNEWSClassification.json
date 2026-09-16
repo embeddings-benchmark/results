@@ -1,7 +1,7 @@
 {
   "dataset_revision": "18193f187b92da67168c655c9973a165ed9593dd",
   "task_name": "MasakhaNEWSClassification",
-  "mteb_version": "2.18.0",
+  "mteb_version": "1.12.75-2.18.0",
   "scores": {
     "test": [
       {
@@ -261,6 +261,69 @@
           "eng-Latn"
         ],
         "mteb_version": "2.18.0"
+      },
+      {
+        "accuracy": 0.763981,
+        "f1": 0.725463,
+        "f1_weighted": 0.76515,
+        "hf_subset": "fra",
+        "languages": [
+          "fra-Latn"
+        ],
+        "main_score": 0.763981,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.815166,
+            "f1": 0.773662,
+            "f1_weighted": 0.809121
+          },
+          {
+            "accuracy": 0.753555,
+            "f1": 0.709698,
+            "f1_weighted": 0.759329
+          },
+          {
+            "accuracy": 0.767773,
+            "f1": 0.728295,
+            "f1_weighted": 0.773292
+          },
+          {
+            "accuracy": 0.725118,
+            "f1": 0.686419,
+            "f1_weighted": 0.720875
+          },
+          {
+            "accuracy": 0.808057,
+            "f1": 0.764441,
+            "f1_weighted": 0.809053
+          },
+          {
+            "accuracy": 0.746445,
+            "f1": 0.706207,
+            "f1_weighted": 0.742754
+          },
+          {
+            "accuracy": 0.758294,
+            "f1": 0.723922,
+            "f1_weighted": 0.766826
+          },
+          {
+            "accuracy": 0.739336,
+            "f1": 0.708045,
+            "f1_weighted": 0.736667
+          },
+          {
+            "accuracy": 0.791469,
+            "f1": 0.749801,
+            "f1_weighted": 0.791707
+          },
+          {
+            "accuracy": 0.734597,
+            "f1": 0.704141,
+            "f1_weighted": 0.741874
+          }
+        ],
+        "mteb_version": "1.12.75"
       },
       {
         "scores_per_experiment": [
@@ -777,6 +840,69 @@
           "lug-Latn"
         ],
         "mteb_version": "2.18.0"
+      },
+      {
+        "accuracy": 0.745846,
+        "f1": 0.66776,
+        "f1_weighted": 0.757793,
+        "hf_subset": "orm",
+        "languages": [
+          "orm-Ethi"
+        ],
+        "main_score": 0.745846,
+        "scores_per_experiment": [
+          {
+            "accuracy": 0.769231,
+            "f1": 0.702235,
+            "f1_weighted": 0.778302
+          },
+          {
+            "accuracy": 0.750769,
+            "f1": 0.678209,
+            "f1_weighted": 0.756023
+          },
+          {
+            "accuracy": 0.707692,
+            "f1": 0.636902,
+            "f1_weighted": 0.725567
+          },
+          {
+            "accuracy": 0.76,
+            "f1": 0.691685,
+            "f1_weighted": 0.768992
+          },
+          {
+            "accuracy": 0.741538,
+            "f1": 0.660861,
+            "f1_weighted": 0.761695
+          },
+          {
+            "accuracy": 0.738462,
+            "f1": 0.637361,
+            "f1_weighted": 0.749188
+          },
+          {
+            "accuracy": 0.729231,
+            "f1": 0.6331,
+            "f1_weighted": 0.746839
+          },
+          {
+            "accuracy": 0.747692,
+            "f1": 0.661901,
+            "f1_weighted": 0.757101
+          },
+          {
+            "accuracy": 0.753846,
+            "f1": 0.681504,
+            "f1_weighted": 0.762368
+          },
+          {
+            "accuracy": 0.76,
+            "f1": 0.693842,
+            "f1_weighted": 0.771855
+          }
+        ],
+        "mteb_version": "1.12.75"
       },
       {
         "scores_per_experiment": [
@@ -1812,1295 +1938,1295 @@
       }
     ]
   },
-  "evaluation_time": 514.0410508189816,
-  "kg_co2_emissions": null,
+  "evaluation_time": 682.0866011653561,
+  "kg_co2_emissions": 0.013044791487144144,
   "date": 1784171324.602921,
   "evaluation_phases": [
     {
       "name": "Data loading",
-      "start": 6.642017979174852e-06,
-      "end": 2.8183229449787177,
+      "start": 168.0455569883925,
+      "end": 170.86387329135323,
       "split": "",
       "subset": ""
     },
     {
       "name": "Dataset transform",
-      "start": 2.818334126030095,
-      "end": 2.845343123015482,
+      "start": 170.8638844724046,
+      "end": 170.89089346939,
       "split": "",
       "subset": ""
     },
     {
       "name": "Encoding training samples",
-      "start": 3.356734921981115,
-      "end": 18.2338968149852,
+      "start": 171.40228526835563,
+      "end": 186.2794471613597,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Encoding test samples",
-      "start": 18.29100050398847,
-      "end": 38.74775987199973,
+      "start": 186.33655085036298,
+      "end": 206.79331021837424,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 38.74788040900603,
-      "end": 38.920833344978746,
+      "start": 206.79343075538054,
+      "end": 206.96638369135326,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 38.92087658599485,
-      "end": 39.08901837101439,
+      "start": 206.96642693236936,
+      "end": 207.1345687173889,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 39.08905691298423,
-      "end": 39.29878547100816,
+      "start": 207.13460725935875,
+      "end": 207.34433581738267,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 39.29882715002168,
-      "end": 39.49661123502301,
+      "start": 207.3443774963962,
+      "end": 207.54216158139752,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 39.4966466720216,
-      "end": 39.676737056986894,
+      "start": 207.5421970183961,
+      "end": 207.7222874033614,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 39.67679247102933,
-      "end": 39.87513211101759,
+      "start": 207.72234281740384,
+      "end": 207.9206824573921,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 39.87520781398052,
-      "end": 40.05746779101901,
+      "start": 207.92075816035504,
+      "end": 208.10301813739352,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 40.057523155002855,
-      "end": 40.233751274005044,
+      "start": 208.10307350137737,
+      "end": 208.27930162037956,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 40.23380531498697,
-      "end": 40.41263300401624,
+      "start": 208.27935566136148,
+      "end": 208.45818335039075,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 40.41269295697566,
-      "end": 40.58270085201366,
+      "start": 208.45824330335017,
+      "end": 208.62825119838817,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Scoring",
-      "start": 38.74780556902988,
-      "end": 40.58270771498792,
+      "start": 206.7933559154044,
+      "end": 208.62825806136243,
       "split": "test",
       "subset": "amh"
     },
     {
       "name": "Encoding training samples",
-      "start": 41.63609164702939,
-      "end": 57.590967701980844,
+      "start": 209.6816419934039,
+      "end": 225.63651804835536,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Encoding test samples",
-      "start": 57.70525127102155,
-      "end": 92.31543832400348,
+      "start": 225.75080161739606,
+      "end": 260.360988670378,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 92.3159389559878,
-      "end": 92.84432849002769,
+      "start": 260.3614893023623,
+      "end": 260.8898788364022,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 92.84447851200821,
-      "end": 93.27038418297889,
+      "start": 260.8900288583827,
+      "end": 261.3159345293534,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 93.27052231301786,
-      "end": 93.67930146702565,
+      "start": 261.3160726593924,
+      "end": 261.72485181340016,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 93.67946561501594,
-      "end": 94.11269335099496,
+      "start": 261.72501596139045,
+      "end": 262.15824369736947,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 94.11282909702277,
-      "end": 94.57136675599031,
+      "start": 262.1583794433973,
+      "end": 262.6169171023648,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 94.571492572024,
-      "end": 95.0744875340024,
+      "start": 262.6170429183985,
+      "end": 263.1200378803769,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 95.07459941401612,
-      "end": 95.55799153901171,
+      "start": 263.12014976039063,
+      "end": 263.6035418853862,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 95.55809588602278,
-      "end": 96.02885266102385,
+      "start": 263.6036462323973,
+      "end": 264.07440300739836,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 96.02895107597578,
-      "end": 96.40880227001617,
+      "start": 264.0745014223503,
+      "end": 264.4543526163907,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 96.40889733901713,
-      "end": 96.82635295402724,
+      "start": 264.45444768539164,
+      "end": 264.87190330040175,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Scoring",
-      "start": 92.31575530098053,
-      "end": 96.82636116002686,
+      "start": 260.36130564735504,
+      "end": 264.8719115064014,
       "split": "test",
       "subset": "eng"
     },
     {
       "name": "Encoding training samples",
-      "start": 97.57735189999221,
-      "end": 116.10286177601665,
+      "start": 265.6229022463667,
+      "end": 284.14841212239116,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Encoding test samples",
-      "start": 116.18115373601904,
-      "end": 146.38330335501814,
+      "start": 284.22670408239355,
+      "end": 314.42885370139265,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 146.38360547402408,
-      "end": 146.66164220002247,
+      "start": 314.4291558203986,
+      "end": 314.707192546397,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 146.66179405600997,
-      "end": 146.94467229000293,
+      "start": 314.7073444023845,
+      "end": 314.99022263637744,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 146.94479901797604,
-      "end": 147.24838509899564,
+      "start": 314.99034936435055,
+      "end": 315.29393544537015,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 147.24849536601687,
-      "end": 147.55578713899013,
+      "start": 315.2940457123914,
+      "end": 315.60133748536464,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 147.55587650701636,
-      "end": 147.8212359439931,
+      "start": 315.6014268533909,
+      "end": 315.8667862903676,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 147.82130361098098,
-      "end": 148.1191257989849,
+      "start": 315.8668539573555,
+      "end": 316.1646761453594,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 148.11921241198434,
-      "end": 148.40000465197954,
+      "start": 316.16476275835885,
+      "end": 316.44555499835405,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 148.40009970101528,
-      "end": 148.71860335499514,
+      "start": 316.4456500473898,
+      "end": 316.76415370136965,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 148.71868667198578,
-      "end": 149.00301315099932,
+      "start": 316.7642370183603,
+      "end": 317.04856349737383,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 149.00311348901596,
-      "end": 149.32855347299483,
+      "start": 317.04866383539047,
+      "end": 317.37410381936934,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Scoring",
-      "start": 146.38341245101765,
-      "end": 149.3285600550007,
+      "start": 314.42896279739216,
+      "end": 317.3741104013752,
       "split": "test",
       "subset": "hau"
     },
     {
       "name": "Encoding training samples",
-      "start": 149.88389515900053,
-      "end": 174.55270891799591,
+      "start": 317.92944550537504,
+      "end": 342.5982592643704,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Encoding test samples",
-      "start": 174.6055273200036,
-      "end": 193.3950713580125,
+      "start": 342.6510776663781,
+      "end": 361.440621704387,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 193.3951791599975,
-      "end": 193.6505459729815,
+      "start": 361.440729506372,
+      "end": 361.696096319356,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 193.65062785701593,
-      "end": 193.8729530450073,
+      "start": 361.69617820339045,
+      "end": 361.9185033913818,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 193.87302460998762,
-      "end": 194.13889126700815,
+      "start": 361.91857495636214,
+      "end": 362.18444161338266,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 194.13896852202015,
-      "end": 194.33446278201882,
+      "start": 362.18451886839466,
+      "end": 362.38001312839333,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 194.33452695299638,
-      "end": 194.51118718797807,
+      "start": 362.3800772993709,
+      "end": 362.5567375343526,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 194.51123976701638,
-      "end": 194.71794658101862,
+      "start": 362.5567901133909,
+      "end": 362.76349692739313,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 194.71799719601404,
-      "end": 194.9022674189764,
+      "start": 362.76354754238855,
+      "end": 362.9478177653509,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 194.90232147998177,
-      "end": 195.09816091897665,
+      "start": 362.9478718263563,
+      "end": 363.14371126535116,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 195.09820690599736,
-      "end": 195.2832453540177,
+      "start": 363.14375725237187,
+      "end": 363.3287957003922,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 195.28329028800363,
-      "end": 195.45798316202126,
+      "start": 363.32884063437814,
+      "end": 363.5035335083958,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Scoring",
-      "start": 193.39509464101866,
-      "end": 195.45798782102065,
+      "start": 361.44064498739317,
+      "end": 363.50353816739516,
       "split": "test",
       "subset": "ibo"
     },
     {
       "name": "Encoding training samples",
-      "start": 195.71510368399322,
-      "end": 198.7697103660321,
+      "start": 363.76065403036773,
+      "end": 366.8152607124066,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Encoding test samples",
-      "start": 198.79370165203,
-      "end": 201.75023947900627,
+      "start": 366.8392519984045,
+      "end": 369.7957898253808,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 201.75032281602034,
-      "end": 201.84871786402073,
+      "start": 369.79587316239486,
+      "end": 369.89426821039524,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 201.84875740902498,
-      "end": 201.96247974399012,
+      "start": 369.8943077553995,
+      "end": 370.0080300903646,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 201.96251401799964,
-      "end": 202.05465791601455,
+      "start": 370.00806436437415,
+      "end": 370.10020826238906,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 202.05471022502752,
-      "end": 202.16076610598247,
+      "start": 370.10026057140203,
+      "end": 370.206316452357,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 202.16084612702252,
-      "end": 202.27480613900116,
+      "start": 370.20639647339704,
+      "end": 370.32035648537567,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 202.27486996899825,
-      "end": 202.40830607298994,
+      "start": 370.32042031537276,
+      "end": 370.45385641936446,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 202.40837018401362,
-      "end": 202.52316333400086,
+      "start": 370.45392053038813,
+      "end": 370.56871368037537,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 202.52323080098722,
-      "end": 202.69534979201853,
+      "start": 370.56878114736173,
+      "end": 370.74090013839304,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 202.69540886301547,
-      "end": 202.79839315603022,
+      "start": 370.74095920939,
+      "end": 370.8439435024047,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 202.7984934549895,
-      "end": 202.91516638098983,
+      "start": 370.844043801364,
+      "end": 370.96071672736434,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Scoring",
-      "start": 201.75026235199766,
-      "end": 202.9151736050262,
+      "start": 369.7958126983722,
+      "end": 370.9607239514007,
       "split": "test",
       "subset": "lin"
     },
     {
       "name": "Encoding training samples",
-      "start": 203.25686185102677,
-      "end": 211.17888326803222,
+      "start": 371.3024121974013,
+      "end": 379.22443361440673,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Encoding test samples",
-      "start": 211.20843186997809,
-      "end": 217.09757142001763,
+      "start": 379.2539822163526,
+      "end": 385.14312176639214,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 217.09774632903282,
-      "end": 217.2469765879796,
+      "start": 385.1432966754073,
+      "end": 385.2925269343541,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 217.2470509679988,
-      "end": 217.38969590800116,
+      "start": 385.2926013143733,
+      "end": 385.43524625437567,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 217.38976463797735,
-      "end": 217.51325180399,
+      "start": 385.43531498435186,
+      "end": 385.5588021503645,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 217.51333335699746,
-      "end": 217.67981614498422,
+      "start": 385.558883703372,
+      "end": 385.7253664913587,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 217.67989603499882,
-      "end": 217.82317117002094,
+      "start": 385.72544638137333,
+      "end": 385.86872151639545,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 217.82323422899935,
-      "end": 218.02105837198906,
+      "start": 385.86878457537387,
+      "end": 386.06660871836357,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 218.0211226430256,
-      "end": 218.2085091380286,
+      "start": 386.0666729894001,
+      "end": 386.2540594844031,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 218.20857190602692,
-      "end": 218.3723543130327,
+      "start": 386.25412225240143,
+      "end": 386.4179046594072,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 218.37242293299641,
-      "end": 218.55288008099888,
+      "start": 386.4179732793709,
+      "end": 386.5984304273734,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 218.55293017602526,
-      "end": 218.7505751720164,
+      "start": 386.59848052239977,
+      "end": 386.7961255183909,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Scoring",
-      "start": 217.0976365529932,
-      "end": 218.7505790690193,
+      "start": 385.1431868993677,
+      "end": 386.7961294153938,
       "split": "test",
       "subset": "lug"
     },
     {
       "name": "Encoding training samples",
-      "start": 219.1511517490144,
-      "end": 227.53975234902464,
+      "start": 387.1967020953889,
+      "end": 395.58530269539915,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Encoding test samples",
-      "start": 227.57796079397667,
-      "end": 238.042683482985,
+      "start": 395.6235111403512,
+      "end": 406.0882338293595,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 238.04280427098274,
-      "end": 238.29631087300368,
+      "start": 406.08835461735725,
+      "end": 406.3418612193782,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 238.29637054499472,
-      "end": 238.48236876900773,
+      "start": 406.3419208913692,
+      "end": 406.52791911538225,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 238.48243010399165,
-      "end": 238.70769715798087,
+      "start": 406.52798045036616,
+      "end": 406.7532475043554,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 238.70775509701343,
-      "end": 238.90901423199102,
+      "start": 406.75330544338794,
+      "end": 406.95456457836553,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 238.90908127801958,
-      "end": 239.1098911180161,
+      "start": 406.9546316243941,
+      "end": 407.1554414643906,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 239.10995301499497,
-      "end": 239.32660739403218,
+      "start": 407.1555033613695,
+      "end": 407.3721577404067,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 239.32667576300446,
-      "end": 239.51933926600032,
+      "start": 407.37222610937897,
+      "end": 407.5648896123748,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 239.5193857239792,
-      "end": 239.7009871560149,
+      "start": 407.5649360703537,
+      "end": 407.7465375023894,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 239.70102737098932,
-      "end": 239.8528418019996,
+      "start": 407.74657771736383,
+      "end": 407.8983921483741,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 239.85288094601128,
-      "end": 240.01654916797997,
+      "start": 407.8984312923858,
+      "end": 408.0620995143545,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Scoring",
-      "start": 238.04271775798406,
-      "end": 240.01655266497983,
+      "start": 406.0882681043586,
+      "end": 408.06210301135434,
       "split": "test",
       "subset": "pcm"
     },
     {
       "name": "Encoding training samples",
-      "start": 240.4561895999941,
-      "end": 260.36393729998963,
+      "start": 408.5017399463686,
+      "end": 428.40948764636414,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Encoding test samples",
-      "start": 260.4074864410213,
-      "end": 277.01044049998745,
+      "start": 428.45303678739583,
+      "end": 445.05599084636196,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 277.01067140500527,
-      "end": 277.2557697040029,
+      "start": 445.0562217513798,
+      "end": 445.3013200503774,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 277.2558404470328,
-      "end": 277.45014426502166,
+      "start": 445.30139079340734,
+      "end": 445.4956946113962,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 277.45020252501126,
-      "end": 277.66318729898194,
+      "start": 445.4957528713858,
+      "end": 445.70873764535645,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 277.66324330400676,
-      "end": 277.8546867609839,
+      "start": 445.70879365038127,
+      "end": 445.9002371073584,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 277.85473506199196,
-      "end": 278.05359441100154,
+      "start": 445.90028540836647,
+      "end": 446.09914475737605,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 278.0536403270089,
-      "end": 278.2440123989945,
+      "start": 446.0991906733834,
+      "end": 446.28956274536904,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 278.24405800399836,
-      "end": 278.4784739969764,
+      "start": 446.2896083503729,
+      "end": 446.5240243433509,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 278.4785815590294,
-      "end": 278.65075179800624,
+      "start": 446.5241319054039,
+      "end": 446.69630214438075,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 278.65084755799035,
-      "end": 278.82729724701494,
+      "start": 446.69639790436486,
+      "end": 446.87284759338945,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 278.82740150298923,
-      "end": 278.9966051800293,
+      "start": 446.87295184936374,
+      "end": 447.0421555264038,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Scoring",
-      "start": 277.010540348012,
-      "end": 278.99661215301603,
+      "start": 445.0560906943865,
+      "end": 447.04216249939054,
       "split": "test",
       "subset": "run"
     },
     {
       "name": "Encoding training samples",
-      "start": 279.4872382400208,
-      "end": 288.3632442150265,
+      "start": 447.5327885863953,
+      "end": 456.408794561401,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Encoding test samples",
-      "start": 288.41002281103283,
-      "end": 299.2549880500301,
+      "start": 456.45557315740734,
+      "end": 467.3005383964046,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 299.2551381230005,
-      "end": 299.52425155602396,
+      "start": 467.300688469375,
+      "end": 467.56980190239847,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 299.5243275089888,
-      "end": 299.70480423403205,
+      "start": 467.5698778553633,
+      "end": 467.75035458040657,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 299.70487263199175,
-      "end": 299.89087566401577,
+      "start": 467.75042297836626,
+      "end": 467.9364260103903,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 299.89094027498504,
-      "end": 300.0594310599845,
+      "start": 467.93649062135955,
+      "end": 468.104981406359,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 300.0594905419857,
-      "end": 300.22638653602917,
+      "start": 468.10504088836024,
+      "end": 468.2719368824037,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 300.2264493450057,
-      "end": 300.3952381599811,
+      "start": 468.2719996913802,
+      "end": 468.4407885063556,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 300.39529909502016,
-      "end": 300.5812694450142,
+      "start": 468.4408494413947,
+      "end": 468.6268197913887,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 300.5813293780084,
-      "end": 300.9458547370159,
+      "start": 468.6268797243829,
+      "end": 468.9914050833904,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 300.94591499102535,
-      "end": 301.1596148610115,
+      "start": 468.99146533739986,
+      "end": 469.205165207386,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 301.15966610697797,
-      "end": 301.4234570970293,
+      "start": 469.2052164533525,
+      "end": 469.4690074434038,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Scoring",
-      "start": 299.2550291779917,
-      "end": 301.4234619170311,
+      "start": 467.3005795243662,
+      "end": 469.4690122634056,
       "split": "test",
       "subset": "sna"
     },
     {
       "name": "Encoding training samples",
-      "start": 301.85653575102333,
-      "end": 321.76764014799846,
+      "start": 469.90208609739784,
+      "end": 489.813190494373,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Encoding test samples",
-      "start": 321.80610020202585,
-      "end": 341.8599195079878,
+      "start": 489.85165054840036,
+      "end": 509.9054698543623,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 341.86010218202136,
-      "end": 342.0932829490048,
+      "start": 509.9056525283959,
+      "end": 510.1388332953793,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 342.09338052303065,
-      "end": 342.29130047600484,
+      "start": 510.13893086940516,
+      "end": 510.33685082237935,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 342.2913970280206,
-      "end": 342.4688089339761,
+      "start": 510.3369473743951,
+      "end": 510.5143592803506,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 342.46889739099424,
-      "end": 342.73976388497977,
+      "start": 510.51444773736876,
+      "end": 510.7853142313543,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 342.73983763402794,
-      "end": 342.98305354302283,
+      "start": 510.78538798040245,
+      "end": 511.02860388939735,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 342.9831401659758,
-      "end": 343.1785576409893,
+      "start": 511.0286905123503,
+      "end": 511.2241079873638,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 343.1786357680103,
-      "end": 343.3781409530202,
+      "start": 511.2241861143848,
+      "end": 511.4236912993947,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 343.3782243410242,
-      "end": 343.5211756179924,
+      "start": 511.4237746873987,
+      "end": 511.5667259643669,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 343.5212328360067,
-      "end": 343.75658779399237,
+      "start": 511.5667831823812,
+      "end": 511.8021381403669,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 343.756641104992,
-      "end": 343.9237511680112,
+      "start": 511.8021914513665,
+      "end": 511.96930151438573,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Scoring",
-      "start": 341.8599639519816,
-      "end": 343.9237544540083,
+      "start": 509.90551429835614,
+      "end": 511.9693048003828,
       "split": "test",
       "subset": "som"
     },
     {
       "name": "Encoding training samples",
-      "start": 344.51249917800305,
-      "end": 363.4451193260029,
+      "start": 512.5580495243776,
+      "end": 531.4906696723774,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Encoding test samples",
-      "start": 363.50721712602535,
-      "end": 383.4208795269951,
+      "start": 531.5527674723999,
+      "end": 551.4664298733696,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 383.4210415519774,
-      "end": 383.67342530802125,
+      "start": 551.4665918983519,
+      "end": 551.7189756543958,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 383.6734958710149,
-      "end": 383.9887018459849,
+      "start": 551.7190462173894,
+      "end": 552.0342521923594,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 383.9887834700057,
-      "end": 384.2466978239827,
+      "start": 552.0343338163802,
+      "end": 552.2922481703572,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 384.24676750501385,
-      "end": 384.5057509909966,
+      "start": 552.2923178513884,
+      "end": 552.5513013373711,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 384.50583307503257,
-      "end": 385.01182281802176,
+      "start": 552.5513834214071,
+      "end": 553.0573731643963,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 385.011877270008,
-      "end": 385.26006227498874,
+      "start": 553.0574276163825,
+      "end": 553.3056126213633,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 385.26011682802346,
-      "end": 385.5234145920258,
+      "start": 553.305667174398,
+      "end": 553.5689649384003,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 385.5234897939954,
-      "end": 385.7580213850015,
+      "start": 553.5690401403699,
+      "end": 553.803571731376,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 385.75809657701757,
-      "end": 385.9988025589846,
+      "start": 553.8036469233921,
+      "end": 554.0443529053591,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 385.9988831200171,
-      "end": 386.20666671800427,
+      "start": 554.0444334663916,
+      "end": 554.2522170643788,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Scoring",
-      "start": 383.42094001098303,
-      "end": 386.20667311002035,
+      "start": 551.4664903573575,
+      "end": 554.2522234563949,
       "split": "test",
       "subset": "swa"
     },
     {
       "name": "Encoding training samples",
-      "start": 386.6627454169793,
-      "end": 419.9924139389768,
+      "start": 554.7082957633538,
+      "end": 588.0379642853513,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Encoding test samples",
-      "start": 420.03388992202235,
-      "end": 442.4306718329899,
+      "start": 588.0794402683969,
+      "end": 610.4762221793644,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 442.43093636102276,
-      "end": 442.5994849370327,
+      "start": 610.4764867073973,
+      "end": 610.6450352834072,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 442.5995500389836,
-      "end": 442.73525756399613,
+      "start": 610.6451003853581,
+      "end": 610.7808079103706,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 442.73534274398116,
-      "end": 442.9042454449809,
+      "start": 610.7808930903557,
+      "end": 610.9497957913554,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 442.9043145449832,
-      "end": 443.0914302379824,
+      "start": 610.9498648913577,
+      "end": 611.1369805843569,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 443.09151336498326,
-      "end": 443.27729673997965,
+      "start": 611.1370637113578,
+      "end": 611.3228470863542,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 443.277362163004,
-      "end": 443.4491709640133,
+      "start": 611.3229125093785,
+      "end": 611.4947213103878,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 443.4492456750013,
-      "end": 443.65765493997606,
+      "start": 611.4947960213758,
+      "end": 611.7032052863506,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 443.6577284479863,
-      "end": 443.84267781401286,
+      "start": 611.7032787943608,
+      "end": 611.8882281603874,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 443.84276696201414,
-      "end": 444.0851888799807,
+      "start": 611.8883173083887,
+      "end": 612.1307392263552,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 444.0852593519958,
-      "end": 444.2724237079965,
+      "start": 612.1308096983703,
+      "end": 612.317974054371,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Scoring",
-      "start": 442.4307721320074,
-      "end": 444.27243059000466,
+      "start": 610.4763224783819,
+      "end": 612.3179809363792,
       "split": "test",
       "subset": "tir"
     },
     {
       "name": "Encoding training samples",
-      "start": 444.68399489001604,
-      "end": 453.98053364403313,
+      "start": 612.7295452363905,
+      "end": 622.0260839904076,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Encoding test samples",
-      "start": 454.02135419199476,
-      "end": 462.70470184698934,
+      "start": 622.0669045383693,
+      "end": 630.7502521933638,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 462.7048262510216,
-      "end": 462.90287872200133,
+      "start": 630.7503765973961,
+      "end": 630.9484290683758,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 462.9029460879974,
-      "end": 463.0630192490062,
+      "start": 630.9484964343719,
+      "end": 631.1085695953807,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 463.0630869260058,
-      "end": 463.2582826089929,
+      "start": 631.1086372723803,
+      "end": 631.3038329553674,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 463.25835875200573,
-      "end": 463.4551017580088,
+      "start": 631.3039090983802,
+      "end": 631.5006521043833,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 463.4551538960077,
-      "end": 463.64043184003094,
+      "start": 631.5007042423822,
+      "end": 631.6859821864055,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 463.6404741089791,
-      "end": 463.85038165398873,
+      "start": 631.6860244553536,
+      "end": 631.8959320003632,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 463.85048435803037,
-      "end": 464.066711929976,
+      "start": 631.8960347044049,
+      "end": 632.1122622763505,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 464.0667936230311,
-      "end": 464.2119836389902,
+      "start": 632.1123439694056,
+      "end": 632.2575339853647,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 464.21205533400644,
-      "end": 464.3675422919914,
+      "start": 632.257605680381,
+      "end": 632.4130926383659,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 464.3676067130291,
-      "end": 464.5099350520177,
+      "start": 632.4131570594036,
+      "end": 632.5554853983922,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Scoring",
-      "start": 462.70474029000616,
-      "end": 464.5099411330302,
+      "start": 630.7502906363807,
+      "end": 632.5554914794047,
       "split": "test",
       "subset": "xho"
     },
     {
       "name": "Encoding training samples",
-      "start": 465.0747815800132,
-      "end": 489.76262912899256,
+      "start": 633.1203319263877,
+      "end": 657.8081794753671,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Encoding test samples",
-      "start": 489.8174861689913,
-      "end": 511.3546363079804,
+      "start": 657.8630365153658,
+      "end": 679.4001866543549,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (0/10)",
-      "start": 511.35490530502284,
-      "end": 511.5638964230311,
+      "start": 679.4004556513974,
+      "end": 679.6094467694056,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (1/10)",
-      "start": 511.5640098360018,
-      "end": 511.7643892610213,
+      "start": 679.6095601823763,
+      "end": 679.8099396073958,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (2/10)",
-      "start": 511.76447230699705,
-      "end": 511.95596944802674,
+      "start": 679.8100226533716,
+      "end": 680.0015197944012,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (3/10)",
-      "start": 511.95605490898015,
-      "end": 512.1548539570067,
+      "start": 680.0016052553547,
+      "end": 680.2004043033812,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (4/10)",
-      "start": 512.1549458199879,
-      "end": 512.3420614820207,
+      "start": 680.2004961663624,
+      "end": 680.3876118283952,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (5/10)",
-      "start": 512.3421374150203,
-      "end": 512.64672565402,
+      "start": 680.3876877613948,
+      "end": 680.6922760003945,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (6/10)",
-      "start": 512.6468082990032,
-      "end": 513.0423606550321,
+      "start": 680.6923586453777,
+      "end": 681.0879110014066,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (7/10)",
-      "start": 513.0424487210112,
-      "end": 513.3396802479983,
+      "start": 681.0879990673857,
+      "end": 681.3852305943728,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (8/10)",
-      "start": 513.3397484970046,
-      "end": 513.5811320639914,
+      "start": 681.3852988433791,
+      "end": 681.6266824103659,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Running experiment (9/10)",
-      "start": 513.58119192702,
-      "end": 513.979926473985,
+      "start": 681.6267422733945,
+      "end": 682.0254768203595,
       "split": "test",
       "subset": "yor"
     },
     {
       "name": "Scoring",
-      "start": 511.35480718000326,
-      "end": 513.9799333770061,
+      "start": 679.4003575263778,
+      "end": 682.0254837233806,
       "split": "test",
       "subset": "yor"
     }
