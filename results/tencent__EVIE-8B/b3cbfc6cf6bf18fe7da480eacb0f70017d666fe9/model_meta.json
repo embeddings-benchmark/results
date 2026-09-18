@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "torch_dtype": "torch.bfloat16"
+        "torch_dtype": "bfloat16"
     },
     "name": "tencent/EVIE-8B",
     "revision": "b3cbfc6cf6bf18fe7da480eacb0f70017d666fe9",
@@ -33,14 +33,14 @@
     "similarity_fn_name": "MaxSim",
     "use_instructions": false,
     "training_datasets": [
-        "VidoreDocVQARetrieval",
-        "VisRAG-Ret-Train-Synthetic-data",
-        "VidoreArxivQARetrieval",
+        "VidoreInfoVQARetrieval",
         "VidoreTatdqaRetrieval",
         "VidoreTabfquadRetrieval",
-        "VidoreInfoVQARetrieval",
+        "VisRAG-Ret-Train-In-domain-data",
+        "VidoreArxivQARetrieval",
+        "VisRAG-Ret-Train-Synthetic-data",
         "VDRMultilingualRetrieval",
-        "VisRAG-Ret-Train-In-domain-data"
+        "VidoreDocVQARetrieval"
     ],
     "adapted_from": null,
     "superseded_by": null,
