@@ -1,20 +1,3 @@
-"""Validation behind `test_new_results_run_settings.py`.
-
-New results must be produced with `mteb>=2.14` and ship a `run_settings.jsonl`
-recording the package versions and encode kwargs behind every submitted
-(task, split, subset).
-
-v2.14 is the floor because it is the release that started writing
-`run_settings.jsonl` (see `ResultCache.save_to_cache`); earlier versions, and the
-deprecated `MTEB(...).run()` path, cannot satisfy the second requirement at all.
-
-See https://github.com/embeddings-benchmark/mteb/issues/5031
-
-Scope: result files added or modified relative to the base ref. Results already
-in the repository are never re-validated, so the requirements apply to new
-submissions only.
-"""
-
 import json
 from pathlib import Path
 
@@ -28,14 +11,13 @@ from tests.git_utils import REPO_ROOT, get_changed_json_files
 MIN_MTEB_VERSION = Version("2.14.0")
 RUN_SETTINGS_FILENAME = "run_settings.jsonl"
 SUBMISSION_GUIDE = (
-    "https://embeddings-benchmark.github.io/mteb/contributing/submitting_results/"
+    "https://docs.mteb.org/contributing/submitting_results/"
 )
 # one directory can hold tens of thousands of uncovered (task, split, subset)
 MAX_ERRORS_PER_DIRECTORY = 10
 
 
 def is_task_result_path(relative_path: str) -> bool:
-    """Whether a repo-relative path points at a submitted task result file."""
     path = Path(relative_path)
     return (
         path.parts[:1] == ("results",)
@@ -45,22 +27,15 @@ def is_task_result_path(relative_path: str) -> bool:
 
 
 def get_changed_result_files(base_ref: str) -> list[str]:
-    """Task result files added or modified relative to the base ref."""
     return [
         relative_path
         for relative_path in get_changed_json_files(base_ref)
-        # an existing file rules out deletions and the source side of renames
         if is_task_result_path(relative_path) and (REPO_ROOT / relative_path).is_file()
     ]
 
 
 def parse_version(value: object) -> Version | None:
-    """Parse a recorded mteb version, or None if it is unusable.
-
-    Delegates to mteb, which understands the range form (`2.18.12-2.18.13`) it
-    writes when a result's subsets were evaluated under different versions, and
-    returns the lower bound of that range.
-    """
+    """Parse a recorded mteb version, or None if it is unusable."""
     if not isinstance(value, str):
         return None
     return TaskResult._parse_mteb_version_min(value)
@@ -120,9 +95,7 @@ def load_run_settings(
     Rows are expanded by mteb's own `_expand_run_settings_entry`, so the four
     shapes in the repository are read exactly as mteb reads them: `split`/`subset`
     before v2.18.17, `splits`/`subsets` after, and the `subsets` lists that
-    `reduce_large_json_files.collapse_run_settings` merges rows into. The file is
-    read line by line here rather than with mteb's `_read_run_settings_from_file`,
-    which skips unparseable lines with a warning -- reporting them is the point.
+    `reduce_large_json_files.collapse_run_settings` merges rows into.
     """
     if not path.exists():
         return {}, [f"{relative_path} is missing {RUN_SETTINGS_FILENAME}."]
@@ -149,8 +122,6 @@ def load_run_settings(
             errors.append(f"{source} must be an object.")
             continue
 
-        # mteb resolves this by preferring the plural, but a row carrying both
-        # is hand-edited and ambiguous, so say so rather than guessing.
         ambiguous = [
             f"{singular}/{plural}"
             for singular, plural in (("split", "splits"), ("subset", "subsets"))
