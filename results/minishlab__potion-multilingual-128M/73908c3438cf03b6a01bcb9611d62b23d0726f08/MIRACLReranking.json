@@ -1,7 +1,7 @@
 {
   "dataset_revision": "d11a14c74e8bd448cedab0c1d9a720040535f228",
   "task_name": "MIRACLReranking",
-  "mteb_version": "2.12.30",
+  "mteb_version": "2.12.30-2.16.1",
   "scores": {
     "dev": [
       {
@@ -626,7 +626,7 @@
         "languages": [
           "eng-Latn"
         ],
-        "mteb_version": "2.12.30"
+        "mteb_version": "2.16.1"
       },
       {
         "ndcg_at_1": 0.1637,
@@ -2186,7 +2186,7 @@
         "languages": [
           "swa-Latn"
         ],
-        "mteb_version": "2.12.30"
+        "mteb_version": "2.16.1"
       },
       {
         "ndcg_at_1": 0.14286,
@@ -2654,7 +2654,7 @@
         "languages": [
           "yor-Latn"
         ],
-        "mteb_version": "2.12.30"
+        "mteb_version": "2.16.1"
       },
       {
         "ndcg_at_1": 0.09974,
@@ -2814,9 +2814,9 @@
       }
     ]
   },
-  "evaluation_time": 3291.773429804947,
+  "evaluation_time": 3361.9045776943676,
   "kg_co2_emissions": null,
-  "date": 1785351849.436137,
+  "date": 1785718024.78644,
   "evaluation_phases": [
     {
       "name": "Data loading",
@@ -3083,6 +3083,62 @@
       "end": 3291.7485539298505,
       "split": "dev",
       "subset": "zh"
+    },
+    {
+      "name": "Data loading",
+      "start": 3291.7734388480894,
+      "end": 3303.309482750017,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3303.3094972278923,
+      "end": 3303.309499804862,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 3303.3253057310358,
+      "end": 3344.2436717390083,
+      "split": "dev",
+      "subset": "en"
+    },
+    {
+      "name": "Scoring",
+      "start": 3344.2436999948695,
+      "end": 3344.427935197018,
+      "split": "dev",
+      "subset": "en"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 3344.505860458128,
+      "end": 3357.325401120819,
+      "split": "dev",
+      "subset": "sw"
+    },
+    {
+      "name": "Scoring",
+      "start": 3357.3254287261516,
+      "end": 3357.4495108649135,
+      "split": "dev",
+      "subset": "sw"
+    },
+    {
+      "name": "Encoding queries and documents",
+      "start": 3357.521299418062,
+      "end": 3361.7744466280565,
+      "split": "dev",
+      "subset": "yo"
+    },
+    {
+      "name": "Scoring",
+      "start": 3361.774475689046,
+      "end": 3361.83878767211,
+      "split": "dev",
+      "subset": "yo"
     }
   ]
 }
