@@ -1,0 +1,58 @@
+{
+    "loader_kwargs": {
+        "teacher_name": "webAI-Official/webAI-ColVec1.1-4b"
+    },
+    "name": "nanovdr/ColNanoVDR-Q-Ettin150M-ColVec4B-640-ML",
+    "revision": "7c816c0ef9a351f085a2e4138716ea40c77721f5",
+    "release_date": "2026-09-20",
+    "languages": [
+        "eng-Latn",
+        "deu-Latn",
+        "fra-Latn",
+        "spa-Latn",
+        "ita-Latn",
+        "por-Latn"
+    ],
+    "n_parameters": 149506561,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 38682624,
+    "memory_usage_mb": 601.0,
+    "max_tokens": 512.0,
+    "embed_dim": 640,
+    "license": "https://huggingface.co/webAI-Official/webAI-ColVec1.1-4b/blob/main/LICENSE.md",
+    "open_weights": true,
+    "public_training_code": "https://github.com/Ryenhails/NanoVDR",
+    "public_training_data": "https://huggingface.co/datasets/nanovdr/NanoVDR-Train",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch"
+    ],
+    "reference": "https://huggingface.co/nanovdr/ColNanoVDR-Q-Ettin150M-ColVec4B-640-ML",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": [
+        "VidoreArxivQARetrieval",
+        "VidoreDocVQARetrieval",
+        "VidoreInfoVQARetrieval",
+        "VidoreTatdqaRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text",
+        "image"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "@article{nanovdr2026,\n  title={NanoVDR: Distilling a 2B Vision-Language Retriever into a 70M Text-Only Encoder for Visual Document Retrieval},\n  author={Liu, Zhuchenyang and Zhang, Yao and Xiao, Yu},\n  journal={arXiv preprint arXiv:2603.12824},\n  year={2026}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "colnanovdr",
+        "colvec1_1"
+    ],
+    "loader": "ColNanoVDRWrapper",
+    "is_cross_encoder": false
+}
