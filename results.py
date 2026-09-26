@@ -295,7 +295,7 @@ TEST_AVG_SPLIT = {
     ],
 }
 
-MODELS = sorted(list(set([str(file).split('/')[-1] for file in (Path(__file__).parent / "results").glob("*") if file.is_dir()])))
+MODELS = sorted(list(set([file.name for file in (Path(__file__).parent / "results").glob("*") if file.is_dir()])))
 
 # Needs to be run whenever new files are added
 def get_paths():
