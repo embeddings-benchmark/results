@@ -14,12 +14,7 @@ from tests.run_settings_check import (
 
 
 def test_new_results_have_run_settings_and_mteb_version():
-    try:
-        base_ref = get_base_ref()
-    except RuntimeError as e:
-        pytest.skip(str(e))
-
-    changed = get_changed_result_files(base_ref)
+    changed = get_changed_result_files(get_base_ref())
     if not changed:
         pytest.skip("No added or modified result JSON files found.")
 
@@ -108,3 +103,28 @@ def test_coverage_is_per_split(tmp_path):
 
     write_run_settings(tmp_path, splits=["test", "validation"], subsets=["default"])
     assert validate(result_path) == []
+
+
+def test_requires_run_settings(tmp_path):
+    result_path = write_result(tmp_path)
+
+    assert any("is missing run_settings.jsonl" in e for e in validate(result_path))
+
+
+@pytest.mark.parametrize(
+    "version,accepted",
+    [
+        (str(MIN_MTEB_VERSION), True),  # the bound is inclusive
+        ("2.16.2", True),
+        # a range is recorded when a result's subsets were evaluated under
+        # different versions; its lower bound must clear the minimum
+        ("2.18.12-2.18.13", True),
+        ("1.12.75-2.18.0", False),
+        ("1.38.0", False),
+    ],
+)
+def test_mteb_version_boundary(tmp_path, version, accepted):
+    result_path = write_result(tmp_path, version=version)
+    write_run_settings(tmp_path, splits=["test"], subsets=["default"])
+
+    assert (validate(result_path) == []) is accepted

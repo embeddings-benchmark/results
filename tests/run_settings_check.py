@@ -57,37 +57,17 @@ def validate_mteb_version(version: str | None, relative_path: str) -> list[str]:
     return []
 
 
-def load_run_settings(
-    path: Path, relative_path: str
-) -> tuple[set[tuple[str, str, str]], list[str]]:
-    if not path.exists():
-        return set(), [f"{relative_path} is missing {RUN_SETTINGS_FILENAME}."]
-
+def load_run_settings(path: Path) -> set[tuple[str, str, str]]:
     covered: set[tuple[str, str, str]] = set()
-    errors = []
     for line_number, line in enumerate(path.read_text().splitlines(), start=1):
         if not line.strip():
             continue
-
-        source = f"{relative_path} {RUN_SETTINGS_FILENAME} line {line_number}"
         try:
             entry = json.loads(line)
         except json.JSONDecodeError as e:
-            errors.append(f"{source} is not valid JSON: {e}")
-            continue
-        if not isinstance(entry, dict):
-            errors.append(f"{source} must be an object.")
-            continue
-
-        keys = [key for key, _, _ in _expand_run_settings_entry(entry)]
-        if not keys or any(not task for task, _, _ in keys):
-            errors.append(f"{source} must define task, split(s) and subset(s).")
-            continue
-        covered.update(keys)
-
-    if not covered and not errors:
-        errors.append(f"{relative_path} {RUN_SETTINGS_FILENAME} has no entries.")
-    return covered, errors
+            raise ValueError(f"{path} line {line_number} is not valid JSON: {e}") from e
+        covered.update(key for key, _, _ in _expand_run_settings_entry(entry))
+    return covered
 
 
 def validate_result_file(result_path: Path, relative_path: str) -> list[str]:
@@ -97,12 +77,11 @@ def validate_result_file(result_path: Path, relative_path: str) -> list[str]:
 
     errors += validate_mteb_version(task_result.mteb_version, relative_path)
 
-    covered, run_settings_errors = load_run_settings(
-        result_path.parent / RUN_SETTINGS_FILENAME, relative_path
-    )
-    errors += run_settings_errors
-    if not covered:
-        return errors
+    run_settings_path = result_path.parent / RUN_SETTINGS_FILENAME
+    if not run_settings_path.exists():
+        return errors + [f"{relative_path} is missing {RUN_SETTINGS_FILENAME}."]
+
+    covered = load_run_settings(run_settings_path)
 
     submitted = {
         (task_result.task_name, split, block["hf_subset"])
