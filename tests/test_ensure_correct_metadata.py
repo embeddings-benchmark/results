@@ -634,6 +634,7 @@ revision_exceptions = [
     ("baseline__Human", "2025_09_25"),
     ("mteb__baseline-bm25s", "0_1_10"),
     ("mteb__baseline-bm25s", "0_3_0"),
+    ("mteb__baseline-bm25s-subword", "0_1_0"),
     ("mteb__baseline-random-encoder", "1"),
     # OpenAI Whisper models using "main" as revision
     ("openai__whisper-base", "main"),
