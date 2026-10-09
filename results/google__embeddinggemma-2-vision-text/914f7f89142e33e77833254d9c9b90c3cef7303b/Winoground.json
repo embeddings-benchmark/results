@@ -1,21 +1,60 @@
 {
   "dataset_revision": "b400e173549071916ad1b3d449293bc8d8b4b763",
   "task_name": "Winoground",
-  "mteb_version": "1.34.7",
+  "mteb_version": "2.20.3",
   "scores": {
     "test": [
       {
-        "image_acc": 0.1575,
-        "text_acc": 0.3825,
-        "accuracy": 0.1275,
-        "main_score": 0.1275,
+        "image_acc": 0.155,
+        "text_acc": 0.3725,
+        "accuracy": 0.12,
+        "main_score": 0.12,
         "hf_subset": "default",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.20.3"
       }
     ]
   },
-  "evaluation_time": 79.49607229232788,
-  "kg_co2_emissions": null
+  "evaluation_time": 45.46152714300024,
+  "kg_co2_emissions": null,
+  "date": 1791491159.496689,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 1.0196999937761575e-05,
+      "end": 6.115676300999439,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 6.115690372999779,
+      "end": 6.115691956999399,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding texts",
+      "start": 26.325759966999613,
+      "end": 27.46740354999929,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding images",
+      "start": 27.472960600999613,
+      "end": 45.43411790199934,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 45.43491441599963,
+      "end": 45.43868915999974,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

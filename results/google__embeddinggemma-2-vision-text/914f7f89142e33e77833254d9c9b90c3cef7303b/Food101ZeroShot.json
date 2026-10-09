@@ -1,19 +1,66 @@
 {
-  "dataset_revision": "e06acf2a88084f04bce4d4a525165d68e0a36c38",
+  "dataset_revision": "7cca05bfde8fdad4a9b39ed14a881c800cc1dca2",
   "task_name": "Food101ZeroShot",
-  "mteb_version": "1.34.7",
+  "mteb_version": "2.20.3",
   "scores": {
     "validation": [
       {
-        "accuracy": 0.822924,
-        "main_score": 0.822924,
+        "accuracy": 0.815762,
+        "f1": 0.809672,
+        "f1_weighted": 0.809672,
+        "precision": 0.841941,
+        "precision_weighted": 0.841941,
+        "recall": 0.815762,
+        "recall_weighted": 0.815762,
+        "ap": null,
+        "ap_weighted": null,
+        "main_score": 0.815762,
         "hf_subset": "default",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.20.3"
       }
     ]
   },
-  "evaluation_time": 1489.1906332969666,
-  "kg_co2_emissions": null
+  "evaluation_time": 868.3420494929996,
+  "kg_co2_emissions": null,
+  "date": 1791414672.367037,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 1.0417999874334782e-05,
+      "end": 46.302235538001696,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 46.302254630998505,
+      "end": 46.30549673100177,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding labels",
+      "start": 46.31003977900036,
+      "end": 46.5553028860013,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples",
+      "start": 46.55584316000022,
+      "end": 860.1357261500016,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 860.136451901999,
+      "end": 860.170634176,
+      "split": "validation",
+      "subset": "default"
+    }
+  ]
 }

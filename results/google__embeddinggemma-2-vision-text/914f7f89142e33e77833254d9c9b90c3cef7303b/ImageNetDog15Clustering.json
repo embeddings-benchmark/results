@@ -1,22 +1,54 @@
 {
-  "dataset_revision": "bfb6ad3b2109d26c9daddf14f98d315daa35ee72",
+  "dataset_revision": "16b4f3ff0eba385e23756afc3fdefc460a5c3444",
   "task_name": "ImageNetDog15Clustering",
-  "mteb_version": "1.34.7",
+  "mteb_version": "2.20.3",
   "scores": {
     "test": [
       {
-        "v_measure": 0.911908,
-        "nmi": 0.911908,
-        "ari": 0.874473,
-        "cluster_accuracy": 0.865242,
-        "main_score": 0.911908,
+        "v_measure": 0.913855,
+        "nmi": 0.913855,
+        "ari": 0.838071,
+        "cluster_accuracy": 0.848513,
+        "main_score": 0.913855,
         "hf_subset": "default",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.20.3"
       }
     ]
   },
-  "evaluation_time": 43.324528217315674,
-  "kg_co2_emissions": null
+  "evaluation_time": 115.85793125599957,
+  "kg_co2_emissions": null,
+  "date": 1791413804.00809,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 8.388000424019992e-06,
+      "end": 20.081515046000277,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 20.08153389599829,
+      "end": 20.081537488000322,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 20.08653602599952,
+      "end": 113.51474896499712,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 113.51503706199946,
+      "end": 115.7929886239981,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

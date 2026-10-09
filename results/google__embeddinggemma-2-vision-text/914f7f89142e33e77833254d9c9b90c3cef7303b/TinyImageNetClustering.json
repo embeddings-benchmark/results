@@ -1,22 +1,54 @@
 {
-  "dataset_revision": "5a77092c28e51558c5586e9c5eb71a7e17a5e43f",
+  "dataset_revision": "e04e259f646f750bd0bdb2a56c2a4577d89bee3d",
   "task_name": "TinyImageNetClustering",
-  "mteb_version": "1.34.7",
+  "mteb_version": "2.20.3",
   "scores": {
     "valid": [
       {
-        "v_measure": 0.715651,
-        "nmi": 0.715651,
-        "ari": 0.337438,
-        "cluster_accuracy": 0.4983,
-        "main_score": 0.715651,
+        "v_measure": 0.722201,
+        "nmi": 0.722201,
+        "ari": 0.348134,
+        "cluster_accuracy": 0.4956,
+        "main_score": 0.722201,
         "hf_subset": "default",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.20.3"
       }
     ]
   },
-  "evaluation_time": 491.005761384964,
-  "kg_co2_emissions": null
+  "evaluation_time": 156.065963750003,
+  "kg_co2_emissions": null,
+  "date": 1791419273.73014,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.0060010582674295e-06,
+      "end": 9.205470208002225,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 9.205480419001105,
+      "end": 9.205489767002291,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 9.208946108003147,
+      "end": 153.39635756900316,
+      "split": "valid",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 153.39896412400049,
+      "end": 155.74894332199983,
+      "split": "valid",
+      "subset": "default"
+    }
+  ]
 }

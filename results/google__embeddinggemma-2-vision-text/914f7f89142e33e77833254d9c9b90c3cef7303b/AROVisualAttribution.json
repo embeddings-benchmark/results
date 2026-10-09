@@ -1,21 +1,60 @@
 {
-  "dataset_revision": "18f7e01358d91df599d723f00e16a18640e19398",
+  "dataset_revision": "25fe9b460426ff67cdb0608a737c94f8f49a901e",
   "task_name": "AROVisualAttribution",
-  "mteb_version": "1.34.7",
+  "mteb_version": "2.20.3",
   "scores": {
     "test": [
       {
         "image_acc": 0.0,
-        "text_acc": 0.764749,
+        "text_acc": 0.795464,
         "accuracy": 0.0,
-        "main_score": 0.764749,
+        "main_score": 0.795464,
         "hf_subset": "default",
         "languages": [
           "eng-Latn"
-        ]
+        ],
+        "mteb_version": "2.20.3"
       }
     ]
   },
-  "evaluation_time": 3258.3760368824005,
-  "kg_co2_emissions": null
+  "evaluation_time": 735.6702842520026,
+  "kg_co2_emissions": null,
+  "date": 1791416963.379817,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.5450003603473306e-06,
+      "end": 42.2463548300002,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 42.24636700299743,
+      "end": 42.24636912300048,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding texts",
+      "start": 185.41802912099956,
+      "end": 255.5310811470008,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding images",
+      "start": 255.54839949300003,
+      "end": 734.0764213059992,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 734.083516636998,
+      "end": 734.300141664,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }
