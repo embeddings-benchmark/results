@@ -1,0 +1,54 @@
+{
+    "loader_kwargs": {
+        "image_token_budget": 2048
+    },
+    "name": "topk-io/topk-embed-v1-xsmall",
+    "revision": "d09d8a7a8cdd6c287f792b3c4d7b41233d46e66a",
+    "release_date": "2026-09-23",
+    "languages": [
+        "eng-Latn",
+        "fra-Latn",
+        "deu-Latn",
+        "spa-Latn",
+        "ita-Latn",
+        "por-Latn"
+    ],
+    "n_parameters": 854034496,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 254279680,
+    "memory_usage_mb": 1629.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 1024,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "PyTorch",
+        "Sentence Transformers",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/topk-io/topk-embed-v1-xsmall",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": null,
+    "adapted_from": "Qwen/Qwen3.5-0.8B",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float16",
+    "extra_requirements_groups": [
+        "topk-embed"
+    ],
+    "loader": "TopkEmbedSearch",
+    "is_cross_encoder": false
+}
