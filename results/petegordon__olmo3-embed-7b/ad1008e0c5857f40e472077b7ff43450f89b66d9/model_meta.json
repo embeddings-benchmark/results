@@ -1,0 +1,64 @@
+{
+    "loader_kwargs": {
+        "instruction_template": "Instruct: {instruction}\nQuery: ",
+        "apply_instruction_to_passages": false,
+        "max_seq_length": 512,
+        "model_kwargs": {
+            "torch_dtype": "bfloat16"
+        }
+    },
+    "name": "petegordon/olmo3-embed-7b",
+    "revision": "ad1008e0c5857f40e472077b7ff43450f89b66d9",
+    "release_date": "2026-10-14",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 6887272448,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 410738688,
+    "memory_usage_mb": 13137.0,
+    "max_tokens": 512.0,
+    "embed_dim": 4096,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/petegordon/olmo3-embed",
+    "public_training_data": "https://github.com/petegordon/olmo3-embed/blob/main/docs/data-card.md",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/petegordon/olmo3-embed-7b",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "QuoraRetrieval",
+        "FEVER",
+        "FiQA2018",
+        "NFCorpus",
+        "NQ",
+        "HotpotQA",
+        "SciFact",
+        "MSMARCO"
+    ],
+    "adapted_from": "allenai/Olmo-3-1025-7B",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": [
+        "petegordon"
+    ],
+    "experiment_kwargs": null,
+    "output_dtypes": [
+        "bfloat16"
+    ],
+    "extra_requirements_groups": null,
+    "loader": "InstructSentenceTransformerModel",
+    "is_cross_encoder": false
+}
