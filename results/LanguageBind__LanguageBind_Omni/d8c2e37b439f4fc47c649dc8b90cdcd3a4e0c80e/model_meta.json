@@ -1,0 +1,49 @@
+{
+    "loader_kwargs": {
+        "num_frames": 8,
+        "device": "cuda"
+    },
+    "name": "LanguageBind/LanguageBind_Omni",
+    "revision": "d8c2e37b439f4fc47c649dc8b90cdcd3a4e0c80e",
+    "release_date": "2023-10-03",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 1200233026,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 37945344,
+    "memory_usage_mb": 4578.0,
+    "max_tokens": 77.0,
+    "embed_dim": 768,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/PKU-YuanGroup/LanguageBind",
+    "public_training_data": null,
+    "framework": [
+        "PyTorch"
+    ],
+    "reference": "https://github.com/PKU-YuanGroup/LanguageBind",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text",
+        "audio",
+        "video"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "\n@misc{zhu2024languagebind,\n    title={LanguageBind: Extending Video-Language Pretraining to N-modality by Language-based Semantic Alignment},\n    author={Bin Zhu and Bin Lin and Munan Ning and Yang Yan and Jiaxi Cui and Wang HongFa and Yatian Pang and Wenhao Jiang and Junwu Zhang and Zongwei Li and Cai Wan Zhang and Zhifeng Li and Wei Liu and Li Yuan},\n    year={2024},\n    eprint={2310.01852},\n    archivePrefix={arXiv},\n    primaryClass={cs.CV},\n    url={https://arxiv.org/abs/2310.01852},\n}\n",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "languagebind"
+    ],
+    "loader": "LanguageBindOmniWrapper",
+    "is_cross_encoder": false
+}

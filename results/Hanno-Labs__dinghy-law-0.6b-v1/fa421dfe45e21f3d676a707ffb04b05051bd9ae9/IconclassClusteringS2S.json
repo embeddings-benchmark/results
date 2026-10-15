@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "1cd02f1579dab39fedc95de8cc15fd620557a9f2",
+  "task_name": "IconclassClusteringS2S",
+  "mteb_version": "2.18.7",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.284857,
+            0.348867,
+            0.318222,
+            0.261202,
+            0.287265,
+            0.277158,
+            0.303662,
+            0.259258,
+            0.309115,
+            0.306528
+          ]
+        },
+        "v_measure": 0.295613,
+        "v_measure_std": 0.025972,
+        "ami_scores": {
+          "Level 0": [
+            0.284196,
+            0.348256,
+            0.317597,
+            0.260527,
+            0.286615,
+            0.276494,
+            0.303024,
+            0.258584,
+            0.308474,
+            0.305897
+          ]
+        },
+        "ami": 0.294966,
+        "ami_std": 0.025991,
+        "main_score": 0.295613,
+        "hf_subset": "default",
+        "languages": [
+          "nld-Latn"
+        ],
+        "mteb_version": "2.18.7"
+      }
+    ]
+  },
+  "evaluation_time": 4.10671312501654,
+  "kg_co2_emissions": null,
+  "date": 1785334688.588581,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0005874889902770519,
+      "end": 0.7778747179545462,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.7778854588977993,
+      "end": 0.8425032459199429,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.8460364008788019,
+      "end": 1.559649684932083,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 1.5657235160470009,
+      "end": 4.100492290919647,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

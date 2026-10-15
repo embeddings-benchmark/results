@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "instruction_template": "<function instruction_template at 0x74592a6c5120>",
+        "instruction_template": "<function instruction_template at 0x712bb9112160>",
         "apply_instruction_to_passages": true,
         "prompts_dict": {
             "AILACasedocs": "Given a legal case scenario, retrieve the most relevant case documents",
@@ -135,17 +135,17 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MMarcoReranking",
-        "T2Retrieval",
-        "FEVER",
-        "MSMARCO",
-        "NQ",
-        "HotpotQA",
-        "CodeSearchNet",
         "MIRACLRetrieval",
-        "CMedQAv2-reranking",
+        "MMarcoReranking",
+        "MSMARCO",
+        "T2Retrieval",
+        "CodeSearchNet",
+        "FEVER",
         "DuRetrieval",
-        "MrTidyRetrieval"
+        "HotpotQA",
+        "CMedQAv2-reranking",
+        "MrTidyRetrieval",
+        "NQ"
     ],
     "adapted_from": "Qwen/Qwen3-Embedding-0.6B",
     "superseded_by": null,

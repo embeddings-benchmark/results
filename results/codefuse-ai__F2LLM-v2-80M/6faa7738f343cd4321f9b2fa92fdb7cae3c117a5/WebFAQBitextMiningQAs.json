@@ -1,0 +1,96 @@
+{
+  "dataset_revision": "a1bc0e8fd36c3d5015bd64c14ca098596774784a",
+  "task_name": "WebFAQBitextMiningQAs",
+  "mteb_version": "2.21.0",
+  "scores": {
+    "default": [
+      {
+        "precision": 0.986639,
+        "recall": 0.9902,
+        "f1": 0.987743,
+        "accuracy": 0.9902,
+        "main_score": 0.987743,
+        "hf_subset": "ces-slk",
+        "languages": [
+          "ces-Latn",
+          "slk-Latn"
+        ],
+        "mteb_version": "2.21.0"
+      },
+      {
+        "precision": 0.995886,
+        "recall": 0.997257,
+        "f1": 0.996343,
+        "accuracy": 0.997257,
+        "main_score": 0.996343,
+        "hf_subset": "eng-slk",
+        "languages": [
+          "eng-Latn",
+          "slk-Latn"
+        ],
+        "mteb_version": "2.21.0"
+      }
+    ]
+  },
+  "evaluation_time": 1084.0372896000044,
+  "kg_co2_emissions": null,
+  "date": 1790324756.182669,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 9.399998816661537e-06,
+      "end": 7.792322799999965,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 7.792338899998867,
+      "end": 8.275120800004515,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 8.287401400004455,
+      "end": 331.0155973000001,
+      "split": "default",
+      "subset": "ces-slk"
+    },
+    {
+      "name": "Encoding",
+      "start": 331.35462050000206,
+      "end": 814.8065582999989,
+      "split": "default",
+      "subset": "ces-slk"
+    },
+    {
+      "name": "Scoring",
+      "start": 814.8520564999999,
+      "end": 815.0514563000033,
+      "split": "default",
+      "subset": "ces-slk"
+    },
+    {
+      "name": "Encoding",
+      "start": 815.6604097000018,
+      "end": 897.3701818000045,
+      "split": "default",
+      "subset": "eng-slk"
+    },
+    {
+      "name": "Encoding",
+      "start": 897.4156690000018,
+      "end": 1083.3724071000033,
+      "split": "default",
+      "subset": "eng-slk"
+    },
+    {
+      "name": "Scoring",
+      "start": 1083.4069715000005,
+      "end": 1083.5347543000025,
+      "split": "default",
+      "subset": "eng-slk"
+    }
+  ]
+}

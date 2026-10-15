@@ -11,8 +11,7 @@
             "Summarization": "classification: ",
             "query": "search_query: ",
             "document": "search_document: "
-        },
-        "device": "cuda:2"
+        }
     },
     "name": "nomic-ai/nomic-embed-text-v2-moe",
     "revision": "1066b6599d099fbb93dfcb64f9c37a7c9e503e85",
@@ -148,7 +147,9 @@
     "contacts": null,
     "experiment_kwargs": null,
     "output_dtypes": null,
-    "extra_requirements_groups": null,
+    "extra_requirements_groups": [
+        "nomic"
+    ],
     "loader": "NomicWrapper",
     "is_cross_encoder": false
 }
