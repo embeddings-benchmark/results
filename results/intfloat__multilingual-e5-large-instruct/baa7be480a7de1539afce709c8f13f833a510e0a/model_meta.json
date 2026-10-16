@@ -1,11 +1,10 @@
 {
     "loader_kwargs": {
         "instruction_template": "Instruct: {instruction}\nQuery: ",
-        "attn": "cccc",
-        "pooling_method": "mean",
-        "mode": "embedding",
-        "torch_dtype": "torch.float16",
-        "normalized": true
+        "model_kwargs": {
+            "dtype": "torch.float16"
+        },
+        "apply_instruction_to_passages": false
     },
     "name": "intfloat/multilingual-e5-large-instruct",
     "revision": "baa7be480a7de1539afce709c8f13f833a510e0a",
@@ -112,6 +111,8 @@
         "zho-Hans"
     ],
     "n_parameters": 560000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 256002048,
     "memory_usage_mb": 1068.0,
     "max_tokens": 514.0,
     "embed_dim": 1024,
@@ -122,43 +123,52 @@
     "framework": [
         "GritLM",
         "PyTorch",
-        "Sentence Transformers"
+        "Sentence Transformers",
+        "ONNX",
+        "safetensors",
+        "Transformers"
     ],
     "reference": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MSMARCOHardNegatives",
-        "XQuADRetrieval",
-        "HotpotQA-NL",
-        "MSMARCO",
-        "FEVER-PL",
-        "NQ-NL",
-        "FEVER-NL",
-        "FEVER",
-        "MrTidyRetrieval",
-        "HotpotQA-PL",
-        "HotpotQAHardNegatives",
-        "NanoNQRetrieval",
-        "MIRACLRetrieval",
-        "MIRACLRetrievalHardNegatives",
-        "NQ-PL",
-        "NQ",
-        "MIRACLReranking",
-        "FEVERHardNegatives",
-        "NanoMSMARCORetrieval",
         "HotpotQA",
+        "HotpotQA-NL",
+        "HotpotQAHardNegatives",
+        "NQ",
         "mMARCO-NL",
+        "FEVERHardNegatives",
+        "HotpotQA-PL",
+        "MIRACLReranking",
+        "NanoMSMARCORetrieval",
+        "XQuADRetrieval",
+        "MIRACLRetrieval",
         "NQHardNegatives",
-        "MSMARCO-PL"
+        "MIRACLRetrievalHardNegatives",
+        "FEVER-PL",
+        "MrTidyRetrieval",
+        "NQ-PL",
+        "FEVER-NL",
+        "NanoNQRetrieval",
+        "MSMARCOHardNegatives",
+        "NQ-NL",
+        "MSMARCO-PL",
+        "FEVER",
+        "MSMARCO"
     ],
     "adapted_from": "FacebookAI/xlm-roberta-large",
     "superseded_by": null,
     "modalities": [
         "text"
     ],
-    "is_cross_encoder": null,
+    "model_type": [
+        "dense"
+    ],
     "citation": "@article{wang2024multilingual,\n      title={Multilingual E5 Text Embeddings: A Technical Report},\n      author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Yang, Linjun and Majumder, Rangan and Wei, Furu},\n      journal={arXiv preprint arXiv:2402.05672},\n      year={2024}\n    }",
     "contacts": null,
-    "loader": "instruct_wrapper"
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "InstructSentenceTransformerModel",
+    "is_cross_encoder": false
 }

@@ -1,0 +1,48 @@
+{
+  "loader_kwargs": {
+    "trust_remote_code": true,
+    "model_name_or_path": "ckpt/cls-1/final"
+  },
+  "name": "NGA-KR/ko-embed-cls",
+  "revision": "64bf48823ed89c0e14fe8f00030c6f1e68053d2c",
+  "release_date": "2026-09-01",
+  "languages": [
+    "kor-Hang",
+    "eng-Latn"
+  ],
+  "n_parameters": 567754752,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": null,
+  "memory_usage_mb": 1083.0,
+  "max_tokens": 128.0,
+  "embed_dim": 1024,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": null,
+  "public_training_data": null,
+  "framework": [
+    "Sentence Transformers",
+    "PyTorch"
+  ],
+  "reference": "https://huggingface.co/NGA-KR/ko-embed-cls",
+  "similarity_fn_name": "cosine",
+  "use_instructions": false,
+  "training_datasets": [
+    "KLUE-TC"
+  ],
+  "adapted_from": "BAAI/bge-m3",
+  "superseded_by": null,
+  "modalities": [
+    "text"
+  ],
+  "model_type": [
+    "dense"
+  ],
+  "citation": null,
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": null,
+  "extra_requirements_groups": null,
+  "loader": "SentenceTransformerEncoderWrapper",
+  "is_cross_encoder": false
+}

@@ -1,5 +1,7 @@
 {
-    "loader_kwargs": {},
+    "loader_kwargs": {
+        "device": "cuda"
+    },
     "name": "nanovdr/NanoVDR-S-Multi",
     "revision": "b21574d7772ca26e22525543a2a6bf7081a95d8f",
     "release_date": "2026-02-26",
@@ -22,16 +24,17 @@
     "public_training_code": null,
     "public_training_data": "https://huggingface.co/datasets/nanovdr/NanoVDR-Train",
     "framework": [
-        "Sentence Transformers"
+        "Sentence Transformers",
+        "PyTorch"
     ],
     "reference": "https://huggingface.co/nanovdr/NanoVDR-S-Multi",
     "similarity_fn_name": "cosine",
     "use_instructions": false,
     "training_datasets": [
-        "VidoreTabfquadRetrieval",
-        "VidoreDocVQARetrieval",
         "VidoreInfoVQARetrieval",
-        "VidoreArxivQARetrieval"
+        "VidoreArxivQARetrieval",
+        "VidoreTabfquadRetrieval",
+        "VidoreDocVQARetrieval"
     ],
     "adapted_from": null,
     "superseded_by": null,
@@ -42,9 +45,13 @@
     "model_type": [
         "dense"
     ],
-    "citation": "\n@article{nanovdr2026,\n  title={NanoVDR: Distilling a 2B Vision-Language Retriever into a 70M Text-Only Encoder for Visual Document Retrieval},\n  author={Liu, Zhuchenyang and Zhang, Yao and Xiao, Yu},\n  journal={arXiv preprint arXiv:2603.12824},\n  year={2026}\n}\n",
+    "citation": "@article{nanovdr2026,\n  title={NanoVDR: Distilling a 2B Vision-Language Retriever into a 70M Text-Only Encoder for Visual Document Retrieval},\n  author={Liu, Zhuchenyang and Zhang, Yao and Xiao, Yu},\n  journal={arXiv preprint arXiv:2603.12824},\n  year={2026}\n}",
     "contacts": null,
     "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "qwen-vl"
+    ],
     "loader": "NanoVDRWrapper",
     "is_cross_encoder": false
 }
