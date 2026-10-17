@@ -1,0 +1,78 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true
+    },
+    "name": "athrael-soju/ColUltraVBERT",
+    "revision": "8f85c126eb97dcabe8faf69b2208d8d471eb1214",
+    "release_date": "2026-10-17",
+    "languages": [
+        "eng-Latn",
+        "spa-Latn",
+        "deu-Latn",
+        "fra-Latn",
+        "ita-Latn",
+        "por-Latn"
+    ],
+    "n_parameters": 254679552,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 37847040,
+    "memory_usage_mb": 486.0,
+    "max_tokens": 32768.0,
+    "embed_dim": [
+        128,
+        256,
+        320,
+        512,
+        768
+    ],
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://huggingface.co/datasets/athrael-soju/vdr-train-500k",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/athrael-soju/ColUltraVBERT",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": false,
+    "training_datasets": [
+        "VisRAG-Ret-Train-In-domain-data",
+        "VisRAGRetPlotQA",
+        "VisRAGRetArxivQA",
+        "NQ",
+        "VidoreDocVQARetrieval",
+        "VisRAG-Ret-Train-Synthetic-data",
+        "VisRAGRetSlideVQA",
+        "VisRAGRetChartQA",
+        "VisRAGRetMPDocVQA",
+        "VidoreInfoVQARetrieval",
+        "VisRAGRetInfoVQA",
+        "VidoreTatdqaRetrieval",
+        "wiki-ss-nq",
+        "VidoreArxivQARetrieval",
+        "docmatix-ir",
+        "VDRMultilingualRetrieval"
+    ],
+    "adapted_from": "athrael-soju/UltraVBERT",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": null,
+    "contacts": [
+        "athrael-soju"
+    ],
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": [
+        "image"
+    ],
+    "loader": "MultiVectorWrapper",
+    "is_cross_encoder": false
+}
