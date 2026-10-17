@@ -8,6 +8,7 @@ RESULTS_ROOT = Path(__file__).resolve().parents[1] / "results"
 # Add entries here as (task_name, dataset_revision) pairs when a task dataset
 # revision is known to be invalid and all corresponding results must be removed.
 DISALLOWED_TASK_REVISION_PAIRS = {
+    # due to https://github.com/embeddings-benchmark/mteb/issues/5690
     (
         "Vidore3NuclearNemotron35Embed8BReranking.v2",
         "2257498b70708115557fb03e5f3193beab4bffd1",
