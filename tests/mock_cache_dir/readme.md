@@ -1,1 +1,0 @@
-this is just a mock cache directory, which implements a folder with a link to the results folder in root.
