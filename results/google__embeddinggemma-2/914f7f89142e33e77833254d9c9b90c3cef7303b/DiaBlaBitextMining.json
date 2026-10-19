@@ -1,0 +1,96 @@
+{
+  "dataset_revision": "c458e9bf4306d6380604462926a38c34861b4d3b",
+  "task_name": "DiaBlaBitextMining",
+  "mteb_version": "2.26.10",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.807715,
+        "recall": 0.84412,
+        "f1": 0.817515,
+        "accuracy": 0.84412,
+        "main_score": 0.817515,
+        "hf_subset": "fr-en",
+        "languages": [
+          "fra-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.10"
+      },
+      {
+        "precision": 0.807715,
+        "recall": 0.84412,
+        "f1": 0.817515,
+        "accuracy": 0.84412,
+        "main_score": 0.817515,
+        "hf_subset": "en-fr",
+        "languages": [
+          "eng-Latn",
+          "fra-Latn"
+        ],
+        "mteb_version": "2.26.10"
+      }
+    ]
+  },
+  "evaluation_time": 24.31204855989199,
+  "kg_co2_emissions": null,
+  "date": 1792351314.63527,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.076988600194454e-06,
+      "end": 3.8610165719874203,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.861029220977798,
+      "end": 3.8610435619484633,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 4.130224680993706,
+      "end": 8.519804443931207,
+      "split": "test",
+      "subset": "fr-en"
+    },
+    {
+      "name": "Encoding",
+      "start": 8.768004933954217,
+      "end": 13.4833312779665,
+      "split": "test",
+      "subset": "fr-en"
+    },
+    {
+      "name": "Scoring",
+      "start": 13.483718128991313,
+      "end": 13.655417528003454,
+      "split": "test",
+      "subset": "fr-en"
+    },
+    {
+      "name": "Encoding",
+      "start": 13.975651926011778,
+      "end": 18.62396609899588,
+      "split": "test",
+      "subset": "en-fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 18.86540846398566,
+      "end": 24.081982792005874,
+      "split": "test",
+      "subset": "en-fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 24.08229243697133,
+      "end": 24.26649288192857,
+      "split": "test",
+      "subset": "en-fr"
+    }
+  ]
+}
