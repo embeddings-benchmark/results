@@ -32,7 +32,32 @@
     "reference": "https://huggingface.co/topk-io/topk-embed-v1-small",
     "similarity_fn_name": "MaxSim",
     "use_instructions": false,
-    "training_datasets": null,
+    "training_datasets": [
+        "WebFAQRetrieval",
+        "VidoreInfoVQARetrieval",
+        "MIRACLRetrieval",
+        "HotpotQA",
+        "FiQA2018",
+        "VidoreArxivQARetrieval",
+        "DBPedia",
+        "SciFact",
+        "NFCorpus",
+        "MKQARetrieval",
+        "QASPER",
+        "VidoreDocVQARetrieval",
+        "FEVER",
+        "MMarcoRetrievalMultilingual",
+        "MultiLongDocRetrieval",
+        "HotpotQA-NL",
+        "MSMARCO",
+        "GerDaLIR",
+        "ESCIReranking",
+        "ArguAna",
+        "NarrativeQARetrieval",
+        "VidoreTatdqaRetrieval",
+        "NQ",
+        "FEVER-NL"
+    ],
     "adapted_from": "Qwen/Qwen3.5-2B",
     "superseded_by": null,
     "modalities": [
@@ -49,6 +74,6 @@
     "extra_requirements_groups": [
         "topk-embed"
     ],
-    "loader": "TopkEmbedSearch",
+    "loader": "TopkEmbedWrapper",
     "is_cross_encoder": false
 }
