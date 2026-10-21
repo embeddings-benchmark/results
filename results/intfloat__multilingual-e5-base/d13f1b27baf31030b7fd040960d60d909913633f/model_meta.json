@@ -110,6 +110,8 @@
         "zho-Hans"
     ],
     "n_parameters": 278000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 192001536,
     "memory_usage_mb": 1061.0,
     "max_tokens": 514.0,
     "embed_dim": 768,
@@ -119,43 +121,51 @@
     "public_training_data": null,
     "framework": [
         "Sentence Transformers",
-        "PyTorch"
+        "PyTorch",
+        "ONNX",
+        "safetensors"
     ],
     "reference": "https://huggingface.co/intfloat/multilingual-e5-base",
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MrTidyRetrieval",
-        "MIRACLRetrievalHardNegatives",
-        "mMARCO-NL",
-        "MIRACLReranking",
-        "HotpotQAHardNegatives",
         "FEVER-NL",
-        "MSMARCOHardNegatives",
-        "NanoMSMARCORetrieval",
-        "HotpotQA-NL",
-        "NQ-NL",
-        "HotpotQA",
-        "MSMARCO",
-        "FEVERHardNegatives",
-        "NanoNQRetrieval",
-        "MIRACLRetrieval",
-        "FEVER-PL",
         "NQ",
-        "XQuADRetrieval",
+        "FEVER-PL",
+        "HotpotQA",
         "NQ-PL",
-        "FEVER",
+        "NQ-NL",
+        "NanoNQRetrieval",
+        "HotpotQAHardNegatives",
+        "NanoMSMARCORetrieval",
+        "XQuADRetrieval",
         "NQHardNegatives",
+        "MIRACLRetrievalHardNegatives",
+        "MSMARCO-PL",
+        "MSMARCO",
+        "mMARCO-NL",
+        "MrTidyRetrieval",
+        "FEVERHardNegatives",
+        "MIRACLRetrieval",
+        "MSMARCOHardNegatives",
         "HotpotQA-PL",
-        "MSMARCO-PL"
+        "MIRACLReranking",
+        "FEVER",
+        "HotpotQA-NL"
     ],
     "adapted_from": "FacebookAI/xlm-roberta-base",
     "superseded_by": null,
     "modalities": [
         "text"
     ],
-    "is_cross_encoder": null,
+    "model_type": [
+        "dense"
+    ],
     "citation": "\n@article{wang2024multilingual,\n  title={Multilingual E5 Text Embeddings: A Technical Report},\n  author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Yang, Linjun and Majumder, Rangan and Wei, Furu},\n  journal={arXiv preprint arXiv:2402.05672},\n  year={2024}\n}\n",
     "contacts": null,
-    "loader": "sentence_transformers_loader"
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
 }
