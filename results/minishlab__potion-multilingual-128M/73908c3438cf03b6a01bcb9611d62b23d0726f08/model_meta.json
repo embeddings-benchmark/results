@@ -115,7 +115,7 @@
     "license": "mit",
     "open_weights": true,
     "public_training_code": "https://github.com/MinishLab/model2vec",
-    "public_training_data": null,
+    "public_training_data": "https://huggingface.co/datasets/minishlab/tokenlearn-c4-multilingual-bge-m3",
     "framework": [
         "NumPy",
         "ONNX",
@@ -126,10 +126,10 @@
     "similarity_fn_name": "cosine",
     "use_instructions": false,
     "training_datasets": [
-        "NQ",
         "AmazonReviewsClassification",
-        "MLQARetrieval",
         "NQHardNegatives",
+        "NQ",
+        "MLQARetrieval",
         "DuRetrieval",
         "NQ-NL"
     ],
@@ -141,7 +141,7 @@
     "model_type": [
         "dense"
     ],
-    "citation": "@software{minishlab2024model2vec,\n  author       = {Stephan Tulkens and {van Dongen}, Thomas},\n  title        = {Model2Vec: Fast State-of-the-Art Static Embeddings},\n  year         = {2024},\n  publisher    = {Zenodo},\n  doi          = {10.5281/zenodo.17270888},\n  url          = {https://github.com/MinishLab/model2vec},\n  license      = {MIT}\n}",
+    "citation": null,
     "contacts": null,
     "experiment_kwargs": null,
     "output_dtypes": null,

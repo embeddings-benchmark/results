@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "instruction_template": "<function instruction_template at 0x758e749a1260>",
+        "instruction_template": "<function instruction_template at 0x703578ffa2a0>",
         "apply_instruction_to_passages": false,
         "prompts_dict": {
             "AILACasedocs": "Given a legal case scenario, retrieve the most relevant case documents",
@@ -36,8 +36,7 @@
         "max_seq_length": 18480,
         "model_kwargs": {
             "torch_dtype": "bfloat16"
-        },
-        "device": "cuda"
+        }
     },
     "name": "bflhc/MoD-Embedding",
     "revision": "acbb5b70fdab262226a6af2bc62001de8021b05c",
@@ -136,17 +135,17 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MrTidyRetrieval",
-        "DuRetrieval",
-        "HotpotQA",
-        "T2Retrieval",
         "MIRACLRetrieval",
         "MMarcoReranking",
+        "HotpotQA",
+        "T2Retrieval",
         "FEVER",
-        "CodeSearchNet",
-        "NQ",
+        "CMedQAv2-reranking",
         "MSMARCO",
-        "CMedQAv2-reranking"
+        "MrTidyRetrieval",
+        "NQ",
+        "DuRetrieval",
+        "CodeSearchNet"
     ],
     "adapted_from": "Qwen/Qwen3-Embedding-4B",
     "superseded_by": null,
@@ -156,10 +155,10 @@
     "model_type": [
         "dense"
     ],
-    "citation": "@misc{mod-embedding-2025,\n  title={MoD-Embedding: A Fine-tuned Multilingual Text Embedding Model},\n  author={MoD Team},\n  year={2025},\n  url={https://huggingface.co/bflhc/MoD-Embedding}\n}",
+    "citation": null,
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "bfloat16",
     "extra_requirements_groups": null,
     "loader": "InstructSentenceTransformerModel",
     "is_cross_encoder": false
