@@ -1,0 +1,48 @@
+{
+    "loader_kwargs": {},
+    "name": "naver/splade-v3",
+    "revision": "fdfeceb91d7b9de7985b38addd3ba9f53a59a355",
+    "release_date": "2024-03-08",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 109514298,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 23440896,
+    "memory_usage_mb": 418.0,
+    "max_tokens": 512.0,
+    "embed_dim": 30522,
+    "license": "cc-by-nc-sa-4.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/naver/splade",
+    "public_training_data": true,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/naver/splade-v3",
+    "similarity_fn_name": "dot",
+    "use_instructions": false,
+    "training_datasets": [
+        "MSMARCOHardNegatives",
+        "MSMARCO"
+    ],
+    "adapted_from": "naver/splade-cocondenser-selfdistil",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "sparse"
+    ],
+    "citation": "@misc{lassance2024spladev3,\n  title={SPLADE-v3: New baselines for SPLADE},\n  author={Carlos Lassance and Herv\u00e9 D\u00e9jean and Thibault Formal and St\u00e9phane Clinchant},\n  year={2024},\n  eprint={2403.06789},\n  archivePrefix={arXiv},\n  primaryClass={cs.IR},\n  url={https://arxiv.org/abs/2403.06789},\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "sparse-encoder"
+    ],
+    "loader": "SparseEncoderWrapper",
+    "is_cross_encoder": false
+}
