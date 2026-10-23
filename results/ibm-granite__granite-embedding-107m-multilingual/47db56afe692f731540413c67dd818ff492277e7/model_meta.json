@@ -1,4 +1,5 @@
 {
+    "loader_kwargs": {},
     "name": "ibm-granite/granite-embedding-107m-multilingual",
     "revision": "47db56afe692f731540413c67dd818ff492277e7",
     "release_date": "2024-12-18",
@@ -17,7 +18,9 @@
         "zho-Hant",
         "zho-Hans"
     ],
-    "n_parameters": 107000000,
+    "n_parameters": 106994304,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 96000768,
     "memory_usage_mb": 204.0,
     "max_tokens": 512.0,
     "embed_dim": 384,
@@ -27,44 +30,53 @@
     "public_training_data": null,
     "framework": [
         "Sentence Transformers",
-        "PyTorch"
+        "PyTorch",
+        "Transformers",
+        "ONNX",
+        "safetensors"
     ],
     "reference": "https://huggingface.co/ibm-granite/granite-embedding-107m-multilingual",
     "similarity_fn_name": "cosine",
     "use_instructions": false,
     "training_datasets": [
-        "MrTidyRetrieval",
-        "HotPotQA",
-        "StackExchangeClustering",
-        "StackExchangeClusteringP2P",
-        "HotpotQA-NL",
-        "HotPotQA-PL",
-        "StackExchangeClustering.v2",
-        "MIRACLRetrievalHardNegatives",
-        "StackOverflowDupQuestions",
-        "WikipediaRetrievalMultilingual",
-        "NQ-NL",
-        "DBPedia-NL",
-        "NQHardNegatives",
-        "StackExchangeClusteringP2P.v2",
-        "FEVER",
         "NQ",
-        "MIRACLRetrieval",
         "FEVER-NL",
-        "FEVERHardNegatives",
-        "MIRACLReranking",
+        "StackExchangeClustering",
         "HotPotQAHardNegatives",
         "DBPedia",
+        "WikipediaRerankingMultilingual",
+        "MIRACLRetrieval",
+        "NQHardNegatives",
+        "FEVERHardNegatives",
+        "StackExchangeClusteringP2P.v2",
+        "MrTidyRetrieval",
+        "HotPotQA-PL",
+        "DBPedia-NL",
+        "HotpotQA-NL",
+        "HotPotQA",
         "AskUbuntuDupQuestions",
-        "WikipediaRerankingMultilingual"
+        "MIRACLRetrievalHardNegatives",
+        "StackExchangeClustering.v2",
+        "WikipediaRetrievalMultilingual",
+        "NQ-NL",
+        "StackExchangeClusteringP2P",
+        "MIRACLReranking",
+        "FEVER",
+        "StackOverflowDupQuestions"
     ],
     "adapted_from": null,
     "superseded_by": null,
     "modalities": [
         "text"
     ],
-    "is_cross_encoder": null,
+    "model_type": [
+        "dense"
+    ],
     "citation": "@article{awasthy2025graniteembedding,\n  title={Granite Embedding Models},\n  author={Awasthy, Parul and Trivedi, Aashka and Li, Yulong and Bornea, Mihaela and Cox, David and Daniels, Abraham and Franz, Martin and Goodhart, Gabe and Iyer, Bhavani and Kumar, Vishwajeet and Lastras, Luis and McCarley, Scott and Murthy, Rudra and P, Vignesh and Rosenthal, Sara and Roukos, Salim and Sen, Jaydeep and Sharma, Sukriti and Sil, Avirup and Soule, Kate and Sultan, Arafat and Florian, Radu},\n  journal={arXiv preprint arXiv:2502.20204},\n  year={2025}\n}",
     "contacts": null,
-    "loader": "sentence_transformers_loader"
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
 }

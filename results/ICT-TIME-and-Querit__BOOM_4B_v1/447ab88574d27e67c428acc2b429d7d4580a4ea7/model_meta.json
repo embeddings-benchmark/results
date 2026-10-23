@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "instruction_template": "<function instruction_template at 0x7f829431c4a0>",
+        "instruction_template": "<function instruction_template at 0x7f4f54694ae0>",
         "apply_instruction_to_passages": false,
         "prompts_dict": {
             "AmazonCounterfactualClassification": "Classify a given Amazon customer review text as either counterfactual or not-counterfactual.",
@@ -263,8 +263,7 @@
             "STS16": "Retrieve semantically similar text.",
             "SummEval": "Retrieve semantically similar text.",
             "ATEC": "Retrieve semantically similar text."
-        },
-        "device": "cuda"
+        }
     },
     "name": "ICT-TIME-and-Querit/BOOM_4B_v1",
     "revision": "447ab88574d27e67c428acc2b429d7d4580a4ea7",
@@ -309,20 +308,20 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "ToxicConversationsClassification",
-        "DuRetrieval",
-        "ImdbClassification",
-        "MSMARCO",
-        "FEVER",
-        "MTOPDomainClassification",
         "AmazonCounterfactualClassification",
-        "HotpotQA",
+        "ToxicConversationsClassification",
         "Banking77Classification",
+        "MTOPDomainClassification",
+        "ImdbClassification",
+        "HotpotQA",
         "TweetSentimentExtractionClassification",
-        "NQ",
+        "MSMARCO",
         "T2Retrieval",
+        "MIRACLRetrieval",
         "MrTidyRetrieval",
-        "MIRACLRetrieval"
+        "DuRetrieval",
+        "NQ",
+        "FEVER"
     ],
     "adapted_from": "Qwen/Qwen3-4B",
     "superseded_by": null,
