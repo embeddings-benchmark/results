@@ -1,0 +1,69 @@
+{
+    "loader_kwargs": {
+        "model_kwargs": {
+            "dtype": "bfloat16"
+        }
+    },
+    "name": "nlpai-lab/KURE-v3",
+    "revision": "c74871cd57f3377c8b7c3ed9f4ac0fff22a898a3",
+    "release_date": "2026-10-20",
+    "languages": [
+        "kor-Hang",
+        "eng-Latn"
+    ],
+    "n_parameters": 1140918272,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 268435456,
+    "memory_usage_mb": 2176.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 2048,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/nlpai-lab/KURE/tree/main/train/dense",
+    "public_training_data": "https://huggingface.co/datasets/lightonai/embeddings-fine-tuning",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/nlpai-lab/KURE-v3",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "SCIDOCS",
+        "MultiLongDocRetrieval",
+        "DBPedia",
+        "TRECDL2020",
+        "CQADupstackRetrieval",
+        "MSMARCO",
+        "FEVER",
+        "FiQA2018",
+        "SciFact",
+        "Ko-StrategyQA",
+        "MIRACLRetrieval",
+        "MIRACLRetrievalHardNegatives",
+        "NQ",
+        "HotpotQA",
+        "TRECDL2019",
+        "MIRACLReranking",
+        "SQuADKorV1Retrieval",
+        "ClimateFEVER",
+        "QuoraRetrieval"
+    ],
+    "adapted_from": "nvidia/Nemotron-3-Embed-1B-BF16",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
