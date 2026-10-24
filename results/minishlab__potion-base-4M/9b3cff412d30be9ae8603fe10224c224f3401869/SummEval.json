@@ -1,0 +1,63 @@
+{
+  "dataset_revision": "cda12ad7615edc362dbf25a00fdd61d3b1eaf93c",
+  "task_name": "SummEval",
+  "mteb_version": "2.26.17",
+  "scores": {
+    "test": [
+      {
+        "pearson": 0.303909,
+        "spearman": 0.288589,
+        "cosine_spearman": 0.28863,
+        "cosine_pearson": 0.303909,
+        "dot_pearson": 0.303909,
+        "dot_spearman": 0.288663,
+        "main_score": 0.28863,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.17"
+      }
+    ]
+  },
+  "evaluation_time": 3.7444500930141658,
+  "kg_co2_emissions": null,
+  "date": 1792800988.816195,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 7.260125130414963e-06,
+      "end": 0.8556247360538691,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.8556332089938223,
+      "end": 0.855636103078723,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding human summaries",
+      "start": 0.8578116451390088,
+      "end": 1.9054191100876778,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding machine summaries",
+      "start": 1.9054508770350367,
+      "end": 3.02253731014207,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 3.0228285549674183,
+      "end": 3.6610460220836103,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
