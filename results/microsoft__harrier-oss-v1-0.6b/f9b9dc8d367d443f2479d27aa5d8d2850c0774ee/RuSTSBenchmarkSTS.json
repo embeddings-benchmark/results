@@ -1,0 +1,104 @@
+{
+  "dataset_revision": "7cf24f325c6da6195df55bef3d86b5e0616f3018",
+  "task_name": "RuSTSBenchmarkSTS",
+  "mteb_version": "2.26.11",
+  "scores": {
+    "test": [
+      {
+        "pearson": 0.847283,
+        "spearman": 0.846778,
+        "cosine_pearson": 0.847283,
+        "cosine_spearman": 0.846769,
+        "manhattan_pearson": 0.836998,
+        "manhattan_spearman": 0.846441,
+        "euclidean_pearson": 0.837633,
+        "euclidean_spearman": 0.846625,
+        "main_score": 0.846769,
+        "hf_subset": "default",
+        "languages": [
+          "rus-Cyrl"
+        ],
+        "mteb_version": "2.26.11"
+      }
+    ],
+    "validation": [
+      {
+        "pearson": 0.866041,
+        "spearman": 0.86775,
+        "cosine_pearson": 0.866041,
+        "cosine_spearman": 0.867754,
+        "manhattan_pearson": 0.860619,
+        "manhattan_spearman": 0.870751,
+        "euclidean_pearson": 0.858348,
+        "euclidean_spearman": 0.867837,
+        "main_score": 0.867754,
+        "hf_subset": "default",
+        "languages": [
+          "rus-Cyrl"
+        ],
+        "mteb_version": "2.26.11"
+      }
+    ]
+  },
+  "evaluation_time": 11.18488947302103,
+  "kg_co2_emissions": null,
+  "date": 1792367086.596743,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.56708949059248e-06,
+      "end": 3.274910015054047,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.2749240359989926,
+      "end": 3.2749256880488247,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 3.2823333020787686,
+      "end": 5.195804585004225,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 5.195821761037223,
+      "end": 7.027500340016559,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 7.027518527000211,
+      "end": 7.034816656028852,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 7.069197140051983,
+      "end": 9.13386452908162,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 9.133881424088031,
+      "end": 11.167359477025457,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 11.16737386805471,
+      "end": 11.17367078200914,
+      "split": "validation",
+      "subset": "default"
+    }
+  ]
+}

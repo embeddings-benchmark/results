@@ -12,8 +12,7 @@
             "Reranking": "retrieval",
             "Summarization": "text-matching",
             "InstructionReranking": "retrieval"
-        },
-        "device": "cuda:2"
+        }
     },
     "name": "jinaai/jina-embeddings-v5-text-small",
     "revision": "dd76d535f5447ca3897a9c893fb1e612ead98192",
@@ -124,7 +123,7 @@
     "citation": "@misc{akram2026jinaembeddingsv5texttasktargetedembeddingdistillation,\n      title={jina-embeddings-v5-text: Task-Targeted Embedding Distillation},\n      author={Mohammad Kalim Akram and Saba Sturua and Nastia Havriushenko and Quentin Herreros and Michael G\u00fcnther and Maximilian Werk and Han Xiao},\n      year={2026},\n      eprint={2602.15547},\n      archivePrefix={arXiv},\n      primaryClass={cs.CL},\n      url={https://arxiv.org/abs/2602.15547},\n}",
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "bfloat16",
     "extra_requirements_groups": [
         "peft"
     ],

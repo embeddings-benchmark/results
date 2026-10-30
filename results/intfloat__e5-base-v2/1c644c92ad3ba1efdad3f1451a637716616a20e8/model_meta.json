@@ -3,8 +3,7 @@
         "model_prompts": {
             "query": "query: ",
             "document": "passage: "
-        },
-        "device": "cuda"
+        }
     },
     "name": "intfloat/e5-base-v2",
     "revision": "1c644c92ad3ba1efdad3f1451a637716616a20e8",
@@ -32,16 +31,16 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "MSMARCOHardNegatives",
-        "NQ-NL",
         "NQ-PL",
-        "NanoMSMARCORetrieval",
+        "MSMARCO",
         "mMARCO-NL",
+        "NQ-NL",
+        "MSMARCOHardNegatives",
+        "NQHardNegatives",
         "NanoNQRetrieval",
         "MSMARCO-PL",
-        "MSMARCO",
         "NQ",
-        "NQHardNegatives"
+        "NanoMSMARCORetrieval"
     ],
     "adapted_from": "intfloat/e5-base",
     "superseded_by": null,

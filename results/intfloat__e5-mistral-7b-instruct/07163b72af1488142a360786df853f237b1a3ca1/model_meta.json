@@ -2,10 +2,14 @@
     "loader_kwargs": {
         "instruction_template": "Instruct: {instruction}\nQuery: ",
         "model_kwargs": {
-            "dtype": "torch.float16"
+            "dtype": "float16"
         },
         "apply_instruction_to_passages": false,
-        "device": "cuda"
+        "add_eos_token": true,
+        "tokenizer_kwargs": {
+            "add_bos_token": true,
+            "add_eos_token": true
+        }
     },
     "name": "intfloat/e5-mistral-7b-instruct",
     "revision": "07163b72af1488142a360786df853f237b1a3ca1",
@@ -38,29 +42,29 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "FEVER-NL",
-        "HotpotQA-NL",
-        "MIRACLReranking",
-        "MIRACLRetrieval",
-        "XQuADRetrieval",
-        "MrTidyRetrieval",
-        "MSMARCOHardNegatives",
-        "HotpotQA-PL",
-        "MSMARCO",
-        "HotpotQAHardNegatives",
-        "NQ",
-        "NanoNQRetrieval",
-        "FEVER-PL",
-        "MSMARCO-PL",
-        "NQ-PL",
+        "NanoMSMARCORetrieval",
         "FEVERHardNegatives",
-        "mMARCO-NL",
-        "MIRACLRetrievalHardNegatives",
-        "FEVER",
-        "HotpotQA",
+        "XQuADRetrieval",
+        "HotpotQA-PL",
         "NQ-NL",
+        "FEVER",
+        "MIRACLRetrieval",
+        "mMARCO-NL",
+        "HotpotQA",
+        "MSMARCOHardNegatives",
         "NQHardNegatives",
-        "NanoMSMARCORetrieval"
+        "NanoNQRetrieval",
+        "NQ-PL",
+        "FEVER-NL",
+        "HotpotQAHardNegatives",
+        "MIRACLReranking",
+        "NQ",
+        "MrTidyRetrieval",
+        "MSMARCO",
+        "HotpotQA-NL",
+        "FEVER-PL",
+        "MIRACLRetrievalHardNegatives",
+        "MSMARCO-PL"
     ],
     "adapted_from": "mistralai/Mistral-7B-v0.1",
     "superseded_by": null,
@@ -73,7 +77,7 @@
     "citation": "\n    @article{wang2023improving,\n      title={Improving Text Embeddings with Large Language Models},\n      author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Yang, Linjun and Majumder, Rangan and Wei, Furu},\n      journal={arXiv preprint arXiv:2401.00368},\n      year={2023}\n    }\n\n    @article{wang2022text,\n      title={Text Embeddings by Weakly-Supervised Contrastive Pre-training},\n      author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Jiao, Binxing and Yang, Linjun and Jiang, Daxin and Majumder, Rangan and Wei, Furu},\n      journal={arXiv preprint arXiv:2212.03533},\n      year={2022}\n    }\n    ",
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "float16",
     "extra_requirements_groups": null,
     "loader": "InstructSentenceTransformerModel",
     "is_cross_encoder": false
