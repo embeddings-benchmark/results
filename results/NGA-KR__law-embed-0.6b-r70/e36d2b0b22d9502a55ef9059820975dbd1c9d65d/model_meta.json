@@ -1,0 +1,48 @@
+{
+  "loader_kwargs": {},
+  "name": "NGA-KR/law-embed-0.6b-r70",
+  "revision": "e36d2b0b22d9502a55ef9059820975dbd1c9d65d",
+  "release_date": "2026-10-27",
+  "languages": [
+    "eng-Latn",
+    "deu-Latn",
+    "zho-Hans"
+  ],
+  "n_parameters": 595874816,
+  "n_active_parameters_override": null,
+  "n_embedding_parameters": 155309056,
+  "memory_usage_mb": 1137.0,
+  "max_tokens": 32768.0,
+  "embed_dim": 1024,
+  "license": "apache-2.0",
+  "open_weights": true,
+  "public_training_code": "https://huggingface.co/NGA-KR/law-embed-0.6b-r70/tree/main",
+  "public_training_data": null,
+  "framework": [
+    "Sentence Transformers",
+    "PyTorch",
+    "safetensors"
+  ],
+  "reference": "https://huggingface.co/NGA-KR/law-embed-0.6b-r70",
+  "similarity_fn_name": "cosine",
+  "use_instructions": true,
+  "training_datasets": [
+    "GerDaLIRSmall",
+    "LeCaRDv2"
+  ],
+  "adapted_from": "litillabs/litil-embed-0.6b",
+  "superseded_by": null,
+  "modalities": [
+    "text"
+  ],
+  "model_type": [
+    "dense"
+  ],
+  "citation": null,
+  "contacts": null,
+  "experiment_kwargs": null,
+  "output_dtypes": "bfloat16",
+  "extra_requirements_groups": null,
+  "loader": "NGALawEncoder",
+  "is_cross_encoder": false
+}
