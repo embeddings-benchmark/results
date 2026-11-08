@@ -1,0 +1,87 @@
+{
+  "dataset_revision": "f33a205966ce032f957c3a22f4f9e378f89a2c56",
+  "task_name": "PubChemAISentenceParaphrasePC",
+  "mteb_version": "2.27.1",
+  "scores": {
+    "test": [
+      {
+        "similarity_accuracy": 0.988281,
+        "similarity_f1": 0.940887,
+        "similarity_precision": 0.950249,
+        "similarity_recall": 0.931707,
+        "similarity_ap": 0.960738,
+        "cosine_accuracy": 0.988281,
+        "cosine_f1": 0.940887,
+        "cosine_precision": 0.950249,
+        "cosine_recall": 0.931707,
+        "cosine_ap": 0.960738,
+        "manhattan_accuracy": 0.98877,
+        "manhattan_f1": 0.94321,
+        "manhattan_precision": 0.955,
+        "manhattan_recall": 0.931707,
+        "manhattan_ap": 0.960794,
+        "euclidean_accuracy": 0.988281,
+        "euclidean_f1": 0.940887,
+        "euclidean_precision": 0.950249,
+        "euclidean_recall": 0.931707,
+        "euclidean_ap": 0.960754,
+        "dot_accuracy": 0.98877,
+        "dot_f1": 0.942356,
+        "dot_precision": 0.969072,
+        "dot_recall": 0.917073,
+        "dot_ap": 0.960824,
+        "max_accuracy": 0.98877,
+        "max_f1": 0.94321,
+        "max_precision": 0.969072,
+        "max_recall": 0.931707,
+        "max_ap": 0.960824,
+        "main_score": 0.960824,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      }
+    ]
+  },
+  "evaluation_time": 6.861855409108102,
+  "kg_co2_emissions": null,
+  "date": 1794058798.522422,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.776993930339813e-06,
+      "end": 1.0232724780216813,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.023283027112484,
+      "end": 1.02369106374681,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 1.5009931470267475,
+      "end": 4.124327004887164,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 4.124350342899561,
+      "end": 6.777627369854599,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 6.77764930203557,
+      "end": 6.8250905480235815,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

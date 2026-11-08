@@ -1,0 +1,664 @@
+{
+  "dataset_revision": "b4efe498c4d0b9d7bdd2905f6fff4e22ae251d00",
+  "task_name": "MLSUMClusteringS2S",
+  "mteb_version": "2.27.1",
+  "scores": {
+    "test": [
+      {
+        "v_measure": 0.463411,
+        "v_measure_std": 0.02397,
+        "v_measures": [
+          0.464985,
+          0.473393,
+          0.475921,
+          0.449909,
+          0.402162,
+          0.481794,
+          0.492698,
+          0.477448,
+          0.464965,
+          0.450836
+        ],
+        "main_score": 0.463411,
+        "hf_subset": "fr",
+        "languages": [
+          "fra-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      },
+      {
+        "v_measure": 0.475454,
+        "v_measure_std": 0.009925,
+        "v_measures": [
+          0.493829,
+          0.473668,
+          0.473613,
+          0.467501,
+          0.456633,
+          0.467646,
+          0.481598,
+          0.474178,
+          0.485277,
+          0.480597
+        ],
+        "main_score": 0.475454,
+        "hf_subset": "es",
+        "languages": [
+          "spa-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      }
+    ],
+    "validation": [
+      {
+        "v_measure": 0.450815,
+        "v_measure_std": 0.016889,
+        "v_measures": [
+          0.480626,
+          0.450379,
+          0.433372,
+          0.43742,
+          0.421201,
+          0.461592,
+          0.449813,
+          0.472794,
+          0.449399,
+          0.45155
+        ],
+        "main_score": 0.450815,
+        "hf_subset": "fr",
+        "languages": [
+          "fra-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      },
+      {
+        "v_measure": 0.4716,
+        "v_measure_std": 0.020682,
+        "v_measures": [
+          0.477181,
+          0.481896,
+          0.439099,
+          0.486957,
+          0.495312,
+          0.445808,
+          0.459112,
+          0.447614,
+          0.484579,
+          0.498447
+        ],
+        "main_score": 0.4716,
+        "hf_subset": "es",
+        "languages": [
+          "spa-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      }
+    ]
+  },
+  "evaluation_time": 738.1341300886124,
+  "kg_co2_emissions": null,
+  "date": 1794060518.291028,
+  "evaluation_phases": [
+    {
+      "name": "Encoding",
+      "start": 5.027279257774353e-06,
+      "end": 18.55782636627555,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 18.55801329948008,
+      "end": 18.829314730130136,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 18.962649838998914,
+      "end": 35.147586275823414,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 35.14776996895671,
+      "end": 35.419893329031765,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 35.54841101542115,
+      "end": 54.6011848365888,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 54.60135895200074,
+      "end": 54.85768031980842,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 54.98811911046505,
+      "end": 72.57460947148502,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 72.57478767354041,
+      "end": 72.84377019293606,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 72.9661940028891,
+      "end": 89.23711533565074,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 89.23728076089174,
+      "end": 89.50840393733233,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 89.63334114011377,
+      "end": 107.21826275531203,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 107.21843186486512,
+      "end": 107.49537974968553,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 107.63032443728298,
+      "end": 125.53310470841825,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 125.53329075314105,
+      "end": 125.8261627368629,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 125.95493938401341,
+      "end": 143.24950259551406,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 143.24966614693403,
+      "end": 143.50344649795443,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 143.62737322691828,
+      "end": 165.56614674814045,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 165.5663193659857,
+      "end": 165.8362362794578,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 165.96086987294257,
+      "end": 183.66719793435186,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 183.66744587291032,
+      "end": 183.95069234166294,
+      "split": "test",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 184.0955658648163,
+      "end": 209.37783892825246,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 209.37803127989173,
+      "end": 209.6928502684459,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 209.81185335014015,
+      "end": 231.11004948150367,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 231.110228555277,
+      "end": 231.38207561150193,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 231.5029764957726,
+      "end": 251.89463418070227,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 251.89490771852434,
+      "end": 252.21120582614094,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 252.33518070355058,
+      "end": 271.8617014074698,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 271.8618817003444,
+      "end": 272.1511803455651,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 272.28409941121936,
+      "end": 290.78329017572105,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 290.7834721468389,
+      "end": 291.0838008057326,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 291.23595096357167,
+      "end": 311.6033910633996,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 311.603610759601,
+      "end": 311.8594760252163,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 311.9824459031224,
+      "end": 338.05857160594314,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 338.0587890194729,
+      "end": 338.3739721206948,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 338.490367888473,
+      "end": 357.8981021856889,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 357.8982736170292,
+      "end": 358.20527607481927,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 358.3239163896069,
+      "end": 377.4867643462494,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 377.4869260918349,
+      "end": 377.7757880175486,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 377.8979986393824,
+      "end": 401.70151644572616,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 401.70173440966755,
+      "end": 401.9800164392218,
+      "split": "test",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 402.14952686149627,
+      "end": 419.4297058172524,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 419.42987035308033,
+      "end": 419.6945956144482,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 419.82885821256787,
+      "end": 437.34081619698554,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 437.34102320857346,
+      "end": 437.6751253474504,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 437.83778135012835,
+      "end": 455.1411424810067,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 455.1413093796,
+      "end": 455.41815405432135,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 455.55048057157546,
+      "end": 474.25534360297024,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 474.2555114040151,
+      "end": 474.56429509073496,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 474.69758780673146,
+      "end": 493.378813104704,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 493.3790164878592,
+      "end": 493.63763622008264,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 493.7912357915193,
+      "end": 511.7514081867412,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 511.75161314662546,
+      "end": 512.0245927684009,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 512.1580883413553,
+      "end": 530.3455026326701,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 530.3456746470183,
+      "end": 530.613691017963,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 530.7549614431337,
+      "end": 549.6613852828741,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 549.6616055760533,
+      "end": 549.9549467982724,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 550.0932484921068,
+      "end": 567.1631892332807,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 567.1633806396276,
+      "end": 567.471828924492,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 567.609953883104,
+      "end": 585.4294194439426,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Scoring",
+      "start": 585.4295796016231,
+      "end": 585.705167057924,
+      "split": "validation",
+      "subset": "fr"
+    },
+    {
+      "name": "Encoding",
+      "start": 585.8236506292596,
+      "end": 599.3901338465512,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 599.3903001965955,
+      "end": 599.6528130574152,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 599.7401383901015,
+      "end": 615.9674736466259,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 615.9676937228069,
+      "end": 616.2531708236784,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 616.3385921157897,
+      "end": 629.6862723995,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 629.6864687958732,
+      "end": 629.95725545194,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 630.0739236613736,
+      "end": 643.7337588137016,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 643.7339235730469,
+      "end": 643.9450228642672,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 644.0314611429349,
+      "end": 657.8915985682979,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 657.8917913343757,
+      "end": 658.139915320091,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 658.2383907763287,
+      "end": 670.9717421494424,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 670.97190902289,
+      "end": 671.2041101958603,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 671.2928682323545,
+      "end": 687.1196921346709,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 687.1198780210689,
+      "end": 687.3504085671157,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 687.4373819250613,
+      "end": 700.6437206538394,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 700.6439856868237,
+      "end": 700.8906720858067,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 700.9940813146532,
+      "end": 722.5139434942976,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 722.5143411299214,
+      "end": 722.8484034603462,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Encoding",
+      "start": 722.9343480318785,
+      "end": 737.6881824415177,
+      "split": "validation",
+      "subset": "es"
+    },
+    {
+      "name": "Scoring",
+      "start": 737.6883483808488,
+      "end": 737.9786705747247,
+      "split": "validation",
+      "subset": "es"
+    }
+  ]
+}

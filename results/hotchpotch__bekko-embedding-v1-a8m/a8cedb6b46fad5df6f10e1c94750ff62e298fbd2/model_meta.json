@@ -142,13 +142,13 @@
     "similarity_fn_name": "cosine",
     "use_instructions": false,
     "training_datasets": [
-        "NanoMSMARCORetrieval",
-        "MSMARCO",
-        "MIRACLRetrievalHardNegatives",
+        "NQ",
         "MSMARCOHardNegatives",
-        "HotpotQA",
+        "NanoMSMARCORetrieval",
+        "MIRACLRetrievalHardNegatives",
         "PawsXPairClassification",
-        "NQ"
+        "HotpotQA",
+        "MSMARCO"
     ],
     "adapted_from": "jhu-clsp/mmBERT-small",
     "superseded_by": null,
@@ -163,7 +163,7 @@
         "hotchpotch"
     ],
     "experiment_kwargs": null,
-    "output_dtypes": "bfloat16",
+    "output_dtypes": "float32",
     "extra_requirements_groups": null,
     "loader": "BekkoEncoderWrapper",
     "is_cross_encoder": false
