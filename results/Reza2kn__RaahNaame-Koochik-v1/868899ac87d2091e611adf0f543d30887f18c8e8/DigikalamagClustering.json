@@ -1,1 +1,82 @@
-{"dataset_revision":"0fe394ee57514d4dbc3deeb1b1ae5dbd8cb7e52b","task_name":"DigikalamagClustering","mteb_version":"2.27.1","scores":{"test":[{"hf_subset":"default","languages":["fas-Arab"],"main_score":0.673446}]},"evaluation_time":2.73,"kg_co2_emissions":null}
+{
+  "dataset_revision": "0fe394ee57514d4dbc3deeb1b1ae5dbd8cb7e52b",
+  "task_name": "DigikalamagClustering",
+  "mteb_version": "2.27.4",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.691993,
+            0.690559,
+            0.757031,
+            0.694869,
+            0.765503,
+            0.691966,
+            0.625489,
+            0.682757,
+            0.56421,
+            0.57008
+          ]
+        },
+        "v_measure": 0.673446,
+        "v_measure_std": 0.064733,
+        "ami_scores": {
+          "Level 0": [
+            0.691892,
+            0.69045,
+            0.756948,
+            0.694768,
+            0.765421,
+            0.691865,
+            0.625362,
+            0.682649,
+            0.564064,
+            0.569924
+          ]
+        },
+        "ami": 0.673334,
+        "ami_std": 0.064756,
+        "main_score": 0.673446,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.27.4"
+      }
+    ]
+  },
+  "evaluation_time": 26.39094085800025,
+  "kg_co2_emissions": null,
+  "date": 1794251074.175867,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.328001523390412e-06,
+      "end": 23.89410230499925,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 23.894111531997623,
+      "end": 23.89411290499993,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 23.895269594999263,
+      "end": 24.457081884997024,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 24.457782042998588,
+      "end": 26.387111695003114,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

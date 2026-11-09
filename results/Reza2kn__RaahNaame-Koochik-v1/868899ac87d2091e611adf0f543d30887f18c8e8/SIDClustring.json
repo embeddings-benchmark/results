@@ -1,1 +1,82 @@
-{"dataset_revision":"d361bb18535d592e845aeaaa8ac47a239aa2f87a","task_name":"SIDClustring","mteb_version":"2.27.1","scores":{"test":[{"hf_subset":"default","languages":["fas-Arab"],"main_score":0.512233}]},"evaluation_time":3.77,"kg_co2_emissions":null}
+{
+  "dataset_revision": "d361bb18535d592e845aeaaa8ac47a239aa2f87a",
+  "task_name": "SIDClustring",
+  "mteb_version": "2.27.4",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.488661,
+            0.498821,
+            0.454271,
+            0.496065,
+            0.530378,
+            0.509172,
+            0.545758,
+            0.534714,
+            0.567766,
+            0.496728
+          ]
+        },
+        "v_measure": 0.512233,
+        "v_measure_std": 0.031062,
+        "ami_scores": {
+          "Level 0": [
+            0.488241,
+            0.498415,
+            0.453829,
+            0.495658,
+            0.529992,
+            0.508779,
+            0.545391,
+            0.534334,
+            0.56741,
+            0.496321
+          ]
+        },
+        "ami": 0.511837,
+        "ami_std": 0.031086,
+        "main_score": 0.512233,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.27.4"
+      }
+    ]
+  },
+  "evaluation_time": 4.315779937001935,
+  "kg_co2_emissions": null,
+  "date": 1794251089.751324,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.156994691584259e-06,
+      "end": 0.8287249269997119,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.8287340940005379,
+      "end": 1.0216376639946247,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.0228703659959137,
+      "end": 2.3669177339979797,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 2.368376468999486,
+      "end": 4.312100401999487,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

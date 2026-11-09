@@ -1,1 +1,61 @@
-{"dataset_revision":"fd981d78a0ab82c20d2e693a8b3929c5d71b0743","task_name":"SAMSumFa","mteb_version":"2.27.1","scores":{"test":[{"hf_subset":"default","languages":["fas-Arab"],"main_score":0.988255}]},"evaluation_time":5.43,"kg_co2_emissions":null}
+{
+  "dataset_revision": "fd981d78a0ab82c20d2e693a8b3929c5d71b0743",
+  "task_name": "SAMSumFa",
+  "mteb_version": "2.27.4",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.986867,
+        "recall": 0.991031,
+        "f1": 0.988255,
+        "accuracy": 0.991031,
+        "main_score": 0.988255,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.27.4"
+      }
+    ]
+  },
+  "evaluation_time": 16.016045260010287,
+  "kg_co2_emissions": null,
+  "date": 1794264700.57975,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.608999006450176e-06,
+      "end": 1.498596841993276,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.498605767992558,
+      "end": 1.499240142002236,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.5719740560016362,
+      "end": 13.397912535991054,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding",
+      "start": 13.454844043997582,
+      "end": 15.977791651996085,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 15.9780620370002,
+      "end": 15.99423664699134,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

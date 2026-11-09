@@ -1,1 +1,65 @@
-{"dataset_revision":"f8b8d630f631c6c16b7bc3cb924bdf62a51bed06","task_name":"Farsick","mteb_version":"2.27.1","scores":{"test":[{"hf_subset":"default","languages":["fas-Arab"],"main_score":0.718439}]},"evaluation_time":15.47,"kg_co2_emissions":null}
+{
+  "dataset_revision": "f8b8d630f631c6c16b7bc3cb924bdf62a51bed06",
+  "task_name": "Farsick",
+  "mteb_version": "2.27.4",
+  "scores": {
+    "test": [
+      {
+        "pearson": 0.795415,
+        "spearman": 0.718414,
+        "cosine_pearson": 0.795415,
+        "cosine_spearman": 0.718415,
+        "manhattan_pearson": 0.761606,
+        "manhattan_spearman": 0.717703,
+        "euclidean_pearson": 0.762313,
+        "euclidean_spearman": 0.718415,
+        "main_score": 0.718415,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.27.4"
+      }
+    ]
+  },
+  "evaluation_time": 26.85298770199006,
+  "kg_co2_emissions": null,
+  "date": 1794264639.276677,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.658999387174845e-06,
+      "end": 1.678455881003174,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.6784702080040006,
+      "end": 1.6784717010013992,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 1.7158015349996276,
+      "end": 15.674128307000501,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 15.674158013003762,
+      "end": 26.745062934001908,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 26.74508576700464,
+      "end": 26.830459585995413,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

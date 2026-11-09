@@ -1,1 +1,61 @@
-{"dataset_revision":"f77746f286bbf2177ee7b5a803da8be440d5d4c1","task_name":"SynPerChatbotRAGSumSRetrieval","mteb_version":"2.27.1","scores":{"test":[{"hf_subset":"default","languages":["fas-Arab"],"main_score":0.776832}]},"evaluation_time":4.01,"kg_co2_emissions":null}
+{
+  "dataset_revision": "f77746f286bbf2177ee7b5a803da8be440d5d4c1",
+  "task_name": "SynPerChatbotRAGSumSRetrieval",
+  "mteb_version": "2.27.4",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.758012,
+        "recall": 0.819687,
+        "f1": 0.776832,
+        "accuracy": 0.819687,
+        "main_score": 0.776832,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.27.4"
+      }
+    ]
+  },
+  "evaluation_time": 17.74493972399796,
+  "kg_co2_emissions": null,
+  "date": 1794264754.631202,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.3920015236362815e-06,
+      "end": 4.623781875008717,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 4.623791934005567,
+      "end": 4.624425094996695,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 4.678781067996169,
+      "end": 15.69577503700566,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding",
+      "start": 15.740295488008996,
+      "end": 17.725549333001254,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 17.725786285998765,
+      "end": 17.733538569998927,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

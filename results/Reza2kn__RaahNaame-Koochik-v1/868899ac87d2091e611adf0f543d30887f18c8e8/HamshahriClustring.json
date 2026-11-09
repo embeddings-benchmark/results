@@ -1,1 +1,82 @@
-{"dataset_revision":"ca93dc707cea06cdb2e3ede3b547a1092053aca6","task_name":"HamshahriClustring","mteb_version":"2.27.1","scores":{"test":[{"hf_subset":"default","languages":["fas-Arab"],"main_score":0.745217}]},"evaluation_time":4.01,"kg_co2_emissions":null}
+{
+  "dataset_revision": "ca93dc707cea06cdb2e3ede3b547a1092053aca6",
+  "task_name": "HamshahriClustring",
+  "mteb_version": "2.27.4",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.739621,
+            0.738544,
+            0.75084,
+            0.752804,
+            0.753858,
+            0.754152,
+            0.740807,
+            0.762998,
+            0.75376,
+            0.704787
+          ]
+        },
+        "v_measure": 0.745217,
+        "v_measure_std": 0.015371,
+        "ami_scores": {
+          "Level 0": [
+            0.737757,
+            0.7367,
+            0.749046,
+            0.751036,
+            0.752089,
+            0.752419,
+            0.738988,
+            0.761304,
+            0.751984,
+            0.702659
+          ]
+        },
+        "ami": 0.743398,
+        "ami_std": 0.015483,
+        "main_score": 0.745217,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.27.4"
+      }
+    ]
+  },
+  "evaluation_time": 6.4649802159983665,
+  "kg_co2_emissions": null,
+  "date": 1794251080.644061,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.926994395442307e-06,
+      "end": 3.6983002119959565,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.6983103309976286,
+      "end": 4.010099233993969,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 4.011289867994492,
+      "end": 4.244713143998524,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 4.246115482994355,
+      "end": 6.46116696199897,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
