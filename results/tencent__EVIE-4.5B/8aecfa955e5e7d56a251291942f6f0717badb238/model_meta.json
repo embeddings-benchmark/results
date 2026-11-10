@@ -33,14 +33,14 @@
     "similarity_fn_name": "MaxSim",
     "use_instructions": false,
     "training_datasets": [
-        "VidoreInfoVQARetrieval",
-        "VidoreTatdqaRetrieval",
-        "VidoreTabfquadRetrieval",
         "VisRAG-Ret-Train-In-domain-data",
-        "VidoreArxivQARetrieval",
         "VisRAG-Ret-Train-Synthetic-data",
-        "VDRMultilingualRetrieval",
-        "VidoreDocVQARetrieval"
+        "VidoreTatdqaRetrieval",
+        "VidoreDocVQARetrieval",
+        "VidoreArxivQARetrieval",
+        "VidoreInfoVQARetrieval",
+        "VidoreTabfquadRetrieval",
+        "VDRMultilingualRetrieval"
     ],
     "adapted_from": null,
     "superseded_by": null,
@@ -51,10 +51,10 @@
     "model_type": [
         "late-interaction"
     ],
-    "citation": "\n@misc{tencent2026evie,\n  title        = {EVIE: Evidence-Vector-Informed Embedding for Visual Document Retrieval},\n  author       = {Wang, Zifei and Wen, Wei},\n  year         = {2026},\n  howpublished = {\\url{https://github.com/Tencent/EVIE}}\n}\n",
+    "citation": null,
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "float32",
     "extra_requirements_groups": [
         "evie"
     ],
