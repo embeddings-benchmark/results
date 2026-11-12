@@ -1,0 +1,64 @@
+{
+    "loader_kwargs": {},
+    "name": "opensearch-project/opensearch-neural-sparse-encoding-multilingual-v1",
+    "revision": "1e0f096c2b51c234f1d20725c793e1b5b6d556db",
+    "release_date": "2025-02-21",
+    "languages": [
+        "eng-Latn",
+        "zho-Hans",
+        "fra-Latn",
+        "ben-Beng",
+        "tel-Telu",
+        "spa-Latn",
+        "ind-Latn",
+        "hin-Deva",
+        "rus-Cyrl",
+        "ara-Arab",
+        "fas-Arab",
+        "jpn-Jpan",
+        "fin-Latn",
+        "swa-Latn",
+        "kor-Hang"
+    ],
+    "n_parameters": 167569710,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 81315072,
+    "memory_usage_mb": 639.0,
+    "max_tokens": 512.0,
+    "embed_dim": 105879,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/zhichao-aws/opensearch-sparse-model-tuning-sample",
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/opensearch-project/opensearch-neural-sparse-encoding-multilingual-v1",
+    "similarity_fn_name": "dot",
+    "use_instructions": false,
+    "training_datasets": [
+        "MIRACLRetrievalHardNegatives",
+        "MIRACLReranking",
+        "MIRACLRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "sparse"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "sparse-encoder"
+    ],
+    "loader": "SparseEncoderWrapper",
+    "is_cross_encoder": false
+}

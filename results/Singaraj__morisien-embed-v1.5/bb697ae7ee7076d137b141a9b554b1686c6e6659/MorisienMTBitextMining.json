@@ -1,0 +1,164 @@
+{
+  "dataset_revision": "45f511e86cc511a422a130f2d23a2697e279efa2",
+  "task_name": "MorisienMTBitextMining",
+  "mteb_version": "2.20.11",
+  "scores": {
+    "test": [
+      {
+        "precision": 0.92325,
+        "recall": 0.945,
+        "f1": 0.9304,
+        "accuracy": 0.945,
+        "main_score": 0.9304,
+        "hf_subset": "mfe_Latn-eng_Latn",
+        "languages": [
+          "mfe-Latn",
+          "eng-Latn"
+        ],
+        "mteb_version": "2.20.11"
+      },
+      {
+        "precision": 0.91175,
+        "recall": 0.938,
+        "f1": 0.920233,
+        "accuracy": 0.938,
+        "main_score": 0.920233,
+        "hf_subset": "eng_Latn-mfe_Latn",
+        "languages": [
+          "eng-Latn",
+          "mfe-Latn"
+        ],
+        "mteb_version": "2.20.11"
+      },
+      {
+        "precision": 0.925667,
+        "recall": 0.948,
+        "f1": 0.933,
+        "accuracy": 0.948,
+        "main_score": 0.933,
+        "hf_subset": "mfe_Latn-fra_Latn",
+        "languages": [
+          "mfe-Latn",
+          "fra-Latn"
+        ],
+        "mteb_version": "2.20.11"
+      },
+      {
+        "precision": 0.919833,
+        "recall": 0.945,
+        "f1": 0.928167,
+        "accuracy": 0.945,
+        "main_score": 0.928167,
+        "hf_subset": "fra_Latn-mfe_Latn",
+        "languages": [
+          "fra-Latn",
+          "mfe-Latn"
+        ],
+        "mteb_version": "2.20.11"
+      }
+    ]
+  },
+  "evaluation_time": 319.60272430799523,
+  "kg_co2_emissions": null,
+  "date": 1789500856.035054,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 2.705999941099435e-05,
+      "end": 7.76758331500605,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 7.7676223189992015,
+      "end": 7.767627664004976,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 7.889138190999802,
+      "end": 30.480398409999907,
+      "split": "test",
+      "subset": "mfe_Latn-eng_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 30.578505936005968,
+      "end": 65.5074964670057,
+      "split": "test",
+      "subset": "mfe_Latn-eng_Latn"
+    },
+    {
+      "name": "Scoring",
+      "start": 65.50790717999917,
+      "end": 65.53476857100031,
+      "split": "test",
+      "subset": "mfe_Latn-eng_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 65.77632966200326,
+      "end": 100.59135150300426,
+      "split": "test",
+      "subset": "eng_Latn-mfe_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 100.79800537200208,
+      "end": 156.8447443210025,
+      "split": "test",
+      "subset": "eng_Latn-mfe_Latn"
+    },
+    {
+      "name": "Scoring",
+      "start": 156.84520200400584,
+      "end": 156.8684769110041,
+      "split": "test",
+      "subset": "eng_Latn-mfe_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 157.14195313700475,
+      "end": 197.56642595500307,
+      "split": "test",
+      "subset": "mfe_Latn-fra_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 197.86248767100187,
+      "end": 241.60573950099933,
+      "split": "test",
+      "subset": "mfe_Latn-fra_Latn"
+    },
+    {
+      "name": "Scoring",
+      "start": 241.60616520100302,
+      "end": 241.64304077799898,
+      "split": "test",
+      "subset": "mfe_Latn-fra_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 241.91269507499965,
+      "end": 284.03810359800264,
+      "split": "test",
+      "subset": "fra_Latn-mfe_Latn"
+    },
+    {
+      "name": "Encoding",
+      "start": 284.2086659560009,
+      "end": 319.5401889410059,
+      "split": "test",
+      "subset": "fra_Latn-mfe_Latn"
+    },
+    {
+      "name": "Scoring",
+      "start": 319.54058947800513,
+      "end": 319.5604532409998,
+      "split": "test",
+      "subset": "fra_Latn-mfe_Latn"
+    }
+  ]
+}

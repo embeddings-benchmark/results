@@ -1,6 +1,6 @@
 {
     "loader_kwargs": {
-        "torch_dtype": "torch.bfloat16",
+        "torch_dtype": "bfloat16",
         "attn_implementation": "sdpa",
         "processor_kwargs": {
             "max_num_visual_tokens": 1792
@@ -36,15 +36,15 @@
     "similarity_fn_name": "MaxSim",
     "use_instructions": true,
     "training_datasets": [
-        "VidoreTatdqaRetrieval",
-        "VidoreArxivQARetrieval",
         "VidoreDocVQARetrieval",
-        "wiki-ss-nq",
-        "docmatix-ir",
-        "VisRAG-Ret-Train-In-domain-data",
-        "VisRAG-Ret-Train-Synthetic-data",
         "VDRMultilingualRetrieval",
-        "VidoreInfoVQARetrieval"
+        "VidoreInfoVQARetrieval",
+        "docmatix-ir",
+        "VidoreArxivQARetrieval",
+        "VidoreTatdqaRetrieval",
+        "wiki-ss-nq",
+        "VisRAG-Ret-Train-Synthetic-data",
+        "VisRAG-Ret-Train-In-domain-data"
     ],
     "adapted_from": "Qwen/Qwen3.5-4B",
     "superseded_by": null,
@@ -55,12 +55,12 @@
     "model_type": [
         "late-interaction"
     ],
-    "citation": "\n@misc{webai_colvec1_1,\n  title={webAI-ColVec1.1: Bidirectional Multi-Vector Models for Visual Document Retrieval},\n  author={webAI},\n  year={2026},\n  url={https://huggingface.co/webAI-Official}\n}\n",
+    "citation": null,
     "contacts": [
         "zhanlunchang-webai"
     ],
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "float32",
     "extra_requirements_groups": [
         "colvec1_1"
     ],

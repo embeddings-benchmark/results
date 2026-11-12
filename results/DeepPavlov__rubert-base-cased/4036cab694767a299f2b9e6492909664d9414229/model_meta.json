@@ -1,1 +1,46 @@
-{"name": "DeepPavlov/rubert-base-cased", "revision": "4036cab694767a299f2b9e6492909664d9414229", "release_date": "2020-03-04", "languages": ["rus-Cyrl"], "n_parameters": 1280000000, "memory_usage_mb": 4883.0, "max_tokens": 512.0, "embed_dim": 768, "license": "not specified", "open_weights": true, "public_training_code": null, "public_training_data": null, "framework": ["Sentence Transformers", "PyTorch"], "reference": "https://huggingface.co/DeepPavlov/rubert-base-cased", "similarity_fn_name": "cosine", "use_instructions": false, "training_datasets": {"WikipediaRetrievalMultilingual": [], "WikipediaRerankingMultilingual": []}, "adapted_from": "google/bert_uncased_L-12_H-768_A-12", "superseded_by": null, "is_cross_encoder": null, "modalities": ["text"], "loader": null}
+{
+    "loader_kwargs": {},
+    "name": "DeepPavlov/rubert-base-cased",
+    "revision": "4036cab694767a299f2b9e6492909664d9414229",
+    "release_date": "2020-03-04",
+    "languages": [
+        "rus-Cyrl"
+    ],
+    "n_parameters": 1280000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 91812096,
+    "memory_usage_mb": 4883.0,
+    "max_tokens": 512.0,
+    "embed_dim": 768,
+    "license": "not specified",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/DeepPavlov/rubert-base-cased",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "WikipediaRetrievalMultilingual",
+        "WikipediaRerankingMultilingual"
+    ],
+    "adapted_from": "google/bert_uncased_L-12_H-768_A-12",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@misc{kuratov2019adaptationdeepbidirectionalmultilingual,\n      title={Adaptation of Deep Bidirectional Multilingual Transformers for Russian Language},\n      author={Yuri Kuratov and Mikhail Arkhipov},\n      year={2019},\n      eprint={1905.07213},\n      archivePrefix={arXiv},\n      primaryClass={cs.CL},\n      url={https://arxiv.org/abs/1905.07213},\n    }",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

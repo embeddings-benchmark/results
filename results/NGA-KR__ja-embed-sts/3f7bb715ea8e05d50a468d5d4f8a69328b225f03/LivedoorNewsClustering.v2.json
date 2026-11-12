@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "21637d8f5a8978f029d1175e7e70fd0e9d9ed51e",
+  "task_name": "LivedoorNewsClustering.v2",
+  "mteb_version": "2.20.11",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.527483,
+            0.496219,
+            0.551454,
+            0.535472,
+            0.539763,
+            0.532498,
+            0.557731,
+            0.489111,
+            0.545327,
+            0.530441
+          ]
+        },
+        "v_measure": 0.53055,
+        "v_measure_std": 0.021005,
+        "ami_scores": {
+          "Level 0": [
+            0.527053,
+            0.495761,
+            0.551044,
+            0.535052,
+            0.539346,
+            0.532071,
+            0.55733,
+            0.488646,
+            0.544911,
+            0.530016
+          ]
+        },
+        "ami": 0.530123,
+        "ami_std": 0.021025,
+        "main_score": 0.53055,
+        "hf_subset": "default",
+        "languages": [
+          "jpn-Jpan"
+        ],
+        "mteb_version": "2.20.11"
+      }
+    ]
+  },
+  "evaluation_time": 22.453201124444604,
+  "kg_co2_emissions": null,
+  "date": 1789454609.683679,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 1.609325408935547e-05,
+      "end": 12.586629202589393,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 12.58664658665657,
+      "end": 12.58664814941585,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 12.589170379564166,
+      "end": 21.1693405918777,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 21.184570053592324,
+      "end": 22.441223442554474,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

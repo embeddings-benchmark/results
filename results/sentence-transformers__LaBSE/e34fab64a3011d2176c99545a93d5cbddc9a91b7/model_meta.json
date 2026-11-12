@@ -1,4 +1,5 @@
 {
+    "loader_kwargs": {},
     "name": "sentence-transformers/LaBSE",
     "revision": "e34fab64a3011d2176c99545a93d5cbddc9a91b7",
     "release_date": "2019-11-01",
@@ -57,7 +58,9 @@
         "zho-Hans",
         "zho-Hant"
     ],
-    "n_parameters": 471000000,
+    "n_parameters": 470926848,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 384885504,
     "memory_usage_mb": 1796.0,
     "max_tokens": 512.0,
     "embed_dim": 768,
@@ -67,7 +70,9 @@
     "public_training_data": null,
     "framework": [
         "Sentence Transformers",
-        "PyTorch"
+        "PyTorch",
+        "ONNX",
+        "safetensors"
     ],
     "reference": "https://huggingface.co/sentence-transformers/LaBSE",
     "similarity_fn_name": "cosine",
@@ -78,8 +83,14 @@
     "modalities": [
         "text"
     ],
-    "is_cross_encoder": null,
+    "model_type": [
+        "dense"
+    ],
     "citation": "@misc{feng2022languageagnosticbertsentenceembedding,\n      title={Language-agnostic BERT Sentence Embedding},\n      author={Fangxiaoyu Feng and Yinfei Yang and Daniel Cer and Naveen Arivazhagan and Wei Wang},\n      year={2022},\n      eprint={2007.01852},\n      archivePrefix={arXiv},\n      primaryClass={cs.CL},\n      url={https://arxiv.org/abs/2007.01852},\n    }",
     "contacts": null,
-    "loader": "sentence_transformers_loader"
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
 }

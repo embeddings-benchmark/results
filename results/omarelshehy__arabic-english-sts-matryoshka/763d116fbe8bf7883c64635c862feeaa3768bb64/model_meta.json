@@ -1,1 +1,44 @@
-{"name": "omarelshehy/arabic-english-sts-matryoshka", "revision": "763d116fbe8bf7883c64635c862feeaa3768bb64", "release_date": "2024-10-13", "languages": ["ara_Arab", "eng_Latn"], "n_parameters": 559890432, "memory_usage_mb": 2136.0, "max_tokens": 514.0, "embed_dim": 1024, "license": "apache-2.0", "open_weights": true, "public_training_code": null, "public_training_data": null, "framework": ["PyTorch", "Sentence Transformers"], "reference": "https://huggingface.co/omarelshehy/arabic-english-sts-matryoshka", "similarity_fn_name": "cosine", "use_instructions": null, "training_datasets": null, "adapted_from": "FacebookAI/xlm-roberta-large", "superseded_by": null, "modalities": ["text"], "loader": null}
+{
+    "loader_kwargs": {},
+    "name": "omarelshehy/arabic-english-sts-matryoshka",
+    "revision": "763d116fbe8bf7883c64635c862feeaa3768bb64",
+    "release_date": "2024-10-13",
+    "languages": [
+        "ara-Arab",
+        "eng-Latn"
+    ],
+    "n_parameters": 559890432,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 256002048,
+    "memory_usage_mb": 2136.0,
+    "max_tokens": 514.0,
+    "embed_dim": 1024,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "PyTorch",
+        "Sentence Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/omarelshehy/arabic-english-sts-matryoshka",
+    "similarity_fn_name": "cosine",
+    "use_instructions": null,
+    "training_datasets": null,
+    "adapted_from": "FacebookAI/xlm-roberta-large",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@inproceedings{reimers-2019-sentence-bert,\n    title = \"Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks\",\n    author = \"Reimers, Nils and Gurevych, Iryna\",\n    booktitle = \"Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing\",\n    month = \"11\",\n    year = \"2019\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://arxiv.org/abs/1908.10084\",\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

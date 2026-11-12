@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from pathlib import Path
 
-from mteb.cache import ResultCache
+from mteb.cache import LoadExperimentEnum, ResultCache
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,6 +28,7 @@ def main():
         require_model_meta=False,
         include_remote=False,
         only_main_score=True,
+        load_experiments=LoadExperimentEnum.MATCH_NAME,
     )
 
     ds = all_results._to_dataset()

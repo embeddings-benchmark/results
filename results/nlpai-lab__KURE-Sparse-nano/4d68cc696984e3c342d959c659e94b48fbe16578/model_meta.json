@@ -1,0 +1,72 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true,
+        "model_kwargs": {
+            "dtype": "bfloat16"
+        }
+    },
+    "name": "nlpai-lab/KURE-Sparse-nano",
+    "revision": "4d68cc696984e3c342d959c659e94b48fbe16578",
+    "release_date": "2026-10-12",
+    "languages": [
+        "kor-Hang",
+        "eng-Latn"
+    ],
+    "n_parameters": 149373778,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 38401536,
+    "memory_usage_mb": 285.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 36282,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/nlpai-lab/KURE/tree/main/train/sparse",
+    "public_training_data": "https://huggingface.co/datasets/lightonai/embeddings-fine-tuning",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/nlpai-lab/KURE-Sparse-nano",
+    "similarity_fn_name": "dot",
+    "use_instructions": false,
+    "training_datasets": [
+        "SciFact",
+        "NQ",
+        "MIRACLReranking",
+        "SCIDOCS",
+        "ClimateFEVER",
+        "MSMARCO",
+        "SQuADKorV1Retrieval",
+        "FEVER",
+        "HotpotQA",
+        "CQADupstackRetrieval",
+        "TRECDL2020",
+        "TRECDL2019",
+        "MIRACLRetrieval",
+        "FiQA2018",
+        "Ko-StrategyQA",
+        "DBPedia",
+        "MultiLongDocRetrieval",
+        "QuoraRetrieval",
+        "MIRACLRetrievalHardNegatives"
+    ],
+    "adapted_from": "nlpai-lab/KURE-v2-unsupervised",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "sparse"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": [
+        "sparse-encoder"
+    ],
+    "loader": "SparseEncoderWrapper",
+    "is_cross_encoder": false
+}

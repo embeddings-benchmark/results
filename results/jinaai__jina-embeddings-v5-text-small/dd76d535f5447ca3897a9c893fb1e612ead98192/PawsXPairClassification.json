@@ -1,0 +1,148 @@
+{
+  "dataset_revision": "558da352e7dba3ed3229fc4922aef2ebaff0a90b",
+  "task_name": "PawsXPairClassification",
+  "mteb_version": "2.21.6",
+  "scores": {
+    "test": [
+      {
+        "similarity_accuracy": 0.6645,
+        "similarity_f1": 0.651039,
+        "similarity_precision": 0.538799,
+        "similarity_recall": 0.822346,
+        "similarity_ap": 0.669938,
+        "cosine_accuracy": 0.6645,
+        "cosine_f1": 0.651039,
+        "cosine_precision": 0.538799,
+        "cosine_recall": 0.822346,
+        "cosine_ap": 0.668491,
+        "manhattan_accuracy": 0.665,
+        "manhattan_f1": 0.651825,
+        "manhattan_precision": 0.541821,
+        "manhattan_recall": 0.817877,
+        "manhattan_ap": 0.66823,
+        "euclidean_accuracy": 0.664,
+        "euclidean_f1": 0.650935,
+        "euclidean_precision": 0.541081,
+        "euclidean_recall": 0.81676,
+        "euclidean_ap": 0.668554,
+        "dot_accuracy": 0.6615,
+        "dot_f1": 0.651121,
+        "dot_precision": 0.54382,
+        "dot_recall": 0.811173,
+        "dot_ap": 0.659562,
+        "max_accuracy": 0.665,
+        "max_f1": 0.651825,
+        "max_precision": 0.54382,
+        "max_recall": 0.822346,
+        "max_ap": 0.669938,
+        "main_score": 0.669938,
+        "hf_subset": "de",
+        "languages": [
+          "deu-Latn"
+        ],
+        "mteb_version": "2.21.6"
+      }
+    ],
+    "validation": [
+      {
+        "similarity_accuracy": 0.6685,
+        "similarity_f1": 0.615752,
+        "similarity_precision": 0.510285,
+        "similarity_recall": 0.776173,
+        "similarity_ap": 0.615933,
+        "cosine_accuracy": 0.6685,
+        "cosine_f1": 0.615752,
+        "cosine_precision": 0.510285,
+        "cosine_recall": 0.776173,
+        "cosine_ap": 0.612688,
+        "manhattan_accuracy": 0.6675,
+        "manhattan_f1": 0.616132,
+        "manhattan_precision": 0.516707,
+        "manhattan_recall": 0.762936,
+        "manhattan_ap": 0.612536,
+        "euclidean_accuracy": 0.6685,
+        "euclidean_f1": 0.61634,
+        "euclidean_precision": 0.511094,
+        "euclidean_recall": 0.776173,
+        "euclidean_ap": 0.612639,
+        "dot_accuracy": 0.669,
+        "dot_f1": 0.61597,
+        "dot_precision": 0.474609,
+        "dot_recall": 0.877256,
+        "dot_ap": 0.613886,
+        "max_accuracy": 0.669,
+        "max_f1": 0.61634,
+        "max_precision": 0.516707,
+        "max_recall": 0.877256,
+        "max_ap": 0.615933,
+        "main_score": 0.615933,
+        "hf_subset": "de",
+        "languages": [
+          "deu-Latn"
+        ],
+        "mteb_version": "2.21.6"
+      }
+    ]
+  },
+  "evaluation_time": 498.3639410031028,
+  "kg_co2_emissions": null,
+  "date": 1790192554.02687,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.370005965232849e-06,
+      "end": 3.398362762061879,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.398384617175907,
+      "end": 3.398389682173729,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 3.399906706996262,
+      "end": 127.36016121297143,
+      "split": "test",
+      "subset": "de"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 127.36021434818394,
+      "end": 250.86727790208533,
+      "split": "test",
+      "subset": "de"
+    },
+    {
+      "name": "Scoring",
+      "start": 250.86731598898768,
+      "end": 250.90510775800794,
+      "split": "test",
+      "subset": "de"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 250.97411796916276,
+      "end": 374.5659295071382,
+      "split": "validation",
+      "subset": "de"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 374.5659677949734,
+      "end": 498.2582179440651,
+      "split": "validation",
+      "subset": "de"
+    },
+    {
+      "name": "Scoring",
+      "start": 498.2582541690208,
+      "end": 498.2967779659666,
+      "split": "validation",
+      "subset": "de"
+    }
+  ]
+}

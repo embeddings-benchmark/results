@@ -1,0 +1,51 @@
+{
+    "loader_kwargs": {},
+    "name": "minishlab/potion-base-32M",
+    "revision": "1e5a03f8eeb2c98b928fbbd846f22f816360919f",
+    "release_date": "2025-01-22",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 32302592,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 32302592,
+    "memory_usage_mb": 123.0,
+    "max_tokens": Infinity,
+    "embed_dim": 512,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/MinishLab/model2vec",
+    "public_training_data": "https://huggingface.co/datasets/minishlab/tokenlearn-c4-en-bge-base-en-v1.5",
+    "framework": [
+        "NumPy",
+        "Sentence Transformers",
+        "ONNX",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/minishlab/potion-base-32M",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "NQ",
+        "AmazonReviewsClassification",
+        "NQ-NL",
+        "MLQARetrieval",
+        "NQHardNegatives",
+        "DuRetrieval"
+    ],
+    "adapted_from": "BAAI/bge-base-en-v1.5",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

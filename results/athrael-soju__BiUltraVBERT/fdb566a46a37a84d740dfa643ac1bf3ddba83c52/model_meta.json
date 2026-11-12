@@ -1,0 +1,72 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true
+    },
+    "name": "athrael-soju/BiUltraVBERT",
+    "revision": "fdb566a46a37a84d740dfa643ac1bf3ddba83c52",
+    "release_date": "2026-10-18",
+    "languages": [
+        "eng-Latn",
+        "spa-Latn",
+        "deu-Latn",
+        "fra-Latn",
+        "ita-Latn",
+        "por-Latn"
+    ],
+    "n_parameters": 254679552,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 37847040,
+    "memory_usage_mb": 486.0,
+    "max_tokens": 32768.0,
+    "embed_dim": 768,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://huggingface.co/datasets/athrael-soju/vdr-train-500k",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/athrael-soju/BiUltraVBERT",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "NQ",
+        "wiki-ss-nq",
+        "VisRAGRetChartQA",
+        "VisRAGRetSlideVQA",
+        "VisRAGRetPlotQA",
+        "VidoreTatdqaRetrieval",
+        "VDRMultilingualRetrieval",
+        "VisRAGRetArxivQA",
+        "VidoreArxivQARetrieval",
+        "VidoreInfoVQARetrieval",
+        "VisRAG-Ret-Train-In-domain-data",
+        "VidoreDocVQARetrieval",
+        "docmatix-ir",
+        "VisRAGRetMPDocVQA",
+        "VisRAG-Ret-Train-Synthetic-data",
+        "VisRAGRetInfoVQA"
+    ],
+    "adapted_from": "athrael-soju/UltraVBERT",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": [
+        "athrael-soju"
+    ],
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": [
+        "image"
+    ],
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

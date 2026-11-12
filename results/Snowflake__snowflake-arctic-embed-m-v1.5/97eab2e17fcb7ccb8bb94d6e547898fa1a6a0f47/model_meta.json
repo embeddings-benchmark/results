@@ -1,1 +1,61 @@
-{"name": "Snowflake/snowflake-arctic-embed-m-v1.5", "revision": "97eab2e17fcb7ccb8bb94d6e547898fa1a6a0f47", "release_date": "2024-07-08", "languages": ["eng-Latn"], "n_parameters": 109000000, "memory_usage_mb": 415.0, "max_tokens": 512.0, "embed_dim": 768, "license": "apache-2.0", "open_weights": true, "public_training_code": null, "public_training_data": null, "framework": ["Sentence Transformers", "PyTorch"], "reference": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v1.5", "similarity_fn_name": "cosine", "use_instructions": true, "training_datasets": {"NQ": ["test"], "NQ-NL": ["test"], "NQHardNegatives": ["test"], "NQ-PL": ["test"], "HotPotQA": ["test"], "HotPotQAHardNegatives": ["test"], "HotPotQA-PL": ["test"], "HotpotQA-NL": ["test"], "FEVER": ["test"], "FEVER-NL": ["test"], "FEVERHardNegatives": ["test"]}, "adapted_from": null, "superseded_by": "Snowflake/snowflake-arctic-embed-m-v2.0", "is_cross_encoder": null, "modalities": ["text"], "loader": "sentence_transformers_loader"}
+{
+    "loader_kwargs": {
+        "model_prompts": {
+            "query": "Represent this sentence for searching relevant passages: "
+        }
+    },
+    "name": "Snowflake/snowflake-arctic-embed-m-v1.5",
+    "revision": "97eab2e17fcb7ccb8bb94d6e547898fa1a6a0f47",
+    "release_date": "2024-07-08",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 109482240,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 23440896,
+    "memory_usage_mb": 415.0,
+    "max_tokens": 512.0,
+    "embed_dim": 768,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "ONNX",
+        "safetensors",
+        "GGUF"
+    ],
+    "reference": "https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v1.5",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "HotpotQA-NL",
+        "FEVERHardNegatives",
+        "NQ-NL",
+        "HotPotQA",
+        "NQ",
+        "FEVER-NL",
+        "NQ-PL",
+        "FEVER",
+        "NQHardNegatives",
+        "HotPotQAHardNegatives",
+        "HotPotQA-PL"
+    ],
+    "adapted_from": null,
+    "superseded_by": "Snowflake/snowflake-arctic-embed-m-v2.0",
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": "@article{merrick2024embedding,\n      title={Embedding And Clustering Your Data Can Improve Contrastive Pretraining},\n      author={Merrick, Luke},\n      journal={arXiv preprint arXiv:2407.18887},\n      year={2024},\n      eprint={2407.18887},\n      archivePrefix={arXiv},\n      url={https://arxiv.org/abs/2407.18887}\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

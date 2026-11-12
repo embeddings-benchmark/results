@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "26c88e99dcaba32bb45d0e1bfc21902337f6d471",
+  "task_name": "RuSciBenchOECDClusteringP2P",
+  "mteb_version": "2.26.14",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.529829,
+            0.546414,
+            0.526715,
+            0.531836,
+            0.529352,
+            0.534752,
+            0.541152,
+            0.545403,
+            0.544739,
+            0.543269
+          ]
+        },
+        "v_measure": 0.537346,
+        "v_measure_std": 0.007224,
+        "ami_scores": {
+          "Level 0": [
+            0.526387,
+            0.543079,
+            0.523255,
+            0.528376,
+            0.525864,
+            0.531332,
+            0.537774,
+            0.542069,
+            0.541411,
+            0.539916
+          ]
+        },
+        "ami": 0.533946,
+        "ami_std": 0.00728,
+        "main_score": 0.537346,
+        "hf_subset": "default",
+        "languages": [
+          "rus-Cyrl"
+        ],
+        "mteb_version": "2.26.14"
+      }
+    ]
+  },
+  "evaluation_time": 33.67601069796365,
+  "kg_co2_emissions": null,
+  "date": 1792489707.032854,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.5050401240587234e-06,
+      "end": 0.6218784269876778,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.6218917770311236,
+      "end": 1.0554691910510883,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.0599918310763314,
+      "end": 30.027228489052504,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 30.070889689028263,
+      "end": 33.64984846697189,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

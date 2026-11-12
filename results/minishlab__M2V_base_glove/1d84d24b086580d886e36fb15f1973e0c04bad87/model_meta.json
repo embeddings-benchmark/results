@@ -1,0 +1,50 @@
+{
+    "loader_kwargs": {},
+    "name": "minishlab/M2V_base_glove",
+    "revision": "1d84d24b086580d886e36fb15f1973e0c04bad87",
+    "release_date": "2024-09-21",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 102000000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 102000000,
+    "memory_usage_mb": 391.0,
+    "max_tokens": Infinity,
+    "embed_dim": 256,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/MinishLab/model2vec",
+    "public_training_data": null,
+    "framework": [
+        "NumPy",
+        "Sentence Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/minishlab/M2V_base_glove",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "MLQARetrieval",
+        "NQHardNegatives",
+        "NQ-NL",
+        "AmazonReviewsClassification",
+        "NQ",
+        "DuRetrieval"
+    ],
+    "adapted_from": "BAAI/bge-base-en-v1.5",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}

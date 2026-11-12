@@ -22,9 +22,6 @@
             "BrightStackoverflowLongRetrieval-query": "Represent this stackoverflow post for searching relevant document: ",
             "BrightSustainableLivingLongRetrieval-query": "Represent this sustainable_living post for searching relevant documents: ",
             "BrightPonyLongRetrieval-query": "Represent this Pony question for searching relevant documents: "
-        },
-        "model_kwargs": {
-            "attn_implementation": "sdpa"
         }
     },
     "name": "BAAI/bge-large-en-v1.5",
@@ -54,12 +51,12 @@
     "similarity_fn_name": "cosine",
     "use_instructions": true,
     "training_datasets": [
-        "DuRetrieval",
         "MLQARetrieval",
-        "NQHardNegatives",
         "AmazonReviewsClassification",
         "NQ",
-        "NQ-NL"
+        "NQ-NL",
+        "DuRetrieval",
+        "NQHardNegatives"
     ],
     "adapted_from": null,
     "superseded_by": null,
@@ -69,7 +66,7 @@
     "model_type": [
         "dense"
     ],
-    "citation": "@misc{xiao2024cpackpackagedresourcesadvance,\n  archiveprefix = {arXiv},\n  author = {Shitao Xiao and Zheng Liu and Peitian Zhang and Niklas Muennighoff and Defu Lian and Jian-Yun Nie},\n  eprint = {2309.07597},\n  primaryclass = {cs.CL},\n  title = {C-Pack: Packaged Resources To Advance General Chinese Embedding},\n  url = {https://arxiv.org/abs/2309.07597},\n  year = {2024},\n}\n",
+    "citation": "@misc{xiao2024cpackpackedresourcesgeneral,\n  archiveprefix = {arXiv},\n  author = {Shitao Xiao and Zheng Liu and Peitian Zhang and Niklas Muennighoff and Defu Lian and Jian-Yun Nie},\n  eprint = {2309.07597},\n  primaryclass = {cs.CL},\n  title = {C-Pack: Packed Resources For General Chinese Embeddings},\n  url = {https://arxiv.org/abs/2309.07597},\n  year = {2024},\n}\n",
     "contacts": null,
     "experiment_kwargs": null,
     "output_dtypes": null,

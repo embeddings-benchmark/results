@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "4ceb1312583fd2c7c73ad2d550b726124dcd39a0",
+  "task_name": "NLPTwitterAnalysisClustering",
+  "mteb_version": "2.26.20",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.702116,
+            0.653311,
+            0.694684,
+            0.718149,
+            0.702408,
+            0.664417,
+            0.733108,
+            0.695453,
+            0.696636,
+            0.733581
+          ]
+        },
+        "v_measure": 0.699386,
+        "v_measure_std": 0.024629,
+        "ami_scores": {
+          "Level 0": [
+            0.700329,
+            0.651169,
+            0.69286,
+            0.716506,
+            0.700656,
+            0.662376,
+            0.731558,
+            0.693644,
+            0.694887,
+            0.732018
+          ]
+        },
+        "ami": 0.6976,
+        "ami_std": 0.024807,
+        "main_score": 0.699386,
+        "hf_subset": "default",
+        "languages": [
+          "fas-Arab"
+        ],
+        "mteb_version": "2.26.20"
+      }
+    ]
+  },
+  "evaluation_time": 4.585725957062095,
+  "kg_co2_emissions": null,
+  "date": 1792766461.106408,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 7.3409173637628555e-06,
+      "end": 1.481942234793678,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.4819546688813716,
+      "end": 1.5592577229253948,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.561999533791095,
+      "end": 1.5834350457880646,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 1.5854231650009751,
+      "end": 4.560068299993873,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

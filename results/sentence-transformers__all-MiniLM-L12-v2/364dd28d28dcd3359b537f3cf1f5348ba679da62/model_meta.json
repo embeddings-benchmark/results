@@ -1,7 +1,5 @@
 {
-    "loader_kwargs": {
-        "device": "cuda"
-    },
+    "loader_kwargs": {},
     "name": "sentence-transformers/all-MiniLM-L12-v2",
     "revision": "364dd28d28dcd3359b537f3cf1f5348ba679da62",
     "release_date": "2021-08-30",
@@ -30,15 +28,15 @@
     "use_instructions": false,
     "training_datasets": [
         "NQHardNegatives",
-        "NQ",
+        "NanoNQRetrieval",
+        "NQ-NL",
+        "NQ-PL",
         "mMARCO-NL",
-        "MSMARCO-PL",
         "MSMARCOHardNegatives",
+        "MSMARCO-PL",
         "MSMARCO",
         "NanoMSMARCORetrieval",
-        "NQ-NL",
-        "NanoNQRetrieval",
-        "NQ-PL"
+        "NQ"
     ],
     "adapted_from": null,
     "superseded_by": null,

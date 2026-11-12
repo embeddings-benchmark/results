@@ -1,0 +1,69 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true
+    },
+    "name": "nlpai-lab/KURE-Sparse-base",
+    "revision": "b3e4c8b066c1ad1e77c36d9cd475cf38b10acd80",
+    "release_date": "2026-10-12",
+    "languages": [
+        "kor-Hang",
+        "eng-Latn"
+    ],
+    "n_parameters": 592637046,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 256002048,
+    "memory_usage_mb": 1130.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 280524,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": "https://github.com/nlpai-lab/KURE/tree/main/train/sparse",
+    "public_training_data": "https://huggingface.co/datasets/lightonai/embeddings-fine-tuning",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/nlpai-lab/KURE-Sparse-base",
+    "similarity_fn_name": "dot",
+    "use_instructions": false,
+    "training_datasets": [
+        "Ko-StrategyQA",
+        "CQADupstackRetrieval",
+        "SCIDOCS",
+        "QuoraRetrieval",
+        "MIRACLRetrieval",
+        "MIRACLReranking",
+        "HotpotQA",
+        "MultiLongDocRetrieval",
+        "NQ",
+        "SQuADKorV1Retrieval",
+        "DBPedia",
+        "FEVER",
+        "ClimateFEVER",
+        "SciFact",
+        "TRECDL2019",
+        "MIRACLRetrievalHardNegatives",
+        "MSMARCO",
+        "TRECDL2020",
+        "FiQA2018"
+    ],
+    "adapted_from": "omai-research/milco-650m",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "sparse"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "sparse-encoder"
+    ],
+    "loader": "SparseEncoderWrapper",
+    "is_cross_encoder": false
+}

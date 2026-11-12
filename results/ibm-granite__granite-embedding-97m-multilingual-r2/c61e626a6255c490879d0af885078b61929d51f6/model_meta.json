@@ -1,7 +1,5 @@
 {
-    "loader_kwargs": {
-        "device": "cpu"
-    },
+    "loader_kwargs": {},
     "name": "ibm-granite/granite-embedding-97m-multilingual-r2",
     "revision": "c61e626a6255c490879d0af885078b61929d51f6",
     "release_date": "2026-04-29",
@@ -80,27 +78,27 @@
     "similarity_fn_name": "cosine",
     "use_instructions": null,
     "training_datasets": [
-        "FEVERHardNegatives",
-        "HotpotQAHardNegatives",
-        "TempReasonL2Context",
-        "NQHardNegatives",
-        "SpartQA",
-        "HotPotQA",
-        "StackOverflowDupQuestions",
-        "DBPedia",
         "TempReasonL3Context",
+        "WinoGrande",
+        "TempReasonL2Fact",
+        "TempReasonL2Pure",
+        "FEVERHardNegatives",
+        "StatcanDialogueDatasetRetrieval",
+        "NQHardNegatives",
+        "HotpotQAHardNegatives",
+        "TempReasonL3Fact",
+        "DBPedia",
+        "TempReasonL2Context",
         "MIRACLRetrieval",
         "MrTidyRetrieval",
-        "TempReasonL1",
-        "TempReasonL2Fact",
-        "StatcanDialogueDatasetRetrieval",
-        "TempReasonL2Pure",
-        "TempReasonL3Pure",
-        "FEVER",
-        "MIRACLRetrievalHardNegatives",
-        "WinoGrande",
+        "SpartQA",
         "NQ",
-        "TempReasonL3Fact"
+        "FEVER",
+        "StackOverflowDupQuestions",
+        "MIRACLRetrievalHardNegatives",
+        "HotPotQA",
+        "TempReasonL1",
+        "TempReasonL3Pure"
     ],
     "adapted_from": null,
     "superseded_by": null,
@@ -110,14 +108,14 @@
     "model_type": [
         "dense"
     ],
-    "citation": "@article{awasthy2026graniteembeddingmultilingualr2,\n      title={Granite Embedding Multilingual R2 Models}, \n      author={Parul Awasthy and Aashka Trivedi and Yushu Yang and Ken Barker and Yulong Li and Bhavani Iyer and Martin Franz and Juergen Bross and Meet Doshi and Vignesh P and Vishwajeet Kumar and Todd Ward and Abraham Daniels and Madison Lee and Luis Lastras and Jaydeep Sen and Radu Florian},\n      year={2026},\n      journal={arXiv preprint arXiv:2605.13521}\n      url={https://arxiv.org/abs/2605.13521}, \n}",
+    "citation": "@article{awasthy2026graniteembeddingmultilingualr2,\n      title={Granite Embedding Multilingual R2 Models},\n      author={Parul Awasthy and Aashka Trivedi and Yushu Yang and Ken Barker and Yulong Li and Bhavani Iyer and Martin Franz and Juergen Bross and Meet Doshi and Vignesh P and Vishwajeet Kumar and Todd Ward and Abraham Daniels and Madison Lee and Luis Lastras and Jaydeep Sen and Radu Florian},\n      year={2026},\n      journal={arXiv preprint arXiv:2605.13521}\n      url={https://arxiv.org/abs/2605.13521},\n}",
     "contacts": [
         "aashka-trivedi",
         "pawasthy",
         "hansolosan"
     ],
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "bfloat16",
     "extra_requirements_groups": null,
     "loader": "SentenceTransformerEncoderWrapper",
     "is_cross_encoder": false

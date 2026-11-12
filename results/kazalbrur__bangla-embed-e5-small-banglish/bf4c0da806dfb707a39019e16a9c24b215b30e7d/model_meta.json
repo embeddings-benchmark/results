@@ -1,0 +1,77 @@
+{
+    "loader_kwargs": {
+        "model_prompts": {
+            "query": "query: ",
+            "document": "passage: "
+        }
+    },
+    "name": "kazalbrur/bangla-embed-e5-small-banglish",
+    "revision": "bf4c0da806dfb707a39019e16a9c24b215b30e7d",
+    "release_date": "2026-06-23",
+    "languages": [
+        "ben-Beng",
+        "ben-Latn",
+        "eng-Latn"
+    ],
+    "n_parameters": 118048000,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 96014208,
+    "memory_usage_mb": 450.0,
+    "max_tokens": 512.0,
+    "embed_dim": 1024,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/kazalbrur/bangla-embed-e5-small-banglish",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "XNLI",
+        "MIRACLRetrievalHardNegatives",
+        "NQ-PL",
+        "XNLIV2",
+        "FEVER-PL",
+        "IndicXnliPairClassification",
+        "FEVERHardNegatives",
+        "FEVER-NL",
+        "MSMARCO-PL",
+        "MrTidyRetrieval",
+        "HotpotQA-PL",
+        "XQuADRetrieval",
+        "MSMARCO",
+        "NQHardNegatives",
+        "NanoMSMARCORetrieval",
+        "mMARCO-NL",
+        "FEVER",
+        "NQ",
+        "NanoNQRetrieval",
+        "MIRACLRetrieval",
+        "MIRACLReranking",
+        "MSMARCOHardNegatives",
+        "HotpotQAHardNegatives",
+        "NQ-NL",
+        "HotpotQA",
+        "HotpotQA-NL"
+    ],
+    "adapted_from": "intfloat/multilingual-e5-small",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
