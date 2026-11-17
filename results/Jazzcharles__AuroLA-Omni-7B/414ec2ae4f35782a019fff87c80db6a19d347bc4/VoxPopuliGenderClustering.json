@@ -1,0 +1,86 @@
+{
+  "dataset_revision": "310a01e178584866d5d15f89541da9fac235df7d",
+  "task_name": "VoxPopuliGenderClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "train": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.749256,
+            0.733364,
+            0.750021,
+            0.724204,
+            0.74188,
+            0.733991,
+            0.727184,
+            0.739088,
+            0.738774,
+            0.725836
+          ]
+        },
+        "v_measure": 0.73636,
+        "v_measure_std": 0.008683,
+        "ami_scores": {
+          "Level 0": [
+            0.749245,
+            0.733352,
+            0.75001,
+            0.724192,
+            0.741869,
+            0.733979,
+            0.727172,
+            0.739077,
+            0.738763,
+            0.725824
+          ]
+        },
+        "ami": 0.736348,
+        "ami_std": 0.008684,
+        "main_score": 0.73636,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn",
+          "fra-Latn",
+          "spa-Latn",
+          "pol-Latn",
+          "deu-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 62.91374873596942,
+  "kg_co2_emissions": null,
+  "date": 1793323973.591466,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.370005965232849e-06,
+      "end": 0.038273801968898624,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.03828069200972095,
+      "end": 0.06023693300085142,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.061238311987835914,
+      "end": 46.17357406299561,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 46.179660365974996,
+      "end": 62.90140277898172,
+      "split": "train",
+      "subset": "default"
+    }
+  ]
+}

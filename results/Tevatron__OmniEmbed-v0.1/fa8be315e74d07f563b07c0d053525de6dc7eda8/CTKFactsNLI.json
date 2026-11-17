@@ -1,0 +1,148 @@
+{
+  "dataset_revision": "da834e176f18e4a4adc4cbc9ad9720c14168a4bb",
+  "task_name": "CTKFactsNLI",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "validation": [
+      {
+        "similarity_accuracy": 0.652459,
+        "similarity_f1": 0.772074,
+        "similarity_precision": 0.635135,
+        "similarity_recall": 0.984293,
+        "similarity_ap": 0.727318,
+        "cosine_accuracy": 0.652459,
+        "cosine_f1": 0.772074,
+        "cosine_precision": 0.635135,
+        "cosine_recall": 0.984293,
+        "cosine_ap": 0.727318,
+        "manhattan_accuracy": 0.652459,
+        "manhattan_f1": 0.773663,
+        "manhattan_precision": 0.637288,
+        "manhattan_recall": 0.984293,
+        "manhattan_ap": 0.729597,
+        "euclidean_accuracy": 0.652459,
+        "euclidean_f1": 0.773006,
+        "euclidean_precision": 0.634228,
+        "euclidean_recall": 0.989529,
+        "euclidean_ap": 0.728334,
+        "dot_accuracy": 0.655738,
+        "dot_f1": 0.770492,
+        "dot_precision": 0.632997,
+        "dot_recall": 0.984293,
+        "dot_ap": 0.726734,
+        "max_accuracy": 0.655738,
+        "max_f1": 0.773663,
+        "max_precision": 0.637288,
+        "max_recall": 0.989529,
+        "max_ap": 0.729597,
+        "main_score": 0.729597,
+        "hf_subset": "default",
+        "languages": [
+          "ces-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ],
+    "test": [
+      {
+        "similarity_accuracy": 0.717333,
+        "similarity_f1": 0.82623,
+        "similarity_precision": 0.72,
+        "similarity_recall": 0.969231,
+        "similarity_ap": 0.762219,
+        "cosine_accuracy": 0.717333,
+        "cosine_f1": 0.82623,
+        "cosine_precision": 0.72,
+        "cosine_recall": 0.969231,
+        "cosine_ap": 0.762219,
+        "manhattan_accuracy": 0.72,
+        "manhattan_f1": 0.828151,
+        "manhattan_precision": 0.720798,
+        "manhattan_recall": 0.973077,
+        "manhattan_ap": 0.760074,
+        "euclidean_accuracy": 0.714667,
+        "euclidean_f1": 0.824877,
+        "euclidean_precision": 0.717949,
+        "euclidean_recall": 0.969231,
+        "euclidean_ap": 0.762544,
+        "dot_accuracy": 0.717333,
+        "dot_f1": 0.826797,
+        "dot_precision": 0.71875,
+        "dot_recall": 0.973077,
+        "dot_ap": 0.762449,
+        "max_accuracy": 0.72,
+        "max_f1": 0.828151,
+        "max_precision": 0.720798,
+        "max_recall": 0.973077,
+        "max_ap": 0.762544,
+        "main_score": 0.762544,
+        "hf_subset": "default",
+        "languages": [
+          "ces-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 19.51167540391907,
+  "kg_co2_emissions": null,
+  "date": 1793368120.936527,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 7.330963853746653e-06,
+      "end": 0.2911017279839143,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.29112692800117657,
+      "end": 0.29113045800477266,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 0.29258708097040653,
+      "end": 6.826530830992851,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 6.826581320958212,
+      "end": 9.009961670963094,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 9.01001784199616,
+      "end": 9.03095314395614,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 9.054007524973713,
+      "end": 16.99541362200398,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 16.99551146297017,
+      "end": 19.440967497997917,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 19.44101407798007,
+      "end": 19.484194143966306,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

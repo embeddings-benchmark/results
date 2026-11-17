@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "13af08387c3ce5e86c179a3718eb158669268d65",
+  "task_name": "RAVDESSVideoClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.189317,
+            0.166867,
+            0.178714,
+            0.188308,
+            0.133776,
+            0.168402,
+            0.15077,
+            0.216818,
+            0.197692,
+            0.175567
+          ]
+        },
+        "v_measure": 0.176623,
+        "v_measure_std": 0.022427,
+        "ami_scores": {
+          "Level 0": [
+            0.188716,
+            0.166253,
+            0.178103,
+            0.187706,
+            0.133122,
+            0.167787,
+            0.150134,
+            0.216244,
+            0.19709,
+            0.174958
+          ]
+        },
+        "ami": 0.176011,
+        "ami_std": 0.022447,
+        "main_score": 0.176623,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 774.3895775850397,
+  "kg_co2_emissions": null,
+  "date": 1793354206.038306,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.609996151179075e-06,
+      "end": 0.023755099973641336,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.023768340004608035,
+      "end": 0.023772159998770803,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.028369583014864475,
+      "end": 749.1570277399733,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 749.1760277029825,
+      "end": 774.3615505039925,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

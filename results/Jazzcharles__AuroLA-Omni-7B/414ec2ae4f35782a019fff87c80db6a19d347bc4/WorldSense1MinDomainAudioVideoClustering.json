@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "10c7ce0eb32d620f1f685bfedde2724066068a1c",
+  "task_name": "WorldSense1MinDomainAudioVideoClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.419456,
+            0.425349,
+            0.44271,
+            0.415908,
+            0.43359,
+            0.430275,
+            0.440477,
+            0.418699,
+            0.441923,
+            0.437324
+          ]
+        },
+        "v_measure": 0.430571,
+        "v_measure_std": 0.009674,
+        "ami_scores": {
+          "Level 0": [
+            0.419015,
+            0.424909,
+            0.442278,
+            0.415466,
+            0.433154,
+            0.429843,
+            0.440049,
+            0.418256,
+            0.441498,
+            0.436892
+          ]
+        },
+        "ami": 0.430136,
+        "ami_std": 0.00968,
+        "main_score": 0.430571,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 401.8445182419382,
+  "kg_co2_emissions": null,
+  "date": 1793343076.459804,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.069014150649309e-06,
+      "end": 0.021379507961682975,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.02138550899690017,
+      "end": 0.04308520001359284,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.046458449971396476,
+      "end": 377.07442843395984,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 377.0956562109641,
+      "end": 401.78539247100707,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
