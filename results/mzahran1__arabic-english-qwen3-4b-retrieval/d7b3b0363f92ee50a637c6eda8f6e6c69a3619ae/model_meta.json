@@ -1,0 +1,57 @@
+{
+    "loader_kwargs": {},
+    "name": "mzahran1/arabic-english-qwen3-4b-retrieval",
+    "revision": "d7b3b0363f92ee50a637c6eda8f6e6c69a3619ae",
+    "release_date": "2026-11-11",
+    "languages": [
+        "ara-Arab",
+        "eng-Latn"
+    ],
+    "n_parameters": 4021774336,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 388262400,
+    "memory_usage_mb": 7671.0,
+    "max_tokens": 512.0,
+    "embed_dim": 2560,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/mzahran1/arabic-english-qwen3-4b-retrieval",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "HotpotQA",
+        "MIRACLRetrieval",
+        "FEVER",
+        "CodeSearchNet",
+        "T2Retrieval",
+        "MSMARCO",
+        "MrTidyRetrieval",
+        "XQuADRetrieval",
+        "DuRetrieval",
+        "NQ",
+        "CMedQAv2-reranking",
+        "MMarcoReranking"
+    ],
+    "adapted_from": "Qwen/Qwen3-Embedding-4B",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": null,
+    "loader": "q3e_instruct_loader",
+    "is_cross_encoder": false
+}

@@ -1,0 +1,48 @@
+{
+    "loader_kwargs": {},
+    "name": "mzahran1/arabic-english-bge-m3-retrieval",
+    "revision": "467a29ba02658dbf772a7b87535cba06eb6525a3",
+    "release_date": "2026-11-05",
+    "languages": [
+        "ara-Arab",
+        "eng-Latn"
+    ],
+    "n_parameters": 567754752,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 256002048,
+    "memory_usage_mb": 2166.0,
+    "max_tokens": 256.0,
+    "embed_dim": 1024,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/mahmoudzahran01/arabic-english-retrieval-eval",
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/mzahran1/arabic-english-bge-m3-retrieval",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "MIRACLRetrieval",
+        "MrTidyRetrieval",
+        "XQuADRetrieval"
+    ],
+    "adapted_from": "BAAI/bge-m3",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
