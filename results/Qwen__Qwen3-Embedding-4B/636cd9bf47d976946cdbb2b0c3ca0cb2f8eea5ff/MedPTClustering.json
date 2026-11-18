@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "230d08b2cdf8fe8447fc65b2aa8aa6b13b1776dc",
+  "task_name": "MedPTClustering",
+  "mteb_version": "2.27.16",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.642198,
+            0.610642,
+            0.635962,
+            0.612632,
+            0.652997,
+            0.625768,
+            0.635785,
+            0.672571,
+            0.652397,
+            0.682761
+          ]
+        },
+        "v_measure": 0.642371,
+        "v_measure_std": 0.022379,
+        "ami_scores": {
+          "Level 0": [
+            0.641654,
+            0.610049,
+            0.63541,
+            0.612043,
+            0.652465,
+            0.625194,
+            0.635237,
+            0.672079,
+            0.651865,
+            0.68228
+          ]
+        },
+        "ami": 0.641828,
+        "ami_std": 0.022414,
+        "main_score": 0.642371,
+        "hf_subset": "default",
+        "languages": [
+          "por-Latn"
+        ],
+        "mteb_version": "2.27.16"
+      }
+    ]
+  },
+  "evaluation_time": 10.039452751999761,
+  "kg_co2_emissions": null,
+  "date": 1794997761.987653,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.848999990121229e-06,
+      "end": 1.5244941189998826,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.524505188999683,
+      "end": 1.5245076619999054,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.5255212839997512,
+      "end": 4.5964957199998935,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 4.604724291999901,
+      "end": 10.030555671999991,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
