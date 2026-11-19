@@ -1,7 +1,7 @@
 {
   "dataset_revision": "e3dda5e115e487b39ec7e618c0c6a29137052a55",
   "task_name": "BQ",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "validation": [
       {
@@ -17,7 +17,8 @@
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ],
     "test": [
@@ -34,10 +35,70 @@
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 19.340351819992065,
-  "kg_co2_emissions": null
+  "evaluation_time": 45.14353955537081,
+  "kg_co2_emissions": null,
+  "date": 1795057513.306569,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.116445779800415e-06,
+      "end": 3.5052006877958775,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.505209606140852,
+      "end": 3.505211044102907,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 3.5101975351572037,
+      "end": 13.682818733155727,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 13.682841684669256,
+      "end": 24.107875160872936,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 24.10789291933179,
+      "end": 24.224537581205368,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 24.365122336894274,
+      "end": 34.49295049905777,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 34.492983005940914,
+      "end": 45.00823551416397,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 45.00826022401452,
+      "end": 45.11504636704922,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 {
-  "dataset_revision": "539bbde593d947e2a124ba72651aafc09eb33fc2",
+  "dataset_revision": "4940a7b26bf53463cfe3435bb8e201963e9c31ae",
   "task_name": "MMarcoRetrieval",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "dev": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.80817,
         "recall_at_100": 0.88213,
         "recall_at_1000": 0.94675,
+        "accuracy": 0.52795,
         "precision_at_1": 0.54713,
         "precision_at_3": 0.23372,
         "precision_at_5": 0.1514,
@@ -145,14 +146,60 @@
         "nauc_mrr_at_1000_max": 0.573566,
         "nauc_mrr_at_1000_std": 0.079628,
         "nauc_mrr_at_1000_diff1": 0.741314,
+        "hit_rate_at_1": 0.54713,
+        "hit_rate_at_3": 0.67149,
+        "hit_rate_at_5": 0.71991,
+        "hit_rate_at_10": 0.77235,
+        "hit_rate_at_20": 0.81275,
+        "hit_rate_at_100": 0.88453,
+        "hit_rate_at_1000": 0.94785,
         "main_score": 0.65286,
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 436.89075112342834,
-  "kg_co2_emissions": null
+  "evaluation_time": 501.5496126227081,
+  "kg_co2_emissions": null,
+  "date": 1795057435.334454,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 1.4126300811767578e-05,
+      "end": 22.683117371052504,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 22.68313905969262,
+      "end": 22.68314266949892,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 22.748677771538496,
+      "end": 27.631470702588558,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Searching corpus",
+      "start": 27.638361483812332,
+      "end": 488.9130979627371,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 491.6689059436321,
+      "end": 501.28922659531236,
+      "split": "dev",
+      "subset": "default"
+    }
+  ]
 }

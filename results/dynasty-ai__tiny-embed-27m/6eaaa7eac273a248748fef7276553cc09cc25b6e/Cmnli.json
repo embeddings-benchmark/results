@@ -1,58 +1,87 @@
 {
   "dataset_revision": "41bc36f332156f7adc9e38f53777c959b2ae9766",
   "task_name": "Cmnli",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "validation": [
       {
         "similarity_accuracy": 0.732772,
-        "similarity_accuracy_threshold": 0.708644,
         "similarity_f1": 0.752761,
-        "similarity_f1_threshold": 0.647229,
         "similarity_precision": 0.673937,
         "similarity_recall": 0.852467,
-        "similarity_ap": 0.813327,
+        "similarity_ap": 0.813073,
         "cosine_accuracy": 0.732772,
-        "cosine_accuracy_threshold": 0.708644,
         "cosine_f1": 0.752761,
-        "cosine_f1_threshold": 0.647229,
         "cosine_precision": 0.673937,
         "cosine_recall": 0.852467,
         "cosine_ap": 0.813327,
         "manhattan_accuracy": 0.731569,
-        "manhattan_accuracy_threshold": 13.891953,
         "manhattan_f1": 0.752359,
-        "manhattan_f1_threshold": 15.237061,
         "manhattan_precision": 0.670261,
         "manhattan_recall": 0.857377,
-        "manhattan_ap": 0.81297,
+        "manhattan_ap": 0.812901,
         "euclidean_accuracy": 0.732772,
-        "euclidean_accuracy_threshold": 0.763356,
         "euclidean_f1": 0.752761,
-        "euclidean_f1_threshold": 0.839965,
         "euclidean_precision": 0.673937,
         "euclidean_recall": 0.852467,
-        "euclidean_ap": 0.813327,
+        "euclidean_ap": 0.813258,
         "dot_accuracy": 0.732772,
-        "dot_accuracy_threshold": 0.708644,
         "dot_f1": 0.752761,
-        "dot_f1_threshold": 0.647229,
         "dot_precision": 0.673937,
         "dot_recall": 0.852467,
-        "dot_ap": 0.813331,
+        "dot_ap": 0.813338,
         "max_accuracy": 0.732772,
         "max_f1": 0.752761,
         "max_precision": 0.673937,
         "max_recall": 0.857377,
-        "max_ap": 0.813331,
+        "max_ap": 0.813338,
         "main_score": 0.732772,
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 6.678452491760254,
-  "kg_co2_emissions": null
+  "evaluation_time": 21.044117111712694,
+  "kg_co2_emissions": null,
+  "date": 1795055106.677193,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 8.180737495422363e-06,
+      "end": 3.79263399541378,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.7926483526825905,
+      "end": 3.7938967756927013,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 3.8304906636476517,
+      "end": 14.647789813578129,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 14.647819627076387,
+      "end": 20.75073465704918,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 20.750756543129683,
+      "end": 20.962003875523806,
+      "split": "validation",
+      "subset": "default"
+    }
+  ]
 }

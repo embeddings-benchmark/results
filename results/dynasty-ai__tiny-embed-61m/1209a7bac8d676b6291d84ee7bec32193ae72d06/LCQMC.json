@@ -1,7 +1,7 @@
 {
   "dataset_revision": "17f9b096f80380fce5ed12a9be8be7784b337daf",
   "task_name": "LCQMC",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "test": [
       {
@@ -17,10 +17,49 @@
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 10.39677906036377,
-  "kg_co2_emissions": null
+  "evaluation_time": 20.18819810450077,
+  "kg_co2_emissions": null,
+  "date": 1795054750.915954,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.433095455169678e-06,
+      "end": 3.834941942244768,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 3.834950402379036,
+      "end": 3.8349520042538643,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 3.843418959528208,
+      "end": 11.716287806630135,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 11.716305945068598,
+      "end": 19.736505329608917,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 19.736523635685444,
+      "end": 20.160800900310278,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

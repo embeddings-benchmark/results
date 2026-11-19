@@ -1,7 +1,7 @@
 {
-  "dataset_revision": "a1a333e290fe30b10f3f56498e3a0d911a693ced",
+  "dataset_revision": "313c81b51311893c8fd09ca432f96b841ed0ebb3",
   "task_name": "DuRetrieval",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "dev": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.82461,
         "recall_at_100": 0.90598,
         "recall_at_1000": 0.9682,
+        "accuracy": 0.20544,
         "precision_at_1": 0.759,
         "precision_at_3": 0.64,
         "precision_at_5": 0.5443,
@@ -145,14 +146,60 @@
         "nauc_mrr_at_1000_max": 0.603793,
         "nauc_mrr_at_1000_std": 0.350019,
         "nauc_mrr_at_1000_diff1": 0.273217,
+        "hit_rate_at_1": 0.759,
+        "hit_rate_at_3": 0.894,
+        "hit_rate_at_5": 0.9145,
+        "hit_rate_at_10": 0.9305,
+        "hit_rate_at_20": 0.9475,
+        "hit_rate_at_100": 0.967,
+        "hit_rate_at_1000": 0.989,
         "main_score": 0.73016,
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 1163.6062927246094,
-  "kg_co2_emissions": null
+  "evaluation_time": 1086.8715857863426,
+  "kg_co2_emissions": null,
+  "date": 1795063930.739649,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 7.443130016326904e-06,
+      "end": 12.050355046987534,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 12.050367537885904,
+      "end": 12.050371684134007,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 12.063737895339727,
+      "end": 13.240987595170736,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Searching corpus",
+      "start": 13.243032846599817,
+      "end": 1083.3549898155034,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 1084.0099539496005,
+      "end": 1086.7946862466633,
+      "split": "dev",
+      "subset": "default"
+    }
+  ]
 }

@@ -1,42 +1,32 @@
 {
   "dataset_revision": "66e76a618a34d6d565d5538088562851e6daa7ec",
   "task_name": "Ocnli",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "validation": [
       {
         "similarity_accuracy": 0.634001,
-        "similarity_accuracy_threshold": 0.708726,
         "similarity_f1": 0.693661,
-        "similarity_f1_threshold": 0.561367,
         "similarity_precision": 0.566088,
         "similarity_recall": 0.895459,
         "similarity_ap": 0.667334,
         "cosine_accuracy": 0.634001,
-        "cosine_accuracy_threshold": 0.708726,
         "cosine_f1": 0.693661,
-        "cosine_f1_threshold": 0.561367,
         "cosine_precision": 0.566088,
         "cosine_recall": 0.895459,
         "cosine_ap": 0.667334,
         "manhattan_accuracy": 0.631294,
-        "manhattan_accuracy_threshold": 16.915318,
         "manhattan_f1": 0.692778,
-        "manhattan_f1_threshold": 19.836344,
         "manhattan_precision": 0.564495,
         "manhattan_recall": 0.896515,
-        "manhattan_ap": 0.666591,
+        "manhattan_ap": 0.666589,
         "euclidean_accuracy": 0.634001,
-        "euclidean_accuracy_threshold": 0.763249,
         "euclidean_f1": 0.693661,
-        "euclidean_f1_threshold": 0.936624,
         "euclidean_precision": 0.566088,
         "euclidean_recall": 0.895459,
         "euclidean_ap": 0.667334,
         "dot_accuracy": 0.634001,
-        "dot_accuracy_threshold": 0.708726,
         "dot_f1": 0.693661,
-        "dot_f1_threshold": 0.561367,
         "dot_precision": 0.566088,
         "dot_recall": 0.895459,
         "dot_ap": 0.667334,
@@ -49,10 +39,49 @@
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 2.251018762588501,
-  "kg_co2_emissions": null
+  "evaluation_time": 8.390848323702812,
+  "kg_co2_emissions": null,
+  "date": 1795053226.407264,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.649643182754517e-06,
+      "end": 4.535614334046841,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 4.535626281052828,
+      "end": 4.536867585033178,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 4.54859571158886,
+      "end": 6.829162817448378,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 6.829189080744982,
+      "end": 8.32442470639944,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 8.324444517493248,
+      "end": 8.345949184149504,
+      "split": "validation",
+      "subset": "default"
+    }
+  ]
 }

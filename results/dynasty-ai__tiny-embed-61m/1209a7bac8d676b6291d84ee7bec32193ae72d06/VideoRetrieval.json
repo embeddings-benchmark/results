@@ -1,7 +1,7 @@
 {
-  "dataset_revision": "58c2597a5943a2ba48f4668c3b90d796283c5639",
+  "dataset_revision": "146a9d5e4fd7a9c182b6b92cccb6a3753994305c",
   "task_name": "VideoRetrieval",
-  "mteb_version": "1.39.7",
+  "mteb_version": "2.27.18",
   "scores": {
     "dev": [
       {
@@ -26,6 +26,7 @@
         "recall_at_20": 0.831,
         "recall_at_100": 0.916,
         "recall_at_1000": 0.956,
+        "accuracy": 0.458,
         "precision_at_1": 0.458,
         "precision_at_3": 0.21067,
         "precision_at_5": 0.1396,
@@ -33,13 +34,13 @@
         "precision_at_20": 0.04155,
         "precision_at_100": 0.00916,
         "precision_at_1000": 0.00096,
-        "mrr_at_1": 0.457,
-        "mrr_at_3": 0.535167,
-        "mrr_at_5": 0.550567,
-        "mrr_at_10": 0.558435,
-        "mrr_at_20": 0.563608,
-        "mrr_at_100": 0.565954,
-        "mrr_at_1000": 0.566134,
+        "mrr_at_1": 0.458,
+        "mrr_at_3": 0.535667,
+        "mrr_at_5": 0.551067,
+        "mrr_at_10": 0.558935,
+        "mrr_at_20": 0.564108,
+        "mrr_at_100": 0.566454,
+        "mrr_at_1000": 0.566634,
         "nauc_ndcg_at_1_max": 0.21277,
         "nauc_ndcg_at_1_std": -0.156214,
         "nauc_ndcg_at_1_diff1": 0.593674,
@@ -124,35 +125,81 @@
         "nauc_precision_at_1000_max": -0.445283,
         "nauc_precision_at_1000_std": -0.030462,
         "nauc_precision_at_1000_diff1": 0.630082,
-        "nauc_mrr_at_1_max": 0.207804,
-        "nauc_mrr_at_1_std": -0.161052,
-        "nauc_mrr_at_1_diff1": 0.596281,
-        "nauc_mrr_at_3_max": 0.197535,
-        "nauc_mrr_at_3_std": -0.177993,
-        "nauc_mrr_at_3_diff1": 0.573174,
-        "nauc_mrr_at_5_max": 0.189941,
-        "nauc_mrr_at_5_std": -0.176292,
-        "nauc_mrr_at_5_diff1": 0.565024,
-        "nauc_mrr_at_10_max": 0.18712,
-        "nauc_mrr_at_10_std": -0.175703,
-        "nauc_mrr_at_10_diff1": 0.568596,
-        "nauc_mrr_at_20_max": 0.186141,
-        "nauc_mrr_at_20_std": -0.175755,
-        "nauc_mrr_at_20_diff1": 0.570241,
-        "nauc_mrr_at_100_max": 0.187047,
-        "nauc_mrr_at_100_std": -0.173178,
-        "nauc_mrr_at_100_diff1": 0.570541,
-        "nauc_mrr_at_1000_max": 0.186953,
-        "nauc_mrr_at_1000_std": -0.173219,
-        "nauc_mrr_at_1000_diff1": 0.570602,
+        "nauc_mrr_at_1_max": 0.21277,
+        "nauc_mrr_at_1_std": -0.156214,
+        "nauc_mrr_at_1_diff1": 0.593674,
+        "nauc_mrr_at_3_max": 0.200203,
+        "nauc_mrr_at_3_std": -0.175394,
+        "nauc_mrr_at_3_diff1": 0.571768,
+        "nauc_mrr_at_5_max": 0.192679,
+        "nauc_mrr_at_5_std": -0.173624,
+        "nauc_mrr_at_5_diff1": 0.563579,
+        "nauc_mrr_at_10_max": 0.189906,
+        "nauc_mrr_at_10_std": -0.172988,
+        "nauc_mrr_at_10_diff1": 0.567126,
+        "nauc_mrr_at_20_max": 0.188962,
+        "nauc_mrr_at_20_std": -0.173005,
+        "nauc_mrr_at_20_diff1": 0.568753,
+        "nauc_mrr_at_100_max": 0.189888,
+        "nauc_mrr_at_100_std": -0.170409,
+        "nauc_mrr_at_100_diff1": 0.569043,
+        "nauc_mrr_at_1000_max": 0.189795,
+        "nauc_mrr_at_1000_std": -0.170448,
+        "nauc_mrr_at_1000_diff1": 0.569103,
+        "hit_rate_at_1": 0.458,
+        "hit_rate_at_3": 0.632,
+        "hit_rate_at_5": 0.698,
+        "hit_rate_at_10": 0.757,
+        "hit_rate_at_20": 0.831,
+        "hit_rate_at_100": 0.916,
+        "hit_rate_at_1000": 0.956,
         "main_score": 0.60698,
         "hf_subset": "default",
         "languages": [
           "cmn-Hans"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 54.93966221809387,
-  "kg_co2_emissions": null
+  "evaluation_time": 127.17535432055593,
+  "kg_co2_emissions": null,
+  "date": 1795060415.32384,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 5.509704351425171e-06,
+      "end": 20.98010767623782,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 20.98011603578925,
+      "end": 20.980119291692972,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 20.988531067967415,
+      "end": 21.38007304817438,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Searching corpus",
+      "start": 21.381161093711853,
+      "end": 125.41524217650294,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 125.77209626883268,
+      "end": 127.13174786791205,
+      "split": "dev",
+      "subset": "default"
+    }
+  ]
 }
