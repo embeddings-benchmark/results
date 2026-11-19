@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "ff433edc23c7e2dd3304da3fb7d0edba6356001a",
+  "task_name": "WikipediaPTCategoriesClusteringP2P",
+  "mteb_version": "2.27.16",
+  "scores": {
+    "train": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.694671,
+            0.701132,
+            0.708797,
+            0.6942,
+            0.701108,
+            0.665745,
+            0.704712,
+            0.689674,
+            0.696815,
+            0.677091
+          ]
+        },
+        "v_measure": 0.693394,
+        "v_measure_std": 0.012421,
+        "ami_scores": {
+          "Level 0": [
+            0.693981,
+            0.700462,
+            0.708139,
+            0.69351,
+            0.700432,
+            0.664982,
+            0.704049,
+            0.688978,
+            0.696134,
+            0.676353
+          ]
+        },
+        "ami": 0.692702,
+        "ami_std": 0.012453,
+        "main_score": 0.693394,
+        "hf_subset": "default",
+        "languages": [
+          "por-Latn"
+        ],
+        "mteb_version": "2.27.16"
+      }
+    ]
+  },
+  "evaluation_time": 49.39591561399993,
+  "kg_co2_emissions": null,
+  "date": 1795007410.972293,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 8.428000001003966e-06,
+      "end": 1.3934573410001576,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.393468490000032,
+      "end": 1.3934709210000165,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.3945505190001768,
+      "end": 45.92413573800013,
+      "split": "train",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 45.95635709400017,
+      "end": 49.38083358400013,
+      "split": "train",
+      "subset": "default"
+    }
+  ]
+}
