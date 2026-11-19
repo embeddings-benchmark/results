@@ -1,0 +1,49 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true
+    },
+    "name": "dynasty-ai/tiny-embed-61m",
+    "revision": "1209a7bac8d676b6291d84ee7bec32193ae72d06",
+    "release_date": "2026-11-18",
+    "languages": [
+        "zho-Hans"
+    ],
+    "n_parameters": 61818880,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 10817536,
+    "memory_usage_mb": 236.0,
+    "max_tokens": 512.0,
+    "embed_dim": 768,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch"
+    ],
+    "reference": "https://huggingface.co/dynasty-ai/tiny-embed-61m",
+    "similarity_fn_name": "cosine",
+    "use_instructions": false,
+    "training_datasets": [
+        "CMedQAv1-reranking",
+        "CMedQAv2-reranking",
+        "PAWSX",
+        "CmedqaRetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
