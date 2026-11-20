@@ -1,0 +1,106 @@
+{
+  "dataset_revision": "b73bd54100e5abfa6e3a23dcafb46fe4d2438dc3",
+  "task_name": "ArXivHierarchicalClusteringS2S",
+  "mteb_version": "2.27.1",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.50956,
+            0.45371,
+            0.522101,
+            0.519701,
+            0.499242,
+            0.48605,
+            0.453658,
+            0.462157,
+            0.51626,
+            0.501331
+          ],
+          "Level 1": [
+            0.605739,
+            0.564437,
+            0.578513,
+            0.587426,
+            0.575609,
+            0.5699,
+            0.562753,
+            0.573705,
+            0.553876,
+            0.597543
+          ]
+        },
+        "v_measure": 0.534664,
+        "v_measure_std": 0.04725,
+        "ami_scores": {
+          "Level 0": [
+            0.508231,
+            0.452218,
+            0.520817,
+            0.518401,
+            0.49788,
+            0.484648,
+            0.452167,
+            0.460703,
+            0.514948,
+            0.499948
+          ],
+          "Level 1": [
+            0.601863,
+            0.560207,
+            0.574453,
+            0.583441,
+            0.571478,
+            0.565764,
+            0.558476,
+            0.569585,
+            0.549537,
+            0.593645
+          ]
+        },
+        "ami": 0.53192,
+        "ami_std": 0.046079,
+        "main_score": 0.534664,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      }
+    ]
+  },
+  "evaluation_time": 17.93700000003446,
+  "kg_co2_emissions": null,
+  "date": 1794947909.196411,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0,
+      "end": 1.1560000000172295,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.1560000000172295,
+      "end": 11.25,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 11.25,
+      "end": 11.28100000001723,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 11.28100000001723,
+      "end": 17.90600000001723,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
