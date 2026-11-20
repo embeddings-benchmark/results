@@ -1,0 +1,90 @@
+{
+  "dataset_revision": "16d3834e2eb7f9faedbae0cf25df4b0962c97e71",
+  "task_name": "FinParaSTS",
+  "mteb_version": "2.26.32",
+  "scores": {
+    "validation": [
+      {
+        "pearson": 0.064487,
+        "spearman": 0.066395,
+        "cosine_pearson": 0.064487,
+        "cosine_spearman": 0.066395,
+        "manhattan_pearson": 0.071948,
+        "manhattan_spearman": 0.065735,
+        "euclidean_pearson": 0.073219,
+        "euclidean_spearman": 0.066395,
+        "main_score": 0.066395,
+        "hf_subset": "default",
+        "languages": [
+          "fin-Latn"
+        ],
+        "mteb_version": "2.26.32"
+      }
+    ],
+    "test": [
+      {
+        "pearson": 0.080146,
+        "spearman": 0.082108,
+        "cosine_pearson": 0.080146,
+        "cosine_spearman": 0.082108,
+        "manhattan_pearson": 0.089504,
+        "manhattan_spearman": 0.081901,
+        "euclidean_pearson": 0.089952,
+        "euclidean_spearman": 0.082108,
+        "main_score": 0.082108,
+        "hf_subset": "default",
+        "languages": [
+          "fin-Latn"
+        ],
+        "mteb_version": "2.26.32"
+      }
+    ]
+  },
+  "evaluation_time": 137.49039294873364,
+  "kg_co2_emissions": null,
+  "date": 1793755902.981358,
+  "evaluation_phases": [
+    {
+      "name": "Encoding samples 1",
+      "start": 2.400018274784088e-06,
+      "end": 33.659783197101206,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 33.65979958092794,
+      "end": 67.3063351039309,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 67.30634950310923,
+      "end": 67.31376079493202,
+      "split": "validation",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 67.36278486903757,
+      "end": 102.5063730950933,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 102.5063927420415,
+      "end": 137.42240567295812,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 137.42241837689653,
+      "end": 137.4289103639312,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
