@@ -1,7 +1,7 @@
 {
   "dataset_revision": "d7d94fa4b946cec4a27c84653aa0cf6b33f74a3c",
   "task_name": "MIRACLRetrievalHardNegatives.v2",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "dev": [
       {
@@ -146,22 +146,60 @@
         "nauc_mrr_at_1000_max": 0.450994,
         "nauc_mrr_at_1000_std": 0.082927,
         "nauc_mrr_at_1000_diff1": 0.441819,
-        "cv_recall_at_1": 0.687,
-        "cv_recall_at_3": 0.861,
-        "cv_recall_at_5": 0.901,
-        "cv_recall_at_10": 0.941,
-        "cv_recall_at_20": 0.961,
-        "cv_recall_at_100": 0.988,
-        "cv_recall_at_1000": 0.998,
+        "hit_rate_at_1": 0.687,
+        "hit_rate_at_3": 0.861,
+        "hit_rate_at_5": 0.901,
+        "hit_rate_at_10": 0.941,
+        "hit_rate_at_20": 0.961,
+        "hit_rate_at_100": 0.988,
+        "hit_rate_at_1000": 0.998,
         "main_score": 0.6905,
         "hf_subset": "ru",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 337.94101119041443,
+  "evaluation_time": 325.3408580000396,
   "kg_co2_emissions": null,
-  "date": 1793831566.610258
+  "date": 1795165792.155132,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 2.5999615900218487e-06,
+      "end": 6.2903671999811195,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 6.290374399977736,
+      "end": 6.290376399992965,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 6.335666899976786,
+      "end": 6.771716399991419,
+      "split": "dev",
+      "subset": "ru"
+    },
+    {
+      "name": "Searching corpus",
+      "start": 6.776842399965972,
+      "end": 324.47860909998417,
+      "split": "dev",
+      "subset": "ru"
+    },
+    {
+      "name": "Scoring",
+      "start": 324.65401499997824,
+      "end": 325.3107646999997,
+      "split": "dev",
+      "subset": "ru"
+    }
+  ]
 }

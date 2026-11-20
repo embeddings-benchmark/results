@@ -1,7 +1,7 @@
 {
   "dataset_revision": "673a610d6d3dd91a547a0d57ae1b56f37ebbf6a1",
   "task_name": "RuSciBenchGRNTIClusteringP2P",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "test": [
       {
@@ -21,15 +21,62 @@
         },
         "v_measure": 0.69836,
         "v_measure_std": 0.004603,
+        "ami_scores": {
+          "Level 0": [
+            0.698966,
+            0.697687,
+            0.684983,
+            0.70101,
+            0.693518,
+            0.700903,
+            0.700414,
+            0.696966,
+            0.693639,
+            0.694857
+          ]
+        },
+        "ami": 0.696294,
+        "ami_std": 0.004634,
         "main_score": 0.69836,
         "hf_subset": "default",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 8.211116075515747,
+  "evaluation_time": 11.161314499971922,
   "kg_co2_emissions": null,
-  "date": 1793830892.028175
+  "date": 1795165173.327364,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.300025127828121e-06,
+      "end": 1.2293187000323087,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.2293255000258796,
+      "end": 1.5829184000031091,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.5862931000301614,
+      "end": 8.157923799997661,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 8.186113200034015,
+      "end": 11.149040699994657,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "dataset_revision": "e8233e2234f8b24ab47f203b69d1161c3c0bc5a1",
   "task_name": "RuBQReranking",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "test": [
       {
@@ -34,13 +34,13 @@
         "precision_at_20": 0.08353,
         "precision_at_100": 0.01678,
         "precision_at_1000": 0.00168,
-        "mrr_at_1": 0.713088,
-        "mrr_at_3": 0.791532,
-        "mrr_at_5": 0.804814,
-        "mrr_at_10": 0.811205,
-        "mrr_at_20": 0.811852,
-        "mrr_at_100": 0.811942,
-        "mrr_at_1000": 0.811942,
+        "mrr_at_1": 0.712444,
+        "mrr_at_3": 0.790888,
+        "mrr_at_5": 0.80404,
+        "mrr_at_10": 0.810532,
+        "mrr_at_20": 0.811178,
+        "mrr_at_100": 0.811269,
+        "mrr_at_1000": 0.811269,
         "nauc_ndcg_at_1_max": 0.386149,
         "nauc_ndcg_at_1_std": 0.179197,
         "nauc_ndcg_at_1_diff1": 0.56767,
@@ -125,43 +125,88 @@
         "nauc_precision_at_1000_max": 0.073182,
         "nauc_precision_at_1000_std": 0.163339,
         "nauc_precision_at_1000_diff1": -0.180643,
-        "nauc_mrr_at_1_max": 0.385438,
-        "nauc_mrr_at_1_std": 0.179974,
-        "nauc_mrr_at_1_diff1": 0.566146,
-        "nauc_mrr_at_3_max": 0.423012,
-        "nauc_mrr_at_3_std": 0.233467,
-        "nauc_mrr_at_3_diff1": 0.534015,
-        "nauc_mrr_at_5_max": 0.416276,
-        "nauc_mrr_at_5_std": 0.230353,
-        "nauc_mrr_at_5_diff1": 0.535149,
-        "nauc_mrr_at_10_max": 0.412116,
-        "nauc_mrr_at_10_std": 0.224349,
-        "nauc_mrr_at_10_diff1": 0.53923,
-        "nauc_mrr_at_20_max": 0.412544,
-        "nauc_mrr_at_20_std": 0.222883,
-        "nauc_mrr_at_20_diff1": 0.540243,
-        "nauc_mrr_at_100_max": 0.412594,
-        "nauc_mrr_at_100_std": 0.222511,
-        "nauc_mrr_at_100_diff1": 0.540479,
-        "nauc_mrr_at_1000_max": 0.412594,
-        "nauc_mrr_at_1000_std": 0.222511,
-        "nauc_mrr_at_1000_diff1": 0.540479,
-        "cv_recall_at_1": 0.71309,
-        "cv_recall_at_3": 0.88652,
-        "cv_recall_at_5": 0.94326,
-        "cv_recall_at_10": 0.98904,
-        "cv_recall_at_20": 0.99807,
-        "cv_recall_at_100": 1.0,
-        "cv_recall_at_1000": 1.0,
+        "nauc_mrr_at_1_max": 0.386149,
+        "nauc_mrr_at_1_std": 0.179197,
+        "nauc_mrr_at_1_diff1": 0.56767,
+        "nauc_mrr_at_3_max": 0.421989,
+        "nauc_mrr_at_3_std": 0.232177,
+        "nauc_mrr_at_3_diff1": 0.534986,
+        "nauc_mrr_at_5_max": 0.415532,
+        "nauc_mrr_at_5_std": 0.229448,
+        "nauc_mrr_at_5_diff1": 0.535668,
+        "nauc_mrr_at_10_max": 0.411066,
+        "nauc_mrr_at_10_std": 0.222988,
+        "nauc_mrr_at_10_diff1": 0.540219,
+        "nauc_mrr_at_20_max": 0.411489,
+        "nauc_mrr_at_20_std": 0.221522,
+        "nauc_mrr_at_20_diff1": 0.541233,
+        "nauc_mrr_at_100_max": 0.411538,
+        "nauc_mrr_at_100_std": 0.221151,
+        "nauc_mrr_at_100_diff1": 0.541468,
+        "nauc_mrr_at_1000_max": 0.411538,
+        "nauc_mrr_at_1000_std": 0.221151,
+        "nauc_mrr_at_1000_diff1": 0.541468,
+        "hit_rate_at_1": 0.71244,
+        "hit_rate_at_3": 0.88652,
+        "hit_rate_at_5": 0.94262,
+        "hit_rate_at_10": 0.98904,
+        "hit_rate_at_20": 0.99807,
+        "hit_rate_at_100": 1.0,
+        "hit_rate_at_1000": 1.0,
         "main_score": 0.75414,
         "hf_subset": "default",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 54.75632858276367,
+  "evaluation_time": 59.6344029000029,
   "kg_co2_emissions": null,
-  "date": 1793831209.068968
+  "date": 1795165466.8045,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.3999676816165447e-06,
+      "end": 7.383882199996151,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 7.383890700002667,
+      "end": 7.3838918000110425,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 7.577641199983191,
+      "end": 8.260127699992154,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding corpus",
+      "start": 8.470117999997456,
+      "end": 59.44012779998593,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Computing similarity",
+      "start": 59.44014069996774,
+      "end": 59.528731899976265,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 59.53691819997039,
+      "end": 59.62359719997039,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

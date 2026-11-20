@@ -1,7 +1,7 @@
 {
   "dataset_revision": "d42860a6c15f0a2c4485bda10c6e5b641fdfe479",
   "task_name": "RiaNewsRetrievalHardNegatives.v2",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "test": [
       {
@@ -35,12 +35,12 @@
         "precision_at_100": 0.00965,
         "precision_at_1000": 0.00099,
         "mrr_at_1": 0.709,
-        "mrr_at_3": 0.767,
-        "mrr_at_5": 0.77245,
-        "mrr_at_10": 0.777312,
-        "mrr_at_20": 0.779604,
-        "mrr_at_100": 0.78055,
-        "mrr_at_1000": 0.780662,
+        "mrr_at_3": 0.766833,
+        "mrr_at_5": 0.772283,
+        "mrr_at_10": 0.777127,
+        "mrr_at_20": 0.779409,
+        "mrr_at_100": 0.780355,
+        "mrr_at_1000": 0.780467,
         "nauc_ndcg_at_1_max": 0.357663,
         "nauc_ndcg_at_1_std": -0.154436,
         "nauc_ndcg_at_1_diff1": 0.751015,
@@ -128,40 +128,78 @@
         "nauc_mrr_at_1_max": 0.357663,
         "nauc_mrr_at_1_std": -0.154436,
         "nauc_mrr_at_1_diff1": 0.751015,
-        "nauc_mrr_at_3_max": 0.38417,
-        "nauc_mrr_at_3_std": -0.164924,
-        "nauc_mrr_at_3_diff1": 0.735718,
-        "nauc_mrr_at_5_max": 0.392734,
-        "nauc_mrr_at_5_std": -0.154433,
-        "nauc_mrr_at_5_diff1": 0.733219,
-        "nauc_mrr_at_10_max": 0.397116,
-        "nauc_mrr_at_10_std": -0.15498,
-        "nauc_mrr_at_10_diff1": 0.732643,
-        "nauc_mrr_at_20_max": 0.396256,
-        "nauc_mrr_at_20_std": -0.152644,
-        "nauc_mrr_at_20_diff1": 0.732174,
-        "nauc_mrr_at_100_max": 0.395463,
-        "nauc_mrr_at_100_std": -0.152529,
-        "nauc_mrr_at_100_diff1": 0.732566,
-        "nauc_mrr_at_1000_max": 0.395373,
-        "nauc_mrr_at_1000_std": -0.152566,
-        "nauc_mrr_at_1000_diff1": 0.732598,
-        "cv_recall_at_1": 0.709,
-        "cv_recall_at_3": 0.838,
-        "cv_recall_at_5": 0.861,
-        "cv_recall_at_10": 0.897,
-        "cv_recall_at_20": 0.927,
-        "cv_recall_at_100": 0.965,
-        "cv_recall_at_1000": 0.986,
+        "nauc_mrr_at_3_max": 0.384391,
+        "nauc_mrr_at_3_std": -0.164544,
+        "nauc_mrr_at_3_diff1": 0.736092,
+        "nauc_mrr_at_5_max": 0.392955,
+        "nauc_mrr_at_5_std": -0.154049,
+        "nauc_mrr_at_5_diff1": 0.733602,
+        "nauc_mrr_at_10_max": 0.39734,
+        "nauc_mrr_at_10_std": -0.154732,
+        "nauc_mrr_at_10_diff1": 0.733056,
+        "nauc_mrr_at_20_max": 0.396502,
+        "nauc_mrr_at_20_std": -0.152368,
+        "nauc_mrr_at_20_diff1": 0.732595,
+        "nauc_mrr_at_100_max": 0.395711,
+        "nauc_mrr_at_100_std": -0.152252,
+        "nauc_mrr_at_100_diff1": 0.732989,
+        "nauc_mrr_at_1000_max": 0.395621,
+        "nauc_mrr_at_1000_std": -0.152288,
+        "nauc_mrr_at_1000_diff1": 0.733021,
+        "hit_rate_at_1": 0.709,
+        "hit_rate_at_3": 0.838,
+        "hit_rate_at_5": 0.861,
+        "hit_rate_at_10": 0.897,
+        "hit_rate_at_20": 0.927,
+        "hit_rate_at_100": 0.965,
+        "hit_rate_at_1000": 0.986,
         "main_score": 0.80648,
         "hf_subset": "default",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 695.8055136203766,
+  "evaluation_time": 675.4439834000077,
   "kg_co2_emissions": null,
-  "date": 1793832293.005018
+  "date": 1795166467.607994,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.400025889277458e-06,
+      "end": 6.16214420000324,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 6.162150800053496,
+      "end": 6.162152600008994,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 6.289227700035553,
+      "end": 6.8026327000116,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Searching corpus",
+      "start": 6.808615300047677,
+      "end": 674.6929055000073,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 674.8536782000447,
+      "end": 675.4192335000262,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

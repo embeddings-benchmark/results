@@ -1,7 +1,7 @@
 {
   "dataset_revision": "97a313c8fc85b47f13f33e7e9a95c1ad888c7fec",
   "task_name": "GeoreviewClusteringP2P",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "test": [
       {
@@ -21,15 +21,62 @@
         },
         "v_measure": 0.725373,
         "v_measure_std": 0.006091,
+        "ami_scores": {
+          "Level 0": [
+            0.716996,
+            0.723646,
+            0.729947,
+            0.717434,
+            0.721259,
+            0.712212,
+            0.707715,
+            0.722993,
+            0.720041,
+            0.726017
+          ]
+        },
+        "ami": 0.719826,
+        "ami_std": 0.006212,
         "main_score": 0.725373,
         "hf_subset": "default",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 7.408208608627319,
+  "evaluation_time": 10.508258100016974,
   "kg_co2_emissions": null,
-  "date": 1793830882.059943
+  "date": 1795165162.159405,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.700028173625469e-06,
+      "end": 1.6322817000327632,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.6322889000293799,
+      "end": 1.6322899999795482,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.6352205000002868,
+      "end": 4.845164900005329,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 4.869276500015985,
+      "end": 10.49854400003096,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
 }

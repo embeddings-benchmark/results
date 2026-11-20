@@ -1,7 +1,7 @@
 {
   "dataset_revision": "d11a14c74e8bd448cedab0c1d9a720040535f228",
   "task_name": "MIRACLReranking",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "dev": [
       {
@@ -146,22 +146,67 @@
         "nauc_mrr_at_1000_max": 0.634397,
         "nauc_mrr_at_1000_std": 0.316627,
         "nauc_mrr_at_1000_diff1": 0.271181,
-        "cv_recall_at_1": 0.62791,
-        "cv_recall_at_3": 0.74258,
-        "cv_recall_at_5": 0.75942,
-        "cv_recall_at_10": 0.78188,
-        "cv_recall_at_20": 0.7923,
-        "cv_recall_at_100": 0.79952,
-        "cv_recall_at_1000": 0.79952,
+        "hit_rate_at_1": 0.62791,
+        "hit_rate_at_3": 0.74258,
+        "hit_rate_at_5": 0.75942,
+        "hit_rate_at_10": 0.78188,
+        "hit_rate_at_20": 0.7923,
+        "hit_rate_at_100": 0.79952,
+        "hit_rate_at_1000": 0.79952,
         "main_score": 0.65132,
         "hf_subset": "ru",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 191.24324297904968,
+  "evaluation_time": 187.33434780000243,
   "kg_co2_emissions": null,
-  "date": 1793831146.184689
+  "date": 1795165407.159445,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 2.6999623514711857e-06,
+      "end": 7.643506099993829,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 7.643513699993491,
+      "end": 7.643514900002629,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 7.801483499992173,
+      "end": 8.41369209997356,
+      "split": "dev",
+      "subset": "ru"
+    },
+    {
+      "name": "Encoding corpus",
+      "start": 9.0914687999757,
+      "end": 186.98138829995878,
+      "split": "dev",
+      "subset": "ru"
+    },
+    {
+      "name": "Computing similarity",
+      "start": 186.9814029999543,
+      "end": 187.14539659995353,
+      "split": "dev",
+      "subset": "ru"
+    },
+    {
+      "name": "Scoring",
+      "start": 187.17762899998343,
+      "end": 187.3262424999848,
+      "split": "dev",
+      "subset": "ru"
+    }
+  ]
 }

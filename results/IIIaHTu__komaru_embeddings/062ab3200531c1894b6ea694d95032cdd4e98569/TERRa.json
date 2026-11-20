@@ -1,7 +1,7 @@
 {
-  "dataset_revision": "7b58f24536063837d644aab9a023c62199b2a612",
+  "dataset_revision": "48312c334eb916d88481dc4a41bd0d8b2fa0d576",
   "task_name": "TERRa",
-  "mteb_version": "2.10.0",
+  "mteb_version": "2.27.18",
   "scores": {
     "dev": [
       {
@@ -39,11 +39,49 @@
         "hf_subset": "default",
         "languages": [
           "rus-Cyrl"
-        ]
+        ],
+        "mteb_version": "2.27.18"
       }
     ]
   },
-  "evaluation_time": 0.41736817359924316,
+  "evaluation_time": 4.825415699975565,
   "kg_co2_emissions": null,
-  "date": 1793830934.039624
+  "date": 1795165219.814833,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.700028173625469e-06,
+      "end": 4.326740500051528,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 4.3267476000473835,
+      "end": 4.326748699997552,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding samples 1",
+      "start": 4.327690800011624,
+      "end": 4.664657600049395,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples 2",
+      "start": 4.664667400007602,
+      "end": 4.79843190003885,
+      "split": "dev",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 4.798438600031659,
+      "end": 4.809227500052657,
+      "split": "dev",
+      "subset": "default"
+    }
+  ]
 }
