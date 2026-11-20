@@ -1,0 +1,54 @@
+{
+  "dataset_revision": "e04e259f646f750bd0bdb2a56c2a4577d89bee3d",
+  "task_name": "TinyImageNetClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "valid": [
+      {
+        "v_measure": 0.674719,
+        "nmi": 0.674719,
+        "ari": 0.300421,
+        "cluster_accuracy": 0.4629,
+        "main_score": 0.674719,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 85.63503377296729,
+  "kg_co2_emissions": null,
+  "date": 1793372825.31822,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.360001862049103e-06,
+      "end": 0.3413512969855219,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.34136471699457616,
+      "end": 0.34136966697406024,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.3451025219983421,
+      "end": 81.09059710497968,
+      "split": "valid",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 81.09230274701258,
+      "end": 85.13951231498504,
+      "split": "valid",
+      "subset": "default"
+    }
+  ]
+}

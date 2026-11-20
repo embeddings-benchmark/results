@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "6c0bf58845b1acccefc450b131c304378c1e38d5",
+  "task_name": "MELDEmotionAudioVideoClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.025003,
+            0.033885,
+            0.023411,
+            0.03737,
+            0.033548,
+            0.022976,
+            0.030949,
+            0.029578,
+            0.03522,
+            0.02609
+          ]
+        },
+        "v_measure": 0.029803,
+        "v_measure_std": 0.004929,
+        "ami_scores": {
+          "Level 0": [
+            0.024559,
+            0.033439,
+            0.022964,
+            0.036923,
+            0.033101,
+            0.022528,
+            0.030508,
+            0.029113,
+            0.03478,
+            0.025642
+          ]
+        },
+        "ami": 0.029356,
+        "ami_std": 0.00493,
+        "main_score": 0.029803,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 197.98534828999982,
+  "kg_co2_emissions": null,
+  "date": 1793352770.472891,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.680000372696668e-05,
+      "end": 0.04636500700144097,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.04637595700478414,
+      "end": 0.08309898600418819,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.08672762800415512,
+      "end": 177.6351798770047,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 177.68172764600604,
+      "end": 197.96134076599992,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

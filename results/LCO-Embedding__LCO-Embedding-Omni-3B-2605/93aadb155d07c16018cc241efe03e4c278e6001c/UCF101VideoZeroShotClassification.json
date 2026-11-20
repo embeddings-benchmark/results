@@ -1,0 +1,66 @@
+{
+  "dataset_revision": "866b006d84629d66d9927646db89bd43381925e7",
+  "task_name": "UCF101VideoZeroShotClassification",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "accuracy": 0.76749,
+        "f1": 0.724585,
+        "f1_weighted": 0.728573,
+        "precision": 0.727067,
+        "precision_weighted": 0.732255,
+        "recall": 0.764246,
+        "recall_weighted": 0.76749,
+        "ap": null,
+        "ap_weighted": null,
+        "main_score": 0.76749,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 491.063872653991,
+  "kg_co2_emissions": null,
+  "date": 1793369460.731967,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.469999112188816e-06,
+      "end": 0.021492413012310863,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.021502472984138876,
+      "end": 0.023915929021313787,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding labels",
+      "start": 0.028602590027730912,
+      "end": 18.27723074500682,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding samples",
+      "start": 18.277670459006913,
+      "end": 490.12762374203885,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 490.12769605300855,
+      "end": 490.1329882470309,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
