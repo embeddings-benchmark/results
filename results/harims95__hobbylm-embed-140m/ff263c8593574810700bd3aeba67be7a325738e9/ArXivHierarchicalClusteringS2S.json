@@ -1,0 +1,106 @@
+{
+  "dataset_revision": "b73bd54100e5abfa6e3a23dcafb46fe4d2438dc3",
+  "task_name": "ArXivHierarchicalClusteringS2S",
+  "mteb_version": "2.27.18",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.507925,
+            0.588719,
+            0.553825,
+            0.509187,
+            0.548178,
+            0.521554,
+            0.526647,
+            0.508019,
+            0.525926,
+            0.50355
+          ],
+          "Level 1": [
+            0.57251,
+            0.575654,
+            0.557811,
+            0.551474,
+            0.576943,
+            0.58431,
+            0.565343,
+            0.596268,
+            0.556348,
+            0.59213
+          ]
+        },
+        "v_measure": 0.551116,
+        "v_measure_std": 0.030087,
+        "ami_scores": {
+          "Level 0": [
+            0.506568,
+            0.587592,
+            0.552576,
+            0.50783,
+            0.54692,
+            0.520238,
+            0.525343,
+            0.506645,
+            0.524565,
+            0.502179
+          ],
+          "Level 1": [
+            0.568353,
+            0.571395,
+            0.553376,
+            0.54703,
+            0.572856,
+            0.580248,
+            0.561065,
+            0.592302,
+            0.551914,
+            0.588013
+          ]
+        },
+        "ami": 0.54835,
+        "ami_std": 0.02912,
+        "main_score": 0.551116,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.27.18"
+      }
+    ]
+  },
+  "evaluation_time": 72.25238634319976,
+  "kg_co2_emissions": null,
+  "date": 1795176833.32252,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.030779331922531e-06,
+      "end": 4.867305407766253,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 4.867319974582642,
+      "end": 19.423959909006953,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 19.427966471761465,
+      "end": 19.634076958987862,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 19.63678303686902,
+      "end": 72.24290269287303,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
