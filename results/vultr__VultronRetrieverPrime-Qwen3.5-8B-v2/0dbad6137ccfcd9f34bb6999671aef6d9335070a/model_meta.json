@@ -1,5 +1,7 @@
 {
-    "loader_kwargs": {},
+    "loader_kwargs": {
+        "device": "cuda"
+    },
     "name": "vultr/VultronRetrieverPrime-Qwen3.5-8B-v2",
     "revision": "0dbad6137ccfcd9f34bb6999671aef6d9335070a",
     "release_date": "2026-11-19",
@@ -30,22 +32,22 @@
     "similarity_fn_name": "MaxSim",
     "use_instructions": false,
     "training_datasets": [
-        "VisRAGRetMPDocVQA",
+        "VisRAG-Ret-Train-In-domain-data",
         "docmatix-ir",
-        "wiki-ss-nq",
-        "VisRAGRetSlideVQA",
-        "VisRAGRetChartQA",
-        "VisRAGRetPlotQA",
-        "VisRAGRetInfoVQA",
-        "NQ",
-        "VidoreTatdqaRetrieval",
-        "VisRAGRetArxivQA",
-        "VidoreArxivQARetrieval",
         "VidoreDocVQARetrieval",
-        "VDRMultilingualRetrieval",
+        "VisRAGRetInfoVQA",
+        "VisRAGRetArxivQA",
+        "VisRAGRetSlideVQA",
+        "VisRAGRetMPDocVQA",
+        "VidoreArxivQARetrieval",
+        "VisRAGRetPlotQA",
         "VisRAG-Ret-Train-Synthetic-data",
         "VidoreInfoVQARetrieval",
-        "VisRAG-Ret-Train-In-domain-data"
+        "VDRMultilingualRetrieval",
+        "VisRAGRetChartQA",
+        "wiki-ss-nq",
+        "NQ",
+        "VidoreTatdqaRetrieval"
     ],
     "adapted_from": "Qwen/Qwen3.5-9B",
     "superseded_by": null,

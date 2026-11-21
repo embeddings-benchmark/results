@@ -1,5 +1,7 @@
 {
-    "loader_kwargs": {},
+    "loader_kwargs": {
+        "device": "cuda"
+    },
     "name": "athrael-soju/ColQwen3.5-4.5B-v4",
     "revision": "39aef25e3d7306f3722283b9ae93dccdcdb6aaee",
     "release_date": "2026-11-17",
@@ -30,22 +32,22 @@
     "similarity_fn_name": "MaxSim",
     "use_instructions": false,
     "training_datasets": [
-        "VisRAGRetChartQA",
-        "wiki-ss-nq",
-        "VisRAG-Ret-Train-In-domain-data",
-        "VidoreDocVQARetrieval",
-        "VisRAGRetArxivQA",
         "VisRAG-Ret-Train-Synthetic-data",
+        "VisRAG-Ret-Train-In-domain-data",
+        "VisRAGRetArxivQA",
         "VisRAGRetPlotQA",
-        "docmatix-ir",
+        "wiki-ss-nq",
+        "VidoreArxivQARetrieval",
         "NQ",
-        "VDRMultilingualRetrieval",
+        "docmatix-ir",
+        "VisRAGRetSlideVQA",
+        "VidoreInfoVQARetrieval",
+        "VisRAGRetChartQA",
+        "VisRAGRetInfoVQA",
+        "VidoreDocVQARetrieval",
         "VidoreTatdqaRetrieval",
         "VisRAGRetMPDocVQA",
-        "VidoreArxivQARetrieval",
-        "VisRAGRetInfoVQA",
-        "VidoreInfoVQARetrieval",
-        "VisRAGRetSlideVQA"
+        "VDRMultilingualRetrieval"
     ],
     "adapted_from": "Qwen/Qwen3.5-4B",
     "superseded_by": null,
@@ -63,9 +65,9 @@
     "experiment_kwargs": null,
     "output_dtypes": "bfloat16",
     "extra_requirements_groups": [
+        "pplx-embed-v2",
         "image"
     ],
     "loader": "MultiVectorWrapper",
     "is_cross_encoder": false
 }
-
