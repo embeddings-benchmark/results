@@ -1,62 +1,65 @@
 {
-  "loader_kwargs": {
-    "variant": "base",
-    "window_chars": 900
-  },
-  "name": "wiiiktor/chopper-0.31B",
-  "revision": "d551e53419da0169ebfea7b1eb99177c788c4f2d",
-  "release_date": "2026-11-10",
-  "languages": [
-    "eng-Latn",
-    "pol-Latn",
-    "deu-Latn",
-    "fra-Latn",
-    "spa-Latn",
-    "ita-Latn",
-    "por-Latn",
-    "nld-Latn",
-    "rus-Cyrl",
-    "ukr-Cyrl",
-    "ces-Latn",
-    "zho-Hans",
-    "jpn-Jpan",
-    "kor-Hang",
-    "ara-Arab",
-    "hin-Deva"
-  ],
-  "n_parameters": 306941955,
-  "n_active_parameters_override": null,
-  "n_embedding_parameters": 196608000,
-  "memory_usage_mb": 1200.0,
-  "max_tokens": 8192.0,
-  "embed_dim": null,
-  "license": "mit",
-  "open_weights": true,
-  "public_training_code": "https://github.com/wiiiktor/chopper_demo",
-  "public_training_data": "https://huggingface.co/datasets/wiiiktor/chopper_demo",
-  "framework": [
-    "PyTorch"
-  ],
-  "reference": "https://huggingface.co/wiiiktor/chopper-0.31B",
-  "similarity_fn_name": null,
-  "use_instructions": false,
-  "training_datasets": [
-    "HotpotQA",
-    "HotpotQAHardNegatives"
-  ],
-  "adapted_from": "jhu-clsp/mmBERT-base",
-  "superseded_by": null,
-  "modalities": [
-    "text"
-  ],
-  "model_type": [
-    "cross-encoder"
-  ],
-  "citation": null,
-  "contacts": null,
-  "experiment_kwargs": null,
-  "output_dtypes": null,
-  "extra_requirements_groups": null,
-  "loader": "ChopperWrapper",
-  "is_cross_encoder": true
+    "loader_kwargs": {
+        "variant": "base",
+        "window_chars": 900,
+        "block": 50,
+        "keep": 25,
+        "reread": 10
+    },
+    "name": "wiiiktor/chopper-0.31B",
+    "revision": "d551e53419da0169ebfea7b1eb99177c788c4f2d",
+    "release_date": "2026-11-10",
+    "languages": [
+        "eng-Latn",
+        "pol-Latn",
+        "deu-Latn",
+        "fra-Latn",
+        "spa-Latn",
+        "ita-Latn",
+        "por-Latn",
+        "nld-Latn",
+        "rus-Cyrl",
+        "ukr-Cyrl",
+        "ces-Latn",
+        "zho-Hans",
+        "jpn-Jpan",
+        "kor-Hang",
+        "ara-Arab",
+        "hin-Deva"
+    ],
+    "n_parameters": 306941955,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 196608000,
+    "memory_usage_mb": 1200.0,
+    "max_tokens": 8192.0,
+    "embed_dim": null,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/wiiiktor/chopper_demo",
+    "public_training_data": "https://huggingface.co/datasets/wiiiktor/chopper_demo",
+    "framework": [
+        "PyTorch"
+    ],
+    "reference": "https://huggingface.co/wiiiktor/chopper-0.31B",
+    "similarity_fn_name": null,
+    "use_instructions": false,
+    "training_datasets": [
+        "HotpotQA",
+        "HotpotQAHardNegatives"
+    ],
+    "adapted_from": "jhu-clsp/mmBERT-base",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "cross-encoder"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": null,
+    "loader": "ChopperWrapper",
+    "is_cross_encoder": true
 }
