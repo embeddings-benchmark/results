@@ -1,0 +1,59 @@
+{
+    "loader_kwargs": {
+        "trust_remote_code": true
+    },
+    "name": "Linkup-Platform/linkup-sparseup-embed-v2",
+    "revision": "7165075edb8c7e5e6d1125aa8a6a753d3c50c5d8",
+    "release_date": "2026-11-24",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 149656770,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 38684160,
+    "memory_usage_mb": 571.0,
+    "max_tokens": 8192.0,
+    "embed_dim": 50370,
+    "license": "apache-2.0",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": "https://huggingface.co/datasets/lightonai/embeddings-fine-tuning-filtered-en",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/Linkup-Platform/linkup-sparseup-embed-v2",
+    "similarity_fn_name": "dot",
+    "use_instructions": false,
+    "training_datasets": [
+        "FiQA2018",
+        "NQ",
+        "MSMARCO",
+        "SCIDOCS",
+        "DBPedia",
+        "QuoraRetrieval",
+        "HotpotQA",
+        "MIRACLRetrieval",
+        "SciFact",
+        "MultiLongDocRetrieval",
+        "CQADupstackRetrieval",
+        "FEVER"
+    ],
+    "adapted_from": "Linkup-Platform/linkup-sparseup-embed-v2-pretrain",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "sparse"
+    ],
+    "citation": "@misc{formal2026sparseupbetterrecipestraining,\n      title={SPARSEUP: Towards Better Recipes for Training Modern Learned Sparse Retrievers},\n      author={Thibault Formal and Pierre Erbacher and Cosimo Rulli and Paulo Roberto Moura Junior},\n      year={2026},\n      eprint={2611.09680},\n      archivePrefix={arXiv},\n      primaryClass={cs.IR},\n      url={https://arxiv.org/abs/2611.09680},\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": null,
+    "loader": "SparseEncoderWrapper",
+    "is_cross_encoder": false
+}
