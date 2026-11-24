@@ -1,0 +1,138 @@
+{
+  "dataset_revision": "f8dbf10ec231cc25e9f63454d5cd2d90af95e5f8",
+  "task_name": "SwednClusteringP2P",
+  "mteb_version": "2.27.1",
+  "scores": {
+    "summaries": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.155012,
+            0.138371,
+            0.139625,
+            0.130893,
+            0.119415,
+            0.121989,
+            0.182021,
+            0.113125,
+            0.195508,
+            0.152689
+          ]
+        },
+        "v_measure": 0.144865,
+        "v_measure_std": 0.025598,
+        "ami_scores": {
+          "Level 0": [
+            0.154827,
+            0.138182,
+            0.139437,
+            0.130702,
+            0.119223,
+            0.121799,
+            0.181844,
+            0.11293,
+            0.195333,
+            0.152505
+          ]
+        },
+        "ami": 0.144678,
+        "ami_std": 0.025604,
+        "main_score": 0.144865,
+        "hf_subset": "default",
+        "languages": [
+          "swe-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      }
+    ],
+    "articles": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.29807,
+            0.250907,
+            0.269367,
+            0.341019,
+            0.341942,
+            0.347893,
+            0.301379,
+            0.191994,
+            0.248423,
+            0.299062
+          ]
+        },
+        "v_measure": 0.289006,
+        "v_measure_std": 0.047124,
+        "ami_scores": {
+          "Level 0": [
+            0.297918,
+            0.250746,
+            0.269209,
+            0.340876,
+            0.341799,
+            0.347751,
+            0.301225,
+            0.191818,
+            0.248258,
+            0.298909
+          ]
+        },
+        "ami": 0.288851,
+        "ami_std": 0.047135,
+        "main_score": 0.289006,
+        "hf_subset": "default",
+        "languages": [
+          "swe-Latn"
+        ],
+        "mteb_version": "2.27.1"
+      }
+    ]
+  },
+  "evaluation_time": 9.437000000034459,
+  "kg_co2_emissions": null,
+  "date": 1794949084.561226,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 0.0,
+      "end": 0.9060000000172295,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.9060000000172295,
+      "end": 0.9060000000172295,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.9060000000172295,
+      "end": 1.1089999999967404,
+      "split": "summaries",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 1.1400000000139698,
+      "end": 5.187000000034459,
+      "split": "summaries",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding",
+      "start": 5.23399999999674,
+      "end": 6.25,
+      "split": "articles",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 6.2810000000172295,
+      "end": 9.39000000001397,
+      "split": "articles",
+      "subset": "default"
+    }
+  ]
+}

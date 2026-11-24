@@ -1,0 +1,81 @@
+{
+    "loader_kwargs": {
+        "torch_dtype": "bfloat16"
+    },
+    "name": "Cognitive-Lab/ColNetraEmbed",
+    "revision": "a27fe0bdcf65a54116393853621f7f80e3cd9ca3",
+    "release_date": "2025-12-01",
+    "languages": [
+        "eng-Latn",
+        "spa-Latn",
+        "fra-Latn",
+        "deu-Latn",
+        "ita-Latn",
+        "hin-Deva",
+        "mar-Deva",
+        "san-Deva",
+        "kan-Knda",
+        "tel-Telu",
+        "tam-Taml",
+        "mal-Mlym",
+        "zho-Hans",
+        "jpn-Jpan",
+        "kor-Hang",
+        "ara-Arab",
+        "ben-Beng",
+        "guj-Gujr",
+        "ory-Orya",
+        "pan-Guru",
+        "rus-Cyrl",
+        "tha-Thai"
+    ],
+    "n_parameters": 4300407280,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 671252480,
+    "memory_usage_mb": 8202.0,
+    "max_tokens": 131072.0,
+    "embed_dim": 128,
+    "license": "gemma",
+    "open_weights": true,
+    "public_training_code": "https://github.com/adithya-s-k/colpali",
+    "public_training_data": null,
+    "framework": [
+        "ColPali",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/Cognitive-Lab/ColNetraEmbed",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": true,
+    "training_datasets": [
+        "NayanaIRMonoBenchGujaratiRetrieval",
+        "VidoreInfoVQARetrieval",
+        "NayanaIRMonoBenchPunjabiRetrieval",
+        "VidoreTatdqaRetrieval",
+        "NayanaIRMonoBenchTamilRetrieval",
+        "NayanaIRMonoBenchKannadaRetrieval",
+        "NayanaIRMonoBenchOdiaRetrieval",
+        "NayanaIRMonoBenchMalayalamRetrieval",
+        "NayanaIRMonoBenchSanskritRetrieval",
+        "VidoreDocVQARetrieval",
+        "VidoreArxivQARetrieval",
+        "NayanaIRMonoBenchMarathiRetrieval"
+    ],
+    "adapted_from": "google/gemma-3-4b-it",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "@misc{kolavi2025m3druniversalmultilingualmultimodal,\n  archiveprefix = {arXiv},\n  author = {Adithya S Kolavi and Vyoman Jain},\n  eprint = {2512.03514},\n  primaryclass = {cs.IR},\n  title = {M3DR: Towards Universal Multilingual Multimodal Document Retrieval},\n  url = {https://arxiv.org/abs/2512.03514},\n  year = {2025},\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": [
+        "colpali_engine"
+    ],
+    "loader": "ColNetraEmbedWrapper",
+    "is_cross_encoder": false
+}
