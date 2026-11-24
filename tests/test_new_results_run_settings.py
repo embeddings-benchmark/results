@@ -18,7 +18,7 @@ import mteb
 import pytest
 from mteb import TaskResult
 from mteb.results.task_result import _expand_run_settings_entry
-from packaging.version import Version
+from packaging.version import InvalidVersion, Version
 
 from tests.git_utils import REPO_ROOT, _run_git, get_base_ref
 
@@ -62,8 +62,28 @@ def get_changed_result_files(base_ref: str) -> list[str]:
     )
 
 
+def parse_version_min(version_str: str | None) -> Version | None:
+    """Parse a stored version, which may be a range like "2.12.16-2.15.4".
+
+    Returns the lower bound of a range, the parsed version for a single version
+    string, or None if the input is None or unparsable.
+    """
+    if version_str is None:
+        return None
+    try:
+        return Version(version_str)
+    except InvalidVersion:
+        pass
+    if "-" in version_str:
+        try:
+            return Version(version_str.split("-", 1)[0])
+        except InvalidVersion:
+            return None
+    return None
+
+
 def validate_mteb_version(version: str | None, relative_path: str) -> list[str]:
-    parsed = TaskResult._parse_mteb_version_min(version) if version else None
+    parsed = parse_version_min(version) if version else None
     if parsed is None:
         return [f"{relative_path} has no usable mteb_version (got {version!r})."]
     if parsed < MIN_MTEB_VERSION:
@@ -124,12 +144,10 @@ def validate_low_precision_scoring(
     outdated = set()
     for setting in settings:
         versions = setting.get("version") or {}
-        st_version = TaskResult._parse_mteb_version_min(
-            versions.get("sentence-transformers")
-        )
+        st_version = parse_version_min(versions.get("sentence-transformers"))
         if st_version and st_version >= FP32_SCORING_SENTENCE_TRANSFORMERS_VERSION:
             continue
-        mteb_version = TaskResult._parse_mteb_version_min(versions.get("mteb"))
+        mteb_version = parse_version_min(versions.get("mteb"))
         if mteb_version is None or mteb_version < MIN_FP32_SCORING_MTEB_VERSION:
             outdated.add(
                 f"mteb={versions.get('mteb')}, "
