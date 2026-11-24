@@ -1,0 +1,83 @@
+{
+  "dataset_revision": "02e86cf4e8dbeb0811ea5e889f7359eb7ae1b5f5",
+  "task_name": "FineGrainOCRITClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.833007,
+            0.828663,
+            0.825654,
+            0.829707,
+            0.831128,
+            0.822569,
+            0.826513,
+            0.83107,
+            0.829158,
+            0.83069
+          ]
+        },
+        "v_measure": 0.828816,
+        "v_measure_std": 0.002946,
+        "ami_scores": {
+          "Level 0": [
+            0.78335,
+            0.778111,
+            0.773065,
+            0.778004,
+            0.779868,
+            0.769052,
+            0.773226,
+            0.780725,
+            0.777963,
+            0.780092
+          ]
+        },
+        "ami": 0.777346,
+        "ami_std": 0.004085,
+        "main_score": 0.828816,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn",
+          "fra-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 2546.8969286319916,
+  "kg_co2_emissions": null,
+  "date": 1793372363.868583,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.590038537979126e-06,
+      "end": 0.39106042304774746,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.39106958301272243,
+      "end": 0.39317366504110396,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.39514847699319944,
+      "end": 2440.240214299003,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 2440.436107465008,
+      "end": 2546.8660247840453,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
