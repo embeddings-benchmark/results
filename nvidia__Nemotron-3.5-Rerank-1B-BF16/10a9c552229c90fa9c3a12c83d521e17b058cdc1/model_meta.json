@@ -1,0 +1,43 @@
+{
+    "name": "nvidia/Nemotron-3.5-Rerank-1B-BF16",
+    "revision": "10a9c552229c90fa9c3a12c83d521e17b058cdc1",
+    "release_date": "2026-11-30",
+    "languages": null,
+    "n_parameters": 1554712576,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 268435456,
+    "memory_usage_mb": 5931.0,
+    "max_tokens": 32768.0,
+    "embed_dim": null,
+    "license": "openmdw-1.1",
+    "open_weights": true,
+    "public_training_code": "https://github.com/NVIDIA-NeMo/Automodel/blob/8f9b476dedf701a78f8acab3f1ca224d053da78c/examples/retrieval/nemotron_3_5/README.md",
+    "public_training_data": "https://huggingface.co/nvidia/Nemotron-3.5-Rerank-1B-BF16#training-dataset",
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "Transformers"
+    ],
+    "reference": "https://huggingface.co/nvidia/Nemotron-3.5-Rerank-1B-BF16",
+    "similarity_fn_name": null,
+    "use_instructions": false,
+    "training_datasets": null,
+    "adapted_from": "mistralai/Ministral-3-8B-Instruct-2512",
+    "superseded_by": null,
+    "modalities": [
+        "image",
+        "text"
+    ],
+    "model_type": [
+        "cross-encoder"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": null,
+    "extra_requirements_groups": [
+        "nemotron-3-5-vl"
+    ],
+    "loader": "CrossEncoderWrapper",
+    "is_cross_encoder": true
+}
