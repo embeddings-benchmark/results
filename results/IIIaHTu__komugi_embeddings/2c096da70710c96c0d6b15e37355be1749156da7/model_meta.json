@@ -1,0 +1,58 @@
+{
+    "loader_kwargs": {},
+    "name": "IIIaHTu/komugi_embeddings",
+    "revision": "2c096da70710c96c0d6b15e37355be1749156da7",
+    "release_date": "2026-11-24",
+    "languages": [
+        "rus-Cyrl"
+    ],
+    "n_parameters": 29193768,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 26154336,
+    "memory_usage_mb": 111,
+    "max_tokens": 512.0,
+    "embed_dim": 312,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": null,
+    "public_training_data": null,
+    "framework": [
+        "Sentence Transformers",
+        "PyTorch",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/IIIaHTu/komugi_embeddings",
+    "similarity_fn_name": "cosine",
+    "use_instructions": true,
+    "training_datasets": [
+        "GeoreviewClusteringP2P",
+        "KinopoiskClassification",
+        "RuReviewsClassification",
+        "RuSciBenchGRNTIClusteringP2P",
+        "RuSciBenchOECDClusteringP2P",
+        "InappropriatenessClassification",
+        "RuSTSBenchmarkSTS",
+        "GeoreviewClassification",
+        "TERRa",
+        "RuSciBenchOECDClassification",
+        "HeadlineClassification",
+        "CEDRClassification",
+        "RuSciBenchGRNTIClassification",
+        "SensitiveTopicsClassification"
+    ],
+    "adapted_from": "cointegrated/rubert-tiny2",
+    "superseded_by": null,
+    "modalities": [
+        "text"
+    ],
+    "model_type": [
+        "dense"
+    ],
+    "citation": null,
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "float32",
+    "extra_requirements_groups": null,
+    "loader": "SentenceTransformerEncoderWrapper",
+    "is_cross_encoder": false
+}
