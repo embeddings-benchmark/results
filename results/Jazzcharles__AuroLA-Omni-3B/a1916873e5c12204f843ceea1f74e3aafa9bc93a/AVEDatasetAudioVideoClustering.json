@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "f6eb93b4e89456277a242583b5565b801bc1981d",
+  "task_name": "AVEDatasetAudioVideoClustering",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.883318,
+            0.863168,
+            0.870605,
+            0.859276,
+            0.885949,
+            0.902071,
+            0.85822,
+            0.864272,
+            0.891158,
+            0.883561
+          ]
+        },
+        "v_measure": 0.87616,
+        "v_measure_std": 0.014304,
+        "ami_scores": {
+          "Level 0": [
+            0.882503,
+            0.862218,
+            0.869703,
+            0.858295,
+            0.885152,
+            0.901385,
+            0.857231,
+            0.863317,
+            0.890403,
+            0.882755
+          ]
+        },
+        "ami": 0.875296,
+        "ami_std": 0.014404,
+        "main_score": 0.87616,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 83.21681011799956,
+  "kg_co2_emissions": null,
+  "date": 1793333117.818121,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 4.339999577496201e-06,
+      "end": 0.03528469199954998,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 0.035294462999445386,
+      "end": 0.03663663999759592,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 0.03792052799690282,
+      "end": 59.16896078699938,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 59.17440910000005,
+      "end": 83.19425448199763,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

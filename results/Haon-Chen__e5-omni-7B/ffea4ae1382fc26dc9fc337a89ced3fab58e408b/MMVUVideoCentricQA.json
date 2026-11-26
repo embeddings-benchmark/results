@@ -1,0 +1,128 @@
+{
+  "dataset_revision": "4c2b59cb04639eacbae2f6a2379e538d5696ab7a",
+  "task_name": "MMVUVideoCentricQA",
+  "mteb_version": "2.26.30",
+  "scores": {
+    "test": [
+      {
+        "ndcg_at_1": 0.4384,
+        "ndcg_at_3": 0.65455,
+        "ndcg_at_5": 0.732,
+        "map_at_1": 0.4384,
+        "map_at_3": 0.60053,
+        "map_at_5": 0.64333,
+        "recall_at_1": 0.4384,
+        "recall_at_3": 0.8112,
+        "recall_at_5": 1.0,
+        "accuracy": 0.4384,
+        "precision_at_1": 0.4384,
+        "precision_at_3": 0.2704,
+        "precision_at_5": 0.2,
+        "mrr_at_1": 0.4384,
+        "mrr_at_3": 0.600533,
+        "mrr_at_5": 0.643333,
+        "nauc_ndcg_at_1_max": 0.022596,
+        "nauc_ndcg_at_1_std": 0.248436,
+        "nauc_ndcg_at_1_diff1": 0.40663,
+        "nauc_ndcg_at_3_max": 0.049195,
+        "nauc_ndcg_at_3_std": 0.215191,
+        "nauc_ndcg_at_3_diff1": 0.35023,
+        "nauc_ndcg_at_5_max": 0.0375,
+        "nauc_ndcg_at_5_std": 0.231138,
+        "nauc_ndcg_at_5_diff1": 0.36958,
+        "nauc_map_at_1_max": 0.022596,
+        "nauc_map_at_1_std": 0.248436,
+        "nauc_map_at_1_diff1": 0.40663,
+        "nauc_map_at_3_max": 0.041593,
+        "nauc_map_at_3_std": 0.223972,
+        "nauc_map_at_3_diff1": 0.361091,
+        "nauc_map_at_5_max": 0.036379,
+        "nauc_map_at_5_std": 0.232184,
+        "nauc_map_at_5_diff1": 0.371464,
+        "nauc_recall_at_1_max": 0.022596,
+        "nauc_recall_at_1_std": 0.248436,
+        "nauc_recall_at_1_diff1": 0.40663,
+        "nauc_recall_at_3_max": 0.084099,
+        "nauc_recall_at_3_std": 0.175375,
+        "nauc_recall_at_3_diff1": 0.304062,
+        "nauc_recall_at_5_max": NaN,
+        "nauc_recall_at_5_std": NaN,
+        "nauc_recall_at_5_diff1": NaN,
+        "nauc_precision_at_1_max": 0.022596,
+        "nauc_precision_at_1_std": 0.248436,
+        "nauc_precision_at_1_diff1": 0.40663,
+        "nauc_precision_at_3_max": 0.084099,
+        "nauc_precision_at_3_std": 0.175375,
+        "nauc_precision_at_3_diff1": 0.304062,
+        "nauc_precision_at_5_max": NaN,
+        "nauc_precision_at_5_std": NaN,
+        "nauc_precision_at_5_diff1": NaN,
+        "nauc_mrr_at_1_max": 0.022596,
+        "nauc_mrr_at_1_std": 0.248436,
+        "nauc_mrr_at_1_diff1": 0.40663,
+        "nauc_mrr_at_3_max": 0.041593,
+        "nauc_mrr_at_3_std": 0.223972,
+        "nauc_mrr_at_3_diff1": 0.361091,
+        "nauc_mrr_at_5_max": 0.036379,
+        "nauc_mrr_at_5_std": 0.232184,
+        "nauc_mrr_at_5_diff1": 0.371464,
+        "hit_rate_at_1": 0.4384,
+        "hit_rate_at_3": 0.8112,
+        "hit_rate_at_5": 1.0,
+        "main_score": 0.4384,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.30"
+      }
+    ]
+  },
+  "evaluation_time": 316.12740842893254,
+  "kg_co2_emissions": null,
+  "date": 1793375750.750546,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 6.149988621473312e-06,
+      "end": 1.152011055033654,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.1520224550040439,
+      "end": 1.152029794990085,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding queries",
+      "start": 1.44797744799871,
+      "end": 295.1589039079845,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Encoding corpus",
+      "start": 295.1969323520316,
+      "end": 315.9442108590156,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Computing similarity",
+      "start": 315.94423339900095,
+      "end": 316.03837074304465,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 316.0395872220397,
+      "end": 316.10791622300167,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}
