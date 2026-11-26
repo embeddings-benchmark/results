@@ -3,15 +3,15 @@
         "trust_remote_code": true
     },
     "name": "Linkup-Platform/linkup-sparseup-embed-v1",
-    "revision": "08314498d4f6a3a205b930ab9f27001404ea94b8",
+    "revision": "04c7b582719af01ea6ce4f17c3271db80e23709e",
     "release_date": "2026-09-16",
     "languages": [
         "eng-Latn"
     ],
-    "n_parameters": 188391300,
+    "n_parameters": 149656770,
     "n_active_parameters_override": null,
     "n_embedding_parameters": 38684160,
-    "memory_usage_mb": 719.0,
+    "memory_usage_mb": 571.0,
     "max_tokens": 512.0,
     "embed_dim": 50370,
     "license": "apache-2.0",
@@ -28,19 +28,19 @@
     "similarity_fn_name": "dot",
     "use_instructions": false,
     "training_datasets": [
-        "FEVER",
-        "CQADupstackRetrieval",
-        "FiQA2018",
         "DBPedia",
-        "QuoraRetrieval",
-        "NQ",
-        "MSMARCO",
         "ClimateFEVER",
+        "CQADupstackRetrieval",
         "TRECDL2019",
+        "TRECDL2020",
+        "NQ",
         "HotpotQA",
-        "SCIDOCS",
+        "FEVER",
+        "QuoraRetrieval",
+        "FiQA2018",
         "SciFact",
-        "TRECDL2020"
+        "SCIDOCS",
+        "MSMARCO"
     ],
     "adapted_from": "lightonai/LateOn-unsupervised",
     "superseded_by": null,
@@ -50,10 +50,10 @@
     "model_type": [
         "sparse"
     ],
-    "citation": null,
+    "citation": "@misc{formal2026sparseupbetterrecipestraining,\n      title={SPARSEUP: Towards Better Recipes for Training Modern Learned Sparse Retrievers},\n      author={Thibault Formal and Pierre Erbacher and Cosimo Rulli and Paulo Roberto Moura Junior},\n      year={2026},\n      eprint={2611.09680},\n      archivePrefix={arXiv},\n      primaryClass={cs.IR},\n      url={https://arxiv.org/abs/2611.09680},\n}",
     "contacts": null,
     "experiment_kwargs": null,
-    "output_dtypes": null,
+    "output_dtypes": "float32",
     "extra_requirements_groups": null,
     "loader": "SparseEncoderWrapper",
     "is_cross_encoder": false
