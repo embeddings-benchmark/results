@@ -1,0 +1,82 @@
+{
+  "dataset_revision": "29f50ae80ad4e8c1cfdbc0148aefe6fe050833dd",
+  "task_name": "MusicAVQACLSAudioVideoClustering",
+  "mteb_version": "2.26.32",
+  "scores": {
+    "test": [
+      {
+        "v_measures": {
+          "Level 0": [
+            0.364497,
+            0.384587,
+            0.372443,
+            0.341734,
+            0.362269,
+            0.346839,
+            0.356094,
+            0.370504,
+            0.377837,
+            0.358394
+          ]
+        },
+        "v_measure": 0.36352,
+        "v_measure_std": 0.012704,
+        "ami_scores": {
+          "Level 0": [
+            0.361582,
+            0.38176,
+            0.369548,
+            0.33867,
+            0.359365,
+            0.343849,
+            0.353137,
+            0.367601,
+            0.374992,
+            0.355452
+          ]
+        },
+        "ami": 0.360596,
+        "ami_std": 0.012768,
+        "main_score": 0.36352,
+        "hf_subset": "default",
+        "languages": [
+          "eng-Latn"
+        ],
+        "mteb_version": "2.26.32"
+      }
+    ]
+  },
+  "evaluation_time": 4881.248473244021,
+  "kg_co2_emissions": null,
+  "date": 1793738927.545996,
+  "evaluation_phases": [
+    {
+      "name": "Data loading",
+      "start": 3.7120189517736435e-06,
+      "end": 1.371570185991004,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Dataset transform",
+      "start": 1.3715795290190727,
+      "end": 1.3755727249663323,
+      "split": "",
+      "subset": ""
+    },
+    {
+      "name": "Encoding",
+      "start": 1.379068847047165,
+      "end": 4879.670196091989,
+      "split": "test",
+      "subset": "default"
+    },
+    {
+      "name": "Scoring",
+      "start": 4879.729437735048,
+      "end": 4881.217244182015,
+      "split": "test",
+      "subset": "default"
+    }
+  ]
+}

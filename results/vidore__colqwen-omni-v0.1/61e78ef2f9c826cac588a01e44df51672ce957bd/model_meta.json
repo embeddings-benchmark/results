@@ -1,0 +1,56 @@
+{
+    "loader_kwargs": {
+        "torch_dtype": "bfloat16",
+        "base_revision": "59289e054b63a1164c0f26c33f3550f3cde7399b",
+        "device": "cuda"
+    },
+    "name": "vidore/colqwen-omni-v0.1",
+    "revision": "61e78ef2f9c826cac588a01e44df51672ce957bd",
+    "release_date": "2025-07-14",
+    "languages": [
+        "eng-Latn"
+    ],
+    "n_parameters": 4452498560,
+    "n_active_parameters_override": null,
+    "n_embedding_parameters": 311164928,
+    "memory_usage_mb": 8492.0,
+    "max_tokens": 32768.0,
+    "embed_dim": 128,
+    "license": "mit",
+    "open_weights": true,
+    "public_training_code": "https://github.com/illuin-tech/colpali",
+    "public_training_data": "https://huggingface.co/datasets/vidore/colpali_train_set",
+    "framework": [
+        "ColPali",
+        "safetensors"
+    ],
+    "reference": "https://huggingface.co/vidore/colqwen-omni-v0.1",
+    "similarity_fn_name": "MaxSim",
+    "use_instructions": true,
+    "training_datasets": [
+        "VidoreTatdqaRetrieval",
+        "VidoreInfoVQARetrieval",
+        "VidoreDocVQARetrieval",
+        "VidoreArxivQARetrieval"
+    ],
+    "adapted_from": null,
+    "superseded_by": null,
+    "modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+    ],
+    "model_type": [
+        "late-interaction"
+    ],
+    "citation": "\n@inproceedings{faysse2024colpali,\n  archiveprefix = {arXiv},\n  author = {Manuel Faysse and Hugues Sibille and Tony Wu and Bilel Omrani and Gautier Viaud and CELINE HUDELOT and Pierre Colombo},\n  booktitle = {The Thirteenth International Conference on Learning Representations},\n  eprint = {2407.01449},\n  title = {ColPali: Efficient Document Retrieval with Vision Language Models},\n  url = {https://openreview.net/forum?id=ogjBpZ8uSi},\n  year = {2025},\n}",
+    "contacts": null,
+    "experiment_kwargs": null,
+    "output_dtypes": "bfloat16",
+    "extra_requirements_groups": [
+        "colpali_engine"
+    ],
+    "loader": "ColQwen2_5OmniWrapper",
+    "is_cross_encoder": false
+}
